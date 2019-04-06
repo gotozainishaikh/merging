@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-ExtraLight.ttf">
+            <string>Montserrat-ExtraLight</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="71" id="KGk-i7-Jjw" customClass="FavCellTableViewCell" customModule="Collarub" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="71"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="70.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="modelimg" translatesAutoresizingMaskIntoConstraints="NO" id="6au-5F-uVT">
+                        <rect key="frame" x="10" y="11.5" width="48" height="49"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="Mnr-KU-S2o"/>
+                            <constraint firstAttribute="height" constant="49" id="hc7-65-zAe"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fashion Advertisement" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="poO-X1-Ccl">
+                        <rect key="frame" x="66" y="11.5" width="228" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="228" id="AwQ-bE-mhw"/>
+                            <constraint firstAttribute="height" constant="21" id="MOO-cU-pHB"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" name="ThemeColor1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r3g-fU-6Bi">
+                        <rect key="frame" x="66" y="28.5" width="228" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="228" id="GGz-Jc-BRi"/>
+                            <constraint firstAttribute="height" constant="32" id="IAd-ye-ZYm"/>
+                        </constraints>
+                        <string key="text">orem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                        <color key="textColor" name="ThemeColor1"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2-03-2019" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="exB-lZ-sxH">
+                        <rect key="frame" x="252" y="3.5" width="58" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="58" id="00p-eT-z8e"/>
+                            <constraint firstAttribute="height" constant="21" id="F7b-Pf-M1S"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="10"/>
+                        <color key="textColor" name="themecolor4"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="6au-5F-uVT" secondAttribute="bottom" constant="11" id="5Zh-BG-lWt"/>
+                    <constraint firstAttribute="trailing" secondItem="exB-lZ-sxH" secondAttribute="trailing" id="EGx-rI-EKH"/>
+                    <constraint firstItem="exB-lZ-sxH" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="3" id="GXt-u2-HB1"/>
+                    <constraint firstItem="poO-X1-Ccl" firstAttribute="leading" secondItem="6au-5F-uVT" secondAttribute="trailing" constant="8" id="Ott-sV-m0G"/>
+                    <constraint firstItem="6au-5F-uVT" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="PcN-f9-fKz"/>
+                    <constraint firstItem="r3g-fU-6Bi" firstAttribute="leading" secondItem="6au-5F-uVT" secondAttribute="trailing" constant="8" id="TaO-fh-65L"/>
+                    <constraint firstItem="r3g-fU-6Bi" firstAttribute="top" secondItem="poO-X1-Ccl" secondAttribute="bottom" constant="-4" id="YIx-GB-pGo"/>
+                    <constraint firstItem="6au-5F-uVT" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="fVz-L3-P1w"/>
+                    <constraint firstItem="poO-X1-Ccl" firstAttribute="top" secondItem="6au-5F-uVT" secondAttribute="top" id="nvQ-be-wEg"/>
+                    <constraint firstAttribute="trailing" secondItem="r3g-fU-6Bi" secondAttribute="trailing" constant="16" id="ubV-FA-89U"/>
+                    <constraint firstAttribute="trailing" secondItem="poO-X1-Ccl" secondAttribute="trailing" constant="16" id="wHZ-2x-7Cx"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="advertisementDetails" destination="r3g-fU-6Bi" id="5Z0-4t-DiU"/>
+                <outlet property="advertisementTitle" destination="poO-X1-Ccl" id="sdh-Iq-xst"/>
+                <outlet property="dateLabel" destination="exB-lZ-sxH" id="i89-tz-naa"/>
+                <outlet property="usrImg" destination="6au-5F-uVT" id="6K6-lY-HUH"/>
+            </connections>
+            <point key="canvasLocation" x="137.59999999999999" y="166.8665667166417"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="modelimg" width="239" height="122"/>
+        <namedColor name="ThemeColor1">
+            <color red="0.21568627450980393" green="0.67843137254901964" blue="0.58823529411764708" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="themecolor4">
+            <color red="0.26666666666666666" green="0.46274509803921571" blue="0.41960784313725491" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

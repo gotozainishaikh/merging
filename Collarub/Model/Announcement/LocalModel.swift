@@ -40,5 +40,6 @@ class LocalModel{
     var min_user_exp_level : String = ""
     var isFav : String = ""
     var partner_id : String = ""
+    var collaborationType : String = ""
     
 }

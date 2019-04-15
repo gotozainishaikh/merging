@@ -18,7 +18,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="TSa-L1-gs4" customClass="PendingListTableViewCell" customModule="Collarub" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="cell" rowHeight="82" id="TSa-L1-gs4" customClass="PendingListTableViewCell" customModule="Collarub" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="82"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="TSa-L1-gs4" id="3Er-iz-zgb">
@@ -77,9 +77,10 @@
             <connections>
                 <outlet property="advertisementDetails" destination="M9Z-3s-m7k" id="9pv-1F-qs3"/>
                 <outlet property="advertisementTitle" destination="aFl-3h-D27" id="dGf-PD-jdt"/>
+                <outlet property="typeTag" destination="uDw-Tw-ncV" id="7Ex-im-cI6"/>
                 <outlet property="usrImg" destination="Ko3-Xs-QyZ" id="WSz-qS-G8Y"/>
             </connections>
-            <point key="canvasLocation" x="137.59999999999999" y="171.81409295352324"/>
+            <point key="canvasLocation" x="105.59999999999999" y="155.62218890554723"/>
         </tableViewCell>
     </objects>
     <resources>

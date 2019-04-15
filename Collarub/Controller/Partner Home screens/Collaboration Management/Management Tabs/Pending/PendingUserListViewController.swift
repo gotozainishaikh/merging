@@ -12,13 +12,14 @@ class PendingUserListViewController: UIViewController {
 
     
     var model : [FindInfluencerModel] = [FindInfluencerModel]()
-    
+    var usr_id : String = ""
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         tableView.register(UINib(nibName: "PendingUserListTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        
+     
+        print("use id is \(usr_id)")
     }
     
 

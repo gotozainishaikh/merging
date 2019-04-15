@@ -191,6 +191,8 @@ class CampaignListViewController: UIViewController {
             
         }
     }
+    
+    
 }
 
 extension CampaignListViewController : UITableViewDelegate, UITableViewDataSource {

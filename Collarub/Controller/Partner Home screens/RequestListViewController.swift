@@ -19,6 +19,8 @@ class RequestListViewController: UIViewController {
     var favArray : FavListModel!
    // var list_id : String!
     
+    @IBOutlet weak var blockRequestSwitch: UISwitch!
+    @IBOutlet weak var autoApprvSwitch: UISwitch!
     var model : [RequestCellModel] = [RequestCellModel]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
@@ -31,6 +33,22 @@ class RequestListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        print(favArray.block)
+        if favArray.autoapprv == "1"{
+            autoApprvSwitch.isOn = true
+        }else if favArray.autoapprv == "0"{
+            autoApprvSwitch.isOn = false
+        }
+        
+        if favArray.block == "1"{
+            blockRequestSwitch.isOn = true
+        }else if favArray.block == "0"{
+            blockRequestSwitch.isOn = false
+        }
+        
+        autoApprvSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
+        blockRequestSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
        NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "reqAcp"), object: nil)
         
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
@@ -152,11 +170,13 @@ class RequestListViewController: UIViewController {
                 self.model.removeAll()
     
                 for item in 0..<dataJSON.count {
-                    
+                    var countryName = ""
+                    if dataJSON[item]["user_location"].stringValue != "" {
                     let addressStrin = dataJSON[item]["user_location"].stringValue.components(separatedBy: ",")
-                    
-                    let countryName = addressStrin[2]
-                    //print(surname)
+                         countryName = addressStrin[2]
+                        
+                    }
+                     //print(surname)
                     
                     print(dataJSON[item])
                     
@@ -182,6 +202,118 @@ class RequestListViewController: UIViewController {
         self.tableView.reloadData()
 
         }    }
+    
+    
+    @IBAction func autoApprv(_ sender: UISwitch) {
+        if autoApprvSwitch.isOn {
+            print("Hit Api")
+            blockRequestSwitch.isOn = false
+          //  autoApprvSwitch.setOn(false, animated:true)
+            
+            let parameters : [String:String] = [
+                
+                "collaboration_id": favArray.collaboration_id,
+                "auto_approve" : "1",
+                "block_status" : "0"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_block_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                   let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                    }
+                }
+                
+            }
+            
+            
+        } else {
+            let parameters : [String:String] = [
+                
+                "collaboration_id": favArray.collaboration_id,
+                "auto_approve" : "0",
+                "block_status" : "0"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_block_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+
+                         
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        
+                    }
+                }
+                
+            }
+           // autoApprvSwitch.setOn(true, animated:true)
+        }
+    }
+    @IBAction func blockreq(_ sender: UISwitch) {
+        if blockRequestSwitch.isOn {
+            print("The Switch is On")
+            autoApprvSwitch.isOn = false
+           
+            let parameters : [String:String] = [
+                
+                "collaboration_id": favArray.collaboration_id,
+                "auto_approve" : "0",
+                "block_status" : "1"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_block_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        
+                    }
+                }
+                
+            }
+        } else {
+            print("The Switch is Off")
+            let parameters : [String:String] = [
+                
+                "collaboration_id": favArray.collaboration_id,
+                "auto_approve" : "0",
+                "block_status" : "0"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_block_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        
+                    }
+                }
+                
+            }
+        }
+    }
 }
 
 

@@ -199,7 +199,10 @@ class StepViewController: UIViewController, PageViewControllerDelegate {
                     "address": (pageViewController?.data[23])!,
                     "partner_id": id,
                     "lat" : (pageViewController?.data[37])!,
-                    "longg" : (pageViewController?.data[38])!
+                    "longg" : (pageViewController?.data[38])!,
+                    "collab_limit" : (pageViewController?.data[39])!,
+                    "auto_approve" : (pageViewController?.data[40])!,
+                    "coupon_status" : (pageViewController?.data[41])!
                 ]
                 let url = "\(self.url.weburl)/imageUpload.php"
                 print("Parameters :: \(parameters)")
@@ -207,7 +210,7 @@ class StepViewController: UIViewController, PageViewControllerDelegate {
 
                     let dataJSON : JSON = JSON(response.result.value!)
                     if response.result.isSuccess {
-                        print(dataJSON["id"].stringValue)
+                        print("idies \(dataJSON["id"].stringValue)")
 
                         self.requestWith(endUrl: url, imageData: (self.pageViewController?.imageData)!, parameters: ["emp_id" : dataJSON["id"].stringValue])
                     }

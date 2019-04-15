@@ -25,7 +25,7 @@ class LocalModel{
     var selectedNumOfFollowers : String = ""
     var lat : Double = 0.0
     var long : Double = 0.0
-    var collaboration_id : Int = 0
+    var collaboration_id : String = ""
     var expiry_date : String = ""
     var Accep_budget_check : String = ""
     var budget_value : String = ""

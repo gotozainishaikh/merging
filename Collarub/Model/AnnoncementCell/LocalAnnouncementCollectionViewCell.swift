@@ -13,20 +13,38 @@ import CoreData
 
 class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     
+    var isFav : String!
     @IBOutlet weak var imgLocal: UIImageView!
     @IBOutlet weak var announcementTitle: UILabel!
     @IBOutlet weak var location: UILabel!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var followersRequired: UILabel!
     @IBOutlet weak var likeMe: UIButton!
-    var col_id :Int!
+    var col_id :String!
     let url = FixVariable()
+    
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
     
     
-    
+    func setLikeMe(isFav:[String]){
+        
+        let hasFav = isFav.contains(col_id)
+        print("hasFav=\(hasFav)")
+        if(hasFav==true){
+            likeMe.setImage(UIImage(named: "hearts"), for: .normal)
+        }
+        else if(hasFav==false){
+            likeMe.setImage(UIImage(named: "like"), for: .normal)
+        }
+        //        for item in isFav {
+        //            if(item==col_id){
+        //                likeMe.setImage(UIImage(named: "hearts"), for: .normal)
+        //            }
+        //        }
+        
+    }
     
     
     @IBAction func likeBtn(_ sender: UIButton) {
@@ -65,20 +83,20 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
                         let parameters : [String:String] = [
                             "user_id": id,
                             "collaboration_id": String(self.col_id)
-
+                            
                         ]
-
-
+                        
+                        
                         Alamofire.request("\(self.url.weburl)/favourite_list_of_user.php", method: .get, parameters: parameters).responseJSON { (response) in
-
+                            
                             if response.result.isSuccess {
-
+                                
                                 let dataJSON : JSON = JSON(response.result.value!)
-
+                                
                                 print(dataJSON)
                             }
                         }
-                    //    myfunc()
+                        //    myfunc()
                         
                         
         }
@@ -87,8 +105,8 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
         
     }
     
-   // func myfunc(inde : IndexPath) {
-        
+    // func myfunc(inde : IndexPath) {
+    
     
     
 }

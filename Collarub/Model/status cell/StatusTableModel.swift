@@ -30,4 +30,16 @@ class StatusTableModel {
     var notification_status : String = ""
     var statusDay : Int = 0
     var statusMonth : String = ""
+    var expiry_date : String = ""
+    var Accep_budget_check : String = ""
+    var budget_value : String = ""
+    var type : String = ""
+    var discount_field : String = ""
+    var content_type : String = ""
+    var required_city : String = ""
+    var required_region : String = ""
+    var engagement_rate : String = ""
+    var rating : String = ""
+    var user_gender : String = ""
+    var min_user_exp_level : String = ""
 }

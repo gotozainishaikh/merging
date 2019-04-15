@@ -45,6 +45,7 @@ class PageViewController: UIPageViewController {
 
     override func viewDidAppear(_ animated: Bool) {
         //self.moveToPage()
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setcalandar"), object: nil, userInfo: nil)
     }
     
     func makePages() -> [UIViewController]{
@@ -85,7 +86,7 @@ class PageViewController: UIPageViewController {
 //
 //            self.currentPageIndex = 0
 //        }
-        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setcalandar"), object: nil, userInfo: nil)
     }
     var arr = [String]()
     var data = [String]()
@@ -201,6 +202,9 @@ class PageViewController: UIPageViewController {
         step5Data.inMac = step5.inMac
         step5Data.inMga = step5.inMga
         step5Data.inStr = step5.inStr
+        step5Data.limt = step5.limt
+        step5Data.autoaprv = step5.autoaprv
+        step5Data.copon = step5.copon
 //        step5Data.caLocl = step5.caLocl
 //        step5Data.caMcro = step5.caMcro
 //        step5Data.caMac = step5.caMac
@@ -386,7 +390,7 @@ class PageViewController: UIPageViewController {
 //
 //        }
         
-        data = [type_col,step1Data.category,step2Data.exchag,step2Data.discont,step2Data.discountNmbr,step2Data.maxBudgt,step2Data.usingProd,step2Data.locatin,step2Data.selfe,step2Data.shotTop, step2Data.numStoris,step2Data.numPost,step2Data.accptBugt,step2Data.startDate,step2Data.endDate,step3Data.engagementRt,step3Data.lCity,step3Data.lRegion,step3Data.reputationLvl,step3Data.exLevel,step3Data.gndr, step3Data.follwrLimt,step4Data.compyNam,step4Data.addrss,step4Data.descrptin,step4Data.whatoffring,step4Data.whatwillhv,step4Data.whatWont,step4Data.e_mail,step4Data.telNo, step4Data.websit,step5Data.inLocl,step5Data.inMcro,step5Data.inMac,step5Data.inMga,step5Data.inStr,step5Data.pay_method,step4Data.lat,step4Data.long]
+        data = [type_col,step1Data.category,step2Data.exchag,step2Data.discont,step2Data.discountNmbr,step2Data.maxBudgt,step2Data.usingProd,step2Data.locatin,step2Data.selfe,step2Data.shotTop, step2Data.numStoris,step2Data.numPost,step2Data.accptBugt,step2Data.startDate,step2Data.endDate,step3Data.engagementRt,step3Data.lCity,step3Data.lRegion,step3Data.reputationLvl,step3Data.exLevel,step3Data.gndr, step3Data.follwrLimt,step4Data.compyNam,step4Data.addrss,step4Data.descrptin,step4Data.whatoffring,step4Data.whatwillhv,step4Data.whatWont,step4Data.e_mail,step4Data.telNo, step4Data.websit,step5Data.inLocl,step5Data.inMcro,step5Data.inMac,step5Data.inMga,step5Data.inStr,step5Data.pay_method,step4Data.lat,step4Data.long,step5Data.limt,step5Data.autoaprv,step5Data.copon]
         
         
         

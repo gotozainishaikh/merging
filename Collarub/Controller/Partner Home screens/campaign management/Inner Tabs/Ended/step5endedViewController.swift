@@ -13,12 +13,15 @@ import SwiftyJSON
 
 class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate {
 
+    var model = LocalModel()
     var inLocl : String = ""
     var inMcro : String = ""
     var inMac : String = ""
     var inMga : String = ""
     var inStr : String = ""
     var pay_method : String = ""
+    
+    var str : [String]!
     
     @IBOutlet weak var payBtn1: UIButton!
     @IBOutlet weak var payBtn2: UIButton!
@@ -48,6 +51,7 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("data :: \(model.collaboration_id)")
         //bottomView.isHidden = true
         
         
@@ -160,8 +164,18 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
         
        
     }
+    @IBAction func cancelBtn(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     
 
+    @IBAction func nextClick(_ sender: UIButton) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "allDetails") as! DetailsEndedViewController
+        str = [inLocl,inMcro,inMac,]
+        vc.detailsArray = model
+        present(vc, animated: true, completion: nil)
+        
+    }
     func didSelectButton(selectedButton: UIButton?)
     {
         print(" \(selectedButton?.title(for: .normal))" )

@@ -22,17 +22,17 @@ class UserSelectionViewController: UIViewController {
     
 
     @IBAction func userClick(_ sender: UIButton) {
-        
+        let storyBoard = UIStoryboard(name: "User", bundle: nil)
         if Defaults.isLogedIn {
             
             
-            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
             self.present(mainTabController, animated: true, completion: nil)
             
         }else {
             
-            let vc = storyboard?.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
+            let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
             present(vc, animated: true, completion: nil)
         }
         

@@ -28,6 +28,7 @@ class CurrentListViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        currentListTable.allowsSelection = false
         
         currentListTable.register(UINib(nibName: "CurrentListTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
@@ -78,7 +79,7 @@ class CurrentListViewController: UIViewController {
         
         let parameters : [String:String] = [
             
-            "p_id": id
+            "partner_id": id
             
         ]
         

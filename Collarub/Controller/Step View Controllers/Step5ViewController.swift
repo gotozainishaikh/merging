@@ -26,9 +26,13 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
     var payInflncer : String = ""
     var payCam : String = ""
     var pay_method : String = ""
+    var limt : String = ""
+    var copon : String = ""
+    var autoaprv : String = "0"
     
     
-    
+    @IBOutlet weak var autoapprv: CheckBox!
+    @IBOutlet weak var coupon: CheckBox!
     @IBOutlet weak var payBtn1: UIButton!
     @IBOutlet weak var payBtn2: UIButton!
    
@@ -67,9 +71,27 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
         payPerCampaignView.isHidden = true
         limitinfluencer.didSelect{(selectedText , index , id) in
             //            print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
-          
+            self.limt = selectedText
         }
         
+        
+        autoapprv.onClick = { (checked) in
+            if checked.isChecked {
+                print(self.autoapprv.title)
+                self.autoaprv = "1"
+            }else {
+                self.autoaprv = "0"
+            }
+        }
+        
+        coupon.onClick = { (checked) in
+            if checked.isChecked {
+                print(self.coupon.title)
+                self.copon = self.coupon.title!
+            }else {
+                self.copon = ""
+            }
+        }
         
         inLocal.onClick = { (checked) in
             if checked.isChecked {

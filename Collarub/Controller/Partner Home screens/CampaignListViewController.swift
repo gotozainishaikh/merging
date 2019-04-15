@@ -26,6 +26,8 @@ class CampaignListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tableView.allowsSelection = false
+        
         let imageName = "nodataavail.jpeg"
         let image = UIImage(named: imageName)
         imageView = UIImageView(image: image!)
@@ -40,7 +42,7 @@ class CampaignListViewController: UIViewController {
         
         print("iddddd :: \(id)")
         
-        retriveData()
+        //retriveData()
         
         tableView.register(UINib(nibName: "FavCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         //tableView.reloadData()
@@ -152,7 +154,8 @@ class CampaignListViewController: UIViewController {
                             statusModel.partner_id = dataJSON[item]["partner_id"].stringValue
                             statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                             statusModel.status = dataJSON[item]["subscribe_status"].intValue
-                            
+                            statusModel.autoapprv = dataJSON[item]["auto_approve"].stringValue
+                            statusModel.block = dataJSON[item]["block_status"].stringValue
                             self.model.append(statusModel)
                             //   SVProgressHUD.dismiss()
                             
@@ -163,7 +166,7 @@ class CampaignListViewController: UIViewController {
                         //    print("count \(self.model.count)")
                         // SVProgressHUD.dismiss()
                         self.tableView.reloadData()
-                        
+                        self.tableView.allowsSelection = true
                     }
                     
                     

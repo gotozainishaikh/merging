@@ -10,12 +10,12 @@ import UIKit
 
 class endedTableViewCell: UITableViewCell {
 
-    
+    var model = LocalModel()
     @IBOutlet weak var imgUsr: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var decrip: UILabel!
     @IBOutlet weak var budgt: UILabel!
-    var reqDataDict :[String:String]!
+    var reqDataDict :[String:Any]!
     var req_id : String!
     
     
@@ -31,7 +31,7 @@ class endedTableViewCell: UITableViewCell {
     }
     
     @IBAction func repeatBtn(_ sender: UIButton) {
-        reqDataDict = ["req_id": req_id]
+        reqDataDict = ["req_id": req_id,"modal": model]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reqreject"), object: nil, userInfo: reqDataDict)
     }
 }

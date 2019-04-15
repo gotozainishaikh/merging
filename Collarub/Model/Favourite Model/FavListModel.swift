@@ -27,6 +27,13 @@ class FavListModel {
     var partner_id : String = ""
     var collaboration_id :String = ""
     var status : Int!
-    
+    var url : String = ""
+    var user_give_review : String = ""
+    var user_give_rating : String = ""
+    var user_id : String = ""
+    var autoapprv : String = ""
+    var block : String = ""
+    var fav_collaboration_id :Int = 0
+    var isFav : String = ""
     
 }

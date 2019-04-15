@@ -29,8 +29,8 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     var numStoris : String = ""
     var numPost : String = ""
     var accptBugt : String = ""
-    var startDate : String = "2-03-2019"
-    var endDate : String = "7-03-2019"
+    var startDate : String = ""
+    var endDate : String = ""
     var datePicker : UIDatePicker!
     let toolBar = UIToolbar()
     var currentYear : Int!
@@ -173,6 +173,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
         
     }
+    
     @objc func rejectList(req_notification: NSNotification) {
         var req_id : String = ""
         
@@ -340,6 +341,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             if self.datePicker.date > fordate! {
             let dat1 = dateFormatter.string(from: self.datePicker.date)
             EndDate.text = dat1
+                endDate = dat1
             }else {
                 let snackbar = TTGSnackbar(message: "Ending date must be greater then starting date", duration: .middle)
                 snackbar.show()
@@ -389,7 +391,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
         
         srtDate.text = dat
-        
+        startDate = dat
         datePicker.isHidden = true
         self.toolBar.isHidden = true
         

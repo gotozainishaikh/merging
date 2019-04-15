@@ -48,8 +48,11 @@ class EndedCampaignViewController: UIViewController {
                 // print("hosp_id="+hosp_id!)
                 req_id = id
                 
-                let vc = storyboard?.instantiateViewController(withIdentifier: "paystep5")
-                present(vc!, animated: true, completion: nil)
+                let modl = dict["modal"]
+                
+                let vc = storyboard?.instantiateViewController(withIdentifier: "paystep5") as! step5endedViewController
+                vc.model = modl as! LocalModel
+                present(vc, animated: true, completion: nil)
             }
             
         }
@@ -84,11 +87,11 @@ class EndedCampaignViewController: UIViewController {
         
         let parameters : [String:String] = [
             
-            "p_id": id
+            "partner_id": id
             
         ]
         
-        Alamofire.request("\(self.url.weburl)/endedList.php", method: .get, parameters: parameters).responseJSON { (response) in
+        Alamofire.request("\(self.url.weburl)/completed_collaboration.php", method: .get, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.show(withStatus: "Connecting to server")
             if response.result.isSuccess {
                 
@@ -137,7 +140,7 @@ class EndedCampaignViewController: UIViewController {
                                 localModel.avalaibility = ""
                                 localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
                                 
-                                localModel.collaboration_id = dataJSON[item]["collaboration_id"].intValue
+                                localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
                                 localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
@@ -167,12 +170,6 @@ class EndedCampaignViewController: UIViewController {
                         
                         
                     }
-                    
-                    //                if dataJSON["Status"] == "failed" {
-                    //                    self.model.removeAll()
-                    //                    self.statusTable.re
-                    //                }
-                    //
                     
                 }else {
                     self.view.addSubview(self.imageView)
@@ -209,6 +206,7 @@ extension EndedCampaignViewController : UITableViewDelegate, UITableViewDataSour
         cell.decrip.text = model[indexPath.row].description
         cell.budgt.text = model[indexPath.row].budget_value
         cell.req_id = String(model[indexPath.row].collaboration_id)
+        cell.model = model[indexPath.row]
         //Image Round
         cell.imgUsr.layer.cornerRadius = cell.imgUsr.frame.size.width/2
         cell.imgUsr.clipsToBounds = true

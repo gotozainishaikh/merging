@@ -30,6 +30,7 @@ pod 'GooglePlacesSearchController'
 pod 'ImageSlideshow', '~> 1.6'
 pod 'ImageSlideshow/SDWebImage'
 pod 'TTGSnackbar'
+pod 'ImageSlideshow/Alamofire'
 
 target 'CollarubTests' do
     inherit! :search_paths

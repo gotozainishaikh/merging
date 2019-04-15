@@ -10,6 +10,7 @@ import Foundation
 
 class OnlineModel {
     
+    var collaboration_id : String = ""
     var announcementImage : String = ""
     var title : String = ""
     var companyName : String = ""
@@ -24,4 +25,6 @@ class OnlineModel {
     var selectedNumOfFollowers : String = ""
     var lat : String = ""
     var long : String = ""
+    
+   
 }

@@ -118,10 +118,12 @@ class PendingProductsViewController: UIViewController {
         
         
     }
+    
     func retriveData() {
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
         }
+        self.model.removeAll()
         
         SVProgressHUD.show(withStatus: "Loading")
         
@@ -153,7 +155,7 @@ class PendingProductsViewController: UIViewController {
                         viewWithTag.removeFromSuperview()
                     }
                     
-                    print(dataJSON)
+                    print("counnt :: \(dataJSON.count)")
                     if dataJSON.count < 1 {
                         self.model.removeAll()
                         self.tableView.reloadData()

@@ -13,6 +13,7 @@ class PendingUserListTableViewCell: UITableViewCell {
     @IBOutlet weak var usrImg: UIImageView!
     @IBOutlet weak var usrName: UILabel!
     @IBOutlet weak var usrLocation: UILabel!
+    @IBOutlet weak var productStatus: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

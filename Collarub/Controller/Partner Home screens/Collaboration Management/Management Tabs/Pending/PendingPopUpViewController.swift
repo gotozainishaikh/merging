@@ -10,9 +10,14 @@ import UIKit
 
 class PendingPopUpViewController: UIViewController {
 
+    var model = FindInfluencerModel()
+    
+    @IBOutlet weak var usrImg: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        print(model.user_id)
         showAnimate()
     }
     

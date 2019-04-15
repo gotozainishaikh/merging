@@ -30,7 +30,7 @@ class Agenda: UIViewController{
     
     var model : [AgendaModel] = [AgendaModel]()
     
-    var statArray : StatusTableModel?
+    var statArray : UserRequestModel?
     
     let url = FixVariable()
     
@@ -39,7 +39,7 @@ class Agenda: UIViewController{
     
     @IBOutlet weak var imgSlider: ImageSlideshow!
     
-
+    
     @IBOutlet weak var advertisementTitle: UILabel!
     @IBOutlet weak var companyName: UILabel!
     @IBOutlet weak var location: UILabel!
@@ -77,8 +77,8 @@ class Agenda: UIViewController{
     
     @IBAction func complete_btn(_ sender: UIButton) {
         
-        let stroy = UIStoryboard(name: "Main", bundle: nil)
-        let vc = stroy.instantiateViewController(withIdentifier: "complete_popup") 
+        let stroy = UIStoryboard(name: "User", bundle: nil)
+        let vc = stroy.instantiateViewController(withIdentifier: "complete_popup")
         // vc.user_id = id
         
         
@@ -256,43 +256,51 @@ class Agenda: UIViewController{
             gender.text = (modelCustom?.user_gender)!
             exp_level.text = "\((modelCustom?.min_user_exp_level)!)/10"
         }
-     else if (statArray != nil){
-            col_id = (statArray?.collaboration_id)!
-            partner_id = (statArray?.partner_id)!
+        else if (statArray != nil){
+            print("stat array")
+            col_id = (statArray?.get_collaboration_id())!
+            partner_id = (statArray?.get_partner_id())!
             
-            print("detailsArray?.productImage=\(statArray?.productImage.count)")
-            for item in (statArray?.productImage)! as [String]{
+            for item in (statArray?.get_productImage())! as [String]{
                 if(item != ""){
                     
                     images.append(AlamofireSource(urlString:item)!)
                     
                 }
             }
+            //print("detailsArray?.productImage=\(statArray?.productImage.count)")
+            //            for item in (statArray?.productImage)! as [String]{
+            //                if(item != ""){
+            //
+            //                    images.append(AlamofireSource(urlString:item)!)
+            //
+            //                }
+            //            }
             
-            companyName.text = statArray?.companyName
-            location.text = "\((statArray?.required_city)!),\((statArray?.required_region)!)"
-            date.text = "Date:\((statArray?.date)!) "
-            expiry_date.text = "Expiry:\((statArray?.expiry_date)!)"
-            advertisementDescription.text = statArray?.description
+            companyName.text = statArray?.get_collaboration_name()
+            location.text = "\((statArray?.get_required_city())!),\((statArray?.get_required_region())!)"
+            date.text = "Date:\((statArray?.get_date())!) "
+            expiry_date.text = "Expiry:\((statArray?.get_expiry_date())!)"
+            advertisementDescription.text = statArray?.get_descriptions()
             
-            if((statArray?.type)! == "exchange") || ((statArray?.type)! == "Exchange"){
+            if((statArray?.get_type())! == "exchange") || ((statArray?.get_type())! == "Exchange"){
                 
                 type.text = "EXCHANGE:"
-                type_value.text = (statArray?.budget_value)!
+                type_value.text = (statArray?.get_budget_value())!
                 
             }
-            else if((statArray?.type)! == "discount"){
+            else if((statArray?.get_type())! == "discount"){
                 
                 type.text = "DISCOUNT:"
-                type_value.text = "\((statArray?.budget_value)!) | \((statArray?.discount_field)!)"
+                type_value.text = "\((statArray?.get_budget_value())!) | \((statArray?.get_discount_field())!)"
                 
             }
             
-            content_type.text = (statArray?.content_type)!
-            engagement_rate.text = statArray?.engagement_rate
-            rating.text = (statArray?.rating)!
-            gender.text = (statArray?.user_gender)!
-            exp_level.text = "\((statArray?.min_user_exp_level)!)/10"
+            content_type.text = (statArray?.get_content_type())!
+            engagement_rate.text = statArray?.get_engagement_rate()
+            rating.text = (statArray?.get_rating())!
+            gender.text = (statArray?.get_user_gender())!
+            exp_level.text = "\((statArray?.get_min_user_exp_level())!)/10"
             
             
             //collaborationTerm.text = detailsArray?.collaborattionTerms

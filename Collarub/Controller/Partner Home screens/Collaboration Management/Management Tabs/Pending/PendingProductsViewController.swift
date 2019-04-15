@@ -136,12 +136,12 @@ class PendingProductsViewController: UIViewController {
         
         let parameters : [String:String] = [
             
-            "p_id": id,
-            "date":date
+            "partner_id": id
+            
             
         ]
         
-        Alamofire.request("\(self.url.weburl)/pendingCampaign.php", method: .get, parameters: parameters).responseJSON { (response) in
+        Alamofire.request("\(self.url.weburl)/all_pending_products_wrt_partner_id.php", method: .get, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.show(withStatus: "Connecting to server")
             if response.result.isSuccess {
                 

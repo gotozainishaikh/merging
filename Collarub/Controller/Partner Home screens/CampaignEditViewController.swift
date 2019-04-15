@@ -8,34 +8,81 @@
 
 import UIKit
 import iOSDropDown
+import Cosmos
+
 
 class CampaignEditViewController: UIViewController {
 
-    @IBOutlet weak var chooseCat: DropDown!
+    @IBOutlet weak var usrRevieTxt: UITextView!
+    var model = FavListModel()
+    var addressStrin = [String]()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var ratingByUser: CosmosView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        chooseCat.optionArray = ["Male", "Female"]
-        chooseCat.text = "Male"
-        //chooseCat.selectedIndex = 1
-        chooseCat.arrowSize = 10
-        chooseCat.didSelect{(selectedText , index , id) in
-            print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
-            
+    tableView.tableFooterView = UIView()
+        addressStrin = model.url.components(separatedBy: ",")
+//        for item in 0..<addressStrin.count {
+//           print("data \(addressStrin[item])")
+//        }
+        tableView.reloadData()
+        usrRevieTxt.text = model.user_give_review
+        ratingByUser.settings.updateOnTouch = false
+        ratingByUser.settings.totalStars = 5
+        ratingByUser.settings.fillMode = .precise
+        
+        ratingByUser.rating =  Double(model.user_give_rating) ?? 0.0
             // self.selectedtex = selectedText
         }
         // Do any additional setup after loading the view.
+    
+   
+    @IBAction func cncel(_ sender: UIButton) {
+       self.dismiss(animated: true, completion: nil)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func rateBtn(_ sender: UIButton) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "RatePopUp") as! HistoryReviewPopUpViewController
+        
+        vc.model = model
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.didMove(toParent: self)
     }
-    */
+    
+    
 
 }
+
+
+extension CampaignEditViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return addressStrin.count
+        
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = addressStrin[indexPath.row]
+        
+        return cell
+        
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+       
+        
+        
+        //  self.performSegue(withIdentifier: "requestList", sender: nil)
+        
+    }
+    
+    
+    
+}
+

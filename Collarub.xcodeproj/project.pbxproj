@@ -75,6 +75,8 @@
 		0453E0E722621F6C006DBD95 /* PendingUserListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453E0E522621F6C006DBD95 /* PendingUserListTableViewCell.swift */; };
 		0453E0E822621F6C006DBD95 /* PendingUserListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0453E0E622621F6C006DBD95 /* PendingUserListTableViewCell.xib */; };
 		045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BEAB22254C62400650E74 /* CampaignEditViewController.swift */; };
+		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
+		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
 		3A01164A2209D74200F9AFCF /* StatusTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0116492209D74200F9AFCF /* StatusTableModel.swift */; };
 		3A02F1C22229608200C75A02 /* PartnerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */; };
 		3A045CD32215BCA30095626E /* Step1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A045CD22215BCA30095626E /* Step1ViewController.swift */; };
@@ -211,6 +213,8 @@
 		045BEAB22254C62400650E74 /* CampaignEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignEditViewController.swift; sourceTree = "<group>"; };
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
+		18DD23312264970F00202A0B /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
+		18DD23342264991600202A0B /* AlamofireApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireApi.swift; sourceTree = "<group>"; };
 		3A0116492209D74200F9AFCF /* StatusTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableModel.swift; sourceTree = "<group>"; };
 		3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHomeViewController.swift; sourceTree = "<group>"; };
 		3A045CD22215BCA30095626E /* Step1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1ViewController.swift; sourceTree = "<group>"; };
@@ -584,6 +588,22 @@
 			path = "Pending cell view controller";
 			sourceTree = "<group>";
 		};
+		18DD23302264970F00202A0B /* User Request Model */ = {
+			isa = PBXGroup;
+			children = (
+				18DD23312264970F00202A0B /* UserRequestModel.swift */,
+			);
+			path = "User Request Model";
+			sourceTree = "<group>";
+		};
+		18DD23332264991600202A0B /* Alamofire Api */ = {
+			isa = PBXGroup;
+			children = (
+				18DD23342264991600202A0B /* AlamofireApi.swift */,
+			);
+			path = "Alamofire Api";
+			sourceTree = "<group>";
+		};
 		3A0116482209D72100F9AFCF /* status cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -682,6 +702,7 @@
 		3A93B56721FB2941007867C8 /* Extras */ = {
 			isa = PBXGroup;
 			children = (
+				18DD23332264991600202A0B /* Alamofire Api */,
 				3AF765AE221726EB008C5A40 /* radio button class */,
 				3A93B56821FB2961007867C8 /* Defaults */,
 				89EE86A121E3776D003ADD8C /* External Files */,
@@ -846,6 +867,7 @@
 		3AF65C6021E0F689009C82C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				18DD23302264970F00202A0B /* User Request Model */,
 				0453E0DA2261DF59006DBD95 /* Request list model  */,
 				0453E0C722610045006DBD95 /* Agenda */,
 				0453E065225E231E006DBD95 /* Find influncer model */,
@@ -1326,6 +1348,7 @@
 				3AEED35F22298D2100B129EA /* TableViewCell.swift in Sources */,
 				041E1B8D225CEF3B0056B649 /* FindInfluencerViewController.swift in Sources */,
 				0453E0E722621F6C006DBD95 /* PendingUserListTableViewCell.swift in Sources */,
+				18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */,
 				0453E0982260F7DA006DBD95 /* ContactUsViewController.swift in Sources */,
 				3A6E57E1222ED8F800378539 /* PartnerTabBarController.swift in Sources */,
 				04385ED7225920D000753749 /* step5endedViewController.swift in Sources */,
@@ -1361,6 +1384,7 @@
 				0453E06E225F4FB1006DBD95 /* DetailsEndedViewController.swift in Sources */,
 				0453E07D225FBD77006DBD95 /* customAnnoation.swift in Sources */,
 				3A42D7BD2217FE0A00C9B00E /* Step4ViewController.swift in Sources */,
+				18DD23352264991600202A0B /* AlamofireApi.swift in Sources */,
 				3AF765B222172756008C5A40 /* SSRadioButtonsController.swift in Sources */,
 				0453E0A62260F86D006DBD95 /* MyCollaborationViewController.swift in Sources */,
 				3A01164A2209D74200F9AFCF /* StatusTableModel.swift in Sources */,

@@ -339,7 +339,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You only select two choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n8x-pJ-VSD">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="17.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="18.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themeColor3"/>
                                         <nil key="highlightedColor"/>
@@ -1340,7 +1340,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="incomplete_btn:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="ihg-ba-LlR"/>
+                                            <action selector="in_complete_btn_click:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="SP4-7L-yzd"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HjB-Tc-wX6">
@@ -1358,7 +1358,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="complete_btn:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="jYV-qd-ctS"/>
+                                            <action selector="complete_btn_click:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="DMN-Dm-Mhw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSa-2W-Fhv">
@@ -1376,7 +1376,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="pending_btn:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="iV9-e0-462"/>
+                                            <action selector="pending_btn_click:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="eyq-Rq-XiV"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Jc-JC-ivN">
@@ -1394,7 +1394,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="decline_btn:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="Ay1-UE-psw"/>
+                                            <action selector="decline_btn_click:" destination="Ko6-EW-rUD" eventType="touchUpInside" id="Pbh-MG-XQC"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -4758,7 +4758,7 @@
                         <outlet property="date" destination="e2Y-0y-Cuy" id="Gbb-Ko-7Si"/>
                         <outlet property="email" destination="iO6-U1-HDN" id="gdp-SG-ebL"/>
                         <outlet property="engagement_rate" destination="h44-cf-cDI" id="mo4-oD-Ved"/>
-                        <outlet property="exp_level" destination="QaQ-m5-D0E" id="oUf-XC-EwZ"/>
+                        <outlet property="exp_level" destination="CDM-d2-TvW" id="ySV-Wg-xnS"/>
                         <outlet property="expiry_date" destination="UWW-R0-fLD" id="1b8-Q9-Lh4"/>
                         <outlet property="gender" destination="ODn-dH-fkx" id="ntZ-0e-7CC"/>
                         <outlet property="imgSlider" destination="B0J-Ld-6Vs" id="A5Z-Sc-EjS"/>
@@ -4797,7 +4797,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vel-2W-HEU">
                                                 <rect key="frame" x="62" y="172" width="165" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
                                                         <rect key="frame" x="22.5" y="10" width="120" height="20"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">

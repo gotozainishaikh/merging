@@ -13,44 +13,111 @@ import SwiftyJSON
 import CoreData
 
 class CollaborationStatusViewController: UIViewController, CalendarViewDelegate, CalendarViewDataSource {
-
- 
+    
+    var req_status = "1"
+    let apiCall  = AlamofireApi()
+    
+    var arrModel:[UserRequestModel] = []
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
     let story = UIStoryboard(name: "Main", bundle: nil)
     var model : [StatusTableModel] = [StatusTableModel]()
     
+    
+    @IBAction func complete_btn_click(_ sender: UIButton) {
+        
+        //self.arrModel.removeAll()
+        print("complete")
+        req_status = "1"
+        self.viewDidLoad()
+    }
+    
+    
+    @IBAction func in_complete_btn_click(_ sender: UIButton) {
+        
+        //self.arrModel.removeAll()
+        print("in-complete")
+        req_status = "3"
+        self.viewDidLoad()
+    }
+    
+    @IBAction func pending_btn_click(_ sender: UIButton) {
+        
+        //self.arrModel.removeAll()
+        print("pending")
+        req_status = "2"
+        self.viewDidLoad()
+    }
+    
+    @IBAction func decline_btn_click(_ sender: UIButton) {
+      
+        //self.arrModel.removeAll()
+        print("decline")
+        req_status = "4"
+        self.viewDidLoad()
+    }
+    
+    
     @IBOutlet weak var calendarView: CalendarView!
     let url = FixVariable()
     @IBOutlet weak var statusTable: UITableView!
     
-    @IBAction func complete_btn(_ sender: UIButton) {
-    }
-    @IBAction func pending_btn(_ sender: UIButton) {
-    }
-    @IBAction func incomplete_btn(_ sender: UIButton) {
-    }
-    @IBAction func decline_btn(_ sender: UIButton) {
-    }
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        print("arrModel.count=\(arrModel.count))")
+        for item in self.arrModel{
+            
+            print("arrModel[0].get_applied_on()=\(item.get_applied_on())")
+            self.calendarView.reloadData()
+            if(item.get_applied_on() != ""){
+                var date = self.parse(item.get_applied_on())
+                
+                self.calendarView.deselectDate(date)
+            }
+        }
+        
+        print("req_status=\(req_status)")
         // Do any additional setup after loading the view.
         
         statusTable.register(UINib(nibName: "StatusTableViewCell", bundle: nil), forCellReuseIdentifier: "statusCell")
-//        retriveData()
-       // statusTable.allowsSelection = false
+        //        retriveData()
+        // statusTable.allowsSelection = false
         
         statusTable.separatorStyle = .none
         let button2 = UIBarButtonItem(image: UIImage(named: "bell-icon"), style: .plain, target: self, action: #selector(actionFavList))
         
         self.navigationItem.rightBarButtonItem  = button2
         setUpCalendar()
-//        var date = parse("2019-04-12")
-//        calendarView.addEvent("hello", date: date)
+        //        var date = parse("2019-04-12")
+        //        calendarView.addEvent("hello", date: date)
         
         uiNavegationImage()
+        
+        
+        
+        
+        getAllRequest(status_id: req_status){
+            
+            print("self.arrModelaxy=\(self.arrModel.count)")
+            for item in self.arrModel{
+                
+                print("arrModel[0].get_applied_on()=\(item.get_applied_on())")
+               self.calendarView.reloadData()
+                if(item.get_applied_on() != ""){
+                    var date = self.parse(item.get_applied_on())
+                    
+                    self.calendarView.selectDate(date)
+                }
+            }
+            
+            self.statusTable.reloadData()
+        }
+        
+        
     }
     
     @objc func actionFavList(){
@@ -66,10 +133,10 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         let logoImage:UIImage = UIImage(named: "logo_img")!
         self.navigationItem.titleView = UIImageView(image: logoImage)
     }
-
+    
     func setUpCalendar() {
         
-        CalendarView.Style.cellShape                = .bevel(4) 
+        CalendarView.Style.cellShape                = .bevel(4)
         CalendarView.Style.cellColorDefault         = UIColor.clear
         CalendarView.Style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
         CalendarView.Style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
@@ -86,22 +153,31 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         
         
         calendarView.direction = .horizontal
-       // calendarView.multipleSelectionEnable = false
+        // calendarView.multipleSelectionEnable = false
         calendarView.marksWeekends = true
         
         calendarView.multipleSelectionEnable = true
-        calendarView.backgroundColor = UIColor(red:0.31, green:0.44, blue:0.47, alpha:1.00)
-//        var date = parse("2019-04-10")
-//        calendarView.selectDate(date)
+        calendarView.backgroundColor = UIColor.black
+        //        var date = parse("2019-04-10")
+        //        calendarView.selectDate(date)
         
         
     }
     func parse(_ string: String, format: String = "yyyy-MM-dd") -> Date {
+       
         let dateFormatter = DateFormatter()
-        dateFormatter.timeZone = NSTimeZone.default
+        
+       // var date = Date()
+       
+        
+        dateFormatter.timeZone = TimeZone(secondsFromGMT: 0)
         dateFormatter.dateFormat = format
         
         let date = dateFormatter.date(from: string)!
+//        if let temp = dateFormatter.date(from: string){
+//            print("temp date = \(temp)")
+//            date = temp
+//        }
         return date
     }
     
@@ -110,18 +186,17 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         let today = Date()
         //print("dateabc=\(today)")
         self.calendarView.setDisplayDate(today)
-        retriveData(date: today)
-        var date_str = "2019-04-14"
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let date = dateFormatter.date(from: date_str)
-        //self.calendarView.setDisplayDate(date)
-        print("dateabc=\(date!)")
-        self.calendarView.selectDate(date!)
-        var date2 = parse("2019-04-16")
-        self.calendarView.selectDate(date2)
-        //self.calendarView.
-       
+        //retriveData(date: today)
+        //
+        //        var date1 = parse("2019-04-13")
+        //        self.calendarView.selectDate(date1)
+        //
+        //        var date2 = parse("2019-04-16")
+        //        self.calendarView.selectDate(date2)
+        //        //self.calendarView.
+        
+        
+        
         
         
     }
@@ -130,12 +205,13 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     
     func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
-      //  print("hello")
+        //  print("hello")
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
         
-        retriveData(date: date)
+        print("selected date=\(date)")
+        //retriveData(date: date)
         
         //        for event in events {
         //            print("\t\"\(event.title)\" - Starting at:\(event.startDate)")
@@ -154,7 +230,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     func calendar(_ calendar: CalendarView, didLongPressDate date: Date) {
         
-       
+        
     }
     
     func startDate() -> Date {
@@ -213,14 +289,8 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         
     }
     
-    func retriveData(date : Date){
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = DateFormatter.Style.none
-        dateFormatter.dateFormat = "YYYY-MM-dd"
-        
-        var dat = dateFormatter.string(from: date)
-        print("Did Select: \(dat) ")
+    
+    func getAllRequest(status_id:String,completion: @escaping () -> Void){
         
         let results : NSArray = try! context.fetch(request) as NSArray
         
@@ -228,113 +298,67 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         
         var id : String = res.value(forKey: "user_id") as! String
         
-        print("\(id)")
-        
-        
         let parameters : [String:String] = [
-            "date": dat,
+            "status_id": status_id,
             "user_id": id
+            
             
         ]
         
-        Alamofire.request("\(self.url.weburl)/calender_date_fetch.php", method: .get, parameters: parameters).responseJSON { (response) in
+        
+        apiCall.alamofireApiWithParams(url: "\(self.url.weburl)/get_all_pending_requests.php", parameters: parameters){
             
-            if response.result.isSuccess {
+            json in
+            
+            print("json2abc\(json["Status"])")
+            var i:Int = 0
+            if(json["Status"] != "failed"){
+                for item in 0..<json.count {
+               
                 
-                let dataJSON : JSON = JSON(response.result.value!)
+                let userRequestModel = UserRequestModel()
+                print("colabidabc\(json[item]["collaboration_id"].stringValue)")
                 
-                let calender = NSCalendar.current
-                //      let components = calender.component([.day, .month, .year], from: date)
-                //calender.component([.day, .month, .year], from: <#T##Date#>)
-                let year = calender.component(.year, from: date)
-                let month = calender.component(.month, from: date)
-                let day = calender.component(.day, from: date)
+                let parameters : [String:String] = [
+                    "id" : json[item]["collaboration_id"].stringValue
+                ]
                 
-                
-                print(year)
-                print(month)
-                print(day)
-                
-                print(dataJSON)
-                if dataJSON.count < 1 {
-                    self.model.removeAll()
-                    self.statusTable.reloadData()
-                }
-                self.model.removeAll()
-                
-                for item in 0..<dataJSON.count {
+                self.apiCall.alamofireApiWithParams(url:  "\(self.url.weburl)/collabrubImages.php", parameters: parameters){
                     
-                    let para : [String:Int] = [
-                        "id" : dataJSON[item]["collaboration_id"].intValue
-                    ]
-                    Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
-                        
-                        if response.result.isSuccess {
-                            
-                            let dataJSON1 : JSON = JSON(response.result.value!)
-                            // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
-                            //                            print(dataJSON[item])
-                            //                             print(dataJSON1)
-                            
-                            let statusModel = StatusTableModel()
-                            
-                            statusModel.announcementImage = dataJSON1[0]["img_url"].stringValue
-                            statusModel.title = dataJSON[item]["collaboration_name"].stringValue
-                            statusModel.companyName = dataJSON[item]["company_name"].stringValue
-                            statusModel.location = dataJSON[item]["address"].stringValue
-                            statusModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
-                            statusModel.palceImages = ["",""]
-                            statusModel.reviews = ["",""]
-                            statusModel.date = dataJSON[item]["date"].stringValue
-                            statusModel.description = dataJSON[item]["descriptions"].stringValue
-                            statusModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
-                            statusModel.avalaibility = ""
-                            statusModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
-                            //                            statusModel.lat = dataJSON[item]["lat"].doubleValue
-                            //                            statusModel.long = dataJSON[item]["longg"].doubleValue
-                            statusModel.partner_id = dataJSON[item]["partner_id"].stringValue
-                            statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
-                            statusModel.status = dataJSON[item]["subscribe_status"].intValue
-                            statusModel.notification_status = dataJSON[item]["notification_status"].stringValue
-                            statusModel.statusDay = day
-                            statusModel.statusMonth = self.monthName(month: month)
-                            
-                            self.model.append(statusModel)
-                            //   SVProgressHUD.dismiss()
-                            
-                        }else {
-                            print("error not get in first")
-                        }
-                        
-                        //    print("count \(self.model.count)")
-                        // SVProgressHUD.dismiss()
-                        self.statusTable.reloadData()
+                    json2 in
+                    
+                    
+                    
+                    //print("json2=\(json2[0]["img_url"].stringValue)")
+                    
+                    userRequestModel.set_request_data(json: json[item], json2: json2)
+                    
+                    self.arrModel.append(userRequestModel)
+                    i = i + 1
+                    //print("i=\(i)")
+                    if(i>=json.count){
+                       // print("completion()=\(json.count)")
+                        completion()
                         
                     }
                     
-                    
                 }
                 
-                //                if dataJSON["Status"] == "failed" {
-                //                    self.model.removeAll()
-                //                    self.statusTable.re
-                //                }
-                //
                 
-            }else {
-                print("Error in fetching data")
             }
+            }
+//            completion()
             
         }
         
     }
-
+    
 }
 //
 extension CollaborationStatusViewController: UITableViewDataSource, UITableViewDelegate{
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return model.count
+        return arrModel.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -343,40 +367,36 @@ extension CollaborationStatusViewController: UITableViewDataSource, UITableViewD
         
         cell.selectionStyle = .none
         
-        cell.statusImg.sd_setImage(with: URL(string: model[indexPath.row].announcementImage))
-        cell.advertisementHeading.text = model[indexPath.row].title
-        cell.statusDescription.text = model[indexPath.row].description
-        cell.dateNum.text = String(model[indexPath.row].statusDay)
-        cell.monthName.text = model[indexPath.row].statusMonth
-        // cell.whatStatus.image = UIImage(named: "14")
-     //   print(model[indexPath.row].status)
-        if (model[indexPath.row].status == 0) {
-
-            cell.whatStatus.image = UIImage(named: "14.png")
-
-        } else if (model[indexPath.row].status == 1) {
-
-            cell.whatStatus.image = UIImage(named: "12.png")
-
-        } else if (model[indexPath.row].status == 2) {
-
-            cell.whatStatus.image = UIImage(named: "13.png")
-
-        }
+        cell.statusImg.sd_setImage(with: URL(string: arrModel[indexPath.row].get_announcementImage()))
+        cell.advertisementHeading.text = arrModel[indexPath.row].get_collaboration_name()
+        cell.statusDescription.text = arrModel[indexPath.row].get_descriptions()
+        cell.dateNum.text = arrModel[indexPath.row].get_applied_on()
         
+        //        cell.monthName.text = model[indexPath.row].statusMonth
+        //        // cell.whatStatus.image = UIImage(named: "14")
+        //     //   print(model[indexPath.row].status)
+        //        if (model[indexPath.row].status == 0) {
+        //
+        //            cell.whatStatus.image = UIImage(named: "14.png")
+        //
+        //        } else if (model[indexPath.row].status == 1) {
+        //
+        //            cell.whatStatus.image = UIImage(named: "12.png")
+        //
+        //        } else if (model[indexPath.row].status == 2) {
+        //
+        //            cell.whatStatus.image = UIImage(named: "13.png")
+        //
+        //        }
         
-//        cell.reviewerImg.sd_setImage(with: URL(string: model[indexPath.row].reviewerImg) )
-//        cell.reviewerName.text = model[indexPath.row].reviewerName
-//        cell.ratingLabel.text = "\(model[indexPath.row].reviewRate) - 5"
-//        cell.ratings(ratingValue: model[indexPath.row].reviewRate)
-//
-//        //Image Round
-//        cell.statusImg.layer.cornerRadius = cell.statusImg.frame.size.width/2
-//        cell.statusImg.clipsToBounds = true
-
-        
-        
-        
+        //        cell.reviewerImg.sd_setImage(with: URL(string: model[indexPath.row].reviewerImg) )
+        //        cell.reviewerName.text = model[indexPath.row].reviewerName
+        //        cell.ratingLabel.text = "\(model[indexPath.row].reviewRate) - 5"
+        //        cell.ratings(ratingValue: model[indexPath.row].reviewRate)
+        //
+        //        //Image Round
+        //        cell.statusImg.layer.cornerRadius = cell.statusImg.frame.size.width/2
+        //        cell.statusImg.clipsToBounds = true
         
         return cell
     }
@@ -384,15 +404,17 @@ extension CollaborationStatusViewController: UITableViewDataSource, UITableViewD
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "statDetails" {
             let destinationVC = segue.destination as! Agenda
-            destinationVC.statArray = (sender as? StatusTableModel!)
+            destinationVC.statArray = (sender as? UserRequestModel!)
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         print(indexPath.row)
-        self.performSegue(withIdentifier: "statDetails", sender: model[(indexPath.row)])
+        self.performSegue(withIdentifier: "statDetails", sender: arrModel[(indexPath.row)])
         
     }
+    
+    
     
     
 }

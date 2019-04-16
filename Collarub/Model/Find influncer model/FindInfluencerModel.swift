@@ -18,4 +18,7 @@ class FindInfluencerModel {
     var totalProjects : String = ""
     var usrImg : String = ""
     var user_id : String = ""
+    var productStatus : String = ""
+    var userAddress : String = ""
+    
 }

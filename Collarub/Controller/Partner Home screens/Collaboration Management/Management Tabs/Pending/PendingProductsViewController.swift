@@ -47,7 +47,7 @@ class PendingProductsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-       // retriveData()
+        retriveData()
         
         let date = NSDate()
         let dateFormatter = DateFormatter()
@@ -56,7 +56,7 @@ class PendingProductsViewController: UIViewController {
         
         var dat = dateFormatter.string(from: date as Date)
         print("mydate \(dat)")
-        retriveData(date: dat)
+        //retriveData(date: dat)
         let imageName = "nodataavail.jpeg"
         let image = UIImage(named: imageName)
         imageView = UIImageView(image: image!)
@@ -118,10 +118,12 @@ class PendingProductsViewController: UIViewController {
         
         
     }
-    func retriveData(date:String) {
+    
+    func retriveData() {
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
         }
+        self.model.removeAll()
         
         SVProgressHUD.show(withStatus: "Loading")
         
@@ -142,6 +144,119 @@ class PendingProductsViewController: UIViewController {
         ]
         
         Alamofire.request("\(self.url.weburl)/all_pending_products_wrt_partner_id.php", method: .get, parameters: parameters).responseJSON { (response) in
+            SVProgressHUD.show(withStatus: "Connecting to server")
+            if response.result.isSuccess {
+                
+                SVProgressHUD.dismiss()
+                
+                let dataJSON : JSON = JSON(response.result.value!)
+                if dataJSON["Status"] != "failed" {
+                    if let viewWithTag = self.view.viewWithTag(100) {
+                        viewWithTag.removeFromSuperview()
+                    }
+                    
+                    print("counnt :: \(dataJSON.count)")
+                    if dataJSON.count < 1 {
+                        self.model.removeAll()
+                        self.tableView.reloadData()
+                    }
+                    self.model.removeAll()
+                    
+                    for item in 0..<dataJSON.count {
+                        
+                        let para : [String:Int] = [
+                            "id" : dataJSON[item]["collaboration_id"].intValue
+                        ]
+                        Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
+                            
+                            if response.result.isSuccess {
+                                
+                                let dataJSON1 : JSON = JSON(response.result.value!)
+                                // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
+                                //                            print(dataJSON[item])
+                                //                             print(dataJSON1)
+                                
+                                let statusModel = LocalModel()
+                                
+                                statusModel.announcementImage = dataJSON1[0]["img_url"].stringValue
+                                statusModel.title = dataJSON[item]["collaboration_name"].stringValue
+                                statusModel.companyName = dataJSON[item]["company_name"].stringValue
+                                statusModel.location = dataJSON[item]["address"].stringValue
+                                statusModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue]
+                                statusModel.palceImages = ["",""]
+                                statusModel.reviews = ["",""]
+                                statusModel.date = dataJSON[item]["date"].stringValue
+                                statusModel.description = dataJSON[item]["descriptions"].stringValue
+                                statusModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
+                                statusModel.avalaibility = ""
+                                statusModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
+                                //                            statusModel.lat = dataJSON[item]["lat"].doubleValue
+                                //                            statusModel.long = dataJSON[item]["longg"].doubleValue
+                                statusModel.partner_id = dataJSON[item]["partner_id"].stringValue
+                                statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
+                                statusModel.collaborationType = dataJSON[item]["collaborationType"].stringValue
+                                self.model.append(statusModel)
+                                //   SVProgressHUD.dismiss()
+                                
+                            }else {
+                                print("error not get in first")
+                            }
+                            
+                            //    print("count \(self.model.count)")
+                            // SVProgressHUD.dismiss()
+                            self.tableView.reloadData()
+                            
+                        }
+                        
+                        
+                    }
+                    
+                    //                if dataJSON["Status"] == "failed" {
+                    //                    self.model.removeAll()
+                    //                    self.statusTable.re
+                    //                }
+                    //
+                    
+                }else {
+                    self.view.addSubview(self.imageView)
+                    self.model.removeAll()
+                    self.tableView.reloadData()
+                }
+                
+            }else {
+                print("Error in fetching data")
+                self.retriveData()
+            }
+            
+        }
+    }
+
+    // MARK - Retrive data by date
+    func retriveData(date:Date) {
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
+        
+        SVProgressHUD.show(withStatus: "Loading")
+        
+        let results : NSArray = try! context.fetch(request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        var id : String = res.value(forKey: "user_id") as! String
+        
+        print("\(id)")
+        
+        
+        let parameters : [String:Any] = [
+            
+            "partner_id": id,
+            "applied_on" : date
+            
+            
+        ]
+        
+        Alamofire.request("\(self.url.weburl)/all_pending_products_wrt_date.php", method: .get, parameters: parameters).responseJSON { (response) in
             SVProgressHUD.show(withStatus: "Connecting to server")
             if response.result.isSuccess {
                 
@@ -192,7 +307,7 @@ class PendingProductsViewController: UIViewController {
                                 //                            statusModel.long = dataJSON[item]["longg"].doubleValue
                                 statusModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
-                               
+                                statusModel.collaborationType = dataJSON[item]["collaborationType"].stringValue
                                 self.model.append(statusModel)
                                 //   SVProgressHUD.dismiss()
                                 
@@ -223,12 +338,11 @@ class PendingProductsViewController: UIViewController {
                 
             }else {
                 print("Error in fetching data")
-                self.retriveData(date: date)
+                self.retriveData()
             }
             
         }
     }
-
 
     
 }
@@ -248,7 +362,10 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! PendingListTableViewCell
         
-        
+        cell.advertisementTitle.text = model[indexPath.row].title
+        cell.advertisementDetails.text = model[indexPath.row].description
+        cell.usrImg.sd_setImage(with: URL(string: model[indexPath.row].announcementImage))
+        cell.typeTag.text = model[indexPath.row].collaborationType
         
         return cell
         
@@ -256,14 +373,16 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let vc = storyboard?.instantiateViewController(withIdentifier: "allUsersName") as! PendingUserListViewController
         
+        if model[indexPath.row].collaborationType == "Online" {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "allUsersName") as! PendingUserListViewController
+        vc.usr_id = model[indexPath.row].collaboration_id
         //vc.model = model
 //        self.addChild(vc)
 //        self.view.addSubview(vc.view)
 //        vc.didMove(toParent: self)
         present(vc, animated: true, completion: nil)
-        
+        }
       //  self.performSegue(withIdentifier: "requestList", sender: nil)
         
     }
@@ -278,7 +397,7 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
         
-        // retriveData(date: date)
+         retriveData(date: date)
         print(date)
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.none
@@ -287,7 +406,7 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
         var dat = dateFormatter.string(from: date)
         print("Did Select: \(dat) ")
         
-        retriveData(date: dat)
+       // retriveData(date: dat)
         //            var reqDataDict :[String:String]!
         //            reqDataDict = ["date": dat]
         //            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "pendingDate"), object: nil, userInfo: reqDataDict)

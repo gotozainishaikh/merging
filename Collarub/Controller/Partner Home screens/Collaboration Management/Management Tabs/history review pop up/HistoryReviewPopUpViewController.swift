@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class HistoryReviewPopUpViewController: UIViewController,UITextViewDelegate {
 
+    
      let url = FixVariable()
     var model = FavListModel()
     @IBOutlet weak var giveRate: CosmosView!

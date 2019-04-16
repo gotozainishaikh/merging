@@ -14,6 +14,7 @@ class PendingListTableViewCell: UITableViewCell {
     @IBOutlet weak var usrImg: UIImageView!
     @IBOutlet weak var advertisementTitle: UILabel!
     @IBOutlet weak var advertisementDetails: UILabel!
+    @IBOutlet weak var typeTag: UILabel!
     
     
     override func awakeFromNib() {

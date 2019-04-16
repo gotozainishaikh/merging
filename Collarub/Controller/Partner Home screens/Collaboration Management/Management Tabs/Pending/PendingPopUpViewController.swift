@@ -35,6 +35,8 @@ class PendingPopUpViewController: UIViewController {
         
         let ok = UIAlertAction(title: "Yes", style: .default) { (action) in
             alert.dismiss(animated: true, completion: nil)
+            
+            print("Sent")
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in

@@ -20,9 +20,14 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
     var inMga : String = ""
     var inStr : String = ""
     var pay_method : String = ""
+    var limt : String = ""
+    var copon : String = ""
+    var autoaprv : String = "0"
     
     var str : [String]!
     
+    @IBOutlet weak var autoApprvCheck: CheckBox!
+    @IBOutlet weak var blockCheck: CheckBox!
     @IBOutlet weak var payBtn1: UIButton!
     @IBOutlet weak var payBtn2: UIButton!
     
@@ -66,9 +71,28 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
         payPerCampaignView.isHidden = true
         limitinfluencer.didSelect{(selectedText , index , id) in
             //            print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
+            self.limt = selectedText
             
         }
         
+        autoApprvCheck.onClick = { (checked) in
+            if checked.isChecked {
+                
+                self.autoaprv = "1"
+            }else {
+                self.autoaprv = "0"
+            }
+        }
+        
+        blockCheck.onClick = { (checked) in
+            if checked.isChecked {
+                
+                self.copon = "1"
+            }else {
+                self.copon = "0"
+            }
+        }
+
         
         inLocal.onClick = { (checked) in
             if checked.isChecked {
@@ -170,11 +194,20 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
     
 
     @IBAction func nextClick(_ sender: UIButton) {
+        
+        if pay_method == "" {
+            alert(title: "Alert", messg: "Select Payment Method")
+        }else if (inLocl == "" && inMcro == "" && inMac == "" && inMga == "" && inStr == "" ) {
+            alert(title: "Alert", messg: "Select one payment condition")
+        }else {
+        
         let vc = storyboard?.instantiateViewController(withIdentifier: "allDetails") as! DetailsEndedViewController
-        str = [inLocl,inMcro,inMac,]
+        str = [pay_method,inLocl,inMcro,inMac,inMga,inStr,copon,autoaprv,limt]
         vc.detailsArray = model
+        vc.str = str!
         present(vc, animated: true, completion: nil)
         
+    }
     }
     func didSelectButton(selectedButton: UIButton?)
     {
@@ -191,6 +224,8 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
             
             payPerInfluencerView.isHidden = true
             payPerCampaignView.isHidden = false
+            bottomView.isHidden = false
+            btmconstraints.constant = -12
             
             pay_method = (selectedButton?.title(for: .normal))!
             bottomView.isHidden = false
@@ -198,5 +233,15 @@ class step5endedViewController: UIViewController,SSRadioButtonControllerDelegate
         }
     }
     
-    
+    func alert(title:String,messg:String){
+        
+        let alert = UIAlertController(title: title, message: messg, preferredStyle: .alert)
+        
+        let ok = UIAlertAction(title: "OK", style:.default) { (ok) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(ok)
+        present(alert, animated: true, completion: nil)
+        
+    }
 }

@@ -87,9 +87,9 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
         coupon.onClick = { (checked) in
             if checked.isChecked {
                 print(self.coupon.title)
-                self.copon = self.coupon.title!
+                self.copon = "1"
             }else {
-                self.copon = ""
+                self.copon = "0"
             }
         }
         

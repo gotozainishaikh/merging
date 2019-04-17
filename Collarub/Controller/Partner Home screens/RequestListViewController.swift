@@ -173,8 +173,9 @@ class RequestListViewController: UIViewController {
                     var countryName = ""
                     if dataJSON[item]["user_location"].stringValue != "" {
                     let addressStrin = dataJSON[item]["user_location"].stringValue.components(separatedBy: ",")
+                        if addressStrin.count == 2 {
                          countryName = addressStrin[2]
-                        
+                        }
                     }
                      //print(surname)
                     

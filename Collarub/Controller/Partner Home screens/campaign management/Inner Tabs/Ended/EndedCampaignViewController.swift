@@ -131,6 +131,7 @@ class EndedCampaignViewController: UIViewController {
                                 localModel.title = dataJSON[item]["collaboration_name"].stringValue
                                 localModel.companyName = dataJSON[item]["company_name"].stringValue
                                 localModel.location = dataJSON[item]["address"].stringValue
+                                localModel.partner_id = id
                                 localModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
                                 localModel.palceImages = ["",""]
                                 localModel.reviews = ["",""]
@@ -139,11 +140,18 @@ class EndedCampaignViewController: UIViewController {
                                 localModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
                                 localModel.avalaibility = ""
                                 localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
-                                
+                                localModel.lat = dataJSON[item]["lat"].doubleValue
+                                localModel.long = dataJSON[item]["longg"].doubleValue
                                 localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
+                                localModel.collaborationType = dataJSON[item]["collaborationType"].stringValue
+                                localModel.category_name = dataJSON[item]["category_name"].stringValue
+                                
                                 
                                 localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
+                                
+                                localModel.number_post = dataJSON[item]["number_post"].stringValue
+                                localModel.number_stories = dataJSON[item]["number_stories"].stringValue
                                 localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 localModel.type = dataJSON[item]["type"].stringValue
                                 localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -154,7 +162,20 @@ class EndedCampaignViewController: UIViewController {
                                 localModel.rating = dataJSON[item]["rating"].stringValue
                                 localModel.user_gender = dataJSON[item]["user_gender"].stringValue
                                 localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
-                                
+                                localModel.rating = dataJSON[item]["min_user_rating"].stringValue
+                                localModel.what_u_offer = dataJSON[item]["what_u_offer"].stringValue
+                                localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                localModel.e_mail = dataJSON[item]["e_mail"].stringValue
+                                localModel.phone = dataJSON[item]["phone"].stringValue
+
+                                localModel.payment_method = dataJSON[item]["payment_method"].stringValue
+
+                                localModel.payment_conditions = dataJSON[item]["payment_conditions"].stringValue
+
+                                localModel.auto_approve = dataJSON[item]["auto_approve"].stringValue
+                                localModel.coupon_status = dataJSON[item]["coupon_status"].stringValue
+                                localModel.collab_limit = dataJSON[item]["total_num_influencer"].stringValue
                                 self.model.append(localModel)
                                 //   SVProgressHUD.dismiss()
                                 
@@ -195,7 +216,7 @@ extension EndedCampaignViewController : UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 98.0
+        return 120.0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

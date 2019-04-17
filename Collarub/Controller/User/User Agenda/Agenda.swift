@@ -77,10 +77,13 @@ class Agenda: UIViewController{
     
     @IBAction func complete_btn(_ sender: UIButton) {
         
-        let stroy = UIStoryboard(name: "User", bundle: nil)
-        let vc = stroy.instantiateViewController(withIdentifier: "complete_popup")
-        // vc.user_id = id
         
+     
+        let stroy = UIStoryboard(name: "User", bundle: nil)
+        let vc = stroy.instantiateViewController(withIdentifier: "complete_popup") as! CompletePopUp
+       
+        vc.campaign_id = col_id
+        //vc.col_id = id
         
         
         //        if((detailsArray?.collaboration_id) != nil){

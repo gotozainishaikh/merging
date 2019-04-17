@@ -64,7 +64,7 @@ class OnlineAnnouncementViewController: UIViewController{
         
         
         let parameters : [String:String] = [
-            "collabrubType": "local"
+            "collabrubType": "online"
             
         ]
         

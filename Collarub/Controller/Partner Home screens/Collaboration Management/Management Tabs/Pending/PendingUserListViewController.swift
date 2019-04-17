@@ -18,7 +18,7 @@ class PendingUserListViewController: UIViewController {
     
     var model : [FindInfluencerModel] = [FindInfluencerModel]()
     var usr_id : String = ""
-     var imageView : UIImageView!
+    var imageView : UIImageView!
     let url = FixVariable()
     
     @IBOutlet weak var tableView: UITableView!

@@ -1089,15 +1089,17 @@
                     </view>
                     <navigationItem key="navigationItem" id="x4r-BP-YuN"/>
                     <connections>
+                        <outlet property="eng_rate" destination="DaK-VG-H6z" id="ueD-Sg-d6J"/>
                         <outlet property="followers" destination="P2b-0j-6U0" id="jK2-vW-s2b"/>
                         <outlet property="ratingView" destination="2Zh-Xd-YCN" id="Dsz-wh-DzR"/>
                         <outlet property="userImg" destination="Wub-TF-2TH" id="eeU-qN-0Gl"/>
+                        <outlet property="user_type_img" destination="msV-ol-aGR" id="h3N-u3-dOk"/>
                         <outlet property="usrName" destination="kFi-Kn-d8b" id="dlA-Ir-Tzh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nEd-Mk-Ykd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4320" y="2756"/>
+            <point key="canvasLocation" x="4320" y="2755.9859154929577"/>
         </scene>
         <!--Setting Pop Up View Controller-->
         <scene sceneID="rHW-ym-0EX">
@@ -4723,7 +4725,7 @@
                                                 <rect key="frame" x="0.0" y="754" width="320" height="108"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6X9-OD-6af">
-                                                        <rect key="frame" x="55" y="8" width="210" height="35"/>
+                                                        <rect key="frame" x="0.0" y="-11" width="320" height="35"/>
                                                         <color key="backgroundColor" name="ThemeColor1"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="19"/>
                                                         <state key="normal" title="Complete">
@@ -4741,9 +4743,9 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstItem="6X9-OD-6af" firstAttribute="top" secondItem="Vwq-VA-44g" secondAttribute="top" constant="8" id="0qf-da-mII"/>
-                                                    <constraint firstItem="6X9-OD-6af" firstAttribute="leading" secondItem="Vwq-VA-44g" secondAttribute="leading" constant="55" id="Zsi-XM-jfs"/>
-                                                    <constraint firstAttribute="trailing" secondItem="6X9-OD-6af" secondAttribute="trailing" constant="55" id="ywe-ap-epy"/>
+                                                    <constraint firstItem="6X9-OD-6af" firstAttribute="top" secondItem="Vwq-VA-44g" secondAttribute="top" constant="-11" id="0qf-da-mII"/>
+                                                    <constraint firstItem="6X9-OD-6af" firstAttribute="leading" secondItem="Vwq-VA-44g" secondAttribute="leading" id="Zsi-XM-jfs"/>
+                                                    <constraint firstAttribute="trailing" secondItem="6X9-OD-6af" secondAttribute="trailing" id="ywe-ap-epy"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -4818,7 +4820,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uWS-I8-UbS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1088" y="-1430"/>
+            <point key="canvasLocation" x="1087.5" y="-1430.2816901408451"/>
         </scene>
         <!--Complete Pop Up-->
         <scene sceneID="tSN-Tr-IzU">
@@ -4843,7 +4845,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vel-2W-HEU">
                                                 <rect key="frame" x="62" y="172" width="165" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
+                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
                                                         <rect key="frame" x="22.5" y="10" width="120" height="20"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -5313,6 +5315,6 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="2P0-Vx-iJL"/>
+        <segue reference="iZ8-Hx-VMB"/>
     </inferredMetricsTieBreakers>
 </document>

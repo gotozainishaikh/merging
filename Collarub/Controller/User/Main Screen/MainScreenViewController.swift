@@ -14,6 +14,10 @@ import SVProgressHUD
 
 class MainScreenViewController: UIViewController, PageViewControllerDelegate{
     
+    
+   
+    var ending_soon_chk :String = "0"
+    
     let story = UIStoryboard(name: "User", bundle: nil)
     @IBAction func filter_btn(_ sender: UIButton) {
         
@@ -74,7 +78,7 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
         super.viewDidLoad()
 
         
-        
+       
         searchBtnCollectionView.showsHorizontalScrollIndicator = false
         uiNavegationImage()
         
@@ -86,6 +90,7 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
         
     }
     
+
     @IBAction func mapClick(_ sender: UIButton) {
         
         let vc = story.instantiateViewController(withIdentifier: "openMap")

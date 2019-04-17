@@ -16,14 +16,41 @@ class MyProfileViewController: UIViewController {
     let story = UIStoryboard(name: "User", bundle: nil)
     let startRating:Double = 2.3
     
+    //Alamofire
+    let api = AlamofireApi()
+    
+    //base Url
+    let base_url = FixVariable()
+    
+    //User_id
+    var user_id : String!
+    
+    //User Type
+    var user_type : String!
+    
+    //Outlets
     @IBOutlet weak var usrName: UILabel!
     @IBOutlet weak var userImg: UIButton!
     @IBOutlet weak var followers: UILabel!
+    @IBOutlet weak var eng_rate: UILabel!
     
+    @IBOutlet weak var user_type_img: UIImageView!
     @IBOutlet weak var ratingView: CosmosView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        eng_rate.text = ""
+        user_type_img.image = UIImage(named: "")
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+        
+        let results : NSArray = try! context.fetch(request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        user_id = res.value(forKey: "user_id") as! String
 
         //Image Round
         userImg.layer.cornerRadius = userImg.frame.size.width/2
@@ -42,6 +69,28 @@ class MyProfileViewController: UIViewController {
         self.navigationItem.rightBarButtonItem  = button2
         
         uiNavegationImage()
+        
+        
+        let url = "\(base_url.weburl)/find_engagement_rate.php"
+        
+        api.alamofireApiWithParams(url: url, parameters: ["id": user_id]){
+            
+            json in
+            
+            self.eng_rate.text = "\(json["percentage"].stringValue)%"
+            
+            
+        }
+        get_user_type {
+            
+            print("userType=\(self.user_type)")
+            if(self.user_type == "1"){
+                self.user_type_img.image = UIImage(named: "free")
+            }
+            else{
+                self.user_type_img.image = UIImage(named: "gold")
+            }
+        }
         
     }
     
@@ -159,14 +208,21 @@ let storyMain = UIStoryboard(name: "Main", bundle: nil)
         } catch {
             print ("There was an error")
         }
-    }    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+    func get_user_type(completion: @escaping () -> Void){
+        
+        let url = "\(base_url.weburl)/get_user_type.php"
+        api.alamofireApiWithParams(url: url
+        , parameters: ["user_id":user_id]){
+            json in
+            
+            self.user_type = json[0]["user_type"].stringValue
+            
+            completion()
+        }
+        
+    }
+
 
 }

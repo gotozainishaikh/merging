@@ -24,6 +24,7 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var likeMe: UIButton!
     var col_id :String!
     let url = FixVariable()
+    var isLike = false
     
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -31,14 +32,16 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     
     
     func setLikeMe(isFav:[String]){
-        
+        print("setLike=\(col_id)")
         let hasFav = isFav.contains(col_id)
         print("hasFav=\(hasFav)")
         if(hasFav==true){
             likeMe.setImage(UIImage(named: "hearts"), for: .normal)
+            self.isLike = true
         }
         else if(hasFav==false){
             likeMe.setImage(UIImage(named: "like"), for: .normal)
+            self.isLike = false
         }
         //        for item in isFav {
         //            if(item==col_id){
@@ -51,7 +54,7 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     
     @IBAction func likeBtn(_ sender: UIButton) {
         
-        var isLike = false
+       
         
         sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         
@@ -62,12 +65,12 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
                        options: .allowUserInteraction,
                        animations: {
                         sender.transform = .identity
-                        if isLike {
+                        if self.isLike {
                             sender.setImage(UIImage(named: "like"), for: .normal)
-                            isLike = false
+                            self.isLike = false
                         }else {
                             sender.setImage(UIImage(named: "hearts"), for: .normal)
-                            isLike = true
+                            self.isLike = true
                         }
         },
                        completion: { finished in

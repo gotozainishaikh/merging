@@ -146,7 +146,7 @@ class LocalAnnouncementViewController: UIViewController {
         ]
        
         
-        
+       
         Alamofire.request("\(self.url.weburl)/search_by_collaboration_name.php", method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.show(withStatus: "Connecting to server")

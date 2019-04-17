@@ -204,8 +204,9 @@ class Step3ViewController: UIViewController {
         
         Alamofire.request("\(self.url.weburl)/cities_name.php", method: .get, parameters: parameters).responseJSON { (response) in
             
-            let dataJSON : JSON = JSON(response.result.value!)
+            
             if response.result.isSuccess {
+                let dataJSON : JSON = JSON(response.result.value!)
                 print(dataJSON)
                 
                 for item in 0..<dataJSON.count {
@@ -226,8 +227,9 @@ class Step3ViewController: UIViewController {
         
         Alamofire.request("\(self.url.weburl)/get_all_states.php", method: .get).responseJSON { (response) in
             
-            let dataJSON : JSON = JSON(response.result.value!)
+            
             if response.result.isSuccess {
+                let dataJSON : JSON = JSON(response.result.value!)
                 print(dataJSON)
                 
                 for item in 0..<dataJSON.count {

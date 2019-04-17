@@ -23,9 +23,93 @@ class FindInfluencerViewController: UIViewController {
          NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "hire"), object: nil)
         
         findInfluencerTable.register(UINib(nibName: "FindInfluencerTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-        // retriveData()
+       
+        
         findInfluencerTable.allowsSelection = false
+        
+         NotificationCenter.default.addObserver(self, selector: #selector(reload(req_notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(load(req_notification:)), name: NSNotification.Name(rawValue: "searchArray"), object: nil)
+        
     }
+    
+    // MARK - Observer accept Method
+    
+    @objc func load(req_notification: NSNotification) {
+        
+        var req_id : String = ""
+        
+        if let dict = req_notification.userInfo as NSDictionary? {
+            print("dict :: \(dict)")
+            retriveDataWithsearch(arr: dict as! [String : String])
+            }
+            
+        }
+    
+    @objc func reload(req_notification: NSNotification) {
+     retrieveData()
+    }
+    
+    func retriveDataWithsearch(arr : [String:String]){
+        self.model.removeAll()
+        findInfluencerTable.reloadData()
+        Alamofire.request("\(self.url.weburl)/multipleSearch.php", method: .get, parameters: arr).responseJSON { (response) in
+            // SVProgressHUD.show(withStatus: "Connecting to server")
+            if response.result.isSuccess {
+                
+                //   SVProgressHUD.dismiss()
+                
+                let dataJSON : JSON = JSON(response.result.value!)
+                
+                print(dataJSON)
+                if dataJSON["Status"].stringValue == "success" {
+                    self.model.removeAll()
+                    for item in 0..<dataJSON.count {
+                        let statusModel = FindInfluencerModel()
+                        
+                        statusModel.usrImg = dataJSON[item]["image_url"].stringValue
+                        statusModel.usrname = dataJSON[item]["full_name"].stringValue
+                        statusModel.engRate = dataJSON[item]["engagementRate"].stringValue
+                        statusModel.totalFollowers = dataJSON[item]["followers"].stringValue
+                        statusModel.totalFollowers = dataJSON[item]["followers"].stringValue
+                        statusModel.user_id = dataJSON[item]["user_id"].stringValue
+                        
+                        self.model.append(statusModel)
+                        self.findInfluencerTable.reloadData()
+                    }
+                    
+                
+                }else if dataJSON["Status"].stringValue == "failed" {
+                    let alert = UIAlertController(title: "Warning", message: "No data found", preferredStyle: .alert)
+                    
+                    let exit = UIAlertAction(title: "Exit", style: .default, handler: { (exit) in
+                        
+                        alert.dismiss(animated: true, completion: nil)
+                        self.retrieveData()
+                        
+                    })
+                    let searchAgain = UIAlertAction(title: "Search Again", style: .default, handler: { (again) in
+                        
+                        let stroy = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = stroy.instantiateViewController(withIdentifier: "filterPopUp")
+                        alert.dismiss(animated: true, completion: nil)
+                        self.present(vc, animated: true, completion: nil)
+                        
+                    })
+                    
+                    alert.addAction(exit)
+                    alert.addAction(searchAgain)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
+    
+//    @objc func load(req_notification: NSNotification) {
+//
+//        retrieveData()
+//    }
+//
     
     override func viewDidAppear(_ animated: Bool) {
         retrieveData()
@@ -42,8 +126,9 @@ class FindInfluencerViewController: UIViewController {
                 // print("hosp_id="+hosp_id!)
                 req_id = id
                 
-                let vc = storyboard?.instantiateViewController(withIdentifier: "campaignList")
-                present(vc!, animated: true, completion: nil)
+                let vc = storyboard?.instantiateViewController(withIdentifier: "campaignList") as! HireUserViewController
+                vc.user_id = id
+                present(vc, animated: true, completion: nil)
             }
             
             
@@ -73,6 +158,7 @@ class FindInfluencerViewController: UIViewController {
                 let dataJSON : JSON = JSON(response.result.value!)
                 
                 print(dataJSON)
+                self.model.removeAll()
                 for item in 0..<dataJSON.count {
                      let statusModel = FindInfluencerModel()
                     

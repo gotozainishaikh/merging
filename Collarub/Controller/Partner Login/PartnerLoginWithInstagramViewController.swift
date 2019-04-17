@@ -106,8 +106,10 @@ class PartnerLoginWithInstagramViewController: UIViewController, UIWebViewDelega
                 //
                 
                 // data model
-                
-                Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/checkUSer.php", method: .get, parameters: parameters).responseJSON { response in
+                let para : [String:String] = [
+                    "partner_username" : dataJSON["data"]["username"].stringValue
+                ]
+                Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/checkPartner.php", method: .get, parameters: para).responseJSON { response in
                     
                     if response.result.isSuccess {
                         //  print("Response JSON: \(JSON(response.result.value!))")
@@ -147,13 +149,15 @@ class PartnerLoginWithInstagramViewController: UIViewController, UIWebViewDelega
                                     self.email = textfield.text!
                                     
                                     let param : [String:String] = [
-                                        "access_token": authToken,
-                                        "userName" : dataJSON["data"]["username"].stringValue,
-                                        "full_name" : dataJSON["data"]["full_name"].stringValue,
+                                        "user_token": authToken,
+                                        "partner_username" : dataJSON["data"]["username"].stringValue,
+                                        "partner_name" : dataJSON["data"]["full_name"].stringValue,
                                         "followers" : String(followers),
-                                        "image_url" : dataJSON["data"]["profile_picture"].stringValue,
-                                        "followedBy" : dataJSON["data"]["counts"]["follows"].stringValue,
-                                        "e_mail" : self.email
+                                        "partner_img" : dataJSON["data"]["profile_picture"].stringValue,
+                                        "followed_by" : dataJSON["data"]["counts"]["follows"].stringValue,
+                                        "partner_email" : self.email,
+                                        "media" : dataJSON["data"]["counts"]["media"].stringValue,
+                                        "player_id" : ""
                                         
                                     ]
                                     Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/PartnerRegister.php", method: .get, parameters: param).responseJSON { response in

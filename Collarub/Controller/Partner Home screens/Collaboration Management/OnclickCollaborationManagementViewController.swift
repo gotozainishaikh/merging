@@ -90,6 +90,8 @@ class OnclickCollaborationManagementViewController: UIViewController,PageViewCon
         
         changeTab(btn1: sender, btn2: pendingBtn, btn3: historyBtn)
         
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setcalandar"), object: nil, userInfo: nil)
+        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

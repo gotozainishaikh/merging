@@ -17,7 +17,7 @@ class PendingUserListViewController: UIViewController {
 
     
     var model : [FindInfluencerModel] = [FindInfluencerModel]()
-    var usr_id : String = ""
+    var capmpaign_id : String = ""
      var imageView : UIImageView!
     let url = FixVariable()
     
@@ -25,9 +25,12 @@ class PendingUserListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        
         tableView.register(UINib(nibName: "PendingUserListTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
      
-        print("use id is \(usr_id)")
+        print("use id is \(capmpaign_id)")
+    
     }
     
 
@@ -46,6 +49,10 @@ class PendingUserListViewController: UIViewController {
         print("hello")
     }
     
+    @objc func loadList(req_notification: NSNotification) {
+     retriveData()
+    }
+    
     
     
     func retriveData() {
@@ -59,7 +66,7 @@ class PendingUserListViewController: UIViewController {
         
         let parameters : [String:String] = [
             
-            "campaign_id": usr_id
+            "campaign_id": capmpaign_id
             
             
         ]
@@ -94,7 +101,7 @@ class PendingUserListViewController: UIViewController {
                         statusModel.usrImg = dataJSON[item]["image_url"].stringValue
                         statusModel.usrname = dataJSON[item]["full_name"].stringValue
                         statusModel.userAddress = dataJSON[item]["user_location"].stringValue
-                        
+                        statusModel.collaboration_id = self.capmpaign_id
                         
                                 self.model.append(statusModel)
                                 //   SVProgressHUD.dismiss()

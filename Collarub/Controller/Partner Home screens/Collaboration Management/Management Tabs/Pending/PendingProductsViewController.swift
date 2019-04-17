@@ -31,7 +31,7 @@ class PendingProductsViewController: UIViewController {
         tableView.register(UINib(nibName: "PendingListTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         //tableView.reloadData()
      //   uiNavegationImage()
-        tableView.allowsSelection = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "setcalandar"), object: nil)
         
     }
@@ -49,6 +49,7 @@ class PendingProductsViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         retriveData()
         
+        tableView.allowsSelection = false
         let date = NSDate()
         let dateFormatter = DateFormatter()
         dateFormatter.timeStyle = DateFormatter.Style.none
@@ -205,7 +206,7 @@ class PendingProductsViewController: UIViewController {
                             //    print("count \(self.model.count)")
                             // SVProgressHUD.dismiss()
                             self.tableView.reloadData()
-                            
+                            self.tableView.allowsSelection = true
                         }
                         
                         
@@ -376,14 +377,11 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
         
         if model[indexPath.row].collaborationType == "Online" {
         let vc = storyboard?.instantiateViewController(withIdentifier: "allUsersName") as! PendingUserListViewController
-        vc.usr_id = model[indexPath.row].collaboration_id
-        //vc.model = model
-//        self.addChild(vc)
-//        self.view.addSubview(vc.view)
-//        vc.didMove(toParent: self)
+        vc.capmpaign_id = model[indexPath.row].collaboration_id
+  
         present(vc, animated: true, completion: nil)
         }
-      //  self.performSegue(withIdentifier: "requestList", sender: nil)
+      
         
     }
     
@@ -392,7 +390,7 @@ extension PendingProductsViewController : UITableViewDelegate, UITableViewDataSo
     
     
     func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
-        //  print("hello")
+        
     }
     
     func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {

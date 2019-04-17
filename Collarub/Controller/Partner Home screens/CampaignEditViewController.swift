@@ -9,6 +9,7 @@
 import UIKit
 import iOSDropDown
 import Cosmos
+import SafariServices
 
 
 class CampaignEditViewController: UIViewController {
@@ -75,7 +76,9 @@ extension CampaignEditViewController : UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-       
+        guard let url = URL(string: addressStrin[indexPath.row]) else { return }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
         
         
         //  self.performSegue(withIdentifier: "requestList", sender: nil)

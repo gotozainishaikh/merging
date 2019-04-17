@@ -20,5 +20,6 @@ class FindInfluencerModel {
     var user_id : String = ""
     var productStatus : String = ""
     var userAddress : String = ""
+    var collaboration_id : String = ""
     
 }

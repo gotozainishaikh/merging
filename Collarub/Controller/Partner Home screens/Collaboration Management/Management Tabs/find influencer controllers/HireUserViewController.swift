@@ -16,6 +16,7 @@ class HireUserViewController: UIViewController {
 
     var imageView : UIImageView!
     var model : [FavListModel] = [FavListModel]()
+    var user_id : String = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
     let url = FixVariable()
@@ -24,6 +25,7 @@ class HireUserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("Here is the user id :: \(user_id)")
         let imageName = "nodataavail.jpeg"
         let image = UIImage(named: imageName)
         imageView = UIImageView(image: image!)
@@ -33,7 +35,10 @@ class HireUserViewController: UIViewController {
         
         tableView.register(UINib(nibName: "FavCellTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
+       
+        
     }
+    
     
 
     override func viewDidAppear(_ animated: Bool) {
@@ -81,18 +86,7 @@ class HireUserViewController: UIViewController {
                         viewWithTag.removeFromSuperview()
                     }
                     
-                    //                    let calender = NSCalendar.current
-                    //                    //      let components = calender.component([.day, .month, .year], from: date)
-                    //                    //calender.component([.day, .month, .year], from: T##Date
-                    //  )
-                    //                    let year = calender.component(.year, from: date)
-                    //                    let month = calender.component(.month, from: date)
-                    //                    let day = calender.component(.day, from: date)
-                    //
-                    //
-                    //                    print(year)
-                    //                    print(month)
-                    //                    print(day)
+                
                     
                     print(dataJSON)
                     if dataJSON.count < 1 {
@@ -151,11 +145,6 @@ class HireUserViewController: UIViewController {
                         
                     }
                     
-                    //                if dataJSON["Status"] == "failed" {
-                    //                    self.model.removeAll()
-                    //                    self.statusTable.re
-                    //                }
-                    //
                     
                 }else {
                     self.view.addSubview(self.imageView)
@@ -170,6 +159,11 @@ class HireUserViewController: UIViewController {
             
         }
     }
+    
+    @IBAction func backBtn(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     
 
 }
@@ -213,8 +207,21 @@ extension HireUserViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        print("hello")
-//        self.performSegue(withIdentifier: "requestList", sender: model[(indexPath.row)])
+        let parameters : [String:String] = [
+            
+            "campaign_id": model[indexPath.row].collaboration_id,
+            "user_id" : user_id
+            
+        ]
+        
+        Alamofire.request("\(self.url.weburl)/hire_users_directly.php", method: .get, parameters: parameters).responseJSON { (response) in
+            SVProgressHUD.show(withStatus: "Loading")
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+               
+            }
+            
+        }
         
     }
     

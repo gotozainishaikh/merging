@@ -33,25 +33,32 @@ class FilterPopUp: UIViewController {
     var new: String = "0"
     var min_follower: String = "0"
     var acp_bgt : String = "0"
+    
+    var filter = ""
 
     
     
     @IBAction func apply_btn(_ sender: UIButton) {
        
-        let vc = stroy.instantiateViewController(withIdentifier: "mainTabController")
-        self.present(vc, animated: true, completion: nil)
+//        let vc = stroy.instantiateViewController(withIdentifier: "mainTabController")
+//        self.present(vc, animated: true, completion: nil)
+        self.view.removeFromSuperview()
         
         if switch1.isOn {
           end_soon = "1"
+            filter = "ending_soon"
         }
         if switch2.isOn {
             new = "1"
+            filter = "newest"
         }
         if switch3.isOn {
             min_follower = "1"
+            filter = "min_followers"
         }
         if switch4.isOn {
             acp_bgt = "1"
+            filter = "except_budget"
         }
      
         
@@ -61,6 +68,9 @@ class FilterPopUp: UIViewController {
         print("min_follower=\(min_follower)")
         print("acp_bgt=\(acp_bgt)")
        
+        //var filter_dict = ["end_soon": end_soon,"new": new,"min_follower": min_follower,"acp_bgt": acp_bgt,]
+        let filter_dict = ["filter": filter, "category":cat_select]
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "filters"), object: nil, userInfo: filter_dict)
         
 //        var message = "hello"
 //        let parameters : [String:String] = [

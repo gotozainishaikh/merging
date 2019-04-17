@@ -13,6 +13,22 @@ import CoreData
 
 class LocalDetailsViewController: UIViewController {
 
+    
+    //Alamofire
+    let api = AlamofireApi()
+    
+    //base Url
+    let base_url = FixVariable()
+    
+    //User_id
+    var user_id : String!
+    
+    //User Type
+    var user_type : String!
+    
+    //Collaboration Id
+    var col_id = ""
+    
     let story = UIStoryboard(name: "User", bundle: nil)
     
     var images = [InputSource]()
@@ -50,6 +66,7 @@ class LocalDetailsViewController: UIViewController {
     
     @IBAction func request_btn(_ sender: UIButton) {
         
+        
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
         let results : NSArray = try! context.fetch(request) as NSArray
@@ -60,26 +77,56 @@ class LocalDetailsViewController: UIViewController {
         
         print("coredata_userId=\(id)")
         
-        
-       
-        let vc = story.instantiateViewController(withIdentifier: "pakage") as! PakagePopUPViewController
-        vc.user_id = id
-       
-        print("detailsArray?.collaboration_idabc=\(detailsArray?.collaboration_id)")
-       
-        if((detailsArray?.collaboration_id) != nil){
-            print("detailsArray=\((detailsArray?.collaboration_id)!)")
-            vc.campaign_id = String((detailsArray?.collaboration_id)!)
+        get_user_type{
+            
+            if(self.user_type == "1"){
+                
+                let vc = self.story.instantiateViewController(withIdentifier: "pakage") as! PakagePopUPViewController
+                vc.user_id = id
+                
+                print("detailsArray?.collaboration_idabc=\(self.detailsArray?.collaboration_id)")
+                
+                if((self.detailsArray?.collaboration_id) != nil){
+                    print("detailsArray=\((self.detailsArray?.collaboration_id)!)")
+                    vc.campaign_id = String((self.detailsArray?.collaboration_id)!)
+                    
+                }
+                else if((self.modelCustom?.collaboration_id) != nil){
+                    print("modelCustom=\((self.modelCustom?.collaboration_id)!)")
+                    vc.campaign_id = String((self.modelCustom?.collaboration_id)!)
+                    
+                }
+                
+                
+                self.addChild(vc)
+                self.view.addSubview(vc.view)
+                vc.didMove(toParent: self)
+            }
+            else{
+                
+                if((self.detailsArray?.collaboration_id) != nil){
+                   self.col_id = String((self.detailsArray?.collaboration_id)!)
+                }
+                else if((self.modelCustom?.collaboration_id) != nil){
+                   
+                    self.col_id = String((self.modelCustom?.collaboration_id)!)
+                }
+                
+                print("col_id=\(self.col_id)")
+                let url = "\(self.base_url.weburl)/paid_user_request.php"
+                self.api.alamofireApiWithParams(url: url
+                , parameters: ["user_id":self.user_id,"campaign_id":self.col_id]){
+                    json in
+                    
+                    print("PAID\(json["Status"].stringValue)")
+                    
+                    
+                }
+                
+            }
         }
-        else if((modelCustom?.collaboration_id) != nil){
-            print("modelCustom=\((modelCustom?.collaboration_id)!)")
-            vc.campaign_id = String((modelCustom?.collaboration_id)!)
-        }
         
-       
-        self.addChild(vc)
-        self.view.addSubview(vc.view)
-        vc.didMove(toParent: self)
+        
     }
     
     
@@ -92,7 +139,7 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        fetch_coreData()
         localDetails()
 
         //Image Silder
@@ -288,6 +335,32 @@ class LocalDetailsViewController: UIViewController {
 //        }
         
     }
+    
+    func fetch_coreData(){
+        
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+        
+        let results : NSArray = try! context.fetch(request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        self.user_id = res.value(forKey: "user_id") as! String
 
+    }
+
+    func get_user_type(completion: @escaping () -> Void){
+        
+        let url = "\(base_url.weburl)/get_user_type.php"
+        api.alamofireApiWithParams(url: url
+        , parameters: ["user_id":user_id]){
+            json in
+            
+            self.user_type = json[0]["user_type"].stringValue
+            
+            completion()
+        }
+        
+    }
 }
 

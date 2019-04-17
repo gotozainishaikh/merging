@@ -99,6 +99,7 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                 //  let alert = UIAlertController(title: "Full Name", message: "\(desp)", preferredStyle: .alert)
                 if followers > -1 {
 //                    ChoiceSelectionViewController
+                    print("firstTime")
                     var first_time:String = "1"
                     if(first_time=="1"){
                         let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController

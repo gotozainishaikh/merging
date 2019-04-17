@@ -42,4 +42,9 @@ class LocalModel{
     var partner_id : String = ""
     var collaborationType : String = ""
     
+    var distance : String = ""
+    var category_name : String = ""
+    var collab_limit : String = ""
+    
+    
 }

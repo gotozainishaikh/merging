@@ -16,6 +16,7 @@ import TTGSnackbar
 
 class PendingPopUpViewController: UIViewController {
 
+
     var model = FindInfluencerModel()
    
     @IBOutlet weak var usrImg: UIImageView!
@@ -29,8 +30,7 @@ class PendingPopUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print(model.user_id)
-        
-            
+
         showAnimate()
     }
     

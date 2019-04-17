@@ -15,6 +15,7 @@ import SwiftyJSON
 
 class ReviewViewController: UIViewController {
 
+    var imageView : UIImageView!
     let story = UIStoryboard(name: "Main", bundle: nil)
     var model : [ReviewModel] = [ReviewModel]()
    // var id : String = ""
@@ -52,8 +53,15 @@ class ReviewViewController: UIViewController {
     
    
     
+   
     override func viewDidAppear(_ animated: Bool) {
-        
+       
+        let imageName = "nodataavail.jpeg"
+        let image = UIImage(named: imageName)
+        imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: self.view.frame.size.width  / 2 - 150, y: self.view.frame.size.height / 2, width: 300, height: 100)
+        //retriveData()
+        imageView.tag = 100
         
     }
     
@@ -86,6 +94,9 @@ class ReviewViewController: UIViewController {
     
     func retriveData(){
         
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
         
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
@@ -114,8 +125,12 @@ class ReviewViewController: UIViewController {
              //   print(dataJSON)
                 self.model.removeAll()
                 
-                for item in 0..<dataJSON.count {
-                    
+               
+                print("dataJSONabc=\(dataJSON["Status"])")
+                
+                if(dataJSON["Status"] != "failed"){
+                    for item in 0..<dataJSON.count {
+                    print("dataJSON.countabc=\(dataJSON.count)")
                     let reviewModel = ReviewModel()
             
                     reviewModel.reviewerImg = dataJSON[item]["partner_img"].stringValue
@@ -127,9 +142,14 @@ class ReviewViewController: UIViewController {
                     
                     self.reviewTable.reloadData()
                 }
+                }
+                else{
+                    self.view.addSubview(self.imageView)
+                }
                 
                 
             }else {
+                
                 print("Error in fetching data")
             }
             
@@ -213,6 +233,7 @@ class ReviewViewController: UIViewController {
 
 extension ReviewViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("modelfav.count=\(model.count)")
         return model.count
     }
     

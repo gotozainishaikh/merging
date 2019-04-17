@@ -863,13 +863,6 @@
 			path = "request list cell";
 			sourceTree = "<group>";
 		};
-		3AF65C5F21E0F638009C82C0 /* pageViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = pageViewModel;
-			sourceTree = "<group>";
-		};
 		3AF65C6021E0F689009C82C0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -887,7 +880,6 @@
 				3A098F3021E4D3D400246AEE /* AnnoncementCell */,
 				3AD88CD521E22BD0003C7F80 /* Home button search cell */,
 				3AF65C6421E10474009C82C0 /* Announcement */,
-				3AF65C5F21E0F638009C82C0 /* pageViewModel */,
 				3A1D4DFE21F71DE300DAE579 /* TestingCollectionViewCell.swift */,
 				3A1D4DFF21F71DE300DAE579 /* TestingCollectionViewCell.xib */,
 				0453E075225FBD25006DBD95 /* ReviewTableViewCell.swift */,

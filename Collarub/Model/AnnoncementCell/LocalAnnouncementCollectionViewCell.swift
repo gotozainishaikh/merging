@@ -16,9 +16,11 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     var isFav : String!
     @IBOutlet weak var imgLocal: UIImageView!
     @IBOutlet weak var announcementTitle: UILabel!
-    @IBOutlet weak var location: UILabel!
-    @IBOutlet weak var companyName: UILabel!
+    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var category: UILabel!
     @IBOutlet weak var followersRequired: UILabel!
+    @IBOutlet weak var end_date: UILabel!
+    @IBOutlet weak var remaining_req: UILabel!
     @IBOutlet weak var likeMe: UIButton!
     var col_id :String!
     let url = FixVariable()
@@ -77,7 +79,7 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
                         var id : String = res.value(forKey: "user_id") as! String
                         
                         
-                        print(self.col_id)
+                        print(self.col_id!)
                         
                         
                         let parameters : [String:String] = [

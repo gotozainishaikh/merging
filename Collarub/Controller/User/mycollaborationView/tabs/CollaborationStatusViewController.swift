@@ -14,7 +14,7 @@ import CoreData
 
 class CollaborationStatusViewController: UIViewController, CalendarViewDelegate, CalendarViewDataSource {
     
-    var req_status = "1"
+    var req_status = "3"
     let apiCall  = AlamofireApi()
     
     var arrModel:[UserRequestModel] = []
@@ -27,7 +27,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     @IBAction func complete_btn_click(_ sender: UIButton) {
         
-        //self.arrModel.removeAll()
+        self.arrModel.removeAll()
         print("complete")
         req_status = "1"
         self.viewDidLoad()
@@ -36,7 +36,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     @IBAction func in_complete_btn_click(_ sender: UIButton) {
         
-        //self.arrModel.removeAll()
+        self.arrModel.removeAll()
         print("in-complete")
         req_status = "3"
         self.viewDidLoad()
@@ -44,7 +44,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     @IBAction func pending_btn_click(_ sender: UIButton) {
         
-        //self.arrModel.removeAll()
+        self.arrModel.removeAll()
         print("pending")
         req_status = "2"
         self.viewDidLoad()
@@ -52,7 +52,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
     
     @IBAction func decline_btn_click(_ sender: UIButton) {
       
-        //self.arrModel.removeAll()
+        self.arrModel.removeAll()
         print("decline")
         req_status = "4"
         self.viewDidLoad()
@@ -106,7 +106,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
             for item in self.arrModel{
                 
                 print("arrModel[0].get_applied_on()=\(item.get_applied_on())")
-               self.calendarView.reloadData()
+               
                 if(item.get_applied_on() != ""){
                     var date = self.parse(item.get_applied_on())
                     
@@ -114,6 +114,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
                 }
             }
             
+            print("reaload table")
             self.statusTable.reloadData()
         }
         
@@ -310,7 +311,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
             
             json in
             
-            print("json2abc\(json["Status"])")
+            print("STATUSabc\(json["Status"])")
             var i:Int = 0
             if(json["Status"] != "failed"){
                 for item in 0..<json.count {
@@ -346,6 +347,10 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
                 
                 
             }
+            }
+            else{
+                completion()
+
             }
 //            completion()
             

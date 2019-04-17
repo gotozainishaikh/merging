@@ -65,7 +65,7 @@ class LocalDetailsViewController: UIViewController {
         let vc = story.instantiateViewController(withIdentifier: "pakage") as! PakagePopUPViewController
         vc.user_id = id
        
-        
+        print("detailsArray?.collaboration_idabc=\(detailsArray?.collaboration_id)")
        
         if((detailsArray?.collaboration_id) != nil){
             print("detailsArray=\((detailsArray?.collaboration_id)!)")

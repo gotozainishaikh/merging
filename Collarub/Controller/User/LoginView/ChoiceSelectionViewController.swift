@@ -10,6 +10,7 @@ import UIKit
 import CheckBox
 import iOSDropDown
 import GooglePlacesSearchController
+import CoreData
 
 class ChoiceSelectionViewController: UIViewController {
 
@@ -28,9 +29,16 @@ class ChoiceSelectionViewController: UIViewController {
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var mailText: UITextField!
     
+    var country:String = ""
+    var city:String = ""
+    var address:String = ""
+    var category:String = ""
     var count = 1
     var choice1:String = ""
     var choice2:String = ""
+    
+    var api = AlamofireApi()
+    var base_url = FixVariable()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +59,8 @@ class ChoiceSelectionViewController: UIViewController {
         categoryDrop.arrowSize = 10
         categoryDrop.didSelect{(selectedText , index , id) in
             print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
+            
+            self.category = selectedText
           //  self.categoryDrop = selectedText
             // self.selectedtex = selectedText
         }
@@ -428,13 +438,50 @@ class ChoiceSelectionViewController: UIViewController {
     
     @IBAction func cont_btn(_ sender: UIButton) {
         
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+        
+        let results : NSArray = try! context.fetch(request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        var user_id : String = res.value(forKey: "user_id") as! String
+        
         print("choice1=\(choice1)")
         print("choice2=\(choice2)")
+        print("location.text=\(locationText.text!)")
+        print("category.text=\(category)")
+        print("email.text=\(mailText.text!)")
+        print("address=\(address)")
+        print("city=\(city)")
+        print("country=\(country)")
         
-        let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+        var url = "\(base_url.weburl)/user_prefrence_insert.php"
+       
+        let parameters : [String:String] = [
+            
+            "sector1": choice1,
+            "sector2": choice2,
+            "category": category,
+            "city": city,
+            "country": country,
+            "address": address,
+            "email": mailText.text!,
+            "user_id": user_id,
+            
+        ]
+        print("uRL=\(url)")
+        api.alamofireApiWithParams(url: url, parameters: parameters){
+            json in
+            
+            print("Statusagt=\(json["Status"])")
+            let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            // self.present(choiceSelectionViewController, animated: true, completion: nil)
+        }
         
         
-        self.present(choiceSelectionViewController, animated: true, completion: nil)
+        
+       
     }
     
     let GoogleMapsAPIServerKey = "AIzaSyCp93QINHvSoa0pdd1jK-oOsCZsZjAeQVI"
@@ -453,13 +500,16 @@ class ChoiceSelectionViewController: UIViewController {
 
 extension ChoiceSelectionViewController: GooglePlacesAutocompleteViewControllerDelegate {
     func viewController(didAutocompleteWith place: PlaceDetails) {
-        print(place.description)
+        print("place.description=\(place.description)")
         var lat:String = "\((place.coordinate?.latitude)!)"
         var long:String = "\((place.coordinate?.longitude)!)"
         print("lat=\(lat), long=\(long)")
         locationText.text = place.name
-        //addrss = place.name!
-        
+        self.country = place.country!
+        self.city = place.locality!
+        self.address = place.name!
+//        print("country=\(place.country)")
+//        print("city=\(place.locality)")
         placesSearchController.isActive = false
     }
 }

@@ -11,9 +11,11 @@ import SDWebImage
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import CoreData
 
 class LocalAnnouncementViewController: UIViewController {
     
+    var imageView : UIImageView!
     var type : String = "no text"
     var name : String = "no text"
     var category_name : String = "no text"
@@ -37,6 +39,26 @@ class LocalAnnouncementViewController: UIViewController {
         self.collectionView!.addSubview(refresher)
         
         
+       
+        
+        if status {
+            
+            
+        }
+                 // Do any additional setup after loading the view.
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reload2(notification:)), name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil)
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let imageName = "nodataavail.jpeg"
+        let image = UIImage(named: imageName)
+        imageView = UIImageView(image: image!)
+        imageView.frame = CGRect(x: self.view.frame.size.width  / 2 - 150, y: self.view.frame.size.height / 2, width: 300, height: 100)
         retriveData(){
             //model.removeAll()
             self.getFavCollab{
@@ -49,24 +71,12 @@ class LocalAnnouncementViewController: UIViewController {
                     
                     print("modelabc=\(item)")
                 }
-                
+                print("relaod 1")
                 self.collectionView.reloadData()
                 
             }
         }
-        
-        if status {
-            
-            
-        }
-                 // Do any additional setup after loading the view.
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        
-       
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(reload(notification:)), name: NSNotification.Name(rawValue: "reload"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(reload2(notification:)), name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil)
+        imageView.tag = 100
         
     }
     
@@ -123,7 +133,11 @@ class LocalAnnouncementViewController: UIViewController {
     @objc func loadData() {
         //code to execute during refresher
         
-        retriveData(){}
+        retriveData(){
+            print("relaod 2")
+            print("modelCOUNT=\(self.model.count)")
+            self.collectionView.reloadData()
+        }
         stopRefresher()         //Call this to stop refresher
     }
     
@@ -207,6 +221,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.rating = dataJSON[item]["rating"].stringValue
                             localModel.user_gender = dataJSON[item]["user_gender"].stringValue
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
+                            localModel.category_name = dataJSON[item]["category_name"].stringValue
+                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -217,6 +233,7 @@ class LocalAnnouncementViewController: UIViewController {
                         
                         print("count \(self.model.count)")
                         SVProgressHUD.dismiss()
+                        print("relaod 3")
                         self.collectionView.reloadData()
                         
                     }
@@ -239,6 +256,10 @@ class LocalAnnouncementViewController: UIViewController {
     
     func retriveData(completion: @escaping () -> Void){
         
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
+        
         let parameters : [String:String] = [
             "collabrubType": "local"
         ]
@@ -250,13 +271,13 @@ class LocalAnnouncementViewController: UIViewController {
                 
                 SVProgressHUD.dismiss()
                 let dataJSON : JSON = JSON(response.result.value!)
-                print("dataJSON1\(dataJSON)")
+                //print("dataJSON1\(dataJSON)")
                 
                 let followers = dataJSON["data"]["counts"]["followed_by"].intValue
                 //  print(dataJSON.count)
                 self.model.removeAll()
-                
-                for item in 0..<dataJSON.count {
+                if(dataJSON["Status"] != "failed"){
+                    for item in 0..<dataJSON.count {
                     //print(dataJSON[item])
                     // let localModel = LocalModel()
                     SVProgressHUD.show(withStatus: "Loading")
@@ -302,6 +323,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.rating = dataJSON[item]["rating"].stringValue
                             localModel.user_gender = dataJSON[item]["user_gender"].stringValue
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
+                            localModel.category_name = dataJSON[item]["category_name"].stringValue
+                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                             self.model.append(localModel)
                             
@@ -312,12 +335,17 @@ class LocalAnnouncementViewController: UIViewController {
                             print("error not get in first")
                         }
                         
+                        completion()
                         print("count \(self.model.count)")
                         SVProgressHUD.dismiss()
                         //                                self.collectionView.reloadData()
                         
                     }
                     
+                }
+                }
+                else{
+                    self.view.addSubview(self.imageView)
                 }
                 self.status = true
                 
@@ -326,7 +354,7 @@ class LocalAnnouncementViewController: UIViewController {
                 //                        super.viewDidLoad()
                 
                 
-            completion()
+            
                 
             }
             else {
@@ -343,7 +371,21 @@ class LocalAnnouncementViewController: UIViewController {
     }
     
     func getFavCollab(completion: @escaping () -> Void){
-        Alamofire.request("\(self.url.weburl)/user_fav_collaborations.php", method: .get, parameters: ["user_id":"35"]).responseJSON { (response) in
+       
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+        
+        let results : NSArray = try! context.fetch(request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        var user_id : String = res.value(forKey: "user_id") as! String
+        let parameters : [String:String] = [
+            
+            "user_id": user_id
+            
+        ]
+        Alamofire.request("\(self.url.weburl)/user_fav_collaborations.php", method: .get, parameters:parameters).responseJSON { (response) in
             
             if response.result.isSuccess {
                 
@@ -372,7 +414,8 @@ class LocalAnnouncementViewController: UIViewController {
             
             print("favList.count=\(self.favList.count)")
             SVProgressHUD.dismiss()
-            //self.collectionView.reloadData()
+            print("relaod 4")
+            self.collectionView.reloadData()
             
            
         }
@@ -451,6 +494,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.user_gender = dataJSON[item]["user_gender"].stringValue
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                             localModel.partner_id =  dataJSON[item]["partner_id"].stringValue
+                            localModel.category_name = dataJSON[item]["category_name"].stringValue
+                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -461,6 +506,7 @@ class LocalAnnouncementViewController: UIViewController {
                         
                         print("count \(self.model.count)")
                         SVProgressHUD.dismiss()
+                        print("relaod 5")
                         self.collectionView.reloadData()
                         
                     }
@@ -552,6 +598,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.rating = dataJSON[item]["rating"].stringValue
                             localModel.user_gender = dataJSON[item]["user_gender"].stringValue
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
+                            localModel.category_name = dataJSON[item]["category_name"].stringValue
+                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -562,6 +610,7 @@ class LocalAnnouncementViewController: UIViewController {
                         
                         print("count \(self.model.count)")
                         SVProgressHUD.dismiss()
+                        print("relaod 6")
                         self.collectionView.reloadData()
                         
                     }
@@ -608,9 +657,11 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "test", for: indexPath) as! LocalAnnouncementCollectionViewCell
         
         cell.imgLocal.sd_setImage(with: URL(string: model[indexPath.row].announcementImage))
-        cell.companyName.text = model[indexPath.row].companyName
+        
         cell.announcementTitle.text = model[indexPath.row].title
-        cell.location.text = model[indexPath.row].location
+        cell.category.text = model[indexPath.row].category_name
+        cell.end_date.text = model[indexPath.row].expiry_date
+        cell.remaining_req.text = model[indexPath.row].collab_limit
         cell.followersRequired.text = model[indexPath.row].selectedNumOfFollowers
         cell.col_id = model[indexPath.row].collaboration_id
         cell.setLikeMe(isFav: favList2)

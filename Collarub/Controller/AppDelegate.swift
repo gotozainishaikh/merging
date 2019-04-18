@@ -9,7 +9,7 @@
 import UIKit
 import IQKeyboardManager
 import CoreData
-
+import SVProgressHUD
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,7 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         
-        
+        PayPalMobile .initializeWithClientIds(forEnvironments: [PayPalEnvironmentProduction: "YOUR_CLIENT_ID_FOR_PRODUCTION",
+                                                                PayPalEnvironmentSandbox: "AXg409-ZD7lFcgk2JdHkLkggX8u7LnT7cfkGL2AG0y7bx5OAvOmErpKKz5D68kzXRxbfe_KRlFf681rk"])
+        SVProgressHUD.setDefaultStyle(.dark)
         return true
     }
 

@@ -12,6 +12,7 @@ import Cosmos
 import SDWebImage
 import Alamofire
 import SwiftyJSON
+import SVProgressHUD
 
 class PartnerContainerViewController: UIViewController {
 
@@ -27,6 +28,8 @@ class PartnerContainerViewController: UIViewController {
     @IBOutlet weak var userImg: UIButton!
     @IBOutlet weak var uparrowimg: UIImageView!
     
+    var p_id = ""
+    var userName = ""
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
     var url = FixVariable()
@@ -94,9 +97,11 @@ class PartnerContainerViewController: UIViewController {
             }
             if let name : String = res.value(forKey: "userName") as! String {
                 nameLabel.text = name
+                userName = name
             }
             if let id : String = res.value(forKey: "user_id") as! String {
                 retriveData(id: id)
+                p_id = id
             }
         }
         
@@ -200,4 +205,96 @@ class PartnerContainerViewController: UIViewController {
     }
     
 
+    @IBAction func notifySwitch(_ sender: UISwitch) {
+        if switchNotification.isOn {
+            
+            let parameters : [String:String] = [
+                
+                "partner_id": p_id,
+                "push_status" : "1"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_partner_push_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        
+                    }
+                }
+                
+            }
+        }else {
+            let parameters : [String:String] = [
+                
+                "partner_id": p_id,
+                "push_status" : "0"
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/update_partner_push_status.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        
+                    }
+                }
+                
+            }
+        }
+    }
+    
+    
+    @IBAction func deleteAccount(_ sender: UIButton) {
+        
+        let parameters : [String:String] = [
+            
+            "userName": userName,
+            
+        ]
+        
+        Alamofire.request("\(self.url.weburl)/partnerDelete.php", method: .get, parameters: parameters).responseJSON { (response) in
+            SVProgressHUD.show(withStatus: "Loading")
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+                let dataJSON1 : JSON = JSON(response.result.value!)
+                
+                if dataJSON1["Status"] == "success" {
+                    
+                    
+                    SVProgressHUD.showSuccess(withStatus: "Done")
+                    if let cookies = HTTPCookieStorage.shared.cookies {
+                        for cookie in cookies {
+                            if cookie.domain.contains(".instagram.com") {
+                                HTTPCookieStorage.shared.deleteCookie(cookie)
+                            }
+                        }
+                        
+                        Defaults.setPartnerLoginStatus(logInStatus: false)
+                        let story = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = story.instantiateViewController(withIdentifier: "mainScreen")
+                        self.present(vc, animated: true, completion: nil)
+                        
+                        self.deleteAllRecords()
+                        
+                    }
+                }
+            }
+            
+        }
+        
+    }
+    
 }

@@ -31,6 +31,21 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
     var autoaprv : String = "0"
     
     
+    var val : [NSDecimalNumber]!
+    var payloc : NSDecimalNumber = 0.0
+    var payMicro : NSDecimalNumber = 0.0
+    var payMacro : NSDecimalNumber = 0.0
+    var payMega : NSDecimalNumber = 0.0
+    var payStar : NSDecimalNumber = 0.0
+    
+    var pay1loc : NSDecimalNumber = 0.0
+    var pay1Micro : NSDecimalNumber = 0.0
+    var pay1Macro : NSDecimalNumber = 0.0
+    var pay1Mega : NSDecimalNumber = 0.0
+    var pay1Star : NSDecimalNumber = 0.0
+    
+    var isCheck : Bool!
+    
     @IBOutlet weak var autoapprv: CheckBox!
     @IBOutlet weak var coupon: CheckBox!
     @IBOutlet weak var payBtn1: UIButton!
@@ -38,6 +53,8 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
    
     @IBOutlet weak var payPerInfluencerView: UIView!
     @IBOutlet weak var payPerCampaignView: UIView!
+    
+    @IBOutlet weak var btmconstrainsts: NSLayoutConstraint!
     
     @IBOutlet weak var limitinfluencer: DropDown!
     @IBOutlet weak var inLocal: CheckBox!
@@ -97,8 +114,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.inLocal.title)
                 self.inLocl = self.inLocal.title!
+                self.payloc = 199.0
             }else {
                 self.inLocl = ""
+                  self.payloc = 0.0
             }
         }
         
@@ -107,8 +126,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
                 print(self.inMicro.title)
                 
                 self.inMcro = self.inMicro.title!
+                self.payMicro = 499.0
             }else {
                 self.inMcro = ""
+                self.payMicro = 0.0
             }
         }
         
@@ -116,8 +137,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.inMacro.title)
                 self.inMac = self.inMacro.title!
+                self.payMacro = 1999.0
             }else {
                  self.inMac = ""
+                self.payMacro = 0.0
             }
         }
         
@@ -125,8 +148,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.inMega.title)
                 self.inMga = self.inMega.title!
+                self.payMega = 2999.0
             }else {
                 self.inMga = ""
+                self.payMega = 0.0
             }
         }
         
@@ -134,8 +159,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.inStar.title)
                 self.inStr = self.inStar.title!
+                self.payStar = 3999.0
             }else {
                 self.inStr = ""
+                self.payStar = 0.0
             }
         }
         
@@ -143,8 +170,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.caLocal.title)
                 self.inLocl = self.caLocal.title!
+                self.pay1loc = 19.0
             }else {
                 self.inLocl = ""
+                self.pay1loc = 0.0
             }
         }
         
@@ -152,8 +181,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.caMicro.title)
                 self.inMcro = self.caMicro.title!
+                self.pay1Micro = 39.0
             }else {
                 self.inMcro = ""
+                self.pay1Micro = 0.0
             }
         }
         
@@ -161,8 +192,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.caMacro.title)
                 self.inMac = self.caMacro.title!
+                self.pay1Macro = 89.0
             }else {
                  self.inMac = ""
+                self.pay1Macro = 0.0
             }
         }
         
@@ -170,8 +203,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.caMega.title)
                 self.inMga = self.caMega.title!
+                self.pay1Mega = 149.0
             }else {
                 self.inMga = ""
+                self.pay1Mega = 0.0
             }
         }
         
@@ -179,8 +214,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.caStar.title)
                 self.inStr = self.caStar.title!
+                self.pay1Star = 299.0
             }else {
                 self.inStr = ""
+                self.pay1Star = 0.0
             }
         }
         
@@ -281,16 +318,17 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
         if (selectedButton?.title(for: .normal) == "Pay per influencer"){
             payPerInfluencerView.isHidden = false
             payPerCampaignView.isHidden = true
-            
+            btmconstrainsts.constant = 5
             pay_method = (selectedButton?.title(for: .normal))!
 //            payCam = ""
+             isCheck = true
         }else if(selectedButton?.title(for: .normal) == "Pay per campaign"){
             
             payPerInfluencerView.isHidden = true
             payPerCampaignView.isHidden = false
-            
+            btmconstrainsts.constant = 5
             pay_method = (selectedButton?.title(for: .normal))!
-            
+            isCheck = false
 //            payInflncer = ""
         }
     }

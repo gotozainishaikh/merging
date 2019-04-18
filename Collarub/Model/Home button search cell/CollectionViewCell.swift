@@ -17,9 +17,17 @@ class CollectionViewCell: UICollectionViewCell {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil, userInfo:["tab_btn_text":tabBtn.currentTitle!,"type":"local"])
     }
     
-    func setFilterTabBtn(item:String){
+//    func setFilterTabBtn(item:String){
+//
+//        tabBtn.setTitle(item, for: .normal)
+//    }
+    func setFilterTabBtn(image_item:String, title_item:String){
         
-        tabBtn.setTitle(item, for: .normal)
+        print("image_item=\(image_item)")
+        tabBtn.setImage(UIImage(named: image_item), for: .normal)
+        
+        tabBtn.setTitle(title_item, for: .normal)
+        
     }
 }
 

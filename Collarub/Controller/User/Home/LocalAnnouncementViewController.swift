@@ -24,9 +24,11 @@ class LocalAnnouncementViewController: UIViewController {
     var category_name : String = "no text"
     
     var model : [LocalModel] = [LocalModel]()
+    
     var favList : [String] = [String]()
     var favList2 : [String] = [String]()
     let url = FixVariable()
+    
     var refresher:UIRefreshControl!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -105,15 +107,34 @@ class LocalAnnouncementViewController: UIViewController {
             }
         }
        
-//        print("text after=\(name)")
+        print("textaafter=\(self.name)")
 //        self.refresher = UIRefreshControl()
 //        self.collectionView!.alwaysBounceVertical = true
 //        self.refresher.tintColor = UIColor.gray
 //        self.refresher.addTarget(self, action: #selector(loadData2), for: .valueChanged)
 //        self.collectionView!.addSubview(refresher)
 
-        
-        retriveData(type: self.type, name: self.name)
+        //model.removeAll()
+        retriveData(type: self.type, name: self.name){
+            //model.removeAll()
+            print("jhkdsh=\(self.model.count)")
+            self.getFavCollab{
+                
+                print("byName")
+                print("self.favList2=\(self.favList2.count)")
+                for item in self.favList2{
+                    
+                    print("favlistabc=\(item)")
+                }
+                for item in self.model{
+                    
+                    print("modelabc=\(item)")
+                }
+                print("relaod 1")
+                self.collectionView.reloadData()
+                
+            }
+        }
         
     }
     @objc func reload2(notification: NSNotification) {
@@ -131,8 +152,27 @@ class LocalAnnouncementViewController: UIViewController {
             }
         }
         
-        retriveData2(type: self.type, category_name: self.category_name)
-        
+        //retriveData2(type: self.type, category_name: self.category_name)
+        retriveData2(type: self.type, category_name: self.category_name){
+            //model.removeAll()
+            print("jhkdsh=\(self.model.count)")
+            self.getFavCollab{
+                
+                print("byName")
+                print("self.favList2=\(self.favList2.count)")
+                for item in self.favList2{
+                    
+                    print("favlistabc=\(item)")
+                }
+                for item in self.model{
+                    
+                    print("modelabc=\(item)")
+                }
+                print("relaod 1")
+                self.collectionView.reloadData()
+                
+            }
+        }
     }
     @objc func loadData() {
         //code to execute during refresher
@@ -349,6 +389,7 @@ class LocalAnnouncementViewController: UIViewController {
                 }
                 }
                 else{
+                    completion()
                     self.view.addSubview(self.imageView)
                 }
                 self.status = true
@@ -426,7 +467,11 @@ class LocalAnnouncementViewController: UIViewController {
         
     }
     
-    func retriveData(type: String, name:String){
+    func retriveData(type: String, name:String,completion: @escaping () -> Void){
+        
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
         
         let parameters : [String:String] = [
             "collabrubType": type,
@@ -437,6 +482,8 @@ class LocalAnnouncementViewController: UIViewController {
         print("type=\(type)")
        
         
+        
+        
         Alamofire.request("\(self.url.weburl)/search_by_collaboration_name.php", method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.show(withStatus: "Connecting to server")
@@ -445,93 +492,109 @@ class LocalAnnouncementViewController: UIViewController {
                 
                 SVProgressHUD.dismiss()
                 let dataJSON : JSON = JSON(response.result.value!)
+                //print("dataJSON1\(dataJSON)")
                 
-                print("dataJSON2\(dataJSON)")
                 let followers = dataJSON["data"]["counts"]["followed_by"].intValue
                 //  print(dataJSON.count)
                 self.model.removeAll()
-                
-                for item in 0..<dataJSON.count {
-                    //print(dataJSON[item])
-                    // let localModel = LocalModel()
-                    SVProgressHUD.show(withStatus: "Loading")
-                    let para : [String:Int] = [
-                        "id" : dataJSON[item]["collaboration_id"].intValue
-                    ]
-                    Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
-                        
-                        if response.result.isSuccess {
+                if(dataJSON["Status"] != "failed"){
+                    for item in 0..<dataJSON.count {
+                        //print(dataJSON[item])
+                        // let localModel = LocalModel()
+                        SVProgressHUD.show(withStatus: "Loading")
+                        let para : [String:Int] = [
+                            "id" : dataJSON[item]["collaboration_id"].intValue
+                        ]
+                        Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
                             
-                            let dataJSON1 : JSON = JSON(response.result.value!)
-                            // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
-                            //                            print(dataJSON[item])
-                            //                             print(dataJSON1)
+                            if response.result.isSuccess {
+                                
+                                let dataJSON1 : JSON = JSON(response.result.value!)
+                                // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
+                                //                            print(dataJSON[item])
+                                //                             print(dataJSON1)
+                                
+                                let localModel = LocalModel()
+                                
+                                
+                                localModel.announcementImage = dataJSON1[0]["img_url"].stringValue
+                                localModel.title = dataJSON[item]["collaboration_name"].stringValue
+                                localModel.companyName = dataJSON[item]["company_name"].stringValue
+                                localModel.location = dataJSON[item]["address"].stringValue
+                                localModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
+                                localModel.palceImages = ["",""]
+                                localModel.reviews = ["",""]
+                                localModel.date = dataJSON[item]["date"].stringValue
+                                localModel.description = dataJSON[item]["descriptions"].stringValue
+                                localModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
+                                localModel.avalaibility = ""
+                                localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
+                                
+                                localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
+                                
+                                localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.budget_value = dataJSON[item]["budget_value"].stringValue
+                                localModel.type = dataJSON[item]["type"].stringValue
+                                localModel.discount_field = dataJSON[item]["discount_field"].stringValue
+                                localModel.content_type = dataJSON[item]["content_type"].stringValue
+                                localModel.required_city = dataJSON[item]["required_city"].stringValue
+                                localModel.required_region = dataJSON[item]["required_region"].stringValue
+                                localModel.engagement_rate = dataJSON[item]["engagement_rate"].stringValue
+                                localModel.rating = dataJSON[item]["rating"].stringValue
+                                localModel.user_gender = dataJSON[item]["user_gender"].stringValue
+                                localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
+                                localModel.category_name = dataJSON[item]["category_name"].stringValue
+                                localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
+                                self.model.append(localModel)
+                                
+                                //   SVProgressHUD.dismiss()
+                                
+                                
+                            }else {
+                                print("error not get in first")
+                            }
                             
-                            let localModel = LocalModel()
+                            completion()
+                            print("count \(self.model.count)")
+                            SVProgressHUD.dismiss()
+                            //                                self.collectionView.reloadData()
                             
-                            
-                            localModel.announcementImage = dataJSON1[0]["img_url"].stringValue
-                            localModel.title = dataJSON[item]["collaboration_name"].stringValue
-                            localModel.companyName = dataJSON[item]["company_name"].stringValue
-                            localModel.location = dataJSON[item]["address"].stringValue
-                            localModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
-                            localModel.palceImages = ["",""]
-                            localModel.reviews = ["",""]
-                            localModel.date = dataJSON[item]["date"].stringValue
-                            localModel.description = dataJSON[item]["descriptions"].stringValue
-                            localModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
-                            localModel.avalaibility = ""
-                            localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
-                            
-                            localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
-                            
-                            localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                            localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
-                            localModel.budget_value = dataJSON[item]["budget_value"].stringValue
-                            localModel.type = dataJSON[item]["type"].stringValue
-                            localModel.discount_field = dataJSON[item]["discount_field"].stringValue
-                            localModel.content_type = dataJSON[item]["content_type"].stringValue
-                            localModel.required_city = dataJSON[item]["required_city"].stringValue
-                            localModel.required_region = dataJSON[item]["required_region"].stringValue
-                            localModel.engagement_rate = dataJSON[item]["engagement_rate"].stringValue
-                            localModel.rating = dataJSON[item]["rating"].stringValue
-                            localModel.user_gender = dataJSON[item]["user_gender"].stringValue
-                            localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
-                            localModel.partner_id =  dataJSON[item]["partner_id"].stringValue
-                            localModel.category_name = dataJSON[item]["category_name"].stringValue
-                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
-                            self.model.append(localModel)
-                            
-                            //   SVProgressHUD.dismiss()
-                            
-                        }else {
-                            print("error not get in first")
                         }
                         
-                        print("count \(self.model.count)")
-                        SVProgressHUD.dismiss()
-                        print("relaod 5")
-                        self.collectionView.reloadData()
-                        
                     }
+                }
+                else{
+                    completion()
+                    self.view.addSubview(self.imageView)
                 }
                 self.status = true
                 
                 
                 
-                super.viewDidLoad()
+                //                        super.viewDidLoad()
                 
                 
-            }else {
+                
+                
+            }
+            else {
                 print("error not get in second")
             }
+            
+            
             
         }
         
         
     }
     
-    func retriveData2(type: String, category_name:String){
+    func retriveData2(type: String, category_name:String,completion: @escaping () -> Void){
+        
+        if let viewWithTag = self.view.viewWithTag(100) {
+            viewWithTag.removeFromSuperview()
+        }
         
         let parameters : [String:String] = [
             "collabrubType": type,
@@ -542,6 +605,7 @@ class LocalAnnouncementViewController: UIViewController {
         print("type=\(type)")
         
         
+        
         Alamofire.request("\(self.url.weburl)/search_by_category_name.php", method: .get, parameters: parameters).responseJSON { (response) in
             
             SVProgressHUD.show(withStatus: "Connecting to server")
@@ -550,88 +614,100 @@ class LocalAnnouncementViewController: UIViewController {
                 
                 SVProgressHUD.dismiss()
                 let dataJSON : JSON = JSON(response.result.value!)
+                //print("dataJSON1\(dataJSON)")
                 
-                print("dataJSON2\(dataJSON)")
                 let followers = dataJSON["data"]["counts"]["followed_by"].intValue
                 //  print(dataJSON.count)
                 self.model.removeAll()
-                
-                for item in 0..<dataJSON.count {
-                    //print(dataJSON[item])
-                    // let localModel = LocalModel()
-                    SVProgressHUD.show(withStatus: "Loading")
-                    let para : [String:Int] = [
-                        "id" : dataJSON[item]["collaboration_id"].intValue
-                    ]
-                    Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
-                        
-                        if response.result.isSuccess {
+                if(dataJSON["Status"] != "failed"){
+                    for item in 0..<dataJSON.count {
+                        //print(dataJSON[item])
+                        // let localModel = LocalModel()
+                        SVProgressHUD.show(withStatus: "Loading")
+                        let para : [String:Int] = [
+                            "id" : dataJSON[item]["collaboration_id"].intValue
+                        ]
+                        Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
                             
-                            let dataJSON1 : JSON = JSON(response.result.value!)
-                            // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
-                            //                            print(dataJSON[item])
-                            //                             print(dataJSON1)
+                            if response.result.isSuccess {
+                                
+                                let dataJSON1 : JSON = JSON(response.result.value!)
+                                // let followers = dataJSON["data"]["counts"]["followed_by"].intValue
+                                //                            print(dataJSON[item])
+                                //                             print(dataJSON1)
+                                
+                                let localModel = LocalModel()
+                                
+                                
+                                localModel.announcementImage = dataJSON1[0]["img_url"].stringValue
+                                localModel.title = dataJSON[item]["collaboration_name"].stringValue
+                                localModel.companyName = dataJSON[item]["company_name"].stringValue
+                                localModel.location = dataJSON[item]["address"].stringValue
+                                localModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
+                                localModel.palceImages = ["",""]
+                                localModel.reviews = ["",""]
+                                localModel.date = dataJSON[item]["date"].stringValue
+                                localModel.description = dataJSON[item]["descriptions"].stringValue
+                                localModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
+                                localModel.avalaibility = ""
+                                localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
+                                
+                                localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
+                                
+                                localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.budget_value = dataJSON[item]["budget_value"].stringValue
+                                localModel.type = dataJSON[item]["type"].stringValue
+                                localModel.discount_field = dataJSON[item]["discount_field"].stringValue
+                                localModel.content_type = dataJSON[item]["content_type"].stringValue
+                                localModel.required_city = dataJSON[item]["required_city"].stringValue
+                                localModel.required_region = dataJSON[item]["required_region"].stringValue
+                                localModel.engagement_rate = dataJSON[item]["engagement_rate"].stringValue
+                                localModel.rating = dataJSON[item]["rating"].stringValue
+                                localModel.user_gender = dataJSON[item]["user_gender"].stringValue
+                                localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
+                                localModel.category_name = dataJSON[item]["category_name"].stringValue
+                                localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
+                                self.model.append(localModel)
+                                
+                                //   SVProgressHUD.dismiss()
+                                
+                                
+                            }else {
+                                print("error not get in first")
+                            }
                             
-                            let localModel = LocalModel()
+                            completion()
+                            print("count \(self.model.count)")
+                            SVProgressHUD.dismiss()
+                            //                                self.collectionView.reloadData()
                             
-                            
-                            localModel.announcementImage = dataJSON1[0]["img_url"].stringValue
-                            localModel.title = dataJSON[item]["collaboration_name"].stringValue
-                            localModel.companyName = dataJSON[item]["company_name"].stringValue
-                            localModel.location = dataJSON[item]["address"].stringValue
-                            localModel.productImage = [dataJSON1[0]["img_url"].stringValue,dataJSON1[1]["img_url"].stringValue,dataJSON1[2]["img_url"].stringValue,dataJSON1[3]["img_url"].stringValue,dataJSON1[4]["img_url"].stringValue,dataJSON1[5]["img_url"].stringValue]
-                            localModel.palceImages = ["",""]
-                            localModel.reviews = ["",""]
-                            localModel.date = dataJSON[item]["date"].stringValue
-                            localModel.description = dataJSON[item]["descriptions"].stringValue
-                            localModel.collaborattionTerms = dataJSON[item]["collaboration_terms"].stringValue
-                            localModel.avalaibility = ""
-                            localModel.selectedNumOfFollowers = dataJSON[item]["followers_limit"].stringValue
-                            
-                            localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
-                            
-                            localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                            localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
-                            localModel.budget_value = dataJSON[item]["budget_value"].stringValue
-                            localModel.type = dataJSON[item]["type"].stringValue
-                            localModel.discount_field = dataJSON[item]["discount_field"].stringValue
-                            localModel.content_type = dataJSON[item]["content_type"].stringValue
-                            localModel.required_city = dataJSON[item]["required_city"].stringValue
-                            localModel.required_region = dataJSON[item]["required_region"].stringValue
-                            localModel.engagement_rate = dataJSON[item]["engagement_rate"].stringValue
-                            localModel.rating = dataJSON[item]["rating"].stringValue
-                            localModel.user_gender = dataJSON[item]["user_gender"].stringValue
-                            localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
-                            localModel.category_name = dataJSON[item]["category_name"].stringValue
-                            localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
-                            self.model.append(localModel)
-                            
-                            //   SVProgressHUD.dismiss()
-                            
-                        }else {
-                            print("error not get in first")
                         }
                         
-                        print("count \(self.model.count)")
-                        SVProgressHUD.dismiss()
-                        print("relaod 6")
-                        self.collectionView.reloadData()
-                        
                     }
+                }
+                else{
+                    completion()
+                    self.view.addSubview(self.imageView)
                 }
                 self.status = true
                 
                 
                 
-                super.viewDidLoad()
+                //                        super.viewDidLoad()
                 
                 
-            }else {
+                
+                
+            }
+            else {
                 print("error not get in second")
             }
             
+            
+            
         }
-        
         
     }
     
@@ -682,6 +758,7 @@ class LocalAnnouncementViewController: UIViewController {
         }
         
         let parameters : [String:String] = [
+            "collabrubType": "local",
             "category": category,
             filter : "1"
         ]
@@ -826,37 +903,7 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         cell.followersRequired.text = model[indexPath.row].selectedNumOfFollowers
         cell.col_id = model[indexPath.row].collaboration_id
         cell.setLikeMe(isFav: favList2)
-       // cell.setLikeMe(isFav: model[indexPath.row].isFav)
-//        print("Col_id=\(model[indexPath.row].collaboration_id)")
-//        print("IsFav=\(model[indexPath.row].isFav)")
-        
-//        if(model[indexPath.row].isFav=="1"){
-//            print("true")
-//            cell.likeMe.setImage(UIImage(named: "hearts"), for: .normal)
-//
-//        }
-        //cell.likeMe.setTitle(favList[indexPath.row].fav_collaboration_id, for: .normal)
-        
-//
-//        for item in favList{
-//            if((cell.col_id)! == item.fav_collaboration_id){
-//                print("ifcounts=\((cell.col_id)!)-\(item.fav_collaboration_id)")
-//
-//                cell.likeMe.setImage(UIImage(named: "hearts"), for: .normal)
-//            }
-//        }
-        //        cell.layer.cornerRadius = 2.0;
-        //        cell.layer.borderWidth = 1.0;
-        //        cell.layer.borderColor = UIColor.clear.cgColor;
-        //        cell.layer.masksToBounds = true;
-        //
-        //        cell.layer.shadowColor = UIColor.gray.cgColor;
-        //       // cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-        //        cell.layer.shadowRadius = 2.0;
-        //        cell.layer.shadowOpacity = 1.0;
-        //        cell.layer.masksToBounds = false;
-        //        cell.layer.shadowPath = UIBezierPath(roundedRect:cell.bounds, cornerRadius:cell.contentView.layer.cornerRadius).cgPath;
-        
+       
         cell.imgLocal.layer.cornerRadius = 6
         cell.imgLocal.clipsToBounds = true
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))

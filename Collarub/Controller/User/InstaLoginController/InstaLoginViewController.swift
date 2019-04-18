@@ -14,6 +14,17 @@ import CoreData
 
 class InstaLoginViewController: UIViewController, UIWebViewDelegate {
 
+    
+    
+    //Alamofire
+    let api = AlamofireApi()
+    
+    //Base URl
+    var base_url = FixVariable()
+    
+    //User First Login
+    var first_time:String = "0"
+    
    // var instaData : [InstagramUserData] = [InstagramUserData]()
     static let model : InstagramUserData = InstagramUserData()
     var user_id : String = ""
@@ -50,7 +61,10 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
         
         if requestURLString.hasPrefix(INSTAGRAM_IDS.INSTAGRAM_REDIRECT_URI) {
             let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
-            handleAuth(authToken: requestURLString.substring(from: range.upperBound))
+            check_user {
+                self.handleAuth(authToken: requestURLString.substring(from: range.upperBound))
+            }
+            
             
             //            let story = UIStoryboard(name: "Main", bundle: nil)
             //            present(story.instantiateViewController(withIdentifier: "open"), animated: true, completion: nil)
@@ -99,9 +113,11 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                 //  let alert = UIAlertController(title: "Full Name", message: "\(desp)", preferredStyle: .alert)
                 if followers > -1 {
 //                    ChoiceSelectionViewController
-                    print("firstTime")
-                    var first_time:String = "1"
-                    if(first_time=="1"){
+                    
+                    
+                    print("firstTime=\(self.first_time)")
+                    
+                    if(self.first_time=="1"){
                         let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
                         print ("heheheh")
                      
@@ -188,6 +204,30 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
             }
             }.resume()
         
+        
+    }
+    
+    func check_user(completion: @escaping () -> Void){
+      
+        let url = "\(base_url.weburl)/checkUser.php"
+        
+        api.alamofireApiWithParams(url: url, parameters: ["user_username":"talha1895"]){
+            
+            json in
+            
+            
+            print("check_id=\(json["id"])")
+            if(json["id"] == ""){
+                
+                self.first_time = "1"
+            }
+            else{
+                self.first_time = "0"
+            }
+            
+            completion()
+            
+        }
         
     }
     

@@ -13,8 +13,21 @@ import SwiftyJSON
 import SVProgressHUD
 import CoreData
 
-class StepViewController: UIViewController, PageViewControllerDelegate {
+class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPaymentDelegate, FlipsideViewControllerDelegate {
 
+    
+    var environment:String = PayPalEnvironmentNoNetwork {
+        willSet(newEnvironment) {
+            if (newEnvironment != environment) {
+                PayPalMobile.preconnect(withEnvironment: newEnvironment)
+            }
+        }
+    }
+    
+    var resultText = "" // empty
+    var payPalConfig = PayPalConfiguration() // default
+    
+    
     let story = UIStoryboard(name: "Main", bundle: nil)
     var dict : JSON!
     var data : JSON!
@@ -36,7 +49,21 @@ class StepViewController: UIViewController, PageViewControllerDelegate {
         self.pageViewController?.dataSource = nil
         stepBar.titles = ["Step","Step","Step","Step","Step"]
         
+        // Set up payPalConfig
+        payPalConfig.acceptCreditCards = false
+        payPalConfig.merchantName = "Awesome Shirts, Inc."
+        payPalConfig.merchantPrivacyPolicyURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/privacy-full")
+        payPalConfig.merchantUserAgreementURL = URL(string: "https://www.paypal.com/webapps/mpp/ua/useragreement-full")
+        payPalConfig.languageOrLocale = Locale.preferredLanguages[0]
+        payPalConfig.payPalShippingAddressOption = .payPal;
+        
+        print("PayPal iOS SDK Version: \(PayPalMobile.libraryVersion())")
+        
        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        PayPalMobile.preconnect(withEnvironment: environment)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -158,69 +185,70 @@ class StepViewController: UIViewController, PageViewControllerDelegate {
             
             if (pageViewController?.arr.count == 0){
                 print("No Error")
-                let results : NSArray = try! context.fetch(request) as NSArray
                 
-                let res = results[0] as! NSManagedObject
+                resultText = ""
                 
-                var id : String = res.value(forKey: "user_id") as! String
-                
-                print("iddddd :: \(id)")
-                print("My values \(pageViewController?.data)")
-                print("\(pageViewController?.imageData.count)")
-                
-                let parameters : [String:String] = [
-                    "collaborationType": (pageViewController?.data[0])!,
-                    "category_name": (pageViewController?.data[1])!,
-                    "type": (pageViewController?.data[2])!,
-                    "accep_budget_check": (pageViewController?.data[12])!,
-                    "budget_value": (pageViewController?.data[5])!,
-                    "discount_field": (pageViewController?.data[4])!,
-                    "content_type": (pageViewController?.data[6])!+","+(pageViewController?.data[7])!+","+(pageViewController?.data[8])!+","+(pageViewController?.data[9])!,
-                    "number_stories": (pageViewController?.data[10])!,
-                    "number_post": (pageViewController?.data[11])!,
-                    "date": (pageViewController?.data[13])!,
-                    "expiry_date": (pageViewController?.data[14])!,
-                    "engagement_rate": (pageViewController?.data[15])!,
-                    "required_city": (pageViewController?.data[16])!,
-                    "required_region": (pageViewController?.data[17])!,
-                    "min_user_rating": (pageViewController?.data[18])!,
-                    "min_user_exp_level": (pageViewController?.data[19])!,
-                    "user_gender": (pageViewController?.data[20])!,
-                    "descriptions": (pageViewController?.data[24])!,
-                    "what_u_offer": (pageViewController?.data[25])!,
-                    "wht_thy_hav_to_do": (pageViewController?.data[26])!,
-                    "wht_wont_hav_to": (pageViewController?.data[27])!,
-                    "e_mail": (pageViewController?.data[28])!,
-                    "phone": (pageViewController?.data[29])!,
-                    "payment_method": (pageViewController?.data[36])!,
-                    "payment_conditions": (pageViewController?.data[31])!+"_"+(pageViewController?.data[32])!+"_"+(pageViewController?.data[33])!+"_"+(pageViewController?.data[34])!+"_"+(pageViewController?.data[35])!,
-                    "followers_limit": (pageViewController?.data[21])!,
-                    "collaboration_name": (pageViewController?.data[22])!,
-                    "address": (pageViewController?.data[23])!,
-                    "partner_id": id,
-                    "lat" : (pageViewController?.data[37])!,
-                    "longg" : (pageViewController?.data[38])!,
-                    "collab_limit" : (pageViewController?.data[39])!,
-                    "auto_approve" : (pageViewController?.data[40])!,
-                    "coupon_status" : (pageViewController?.data[41])!
-                ]
-                let url = "\(self.url.weburl)/imageUpload.php"
-                print("Parameters :: \(parameters)")
-                Alamofire.request("\(self.url.weburl)/insert_campaign_data.php", method: .get, parameters: parameters).responseJSON { (response) in
-
-                    let dataJSON : JSON = JSON(response.result.value!)
-                    if response.result.isSuccess {
-                        print("idies \(dataJSON["id"].stringValue)")
-
-                        self.requestWith(endUrl: url, imageData: (self.pageViewController?.imageData)!, parameters: ["emp_id" : dataJSON["id"].stringValue])
+                if pageViewController!.isCheck {
+                    let test = Double(pageViewController!.val[0]) + Double(pageViewController!.val[1]) + Double(pageViewController!.val[2]) + Double(pageViewController!.val[3]) + Double(pageViewController!.val[4])
+                    //let test = self(rawValue: self.RawValue(val[0]))+val[1]+val[2]
+                    print(test)
+                    
+                    let item1 = PayPalItem(name: "Paying for collaborup", withQuantity: 1, withPrice:NSDecimalNumber(decimal: Decimal(test)), withCurrency: "EUR", withSku: "Hip-0037")
+                    let items = [item1]
+                    
+                    let subtotal = PayPalItem.totalPrice(forItems: items)
+                    
+                    let payment = PayPalPayment(amount: subtotal, currencyCode: "EUR", shortDescription: "Paying for collaborup", intent: .sale)
+                    payment.items = items
+                    
+                    
+                    if (payment.processable) {
+                        print("Payment not processalbe: \(payment)")
+                        let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
+                        present(paymentViewController!, animated: true, completion: nil)
                     }
-
+                    else {
+                        // This particular payment will always be processable. If, for
+                        // example, the amount was negative or the shortDescription was
+                        // empty, this payment wouldn't be processable, and you'd want
+                        // to handle that here.
+                        print("Payment not processalbe: \(payment)")
+                    }
+                }else if !pageViewController!.isCheck {
+                    let test = Double(pageViewController!.val[5]) + Double(pageViewController!.val[6]) + Double(pageViewController!.val[7]) + Double(pageViewController!.val[8]) + Double(pageViewController!.val[9])
+                    //let test = self(rawValue: self.RawValue(val[0]))+val[1]+val[2]
+                    print(test)
+                    
+                    let item1 = PayPalItem(name: "Paying for collaborup", withQuantity: 1, withPrice:NSDecimalNumber(decimal: Decimal(test)), withCurrency: "EUR", withSku: "Hip-0037")
+                    let items = [item1]
+                    
+                    let subtotal = PayPalItem.totalPrice(forItems: items)
+                    
+                    let payment = PayPalPayment(amount: subtotal, currencyCode: "EUR", shortDescription: "Paying for collaborup", intent: .sale)
+                    payment.items = items
+                    
+                    
+                    if (payment.processable) {
+                        print("Payment not processalbe: \(payment)")
+                        let paymentViewController = PayPalPaymentViewController(payment: payment, configuration: payPalConfig, delegate: self)
+                        present(paymentViewController!, animated: true, completion: nil)
+                    }
+                    else {
+                        // This particular payment will always be processable. If, for
+                        // example, the amount was negative or the shortDescription was
+                        // empty, this payment wouldn't be processable, and you'd want
+                        // to handle that here.
+                        print("Payment not processalbe: \(payment)")
+                    }
                 }
+              
                 
                 
             }
             else {
                 print("Error hai")
+                print("thisss :: \(pageViewController?.val)")
+                print("truue :: \(pageViewController?.isCheck)")
                 self.addChild(vc1!)
                 self.view.addSubview(vc1!.view)
                 vc1!.didMove(toParent: self)
@@ -402,6 +430,84 @@ class StepViewController: UIViewController, PageViewControllerDelegate {
         alert.addAction(save)
         alert.addAction(cancel)
     self.present(alert, animated: true, completion: nil)
+    }
+    
+    // PayPalPaymentDelegate
+    
+    func payPalPaymentDidCancel(_ paymentViewController: PayPalPaymentViewController) {
+        print("PayPal Payment Cancelled")
+        resultText = ""
+        //successView.isHidden = true
+        paymentViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func payPalPaymentViewController(_ paymentViewController: PayPalPaymentViewController, didComplete completedPayment: PayPalPayment) {
+        print("PayPal Payment Success !")
+        paymentViewController.dismiss(animated: true, completion: { () -> Void in
+            // send completed confirmaion to your server
+            print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
+            
+            self.resultText = completedPayment.description
+            let results : NSArray = try! self.self.context.fetch(self.request) as NSArray
+            
+            let res = results[0] as! NSManagedObject
+            
+            var id : String = res.value(forKey: "user_id") as! String
+            
+            print("iddddd :: \(id)")
+            print("My values \(self.pageViewController?.data)")
+            print("\(self.pageViewController?.imageData.count)")
+            
+            let parameters : [String:String] = [
+                "collaborationType": (self.pageViewController?.data[0])!,
+                "category_name": (self.pageViewController?.data[1])!,
+                "type": (self.pageViewController?.data[2])!,
+                "accep_budget_check": (self.pageViewController?.data[12])!,
+                "budget_value": (self.pageViewController?.data[5])!,
+                "discount_field": (self.pageViewController?.data[4])!,
+                "content_type": (self.pageViewController?.data[6])!+","+(self.pageViewController?.data[7])!+","+(self.pageViewController?.data[8])!+","+(self.pageViewController?.data[9])!,
+                "number_stories": (self.pageViewController?.data[10])!,
+                "number_post": (self.pageViewController?.data[11])!,
+                "date": (self.pageViewController?.data[13])!,
+                "expiry_date": (self.pageViewController?.data[14])!,
+                "engagement_rate": (self.pageViewController?.data[15])!,
+                "required_city": (self.pageViewController?.data[16])!,
+                "required_region": (self.pageViewController?.data[17])!,
+                "min_user_rating": (self.pageViewController?.data[18])!,
+                "min_user_exp_level": (self.pageViewController?.data[19])!,
+                "user_gender": (self.pageViewController?.data[20])!,
+                "descriptions": (self.pageViewController?.data[24])!,
+                "what_u_offer": (self.pageViewController?.data[25])!,
+                "wht_thy_hav_to_do": (self.pageViewController?.data[26])!,
+                "wht_wont_hav_to": (self.pageViewController?.data[27])!,
+                "e_mail": (self.pageViewController?.data[28])!,
+                "phone": (self.pageViewController?.data[29])!,
+                "payment_method": (self.pageViewController?.data[36])!,
+                "payment_conditions": (self.pageViewController?.data[31])!+"_"+(self.pageViewController?.data[32])!+"_"+(self.pageViewController?.data[33])!+"_"+(self.pageViewController?.data[34])!+"_"+(self.pageViewController?.data[35])!,
+                "followers_limit": (self.pageViewController?.data[21])!,
+                "collaboration_name": (self.pageViewController?.data[22])!,
+                "address": (self.pageViewController?.data[23])!,
+                "partner_id": id,
+                "lat" : (self.pageViewController?.data[37])!,
+                "longg" : (self.pageViewController?.data[38])!,
+                "collab_limit" : (self.pageViewController?.data[39])!,
+                "auto_approve" : (self.pageViewController?.data[40])!,
+                "coupon_status" : (self.pageViewController?.data[41])!
+            ]
+            let url = "\(self.url.weburl)/imageUpload.php"
+            print("Parameters :: \(parameters)")
+            Alamofire.request("\(self.url.weburl)/insert_campaign_data.php", method: .get, parameters: parameters).responseJSON { (response) in
+                
+                let dataJSON : JSON = JSON(response.result.value!)
+                if response.result.isSuccess {
+                    print("idies \(dataJSON["id"].stringValue)")
+                    
+                    self.requestWith(endUrl: url, imageData: (self.pageViewController?.imageData)!, parameters: ["emp_id" : dataJSON["id"].stringValue])
+                }
+                
+            }
+           // self.showSuccess()
+        })
     }
     
 }

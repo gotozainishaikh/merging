@@ -93,6 +93,8 @@ class PageViewController: UIPageViewController {
     var imageData : [Data] = [Data]()
     var editId : String = ""
     var editData : JSON!
+    var val : [NSDecimalNumber]!
+    var isCheck : Bool!
     
     func editingTable(){
         var stepData = StepViewController()
@@ -215,8 +217,19 @@ class PageViewController: UIPageViewController {
         
         step5Data.pay_method = step5.pay_method
         
+        step5Data.payloc = step5.payloc
+        step5Data.payMicro = step5.payMicro
+        step5Data.payMacro = step5.payMacro
+        step5Data.payMega = step5.payMega
+        step5Data.payStar = step5.payStar
+        step5Data.pay1loc = step5.pay1loc
+        step5Data.pay1Micro = step5.pay1Micro
+        step5Data.pay1Macro = step5.pay1Macro
+        step5Data.pay1Mega = step5.pay1Mega
+        step5Data.pay1Star = step5.pay1Star
+        step5Data.isCheck = step5.isCheck
         
-     
+        
         print("\(step5Data.inLocl) :: \(step5Data.inMcro) :: \(step5Data.inMac) :: \(step5Data.inMga) :: \(step5Data.inStr) ::  \(step5Data.pay_method)")
         
         if(type_col == ""){
@@ -393,6 +406,8 @@ class PageViewController: UIPageViewController {
         data = [type_col,step1Data.category,step2Data.exchag,step2Data.discont,step2Data.discountNmbr,step2Data.maxBudgt,step2Data.usingProd,step2Data.locatin,step2Data.selfe,step2Data.shotTop, step2Data.numStoris,step2Data.numPost,step2Data.accptBugt,step2Data.startDate,step2Data.endDate,step3Data.engagementRt,step3Data.lCity,step3Data.lRegion,step3Data.reputationLvl,step3Data.exLevel,step3Data.gndr, step3Data.follwrLimt,step4Data.compyNam,step4Data.addrss,step4Data.descrptin,step4Data.whatoffring,step4Data.whatwillhv,step4Data.whatWont,step4Data.e_mail,step4Data.telNo, step4Data.websit,step5Data.inLocl,step5Data.inMcro,step5Data.inMac,step5Data.inMga,step5Data.inStr,step5Data.pay_method,step4Data.lat,step4Data.long,step5Data.limt,step5Data.autoaprv,step5Data.copon]
         
         
+        val = [step5Data.payloc,step5Data.payMicro,step5Data.payMacro,step5Data.payMega,step5Data.payStar,step5Data.pay1loc,step5Data.pay1Micro,step5Data.pay1Macro,step5Data.pay1Mega,step5Data.pay1Star]
+        isCheck = step5Data.isCheck
         
         let story = UIStoryboard(name: "Main", bundle: nil)
         

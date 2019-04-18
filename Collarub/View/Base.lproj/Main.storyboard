@@ -580,7 +580,7 @@
                                             </tableView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FILL THESE FIELDS FIRST" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Zk-8J-XP3">
                                                 <rect key="frame" x="0.0" y="10" width="304" height="19"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1132,6 +1132,7 @@
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="done:" destination="wtr-tM-bOH" eventType="editingDidEnd" id="Gcq-RU-WIE"/>
@@ -1178,7 +1179,7 @@
                                     <constraint firstAttribute="width" constant="320" id="Ow2-Hb-V19"/>
                                     <constraint firstAttribute="height" constant="45.5" id="Y00-we-RNH"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1284,7 +1285,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="frM-Az-PtE">
                                 <rect key="frame" x="0.0" y="64.5" width="320" height="45.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -1366,14 +1367,14 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT METHOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ako-6i-u2v">
-                                                <rect key="frame" x="0.0" y="35" width="320" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="35" width="320" height="24"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-ye-Ap2" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="72.5" width="224" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="48" y="73" width="224" height="27"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per influencer">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -1392,8 +1393,8 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQy-Or-mQF" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="99.5" width="224" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="48" y="100" width="224" height="27"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per campaign">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -1412,30 +1413,33 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwg-gl-XSm">
-                                                <rect key="frame" x="16" y="141.5" width="288" height="57.5"/>
+                                                <rect key="frame" x="16" y="142" width="288" height="73.5"/>
                                                 <string key="text">We will keep the money until the collaboration iscompleted so you will be sure that the job is well done. If the influencer won't complete successfully the collaboraton then you will be refunded.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iql-Oa-uqN" userLabel="pay-per-influencer">
-                                                <rect key="frame" x="16" y="207" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="223.5" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTZ-bx-T9x">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="16" id="eRe-hJ-wfS"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="13"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPW-lO-GZP">
-                                                        <rect key="frame" x="0.0" y="16" width="288" height="86"/>
+                                                        <rect key="frame" x="0.0" y="16" width="288" height="88"/>
                                                         <string key="text">Choose the influencer you want to collaborate with, your choice can be multiple. The price is per influencer and only for approved collaborations, you will be able to approve each influencer request or you can also choose to automatically approve all the request:  </string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1A-Iv-Um4" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="0.0" y="110" width="129.5" height="19"/>
+                                                        <rect key="frame" x="0.0" y="112" width="129.5" height="17"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Local (1k-15k) 1,99€"/>
@@ -1581,14 +1585,14 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msy-hg-uox" userLabel="pay-per-campaign">
-                                                <rect key="frame" x="16" y="207.5" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="224" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLq-Mg-6Cj">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="aky-rs-h2m"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1597,7 +1601,7 @@
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="O0B-Dv-bTL"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1748,111 +1752,122 @@
                                                     <constraint firstItem="ryJ-dS-90R" firstAttribute="top" secondItem="Msy-hg-uox" secondAttribute="top" constant="70" id="zIa-Xx-OSx"/>
                                                 </constraints>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5Z-Zm-MJQ" customClass="CheckBox" customModule="CheckBox">
-                                                <rect key="frame" x="22" y="418.5" width="212" height="19"/>
-                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-dx-CYc">
+                                                <rect key="frame" x="0.0" y="222" width="320" height="158"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5Z-Zm-MJQ" customClass="CheckBox" customModule="CheckBox">
+                                                        <rect key="frame" x="20" y="20" width="212" height="19"/>
+                                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="19" id="R8v-A0-do7"/>
+                                                            <constraint firstAttribute="width" constant="212" id="WhV-5P-rth"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Automatically approve all request"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                                <color key="value" name="themeColor3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="dimensions">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="unSelectedColor">
+                                                                <color key="value" name="themeColor3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" name="themecolor4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many influencer collaboration?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoZ-jU-5nA">
+                                                        <rect key="frame" x="20" y="53.5" width="212" height="19"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" name="themeColor3"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUN-4A-YZh" customClass="CheckBox" customModule="CheckBox">
+                                                        <rect key="frame" x="20" y="134.5" width="212" height="19"/>
+                                                        <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="212" id="17a-RL-93a"/>
+                                                            <constraint firstAttribute="height" constant="19" id="CW3-FZ-IGh"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="title" value="Have a Coupon"/>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
+                                                                <color key="value" name="themeColor3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
+                                                                <real key="value" value="1"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="dimensions">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="unSelectedColor">
+                                                                <color key="value" name="themeColor3"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
+                                                                <color key="value" name="themecolor4"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="200" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4Z-Di-wro" customClass="DropDown" customModule="iOSDropDown">
+                                                        <rect key="frame" x="20" y="80.5" width="212" height="38"/>
+                                                        <color key="textColor" name="themeColor3"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </textField>
+                                                </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="19" id="R8v-A0-do7"/>
-                                                    <constraint firstAttribute="width" constant="212" id="WhV-5P-rth"/>
+                                                    <constraint firstItem="pUN-4A-YZh" firstAttribute="height" secondItem="OoZ-jU-5nA" secondAttribute="height" id="0LG-vD-QFx"/>
+                                                    <constraint firstAttribute="height" constant="158" id="6VG-x0-nOa"/>
+                                                    <constraint firstItem="U5Z-Zm-MJQ" firstAttribute="leading" secondItem="fUm-dx-CYc" secondAttribute="leading" constant="20" id="HpQ-ev-xW7"/>
+                                                    <constraint firstItem="pUN-4A-YZh" firstAttribute="centerX" secondItem="OoZ-jU-5nA" secondAttribute="centerX" id="N9F-bU-hC4"/>
+                                                    <constraint firstItem="D4Z-Di-wro" firstAttribute="width" secondItem="OoZ-jU-5nA" secondAttribute="width" id="QWd-mz-dcF"/>
+                                                    <constraint firstItem="D4Z-Di-wro" firstAttribute="centerX" secondItem="OoZ-jU-5nA" secondAttribute="centerX" id="UDd-VM-Sks"/>
+                                                    <constraint firstItem="OoZ-jU-5nA" firstAttribute="top" secondItem="U5Z-Zm-MJQ" secondAttribute="bottom" constant="14.5" id="VUR-iH-UsI"/>
+                                                    <constraint firstItem="OoZ-jU-5nA" firstAttribute="height" secondItem="U5Z-Zm-MJQ" secondAttribute="height" id="Xmc-tP-ndD"/>
+                                                    <constraint firstItem="U5Z-Zm-MJQ" firstAttribute="top" secondItem="fUm-dx-CYc" secondAttribute="top" constant="20" id="ZZh-Ka-l6h"/>
+                                                    <constraint firstItem="D4Z-Di-wro" firstAttribute="height" secondItem="OoZ-jU-5nA" secondAttribute="height" multiplier="2" id="Zsb-sq-X8s"/>
+                                                    <constraint firstItem="OoZ-jU-5nA" firstAttribute="width" secondItem="U5Z-Zm-MJQ" secondAttribute="width" id="amh-wx-cuh"/>
+                                                    <constraint firstItem="pUN-4A-YZh" firstAttribute="top" secondItem="D4Z-Di-wro" secondAttribute="bottom" constant="16" id="kvX-Bg-OHq"/>
+                                                    <constraint firstItem="pUN-4A-YZh" firstAttribute="width" secondItem="OoZ-jU-5nA" secondAttribute="width" id="njk-yY-s6w"/>
+                                                    <constraint firstItem="D4Z-Di-wro" firstAttribute="top" secondItem="OoZ-jU-5nA" secondAttribute="bottom" constant="8" id="rD1-S6-3Xo"/>
+                                                    <constraint firstItem="OoZ-jU-5nA" firstAttribute="centerX" secondItem="U5Z-Zm-MJQ" secondAttribute="centerX" id="x9L-Kd-7X3"/>
                                                 </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Automatically approve all request"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                        <color key="value" name="themeColor3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="dimensions">
-                                                        <real key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="unSelectedColor">
-                                                        <color key="value" name="themeColor3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                                        <color key="value" name="themecolor4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
                                             </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pUN-4A-YZh" customClass="CheckBox" customModule="CheckBox">
-                                                <rect key="frame" x="22" y="533" width="212" height="19"/>
-                                                <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="212" id="17a-RL-93a"/>
-                                                    <constraint firstAttribute="height" constant="19" id="CW3-FZ-IGh"/>
-                                                </constraints>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="title" value="Have a Coupon"/>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="titleColor">
-                                                        <color key="value" name="themeColor3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="markWidth">
-                                                        <real key="value" value="1"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="number" keyPath="dimensions">
-                                                        <real key="value" value="15"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="unSelectedColor">
-                                                        <color key="value" name="themeColor3"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="selectedColor">
-                                                        <color key="value" name="themecolor4"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isChecked" value="NO"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many influencer collaboration?" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OoZ-jU-5nA">
-                                                <rect key="frame" x="22" y="452" width="212" height="19"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" name="themeColor3"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="200" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="D4Z-Di-wro" customClass="DropDown" customModule="iOSDropDown">
-                                                <rect key="frame" x="22" y="479" width="212" height="38"/>
-                                                <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                <textInputTraits key="textInputTraits"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </userDefinedRuntimeAttribute>
-                                                </userDefinedRuntimeAttributes>
-                                            </textField>
                                         </subviews>
                                         <color key="backgroundColor" name="ThemeColor1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="600" id="5ap-zH-ZGn"/>
                                             <constraint firstItem="Ako-6i-u2v" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="69R-G9-NBe"/>
-                                            <constraint firstItem="D4Z-Di-wro" firstAttribute="height" secondItem="OoZ-jU-5nA" secondAttribute="height" multiplier="2" id="6tx-89-kaD"/>
-                                            <constraint firstItem="pUN-4A-YZh" firstAttribute="height" secondItem="OoZ-jU-5nA" secondAttribute="height" id="7Dk-8n-ThZ"/>
-                                            <constraint firstItem="OoZ-jU-5nA" firstAttribute="centerX" secondItem="U5Z-Zm-MJQ" secondAttribute="centerX" id="8vh-Xq-0ic"/>
                                             <constraint firstItem="2o2-ye-Ap2" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="Ack-s7-TCo"/>
                                             <constraint firstItem="Iwg-gl-XSm" firstAttribute="top" secondItem="vQy-Or-mQF" secondAttribute="bottom" constant="15" id="Av3-Kh-9Ex"/>
-                                            <constraint firstItem="U5Z-Zm-MJQ" firstAttribute="top" secondItem="Msy-hg-uox" secondAttribute="bottom" constant="8" id="E3T-Xv-geb"/>
                                             <constraint firstItem="Ako-6i-u2v" firstAttribute="top" secondItem="nkl-zi-glJ" secondAttribute="top" constant="35" id="Hp4-R0-Sfo"/>
-                                            <constraint firstItem="OoZ-jU-5nA" firstAttribute="height" secondItem="U5Z-Zm-MJQ" secondAttribute="height" id="IDF-6D-xBi"/>
                                             <constraint firstItem="iql-Oa-uqN" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="JHv-fJ-bfY"/>
                                             <constraint firstItem="Ako-6i-u2v" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" id="MqD-5m-mth"/>
+                                            <constraint firstItem="fUm-dx-CYc" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" id="OlJ-p9-4XM"/>
                                             <constraint firstItem="vQy-Or-mQF" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" multiplier="0.7" id="Pzr-Qz-AxO"/>
                                             <constraint firstItem="Iwg-gl-XSm" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" multiplier="0.9" id="QDj-pf-EcF"/>
-                                            <constraint firstItem="D4Z-Di-wro" firstAttribute="top" secondItem="OoZ-jU-5nA" secondAttribute="bottom" constant="8" id="QK3-Li-Xb5"/>
                                             <constraint firstItem="vQy-Or-mQF" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="Qcf-hn-A16"/>
                                             <constraint firstItem="iql-Oa-uqN" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" multiplier="0.9" id="SwK-f1-WfU"/>
                                             <constraint firstItem="Msy-hg-uox" firstAttribute="top" secondItem="Iwg-gl-XSm" secondAttribute="bottom" constant="8.5" id="TTP-wv-Psh"/>
-                                            <constraint firstItem="pUN-4A-YZh" firstAttribute="top" secondItem="D4Z-Di-wro" secondAttribute="bottom" constant="16" id="VVe-uu-qAv"/>
-                                            <constraint firstItem="D4Z-Di-wro" firstAttribute="centerX" secondItem="OoZ-jU-5nA" secondAttribute="centerX" id="edb-XT-6WA"/>
-                                            <constraint firstItem="pUN-4A-YZh" firstAttribute="centerX" secondItem="OoZ-jU-5nA" secondAttribute="centerX" id="fWA-3j-s9N"/>
-                                            <constraint firstItem="pUN-4A-YZh" firstAttribute="width" secondItem="OoZ-jU-5nA" secondAttribute="width" id="gtg-9M-AMD"/>
                                             <constraint firstItem="vQy-Or-mQF" firstAttribute="top" secondItem="2o2-ye-Ap2" secondAttribute="bottom" id="lWM-5H-nZF"/>
-                                            <constraint firstItem="D4Z-Di-wro" firstAttribute="width" secondItem="OoZ-jU-5nA" secondAttribute="width" id="lYQ-SQ-XvH"/>
+                                            <constraint firstItem="fUm-dx-CYc" firstAttribute="top" secondItem="Msy-hg-uox" secondAttribute="bottom" constant="-205" id="m04-4c-Wcp"/>
                                             <constraint firstItem="Iwg-gl-XSm" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="oR7-7E-7fa"/>
                                             <constraint firstItem="2o2-ye-Ap2" firstAttribute="top" secondItem="Ako-6i-u2v" secondAttribute="bottom" constant="14" id="oW1-E7-ZkS"/>
-                                            <constraint firstItem="OoZ-jU-5nA" firstAttribute="top" secondItem="U5Z-Zm-MJQ" secondAttribute="bottom" constant="14.5" id="qZM-Xi-OYB"/>
+                                            <constraint firstItem="fUm-dx-CYc" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="soc-K4-WB5"/>
                                             <constraint firstItem="Msy-hg-uox" firstAttribute="centerX" secondItem="nkl-zi-glJ" secondAttribute="centerX" id="tFh-er-T2j"/>
-                                            <constraint firstItem="OoZ-jU-5nA" firstAttribute="width" secondItem="U5Z-Zm-MJQ" secondAttribute="width" id="txn-AS-7NN"/>
                                             <constraint firstItem="iql-Oa-uqN" firstAttribute="top" secondItem="Iwg-gl-XSm" secondAttribute="bottom" constant="8" id="vzH-RX-KRX"/>
-                                            <constraint firstItem="U5Z-Zm-MJQ" firstAttribute="centerX" secondItem="Msy-hg-uox" secondAttribute="centerX" multiplier="0.8" id="yOe-yR-481"/>
                                             <constraint firstItem="2o2-ye-Ap2" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" multiplier="0.7" id="yv5-w5-MLT"/>
                                             <constraint firstItem="Msy-hg-uox" firstAttribute="width" secondItem="nkl-zi-glJ" secondAttribute="width" multiplier="0.9" id="zkE-eq-jPk"/>
                                         </constraints>
@@ -1879,6 +1894,7 @@
                     <size key="freeformSize" width="320" height="600"/>
                     <connections>
                         <outlet property="autoapprv" destination="U5Z-Zm-MJQ" id="oQN-Sz-gIm"/>
+                        <outlet property="btmconstrainsts" destination="m04-4c-Wcp" id="3cT-Ap-ObY"/>
                         <outlet property="caLocal" destination="AdN-ot-H1f" id="Poy-Mo-H97"/>
                         <outlet property="caMacro" destination="SaA-xm-irp" id="hV6-1J-Tzy"/>
                         <outlet property="caMega" destination="Ug9-vP-gKK" id="8j8-zN-6FW"/>
@@ -1922,71 +1938,71 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSz-Ue-Wyc">
-                                                <rect key="frame" x="26.5" y="92.5" width="91.5" height="14"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="23" y="92.5" width="98.5" height="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3O-cg-vN5">
-                                                <rect key="frame" x="28.5" y="142" width="46.5" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="28" y="142" width="47.5" height="15"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-LU-lOU">
-                                                <rect key="frame" x="29.5" y="192" width="65" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="28" y="192.5" width="68.5" height="15"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product images" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-eU-GV3">
-                                                <rect key="frame" x="27.5" y="456" width="96" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="27.5" y="460" width="96" height="15"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Images" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVR-hg-ojM">
-                                                <rect key="frame" x="27.5" y="506" width="96" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="27.5" y="510.5" width="96" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEy-cg-lv4">
-                                                <rect key="frame" x="27.5" y="560.5" width="96" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="27.5" y="580" width="96" height="15"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone no: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcr-3o-MTk">
-                                                <rect key="frame" x="27.5" y="615" width="96" height="14.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="27.5" y="635" width="96" height="15"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Website (optional)" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGn-6V-Isw">
-                                                <rect key="frame" x="27.5" y="654.5" width="96" height="29"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="27.5" y="654.5" width="96" height="29.5"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are u offering to influencers ?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LE7-Yy-Gry">
-                                                <rect key="frame" x="28.5" y="246.5" width="80" height="43"/>
+                                                <rect key="frame" x="28.5" y="247.5" width="80" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="wNz-Oa-iVX"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What they will have to do? " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-XT-4i5">
-                                                <rect key="frame" x="28.5" y="309.5" width="80" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="28.5" y="311.5" width="80" height="44"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What they will won't have to do? " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-zW-F3p">
-                                                <rect key="frame" x="28.5" y="377.5" width="80" height="43"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <rect key="frame" x="28.5" y="380.5" width="80" height="44"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -1996,7 +2012,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="F6N-D9-wQe"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2010,7 +2026,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="14th street, Near malu beach" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="San-8G-eMb">
                                                 <rect key="frame" x="119" y="129.5" width="178" height="40"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2025,7 +2041,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="abc@mail.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="07z-93-d63">
                                                 <rect key="frame" x="119" y="549.5" width="178" height="40"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2039,7 +2055,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="11 132832 2323" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eXH-BP-ffP">
                                                 <rect key="frame" x="119" y="599.5" width="178" height="40"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2053,7 +2069,7 @@
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="www.abc.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xt5-Cu-GII">
                                                 <rect key="frame" x="119" y="649.5" width="178" height="40"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2067,7 +2083,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-NW-epG">
                                                 <rect key="frame" x="119" y="179.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lEZ-4L-lrl" id="UOG-yr-VcZ"/>
@@ -2076,7 +2092,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j28-En-HIz">
                                                 <rect key="frame" x="119" y="241.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lEZ-4L-lrl" id="RrF-bn-HVD"/>
@@ -2085,7 +2101,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KMX-da-QoP">
                                                 <rect key="frame" x="119" y="303.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lEZ-4L-lrl" id="tM2-q4-ifD"/>
@@ -2094,7 +2110,7 @@
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dUY-Ru-JOb">
                                                 <rect key="frame" x="119" y="365.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="lEZ-4L-lrl" id="bjq-EU-WeF"/>
@@ -2335,7 +2351,7 @@
                                                     <constraint firstAttribute="height" constant="89" id="2bN-d6-vwb"/>
                                                 </constraints>
                                                 <string key="text">How your influencer should be to work with you? Note that the more higher are the requirements, the more the collaborations are difficult to find (you'll be able to set the min, followers amount at the final step)</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
@@ -2344,7 +2360,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engagement Rate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0yB-LN-OUD">
                                                         <rect key="frame" x="0.0" y="0.0" width="115" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2363,7 +2379,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MPe-pM-Zhr">
                                                         <rect key="frame" x="0.0" y="0.0" width="57.5" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2381,7 +2397,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gender" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsm-tp-mfn">
                                                         <rect key="frame" x="0.0" y="0.0" width="101" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2399,7 +2415,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers Limit" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTy-XW-QRg">
                                                         <rect key="frame" x="0.0" y="0.0" width="101" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2417,7 +2433,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Experience level" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gVg-h3-8n7">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2435,7 +2451,7 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Min Reputation rating" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jn0-fx-SXF">
                                                         <rect key="frame" x="0.0" y="0.0" width="144" height="60"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -2455,7 +2471,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="WWq-nQ-fcK"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2473,12 +2489,13 @@
                                                     <constraint firstAttribute="height" constant="45" id="WBU-Ob-Ehf"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="1 to 10" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PtZ-j8-Yh1">
@@ -2488,7 +2505,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="p7r-6d-TV9"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2506,7 +2523,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="zTh-4j-Udf"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2524,7 +2541,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="T7d-fV-Vrk"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2539,7 +2556,7 @@
                                                     <constraint firstAttribute="width" constant="101" id="yAb-25-GVX"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -2554,12 +2571,13 @@
                                                     <constraint firstAttribute="width" constant="101" id="wAQ-AL-6Ym"/>
                                                 </constraints>
                                                 <color key="textColor" name="themeColor3"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="13"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                         <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isSearchEnable" value="NO"/>
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                         </subviews>
@@ -2774,23 +2792,23 @@
                                                 <rect key="frame" x="0.0" y="327" width="320" height="223"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbf-hz-sSv">
-                                                        <rect key="frame" x="32" y="30" width="256" height="57.5"/>
+                                                        <rect key="frame" x="32" y="30" width="256" height="59"/>
                                                         <string key="text">Accept to value request s from influencers asking for a budget to collaborate, you will able to accept, decline and negotiate the budget.  </string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the type of post/stroy you want to be published byinfluencers ( can be multiple )" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="223-as-gK0">
-                                                        <rect key="frame" x="32" y="108.5" width="256" height="27"/>
+                                                        <rect key="frame" x="32" y="110" width="256" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="2Qh-Li-F2o"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="11"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◘ Content Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-KX-yOa">
-                                                        <rect key="frame" x="8" y="87.5" width="304" height="21"/>
+                                                        <rect key="frame" x="8" y="89" width="304" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="GvZ-SW-fvm"/>
                                                         </constraints>
@@ -2834,7 +2852,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2p-sq-QZb" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="33" y="155.5" width="100" height="35"/>
+                                                        <rect key="frame" x="33" y="157" width="100" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="E7m-IQ-E3F"/>
@@ -2861,7 +2879,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzB-PN-M6F" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="213" y="155.5" width="50" height="35"/>
+                                                        <rect key="frame" x="213" y="157" width="50" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="MwX-rf-c2w"/>
@@ -2888,7 +2906,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fx-Lh-gkj" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="34" y="190.5" width="90" height="35"/>
+                                                        <rect key="frame" x="34" y="192" width="90" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="90" id="9zJ-f8-X4u"/>
@@ -2915,7 +2933,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayb-4S-Vcx" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="143" y="155.5" width="60" height="35"/>
+                                                        <rect key="frame" x="143" y="157" width="60" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="8dR-3I-weB"/>
@@ -3157,7 +3175,7 @@
                                                             <constraint firstAttribute="height" constant="35" id="jQ2-bM-fkA"/>
                                                         </constraints>
                                                         <color key="textColor" name="themeColor3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -3168,7 +3186,7 @@
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="2015-04-04" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Enz-eh-bu4">
                                                         <rect key="frame" x="158" y="31" width="125" height="35"/>
                                                         <color key="textColor" name="themeColor3"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="11"/>
                                                         <textInputTraits key="textInputTraits"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
@@ -3483,7 +3501,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Request List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W8C-iF-ewy">
                                 <rect key="frame" x="0.0" y="70.5" width="320" height="34"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3507,36 +3525,36 @@
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Followers Number" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vg2-ik-Ncb">
                                 <rect key="frame" x="139" y="134.5" width="42" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Eng. Rate" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h1y-N9-Nh1">
                                 <rect key="frame" x="181" y="134.5" width="25" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QSv-bN-blL">
                                 <rect key="frame" x="206" y="134.5" width="37" height="34"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Approve" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35G-Ry-rzt">
-                                <rect key="frame" x="196" y="104.5" width="56" height="10"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
+                                <rect key="frame" x="197" y="104.5" width="54" height="10"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Request" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIM-Om-xL8">
-                                <rect key="frame" x="194.5" y="129.5" width="59" height="10"/>
-                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="8"/>
+                                <rect key="frame" x="195.5" y="129.5" width="57" height="10"/>
+                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-z7-duL">
-                                <rect key="frame" x="260" y="94" width="51" height="31"/>
+                                <rect key="frame" x="259" y="94" width="51" height="31"/>
                                 <color key="onTintColor" name="ThemeColor1"/>
                                 <color key="thumbTintColor" name="themecolor4"/>
                                 <connections>
@@ -3544,7 +3562,7 @@
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ujD-5c-DgN">
-                                <rect key="frame" x="260" y="119" width="51" height="31"/>
+                                <rect key="frame" x="259" y="119" width="51" height="31"/>
                                 <color key="onTintColor" name="ThemeColor1"/>
                                 <color key="thumbTintColor" name="themecolor4"/>
                                 <connections>
@@ -3625,7 +3643,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaborations Management" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lU3-Ac-X4W">
                                 <rect key="frame" x="0.0" y="65.5" width="320" height="45.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -3893,7 +3911,7 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="HLH-4g-1gL">
                                         <rect key="frame" x="-1.5" y="0.0" width="108.5" height="34"/>
                                         <color key="backgroundColor" name="themecolor4"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
                                         <state key="normal">
                                             <string key="title">PENDING 
 PRODUCTS</string>
@@ -3905,7 +3923,7 @@ PRODUCTS</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="pdh-AV-66U">
                                         <rect key="frame" x="111" y="0.0" width="109" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
                                         <state key="normal">
                                             <string key="title">COLLABORATIONS
 HISTORY</string>
@@ -3917,7 +3935,7 @@ HISTORY</string>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="cyJ-6l-bQN">
                                         <rect key="frame" x="224" y="0.0" width="109" height="34"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="11"/>
                                         <state key="normal">
                                             <string key="title">FIND 
 INFLUENCER</string>
@@ -3954,7 +3972,7 @@ INFLUENCER</string>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" id="gzR-vT-1S5"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -4086,13 +4104,13 @@ INFLUENCER</string>
                                                         <state key="normal" image="usr_profile"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHm-vp-MKv">
-                                                        <rect key="frame" x="0.0" y="119.5" width="320" height="14.5"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                                        <rect key="frame" x="0.0" y="119.5" width="320" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TUb-av-Jqy" customClass="CosmosView" customModule="Cosmos">
-                                                        <rect key="frame" x="100" y="134" width="120" height="20"/>
+                                                        <rect key="frame" x="100" y="137" width="120" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="l0J-N0-D5C"/>
                                                             <constraint firstAttribute="height" constant="20" id="uPt-Qk-C7d"/>
@@ -4104,24 +4122,24 @@ INFLUENCER</string>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating 0/5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YWl-de-Di8">
-                                                        <rect key="frame" x="100" y="154" width="120" height="20"/>
+                                                        <rect key="frame" x="100" y="157" width="120" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="120" id="40R-vr-A46"/>
                                                             <constraint firstAttribute="height" constant="20" id="Jw4-KZ-1rV"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Engagement Rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ltO-WE-OwC">
-                                                        <rect key="frame" x="17" y="66" width="85" height="12"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <rect key="frame" x="-7.5" y="64.5" width="109.5" height="15"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0%" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XeO-Mx-ihU">
-                                                        <rect key="frame" x="47" y="76" width="25" height="20"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <rect key="frame" x="37" y="77.5" width="20.5" height="17.5"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4131,7 +4149,7 @@ INFLUENCER</string>
                                                             <constraint firstAttribute="width" constant="64" id="Cia-iN-OZj"/>
                                                             <constraint firstAttribute="height" constant="20" id="XTN-fc-tuo"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4141,7 +4159,7 @@ INFLUENCER</string>
                                                             <constraint firstAttribute="height" constant="20" id="388-nH-y05"/>
                                                             <constraint firstAttribute="width" constant="64" id="Q7Y-fF-1YQ"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4193,7 +4211,7 @@ INFLUENCER</string>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zlW-O3-RkU">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Payments">
                                                             <color key="titleColor" name="themeColor2"/>
                                                         </state>
@@ -4213,7 +4231,7 @@ INFLUENCER</string>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgG-GM-oOY">
                                                         <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Settings">
                                                             <color key="titleColor" name="themeColor2"/>
                                                         </state>
@@ -4246,7 +4264,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFF-5X-xHL">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="10"/>
                                                                 <state key="normal" title="Share">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4273,7 +4291,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45j-9Y-ohT">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                                 <state key="normal" title="Top 50 CollaborUppers">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4303,7 +4321,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sg6-mb-W9Z">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                                 <state key="normal" title="My Reviews">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4333,7 +4351,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Twz-3k-EMe">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                                 <state key="normal" title="Improve your instagram">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4360,7 +4378,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZeT-Ue-Of4">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                                 <state key="normal" title="Help">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4390,7 +4408,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZ1-6H-rwy">
                                                                 <rect key="frame" x="0.0" y="0.0" width="259" height="34"/>
-                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                                 <state key="normal" title="Logout">
                                                                     <color key="titleColor" name="themeColor2"/>
                                                                 </state>
@@ -4443,20 +4461,26 @@ INFLUENCER</string>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lk5-Al-SR9">
                                                         <rect key="frame" x="0.0" y="0.0" width="153.5" height="27"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Notificationds">
                                                             <color key="titleColor" name="themeColor2"/>
                                                         </state>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E17-pT-xbi">
                                                         <rect key="frame" x="0.0" y="27" width="153.5" height="27"/>
-                                                        <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <state key="normal" title="Delete Account">
                                                             <color key="titleColor" name="themeColor2"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="deleteAccount:" destination="DHi-RZ-kKx" eventType="touchUpInside" id="JOa-7V-eRu"/>
+                                                        </connections>
                                                     </button>
                                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kIR-UJ-rbh">
                                                         <rect key="frame" x="207" y="-2" width="51" height="31"/>
+                                                        <connections>
+                                                            <action selector="notifySwitch:" destination="DHi-RZ-kKx" eventType="valueChanged" id="guW-yL-ef3"/>
+                                                        </connections>
                                                     </switch>
                                                 </subviews>
                                                 <constraints>
@@ -4591,7 +4615,7 @@ INFLUENCER</string>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDO-1l-sEg" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
                                                 <rect key="frame" x="48" y="72.5" width="224" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per influencer">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -4611,7 +4635,7 @@ INFLUENCER</string>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lm-01-pfT" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
                                                 <rect key="frame" x="48" y="99.5" width="224" height="27"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per campaign">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -4630,30 +4654,30 @@ INFLUENCER</string>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qey-f6-AvZ">
-                                                <rect key="frame" x="16" y="141.5" width="288" height="57.5"/>
+                                                <rect key="frame" x="16" y="141.5" width="288" height="73.5"/>
                                                 <string key="text">We will keep the money until the collaboration iscompleted so you will be sure that the job is well done. If the influencer won't complete successfully the collaboraton then you will be refunded.</string>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CY2-NI-fVw" userLabel="pay-per-influencer">
-                                                <rect key="frame" x="16" y="207" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="223" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00I-ch-ged">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="13"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCM-nE-yp4">
-                                                        <rect key="frame" x="0.0" y="16" width="288" height="86"/>
+                                                        <rect key="frame" x="0.0" y="16" width="288" height="88"/>
                                                         <string key="text">Choose the influencer you want to collaborate with, your choice can be multiple. The price is per influencer and only for approved collaborations, you will be able to approve each influencer request or you can also choose to automatically approve all the request:  </string>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTI-s3-h0N" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="0.0" y="110" width="129.5" height="19"/>
+                                                        <rect key="frame" x="0.0" y="112" width="129.5" height="17"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Local (1k-15k) 1,99€"/>
@@ -4799,14 +4823,14 @@ INFLUENCER</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-pG-8C0" userLabel="pay-per-campaign">
-                                                <rect key="frame" x="16" y="207.5" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="223.5" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCd-wr-MmZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="16" id="Tr8-RG-IKl"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="13"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4815,7 +4839,7 @@ INFLUENCER</string>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="29" id="7fP-Np-2lm"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -4967,7 +4991,7 @@ INFLUENCER</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaW-RG-ImE">
-                                                <rect key="frame" x="0.0" y="210.5" width="320" height="173.5"/>
+                                                <rect key="frame" x="0.0" y="226.5" width="320" height="173.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-ML-AfZ" customClass="CheckBox" customModule="CheckBox">
                                                         <rect key="frame" x="20" y="20" width="212" height="19"/>
@@ -5838,7 +5862,7 @@ INFLUENCER</string>
                                                 <fragment content="Apply">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
+                                                        <font key="NSFont" size="14" name="Montserrat-ExtraLight"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
@@ -6044,7 +6068,7 @@ INFLUENCER</string>
                                         <fragment content="Rate to influencer">
                                             <attributes>
                                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                <font key="NSFont" size="14" name="Montserrat-ExtraLight"/>
                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                             </attributes>
                                         </fragment>
@@ -6154,7 +6178,7 @@ INFLUENCER</string>
                                                 <fragment content="Done">
                                                     <attributes>
                                                         <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <font key="NSFont" metaFont="system" size="14"/>
+                                                        <font key="NSFont" size="14" name="Montserrat-ExtraLight"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -6238,7 +6262,7 @@ INFLUENCER</string>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Campaign List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="slF-jQ-rh5">
                                 <rect key="frame" x="0.0" y="65.5" width="320" height="45.5"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="themecolor4"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -6321,12 +6345,12 @@ INFLUENCER</string>
                                         <rect key="frame" x="32" y="109.5" width="256" height="329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2wF-mL-7aH">
-                                                <rect key="frame" x="0.0" y="112" width="256" height="14"/>
+                                                <rect key="frame" x="0.0" y="112" width="256" height="15"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Name">
                                                         <attributes>
                                                             <color key="NSColor" name="themeColor2"/>
-                                                            <font key="NSFont" metaFont="cellTitle"/>
+                                                            <font key="NSFont" size="12" name="Montserrat-ExtraLight"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -6334,12 +6358,12 @@ INFLUENCER</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ktp-pu-9MS">
-                                                <rect key="frame" x="27" y="136" width="48.5" height="14"/>
+                                                <rect key="frame" x="25.5" y="137" width="51" height="15"/>
                                                 <attributedString key="attributedText">
                                                     <fragment content="Location">
                                                         <attributes>
                                                             <color key="NSColor" name="themeColor2"/>
-                                                            <font key="NSFont" metaFont="cellTitle"/>
+                                                            <font key="NSFont" size="12" name="Montserrat-ExtraLight"/>
                                                             <paragraphStyle key="NSParagraphStyle" alignment="right" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                         </attributes>
                                                     </fragment>
@@ -6347,7 +6371,7 @@ INFLUENCER</string>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Mjx-fD-2rS">
-                                                <rect key="frame" x="78.5" y="129" width="163" height="52"/>
+                                                <rect key="frame" x="78.5" y="130" width="163" height="52"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="AZ0-W1-ydW"/>
@@ -6390,7 +6414,7 @@ INFLUENCER</string>
                                                         <fragment content="Product Sent">
                                                             <attributes>
                                                                 <color key="NSColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <font key="NSFont" metaFont="system" size="14"/>
+                                                                <font key="NSFont" size="14" name="Montserrat-ExtraLight"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -6660,6 +6684,64 @@ INFLUENCER</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G5G-E9-NMF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-3870" y="2749"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="j9K-F0-sgb">
+            <objects>
+                <viewController id="b9P-W2-5PQ" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="P2N-ty-zYa">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collaboration Report" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JX0-9T-ePa">
+                                <rect key="frame" x="0.0" y="25" width="320" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="IE3-Yr-vdH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
+                                <color key="textColor" name="themecolor4"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTv-rs-eph">
+                                <rect key="frame" x="32" y="70" width="256" height="201"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Num Of Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP9-NZ-ahW">
+                                        <rect key="frame" x="62" y="12" width="132" height="15"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" name="ThemeColor1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Total Num Of Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kn-nU-MlH">
+                                        <rect key="frame" x="62" y="27" width="132" height="15"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
+                                        <color key="textColor" name="ThemeColor1"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="themeColor2"/>
+                                <constraints>
+                                    <constraint firstItem="PP9-NZ-ahW" firstAttribute="centerX" secondItem="VTv-rs-eph" secondAttribute="centerX" id="71I-Ve-8gj"/>
+                                    <constraint firstItem="PP9-NZ-ahW" firstAttribute="top" secondItem="VTv-rs-eph" secondAttribute="top" constant="12" id="8EE-g0-tFy"/>
+                                    <constraint firstAttribute="height" constant="201" id="Zx2-TX-Kkk"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="VTv-rs-eph" firstAttribute="top" secondItem="JX0-9T-ePa" secondAttribute="bottom" constant="12" id="1Rw-Bi-uPc"/>
+                            <constraint firstItem="JX0-9T-ePa" firstAttribute="width" secondItem="P2N-ty-zYa" secondAttribute="width" id="3Xs-Pj-bF0"/>
+                            <constraint firstItem="VTv-rs-eph" firstAttribute="centerX" secondItem="5yU-hy-Btb" secondAttribute="centerX" id="6zk-aC-FpN"/>
+                            <constraint firstItem="JX0-9T-ePa" firstAttribute="top" secondItem="5yU-hy-Btb" secondAttribute="top" constant="5" id="dpr-Di-eKr"/>
+                            <constraint firstItem="VTv-rs-eph" firstAttribute="width" secondItem="P2N-ty-zYa" secondAttribute="width" multiplier="0.8" id="jiA-fA-nsV"/>
+                            <constraint firstItem="JX0-9T-ePa" firstAttribute="centerX" secondItem="5yU-hy-Btb" secondAttribute="centerX" id="xXO-hc-drc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5yU-hy-Btb"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T2X-KC-obo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-4072.5" y="3508.0985915492956"/>
         </scene>
     </scenes>
     <resources>

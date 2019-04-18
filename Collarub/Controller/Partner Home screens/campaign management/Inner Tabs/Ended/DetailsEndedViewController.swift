@@ -11,6 +11,7 @@ import SDWebImage
 import ImageSlideshow
 import CoreData
 import Alamofire
+import SwiftyJSON
 
 
 class DetailsEndedViewController: UIViewController {
@@ -48,16 +49,20 @@ class DetailsEndedViewController: UIViewController {
     
     @IBOutlet weak var ACCPTBUGT: UIButton!
     
+    var url = FixVariable()
     
     var detailsArray : LocalModel?
     var onlineArray : OnlineModel?
     var statArray : StatusTableModel?
     var modelCustom : customAnnoation?
     var favArray : FavListModel?
+    var str : [String]!
+    var strImg = String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("arry :: \(str)")
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap))
         imgSlider.addGestureRecognizer(gestureRecognizer)
         
@@ -90,6 +95,8 @@ class DetailsEndedViewController: UIViewController {
         //     UINavigationBar.appearance().tintColor = .white
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         // Do any additional setup after loading the view.
+        
+      
     }
     
     
@@ -149,37 +156,8 @@ class DetailsEndedViewController: UIViewController {
             rating.text = (detailsArray?.rating)!
             gender.text = (detailsArray?.user_gender)!
             exp_level.text = "\((detailsArray?.min_user_exp_level)!)/10"
-            
-            
-            //collaborationTerm.text = detailsArray?.collaborattionTerms
-            //numOfFollowers.text = detailsArray?.selectedNumOfFollowers
+        
         }
-            //        else if (onlineArray != nil){
-            //            image1.sd_setImage(with: URL(string: (onlineArray?.productImage[0])!))
-            //            image2.sd_setImage(with: URL(string: (onlineArray?.productImage[1])!))
-            //            image3.sd_setImage(with: URL(string: (onlineArray?.productImage[2])!))
-            //            advertisementTitle.text = onlineArray?.title
-            //            companyName.text = onlineArray?.companyName
-            //            location.text = onlineArray?.location
-            //            date.text = onlineArray?.date
-            //            advertisementDescription.text = onlineArray?.description
-            //            collaborationTerm.text = onlineArray?.collaborattionTerms
-            //            numOfFollowers.text = onlineArray?.selectedNumOfFollowers
-            //        }
-        //        else if (favArray != nil) {
-        //
-        //            image1.sd_setImage(with: URL(string: (favArray?.productImage[0])!))
-        //            image2.sd_setImage(with: URL(string: (favArray?.productImage[1])!))
-        //            image3.sd_setImage(with: URL(string: (favArray?.productImage[2])!))
-        //            advertisementTitle.text = favArray?.title
-        //            companyName.text = favArray?.companyName
-        //            location.text = favArray?.location
-        //            date.text = favArray?.date
-        //            advertisementDescription.text = favArray?.description
-        //            collaborationTerm.text = favArray?.collaborattionTerms
-        //            numOfFollowers.text = favArray?.selectedNumOfFollowers
-        //
-        //        }
         
     }
     
@@ -193,4 +171,91 @@ class DetailsEndedViewController: UIViewController {
         present(vc, animated: true, completion: nil)
         
     }
+    
+    @IBAction func duplicateCampaign(_ sender: UIButton) {
+        
+        print("duplicate :: \(detailsArray?.partner_id)")
+        
+        let parameters : [String:String] = [
+            "collaborationType": (detailsArray?.collaborationType)!,
+            "category_name": (detailsArray?.category_name)!,
+            "type": (detailsArray?.type)!,
+            "accep_budget_check": (detailsArray?.Accep_budget_check)!,
+            "budget_value": (detailsArray?.budget_value)!,
+            "discount_field": (detailsArray?.discount_field)!,
+            "content_type": (detailsArray?.content_type)!,
+            "number_stories": (detailsArray?.number_stories)!,
+            "number_post": (detailsArray?.number_post)!,
+            "date": (detailsArray?.date)!,
+            "expiry_date": (detailsArray?.expiry_date)!,
+            "engagement_rate": (detailsArray?.engagement_rate)!,
+            "required_city": (detailsArray?.required_city)!,
+            "required_region": (detailsArray?.required_region)!,
+            "min_user_rating": (detailsArray?.rating)!,
+            "min_user_exp_level": (detailsArray?.min_user_exp_level)!,
+            "user_gender": (detailsArray?.user_gender)!,
+            "descriptions": (detailsArray?.description)!,
+            "what_u_offer": (detailsArray?.what_u_offer)!,
+            "wht_thy_hav_to_do": (detailsArray?.wht_thy_hav_to_do)!,
+            "wht_wont_hav_to": (detailsArray?.wht_wont_hav_to)!,
+            "e_mail": (detailsArray?.e_mail)!,
+            "phone": (detailsArray?.phone)!,
+            "payment_method": str[0],
+            "payment_conditions": "\(str[1])_\(str[2])_\(str[3])_\(str[4])_\(str[5])",
+            "followers_limit": (detailsArray?.selectedNumOfFollowers)!,
+            "collaboration_name": (detailsArray?.title)!,
+            "address": (detailsArray?.location)!,
+            "partner_id": (detailsArray?.partner_id)!,
+            "lat" : "\((detailsArray?.lat)!)",
+            "longg" : "\((detailsArray?.long)!)",
+            "collab_limit" : str[8],
+            "auto_approve" : str[7],
+            "coupon_status" : str[6]
+        ]
+        let url = "\(self.url.weburl)/imageUpload.php"
+        print("Parameters :: \(parameters)")
+        Alamofire.request("\(self.url.weburl)/insert_campaign_data.php", method: .get, parameters: parameters).responseJSON { (response) in
+            
+            let dataJSON : JSON = JSON(response.result.value!)
+            if response.result.isSuccess {
+                print("idies \(dataJSON["id"].stringValue)")
+                
+                //fetch images
+                let para : [String:String] = ["id":(self.detailsArray?.collaboration_id)!]
+                Alamofire.request("\(self.url.weburl)/collabrubImages.php", method: .get, parameters: para).responseJSON { (response) in
+                    
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    if response.result.isSuccess {
+                        
+                        print("images :: \(dataJSON1.count)")
+                        
+                        for item in 0..<dataJSON1.count {
+                            print(dataJSON1[item]["img_url"].stringValue)
+                            
+                            Alamofire.request("\(self.url.weburl)/repeatCampaignImages.php?col_id=\(dataJSON["id"].stringValue)&imageurl=\(dataJSON1[item]["img_url"].stringValue)", method: .get).responseJSON { (response) in
+                                
+                                let dataJSON2 : JSON = JSON(response.result.value!)
+                                if response.result.isSuccess {
+                                    
+                                    print(dataJSON2)
+                                }
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+                let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "partnerTab") as! PartnerTabBarController
+                
+                mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+                self.present(mainTabController, animated: true, completion: nil)
+                
+            }
+            
+            
+        }
+    }
+    
 }

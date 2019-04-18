@@ -3799,7 +3799,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ppZ-6d-iuM">
-                                <rect key="frame" x="0.0" y="323.5" width="320" height="244.5"/>
+                                <rect key="frame" x="0.0" y="353" width="320" height="215"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="4Kb-2o-EYx">
@@ -3817,10 +3817,10 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brj-sz-EVk">
-                                <rect key="frame" x="0.0" y="19.5" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="49" width="320" height="284"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chC-Wd-3jZ" customClass="CalendarView" customModule="KDCalendar">
-                                        <rect key="frame" x="16" y="-14" width="288" height="312.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="288" height="284"/>
                                         <color key="backgroundColor" name="themeColor2"/>
                                     </view>
                                 </subviews>
@@ -3828,12 +3828,12 @@
                                 <constraints>
                                     <constraint firstItem="chC-Wd-3jZ" firstAttribute="centerY" secondItem="brj-sz-EVk" secondAttribute="centerY" id="PJc-fB-ZZH"/>
                                     <constraint firstItem="chC-Wd-3jZ" firstAttribute="width" secondItem="brj-sz-EVk" secondAttribute="width" multiplier="0.9" id="QSj-1g-dkZ"/>
-                                    <constraint firstItem="chC-Wd-3jZ" firstAttribute="height" secondItem="brj-sz-EVk" secondAttribute="height" multiplier="1.1" id="nnm-iq-5CV"/>
+                                    <constraint firstItem="chC-Wd-3jZ" firstAttribute="height" secondItem="brj-sz-EVk" secondAttribute="height" id="nnm-iq-5CV"/>
                                     <constraint firstItem="chC-Wd-3jZ" firstAttribute="centerX" secondItem="brj-sz-EVk" secondAttribute="centerX" id="vYA-w4-1Fm"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xyx-KU-nJs">
-                                <rect key="frame" x="21" y="-26" width="35" height="25"/>
+                                <rect key="frame" x="21" y="17.5" width="35" height="25"/>
                                 <color key="backgroundColor" name="themeColor3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="E06-RQ-3BH"/>
@@ -3861,7 +3861,7 @@
                             <constraint firstItem="ppZ-6d-iuM" firstAttribute="bottom" secondItem="EGI-5J-0QE" secondAttribute="bottom" id="CuT-qx-BvF"/>
                             <constraint firstItem="Xyx-KU-nJs" firstAttribute="leading" secondItem="EGI-5J-0QE" secondAttribute="leading" constant="21" id="Dub-Xf-05d"/>
                             <constraint firstItem="brj-sz-EVk" firstAttribute="height" secondItem="hNo-B2-Zsk" secondAttribute="height" multiplier="0.5" id="Gge-FW-wDG"/>
-                            <constraint firstItem="brj-sz-EVk" firstAttribute="centerY" secondItem="EGI-5J-0QE" secondAttribute="centerY" multiplier="0.55" id="JsI-b4-5li"/>
+                            <constraint firstItem="brj-sz-EVk" firstAttribute="centerY" secondItem="EGI-5J-0QE" secondAttribute="centerY" multiplier="0.65" id="JsI-b4-5li"/>
                             <constraint firstItem="ppZ-6d-iuM" firstAttribute="leading" secondItem="EGI-5J-0QE" secondAttribute="leading" id="KVq-rt-TbM"/>
                             <constraint firstItem="ppZ-6d-iuM" firstAttribute="top" secondItem="brj-sz-EVk" secondAttribute="bottom" constant="20" id="Kp0-QJ-I3G"/>
                             <constraint firstItem="ppZ-6d-iuM" firstAttribute="trailing" secondItem="EGI-5J-0QE" secondAttribute="trailing" id="Nup-yR-JPj"/>
@@ -3996,7 +3996,7 @@ INFLUENCER</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YFc-Qb-no4">
-                                <rect key="frame" x="0.0" y="323.5" width="320" height="244.5"/>
+                                <rect key="frame" x="0.0" y="353" width="320" height="215"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="Mqx-f2-UfD">
@@ -4014,10 +4014,10 @@ INFLUENCER</string>
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bLn-wR-T5T">
-                                <rect key="frame" x="0.0" y="19.5" width="320" height="284"/>
+                                <rect key="frame" x="0.0" y="49" width="320" height="284"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xwe-Of-hCy" customClass="CalendarView" customModule="KDCalendar">
-                                        <rect key="frame" x="16" y="-14" width="288" height="312.5"/>
+                                        <rect key="frame" x="16" y="0.0" width="288" height="284"/>
                                         <color key="backgroundColor" name="themeColor2"/>
                                     </view>
                                 </subviews>
@@ -4026,7 +4026,7 @@ INFLUENCER</string>
                                     <constraint firstItem="xwe-Of-hCy" firstAttribute="centerY" secondItem="bLn-wR-T5T" secondAttribute="centerY" id="6PM-Uz-VTW"/>
                                     <constraint firstItem="xwe-Of-hCy" firstAttribute="width" secondItem="bLn-wR-T5T" secondAttribute="width" multiplier="0.9" id="8DV-VD-bEY"/>
                                     <constraint firstItem="xwe-Of-hCy" firstAttribute="centerX" secondItem="bLn-wR-T5T" secondAttribute="centerX" id="CCZ-r2-2d5"/>
-                                    <constraint firstItem="xwe-Of-hCy" firstAttribute="height" secondItem="bLn-wR-T5T" secondAttribute="height" multiplier="1.1" id="YC4-hh-Lez"/>
+                                    <constraint firstItem="xwe-Of-hCy" firstAttribute="height" secondItem="bLn-wR-T5T" secondAttribute="height" id="YC4-hh-Lez"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4036,7 +4036,7 @@ INFLUENCER</string>
                             <constraint firstItem="QEZ-tu-Vwt" firstAttribute="bottom" secondItem="YFc-Qb-no4" secondAttribute="bottom" id="D1b-9R-41L"/>
                             <constraint firstItem="QEZ-tu-Vwt" firstAttribute="trailing" secondItem="YFc-Qb-no4" secondAttribute="trailing" id="DX6-hl-906"/>
                             <constraint firstItem="bLn-wR-T5T" firstAttribute="centerX" secondItem="QEZ-tu-Vwt" secondAttribute="centerX" id="Ry0-wF-TxQ"/>
-                            <constraint firstItem="bLn-wR-T5T" firstAttribute="centerY" secondItem="QEZ-tu-Vwt" secondAttribute="centerY" multiplier="0.55" id="X1s-ZH-T9C"/>
+                            <constraint firstItem="bLn-wR-T5T" firstAttribute="centerY" secondItem="QEZ-tu-Vwt" secondAttribute="centerY" multiplier="0.65" id="X1s-ZH-T9C"/>
                             <constraint firstItem="YFc-Qb-no4" firstAttribute="top" secondItem="bLn-wR-T5T" secondAttribute="bottom" constant="20" id="XXE-kb-xow"/>
                             <constraint firstItem="YFc-Qb-no4" firstAttribute="leading" secondItem="QEZ-tu-Vwt" secondAttribute="leading" id="iMp-U8-pds"/>
                             <constraint firstItem="bLn-wR-T5T" firstAttribute="height" secondItem="gkf-c1-IUV" secondAttribute="height" multiplier="0.5" id="qle-bu-VWy"/>
@@ -5154,6 +5154,8 @@ INFLUENCER</string>
                     </view>
                     <size key="freeformSize" width="320" height="650"/>
                     <connections>
+                        <outlet property="autoApprvCheck" destination="hmY-ML-AfZ" id="Pcl-io-W0k"/>
+                        <outlet property="blockCheck" destination="ef3-cp-cqR" id="fPl-tl-ar9"/>
                         <outlet property="bottomView" destination="qaW-RG-ImE" id="qK0-SK-9C0"/>
                         <outlet property="btmconstraints" destination="HVw-i9-9gM" id="3S2-pz-qEr"/>
                         <outlet property="caLocal" destination="uFI-x8-GIg" id="mfE-cP-HOv"/>
@@ -5614,7 +5616,7 @@ INFLUENCER</string>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ESt-wq-aYP">
-                                                        <rect key="frame" x="179" y="0.0" width="141" height="68"/>
+                                                        <rect key="frame" x="164" y="0.0" width="141" height="68"/>
                                                         <color key="backgroundColor" name="ThemeColor1"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="141" id="w51-YQ-2C7"/>
@@ -5628,13 +5630,16 @@ INFLUENCER</string>
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="duplicateCampaign:" destination="Scr-HC-lfR" eventType="touchUpInside" id="0Lm-16-BG8"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <color key="backgroundColor" name="ThemeColor1"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="68" id="F9i-BL-K2F"/>
                                                     <constraint firstAttribute="width" constant="320" id="WiG-rz-PBi"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ESt-wq-aYP" secondAttribute="trailing" id="Za0-ek-6o9"/>
+                                                    <constraint firstAttribute="trailing" secondItem="ESt-wq-aYP" secondAttribute="trailing" constant="15" id="Za0-ek-6o9"/>
                                                     <constraint firstItem="fT1-yf-Dja" firstAttribute="top" secondItem="Oi7-eD-6Ge" secondAttribute="top" id="Zsm-x9-jO1"/>
                                                     <constraint firstItem="ESt-wq-aYP" firstAttribute="top" secondItem="Oi7-eD-6Ge" secondAttribute="top" id="ZvS-8g-maX"/>
                                                     <constraint firstAttribute="bottom" secondItem="fT1-yf-Dja" secondAttribute="bottom" id="hTi-Ao-sCb"/>

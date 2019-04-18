@@ -31,6 +31,7 @@ pod 'ImageSlideshow', '~> 1.6'
 pod 'ImageSlideshow/SDWebImage'
 pod 'TTGSnackbar'
 pod 'ImageSlideshow/Alamofire'
+pod 'PayPal-iOS-SDK'
 
 target 'CollarubTests' do
     inherit! :search_paths

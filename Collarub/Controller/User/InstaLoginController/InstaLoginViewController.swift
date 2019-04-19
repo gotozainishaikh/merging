@@ -133,16 +133,17 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                     // data model
                     
                     let param : [String:String] = [
-                        "access_token": authToken,
+                        "userTokenNo": authToken,
                         "userName" : dataJSON["data"]["username"].stringValue,
                         "full_name" : dataJSON["data"]["full_name"].stringValue,
                         "followers" : String(followers),
                         "image_url" : dataJSON["data"]["profile_picture"].stringValue,
+                        "media" : dataJSON["data"]["counts"]["media"].stringValue,
                         "followedBy" : dataJSON["data"]["counts"]["follows"].stringValue
                         
                     ]
                     
-                   
+                   //print("media=\(authToken)")
                     
                     Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/User_Registration.php", method: .get, parameters: param).responseJSON { response in
                         

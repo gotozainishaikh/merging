@@ -12,9 +12,10 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 
-class MainScreenViewController: UIViewController, PageViewControllerDelegate{
+class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLayout, PageViewControllerDelegate{
     
-    
+    var estimateWidth=130
+    var cellMarginSize=5
    
     var ending_soon_chk :String = "0"
     
@@ -65,7 +66,7 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
     
     @IBOutlet weak var localAnnouncement: UIButton!
     
-    var searchBtnArray = ["Food","Sport","Fashion","Beauty & HelthCare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
+    var searchBtnArray = ["Food","Sport","Fashion","Beauty","Events","Travel","Digital","Parenting","Home","Automotive","Pets"]
     
     var searchBtnImgArray = ["food.png","sports.png","fashion.png","beauty.png","events.png","travel.png","digital.png","parenting.png","home1.png","driving.png","pets.png"]
     
@@ -81,6 +82,8 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
        
         searchBtnCollectionView.showsHorizontalScrollIndicator = false
         uiNavegationImage()
+        //Setup GridView
+        self.setupGridView()
         
         let button2 = UIBarButtonItem(image: UIImage(named: "bell-icon"), style: .plain, target: self, action: #selector(actionFavList))
         
@@ -174,10 +177,21 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
         
     }
     
+    func setupGridView(){
+        
+        let flow = searchBtnCollectionView?.collectionViewLayout as! UICollectionViewFlowLayout
+        flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
+        flow.minimumLineSpacing = CGFloat(self.cellMarginSize)
+        
+    }
+    
     
 }
 
 extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+    
+    
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return searchBtnImgArray.count
     }
@@ -189,6 +203,27 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
         return cell
         
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.calculateWidth()
+        
+        return CGSize(width: width-3, height: 30)
+    }
+    
+    
+    func calculateWidth() -> CGFloat{
+        
+        let screenSize=UIScreen.main.bounds
+        //let screenWidth=screenSize.width
+        let screenWidth=self.searchBtnCollectionView.frame.size.width
+        let estimatedWidth = CGFloat(screenWidth)/3
+        let cellCount = floor(CGFloat(self.view.frame.size.width / estimatedWidth))
+        
+        let margin = CGFloat(cellMarginSize * 2)
+        let width = (self.view.frame.size.width - CGFloat(cellMarginSize) * (cellCount - 1) - margin) / cellCount
+        
+        return width
     }
     
   

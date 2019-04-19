@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 import ImageSlideshow
 import CoreData
+import TTGSnackbar
 
 class LocalDetailsViewController: UIViewController {
 
@@ -120,8 +121,16 @@ class LocalDetailsViewController: UIViewController {
                     
                     print("PAID\(json["Status"].stringValue)")
                     
-                    
+                    let vc = self.story.instantiateViewController(withIdentifier: "mainScr") as! MainScreenViewController
+                   
+                    self.addChild(vc)
+                    self.view.addSubview(vc.view)
+                    vc.didMove(toParent: self)
+                    let snackbar = TTGSnackbar(message: json["Status"].stringValue, duration: .short)
+                    snackbar.show()
                 }
+                
+               
                 
             }
         }

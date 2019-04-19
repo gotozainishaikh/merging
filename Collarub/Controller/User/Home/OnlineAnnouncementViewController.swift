@@ -607,7 +607,7 @@ class OnlineAnnouncementViewController: UIViewController{
         print("name=\(name)")
         print("type=\(type)")
         
-        
+        print("paramsabc=\(parameters)")
         
         Alamofire.request("\(self.url.weburl)/search_by_category_name.php", method: .get, parameters: parameters).responseJSON { (response) in
             

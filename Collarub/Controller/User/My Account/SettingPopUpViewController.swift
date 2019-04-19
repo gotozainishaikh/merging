@@ -10,6 +10,9 @@ import UIKit
 
 class SettingPopUpViewController: UIViewController {
 
+    
+    let story = UIStoryboard(name: "User", bundle: nil)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,6 +44,17 @@ class SettingPopUpViewController: UIViewController {
         });
     }
 
+    
+    @IBAction func push_not_btn(_ sender: Any) {
+    
+        let vc = story.instantiateViewController(withIdentifier: "PushNotificationPopUp")
+        
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    
+    }
+    
     @IBAction func cancelBtn(_ sender: UIButton) {
         
         removeAnimate()

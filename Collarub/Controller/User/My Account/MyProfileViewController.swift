@@ -88,7 +88,7 @@ class MyProfileViewController: UIViewController {
                 self.user_type_img.image = UIImage(named: "free")
             }
             else{
-                self.user_type_img.image = UIImage(named: "gold")
+                self.user_type_img.image = UIImage(named: "2")
             }
         }
         

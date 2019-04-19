@@ -1,4 +1,4 @@
-platform :ios, '10.0'
+platform :ios, '10.2'
 
 target 'Collarub' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
@@ -32,7 +32,7 @@ pod 'ImageSlideshow/SDWebImage'
 pod 'TTGSnackbar'
 pod 'ImageSlideshow/Alamofire'
 pod 'PayPal-iOS-SDK'
-
+pod 'OneSignal', '>= 2.6.2', '< 3.0'
 target 'CollarubTests' do
     inherit! :search_paths
     # Pods for testing
@@ -43,4 +43,10 @@ target 'CollarubTests' do
     # Pods for testing
   end
 
+  target 'OneSignalNotificationServiceExtension' do
+    pod 'OneSignal'
+  end
+  
 end
+
+

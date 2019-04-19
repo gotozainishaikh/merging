@@ -32,6 +32,7 @@ pod 'ImageSlideshow/SDWebImage'
 pod 'TTGSnackbar'
 pod 'ImageSlideshow/Alamofire'
 pod 'PayPal-iOS-SDK'
+pod 'RSSelectionMenu'
 
 target 'CollarubTests' do
     inherit! :search_paths

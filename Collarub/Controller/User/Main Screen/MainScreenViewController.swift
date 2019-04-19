@@ -67,7 +67,7 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
     
     var searchBtnArray = ["Food","Sport","Fashion","Beauty & HelthCare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
     
-    var searchBtnImgArray = ["Food","Sport","Fashion","Beauty & HelthCare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
+    var searchBtnImgArray = ["food.png","sports.png","fashion.png","beauty.png","events.png","travel.png","digital.png","parenting.png","home1.png","driving.png","pets.png"]
     
     
     var pageViewController:PageViewController?
@@ -179,22 +179,19 @@ class MainScreenViewController: UIViewController, PageViewControllerDelegate{
 
 extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchBtnArray.count
+        return searchBtnImgArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = searchBtnCollectionView.dequeueReusableCell(withReuseIdentifier: "searchBtn", for: indexPath) as! CollectionViewCell
         
-        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
-//        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row], image: <#T##UIImage#>)
+//        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
+        cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
         return cell
         
     }
     
-    func setFilterTabBtn(item:String){
-        
-        //tabBtnItems.setTitle(item, for: .normal)
-    }
+  
 //
 //    func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
 //

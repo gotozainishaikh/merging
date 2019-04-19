@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7D6E32D61B6EC448DF6C98D155BCDA67"
+               BlueprintIdentifier = "86E02AFDE1477B4ABAD60058B3C9FF6A"
                BuildableName = "RZTransitions.framework"
                BlueprintName = "RZTransitions"
                ReferencedContainer = "container:Pods.xcodeproj">

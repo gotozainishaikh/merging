@@ -77,6 +77,8 @@
 		045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BEAB22254C62400650E74 /* CampaignEditViewController.swift */; };
 		04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */; };
 		04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */; };
+		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
+		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
 		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
 		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
@@ -216,6 +218,8 @@
 		045BEAB22254C62400650E74 /* CampaignEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignEditViewController.swift; sourceTree = "<group>"; };
 		04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50CollaborupersViewController.swift; sourceTree = "<group>"; };
 		04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerReviewViewController.swift; sourceTree = "<group>"; };
+		04DD77452269CD130099DADC /* ReportViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewViewController.swift; sourceTree = "<group>"; };
+		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F33D592268940F00B42D68 /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
@@ -686,6 +690,7 @@
 				3A18187E222ADD60004F798B /* PartnerContainerViewController.swift */,
 				04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */,
 				04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */,
+				04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */,
 			);
 			path = "Partner Profile controllers";
 			sourceTree = "<group>";
@@ -812,6 +817,7 @@
 				3ADE6EC12236AD5300C11E90 /* EndedCampaignViewController.swift */,
 				04385ED6225920D000753749 /* step5endedViewController.swift */,
 				0453E06D225F4FB1006DBD95 /* DetailsEndedViewController.swift */,
+				04DD77452269CD130099DADC /* ReportViewViewController.swift */,
 			);
 			path = Ended;
 			sourceTree = "<group>";
@@ -1248,6 +1254,7 @@
 				"${BUILT_PRODUCTS_DIR}/KDCalendar/KDCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupWindow/PopupWindow.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/RZTransitions/RZTransitions.framework",
 				"${BUILT_PRODUCTS_DIR}/RadioButton/RadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1279,6 +1286,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupWindow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSSelectionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RZTransitions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1376,6 +1384,7 @@
 				0453E08F2260F77A006DBD95 /* ChoiceSelectionViewController.swift in Sources */,
 				0453E06A225E555A006DBD95 /* HistoryReviewPopUpViewController.swift in Sources */,
 				04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */,
+				04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */,
 				3AD0B9D522134B9700E2A72B /* StepViewController.swift in Sources */,
 				3AF65C6A21E104D5009C82C0 /* OnlineModel.swift in Sources */,
 				3A93B57D21FB4D2E007867C8 /* DataModel.xcdatamodeld in Sources */,
@@ -1384,6 +1393,7 @@
 				3A42D7BF2218307B00C9B00E /* Step5ViewController.swift in Sources */,
 				0453E0C62260FAF3006DBD95 /* UserSelectionViewController.swift in Sources */,
 				3ADEF1CE221328BE00ABCE71 /* PartnerManualRegisterViewController.swift in Sources */,
+				04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */,
 				0453E0B52260F8C0006DBD95 /* MainScreenViewController.swift in Sources */,
 				89EE6BD421DE28EA00EF6CCF /* AppDelegate.swift in Sources */,
 				0453E0C922610045006DBD95 /* AgendaModel.swift in Sources */,

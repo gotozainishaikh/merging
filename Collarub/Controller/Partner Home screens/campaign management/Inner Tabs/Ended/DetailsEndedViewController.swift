@@ -387,5 +387,13 @@ class DetailsEndedViewController: UIViewController,PayPalPaymentDelegate, Flipsi
             //self.showSuccess()
         })
     }
+    @IBAction func report(_ sender: Any) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "report") as! ReportViewViewController
+        
+        vc.col_id = (self.detailsArray?.collaboration_id)!
+        present(vc, animated: true, completion: nil)
+    }
+    
     
 }

@@ -32,6 +32,7 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     
     
     func setLikeMe(isFav:[String]){
+        
         print("setLike=\(col_id)")
         let hasFav = isFav.contains(col_id)
         print("hasFav=\(hasFav)")

@@ -8,8 +8,14 @@
 
 import UIKit
 import TextFieldEffects
+import Alamofire
+import SwiftyJSON
+import SVProgressHUD
+
 class ContactUsViewController: UIViewController {
 
+    var url = FixVariable()
+    
     @IBOutlet weak var bottomView: UIView!
     @IBOutlet weak var questionView: UIView!
     @IBOutlet weak var midView: UIView!
@@ -46,6 +52,31 @@ class ContactUsViewController: UIViewController {
         print("\(name)")
         print("\(email)")
         print("\(message)")
+            
+            let parameters : [String:String] = [
+                
+                "name": name,
+                "email" : email,
+                "phone_no" : message
+                
+            ]
+            
+            Alamofire.request("\(self.url.weburl)/contact_us.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
+                    
+                    if dataJSON1["status"] == "Success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                }
+                
+            }
             
         }else {
         

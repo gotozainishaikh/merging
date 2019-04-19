@@ -12,147 +12,157 @@
 		<key>AlamofireImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>CardIO.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
 		<key>CheckBox.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>4</integer>
 		</dict>
 		<key>Cosmos.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>5</integer>
 		</dict>
 		<key>DLRadioButton.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>6</integer>
 		</dict>
 		<key>FaveButton.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 		<key>GooglePlacesSearchController.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>7</integer>
+			<integer>8</integer>
 		</dict>
 		<key>IQKeyboardManager.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>10</integer>
+			<integer>11</integer>
 		</dict>
 		<key>ImageSlideshow.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
 		</dict>
 		<key>JKSteppedProgressBar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>12</integer>
 		</dict>
 		<key>KDCalendar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>12</integer>
-		</dict>
-		<key>Pods-Collarub.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
 			<integer>13</integer>
 		</dict>
-		<key>Pods-CollarubTests.xcscheme_^#shared#^_</key>
+		<key>PayPal-iOS-SDK.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>14</integer>
 		</dict>
-		<key>Pods-CollarubUITests.xcscheme_^#shared#^_</key>
+		<key>Pods-Collarub.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>15</integer>
 		</dict>
-		<key>PopupWindow.xcscheme_^#shared#^_</key>
+		<key>Pods-CollarubTests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>16</integer>
 		</dict>
-		<key>Presentr.xcscheme_^#shared#^_</key>
+		<key>Pods-CollarubUITests.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>17</integer>
 		</dict>
-		<key>RZTransitions.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>19</integer>
-		</dict>
-		<key>RadioButton.xcscheme_^#shared#^_</key>
+		<key>PopupWindow.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>18</integer>
 		</dict>
-		<key>SDWebImage.xcscheme_^#shared#^_</key>
+		<key>Presentr.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>20</integer>
+			<integer>19</integer>
 		</dict>
-		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>23</integer>
-		</dict>
-		<key>SideMenu.xcscheme_^#shared#^_</key>
+		<key>RZTransitions.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>21</integer>
 		</dict>
-		<key>SnapKit.xcscheme_^#shared#^_</key>
+		<key>RadioButton.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>20</integer>
+		</dict>
+		<key>SDWebImage.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
-		<key>SwiftPopup.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>24</integer>
-		</dict>
-		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
+		<key>SVProgressHUD.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>25</integer>
 		</dict>
-		<key>SwipeCellKit.xcscheme_^#shared#^_</key>
+		<key>SideMenu.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>23</integer>
+		</dict>
+		<key>SnapKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>24</integer>
+		</dict>
+		<key>SwiftPopup.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>26</integer>
 		</dict>
-		<key>TTGSnackbar.xcscheme_^#shared#^_</key>
-		<dict>
-			<key>orderHint</key>
-			<integer>28</integer>
-		</dict>
-		<key>TextFieldEffects.xcscheme_^#shared#^_</key>
+		<key>SwiftyJSON.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>27</integer>
 		</dict>
-		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme_^#shared#^_</key>
+		<key>SwipeCellKit.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>28</integer>
+		</dict>
+		<key>TTGSnackbar.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>30</integer>
 		</dict>
-		<key>XLPagerTabStrip.xcscheme_^#shared#^_</key>
+		<key>TextFieldEffects.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>29</integer>
 		</dict>
+		<key>XLPagerTabStrip-XLPagerTabStrip.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>32</integer>
+		</dict>
+		<key>XLPagerTabStrip.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>31</integer>
+		</dict>
 		<key>iOSDropDown.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>9</integer>
+			<integer>10</integer>
 		</dict>
 	</dict>
 </dict>

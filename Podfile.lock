@@ -31,6 +31,7 @@ PODS:
   - PopupWindow (0.2.18)
   - Presentr (1.9)
   - RadioButton (1.0)
+  - RSSelectionMenu (6.0)
   - RZTransitions (1.2.1)
   - SDWebImage (4.4.6):
     - SDWebImage/Core (= 4.4.6)
@@ -60,12 +61,12 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JKSteppedProgressBar
   - KDCalendar (~> 1.6.5)
-  - OneSignal
   - OneSignal (< 3.0, >= 2.6.2)
   - PayPal-iOS-SDK
   - PopupWindow (from `https://github.com/shin8484/PopupWindow.git`)
   - Presentr
   - RadioButton
+  - RSSelectionMenu
   - RZTransitions
   - SDWebImage
   - SideMenu
@@ -96,6 +97,7 @@ SPEC REPOS:
     - PayPal-iOS-SDK
     - Presentr
     - RadioButton
+    - RSSelectionMenu
     - RZTransitions
     - SDWebImage
     - SideMenu
@@ -136,6 +138,7 @@ SPEC CHECKSUMS:
   PopupWindow: 399ebf82ef9ead240aa467c0b35c5adbe71b96ac
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   RadioButton: 7ef053baf6ff0e7f9e777016c28e9ba4e330edba
+  RSSelectionMenu: 165136011efa3b4141249de88d2c7346be2780c6
   RZTransitions: 0e0013fda6989ee84dc5e44dca79fd539e1a975a
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SideMenu: 1dcaabce84538c53325c287f7fe62999379a641c
@@ -148,6 +151,6 @@ SPEC CHECKSUMS:
   TTGSnackbar: 2cf4e7b6ffbe5cddf248a73f3ee952b71bee8ea3
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 5374fda6d4da83151207237f0c9f36f6662ba836
+PODFILE CHECKSUM: 061c9c5602bfc40206523e07690189f0aef20c35
 
 COCOAPODS: 1.6.0

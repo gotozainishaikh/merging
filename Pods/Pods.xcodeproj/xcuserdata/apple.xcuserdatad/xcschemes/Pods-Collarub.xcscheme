@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "565EF9FE86112D573B19EA921A655209"
+               BlueprintIdentifier = "83E959BEEC7851775902C7929EB08087"
                BuildableName = "Pods_Collarub.framework"
                BlueprintName = "Pods-Collarub"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "565EF9FE86112D573B19EA921A655209"
+            BlueprintIdentifier = "83E959BEEC7851775902C7929EB08087"
             BuildableName = "Pods_Collarub.framework"
             BlueprintName = "Pods-Collarub"
             ReferencedContainer = "container:Pods.xcodeproj">

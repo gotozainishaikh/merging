@@ -23,6 +23,7 @@ class Step3ViewController: UIViewController {
     var follwrLimt : String = ""
     let url = FixVariable()
     
+    @IBOutlet weak var sector: DropDown!
     var stat_id : String = ""
     var con_id = [Int]()
     @IBOutlet weak var engagementRateDrop: DropDown!
@@ -47,6 +48,8 @@ class Step3ViewController: UIViewController {
         
         engagementRateDrop.optionArray = ["10%", "20%", "50%","100%"]
         
+        sector.optionArray = ["Sports", "Foods", "Fashion","Beauty & Health","Events","Travel","Digital & Devices","Perenting","Home & Decor","Automotive","Pets"]
+        
         
 //        citDrop.optionArray = ["London", "Canada", "Sydney"]
 //        citDrop.optionIds = [1,4,3]
@@ -55,6 +58,8 @@ class Step3ViewController: UIViewController {
         
         // MARK - Drop Down selecting
         engagementRateDrop.arrowSize = 10
+        
+        
         engagementRateDrop.didSelect{(selectedText , index , id) in
                       //  print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
             self.engagementRt = selectedText

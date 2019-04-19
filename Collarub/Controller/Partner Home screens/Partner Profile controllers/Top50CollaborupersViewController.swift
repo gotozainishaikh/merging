@@ -21,6 +21,7 @@ class Top50CollaborupersViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "hire"), object: nil)
         tableView.register(UINib(nibName: "FindInfluencerTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
         
        tableView.allowsSelection = false
@@ -32,6 +33,26 @@ class Top50CollaborupersViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         retrieveData()
+    }
+    
+    @objc func loadList(req_notification: NSNotification) {
+        
+        var req_id : String = ""
+        
+        if let dict = req_notification.userInfo as NSDictionary? {
+            if let id = dict["req_id"] as? String{
+                print("id="+id)
+                // print("hosp_id="+hosp_id!)
+                req_id = id
+                
+                let vc = storyboard?.instantiateViewController(withIdentifier: "campaignList") as! HireUserViewController
+                vc.user_id = id
+                present(vc, animated: true, completion: nil)
+            }
+            
+            
+            
+        }
     }
     
     func retrieveData() {
@@ -88,8 +109,10 @@ extension Top50CollaborupersViewController : UITableViewDelegate, UITableViewDat
         cell.usrImg.layer.cornerRadius = cell.usrImg.frame.size.width/2
         cell.usrImg.clipsToBounds = true
         
-        cell.hireBtn.isHidden = true
-        
+        //cell.hireBtn.isHidden = true
+        cell.hireBtn.layer.borderColor = UIColor(named: "ThemeColor1")!.cgColor
+        cell.hireBtn.layer.cornerRadius = 4
+        cell.hireBtn.layer.borderWidth = 0.5
         return cell
     }
     

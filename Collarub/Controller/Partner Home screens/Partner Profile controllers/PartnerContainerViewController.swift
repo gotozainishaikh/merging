@@ -13,6 +13,7 @@ import SDWebImage
 import Alamofire
 import SwiftyJSON
 import SVProgressHUD
+import SafariServices
 
 class PartnerContainerViewController: UIViewController {
 
@@ -114,6 +115,9 @@ class PartnerContainerViewController: UIViewController {
     
     @IBAction func helpBtn(_ sender: Any) {
         
+        let story = UIStoryboard(name: "User", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "goto")
+        present(vc, animated: true, completion: nil)
         
     }
     func uiNavegationImage(){
@@ -150,7 +154,7 @@ class PartnerContainerViewController: UIViewController {
         
         if self.settingOptionView.isHidden {
             self.settingOptionView.isHidden = false
-            self.topConstraints.constant = 60.0
+            self.topConstraints.constant = 70.0
             uparrowimg.image = UIImage(named: "angle-arrow-down")
         }else {
             self.settingOptionView.isHidden = true
@@ -296,5 +300,167 @@ class PartnerContainerViewController: UIViewController {
         }
         
     }
+    
+    @IBAction func improveInsta(_ sender: Any) {
+        
+        guard let url = URL(string: "https://influencerskings.com/aziende") else { return }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+        
+        
+    }
+   
+    
+    @IBAction func shareBtn(_ sender: UIButton) {
+        let textToShare = "Swift is awesome!  Check out this website about it!"
+        
+        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            activityVC.popoverPresentationController?.sourceView = sender
+            self.present(activityVC, animated: true, completion: nil)
+    }
+    }
+    
+    
+    @IBAction func company_details(_ sender: UIButton) {
+        
+        
+        let parameters : [String:String] = [
+            
+            "partner_id": p_id
+            
+            ]
+        
+        Alamofire.request("\(self.url.weburl)/check_company_details.php", method: .get, parameters: parameters).responseJSON { (response) in
+            SVProgressHUD.show(withStatus: "Loading")
+            if response.result.isSuccess {
+                SVProgressHUD.dismiss()
+                let dataJSON1 : JSON = JSON(response.result.value!)
+                
+                if dataJSON1["partner_id"] != "" {
+                    
+                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "companydetails") as! CompnayDetailsViewController
+                    vc.json = dataJSON1
+                    self.present(vc, animated: true, completion: nil)
+                    
+                    
+                    
+                    
+                    
+                    
+                }else {
+                    
+                    
+                    var textField = UITextField()
+                    var textField1 = UITextField()
+                    var textField2 = UITextField()
+                    var textField3 = UITextField()
+                    var textField4 = UITextField()
+                    var textField5 = UITextField()
+                    var textField6 = UITextField()
+                    
+                    let alertController = UIAlertController(title: "Add your company details", message: "", preferredStyle: .alert)
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter Company Name"
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter Address"
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter City"
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter zip code"
+                        textField.keyboardType = .numberPad
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter country"
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter Vat Number"
+                         textField.keyboardType = .numberPad
+                    }
+                    alertController.addTextField { (textField : UITextField!) -> Void in
+                        textField.placeholder = "Enter Invoice Email"
+                         textField.keyboardType = .emailAddress
+                    }
+                    let saveAction = UIAlertAction(title: "Save", style: .default, handler: { alert -> Void in
+                        let companyNme = alertController.textFields![0] as UITextField
+                        let address = alertController.textFields![1] as UITextField
+                        let city = alertController.textFields![2] as UITextField
+                        let zipCode = alertController.textFields![3] as UITextField
+                        let country = alertController.textFields![4] as UITextField
+                        let vatNumber = alertController.textFields![5] as UITextField
+                        let invoiceEmail = alertController.textFields![6] as UITextField
+                        
+                        if (companyNme.text == "" || address.text == "" || city.text == "" || zipCode.text == "" || country.text == "" || vatNumber.text == "" || invoiceEmail.text == "" ) {
+                            
+                            let empAlert = UIAlertController(title: "Warning", message: "Please enter complete details of your company", preferredStyle: .alert)
+                            
+                            let okay = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
+                                empAlert.dismiss(animated: true, completion: nil)
+                                self.present(alertController, animated: true, completion: nil)
+                            })
+                            
+                            empAlert.addAction(okay)
+                            
+                            self.present(empAlert, animated: true, completion: nil)
+                            
+                        }else {
+                            
+                            let parameters : [String:String] = [
+                                
+                                "partner_id": self.p_id,
+                                "companyNme": companyNme.text!,
+                                "address": address.text!,
+                                "city": city.text!,
+                                "zipCode": zipCode.text!,
+                                "country": country.text!,
+                                "vatNumber": vatNumber.text!,
+                                "invoiceEmail": invoiceEmail.text!
+                                
+                                ]
+                            
+                            print("dass :: \(parameters)")
+                            
+                            Alamofire.request("\(self.url.weburl)/insert_partner_company_details.php", method: .get, parameters: parameters).responseJSON { (response) in
+                                SVProgressHUD.show(withStatus: "Loading")
+                                if response.result.isSuccess {
+                                    SVProgressHUD.dismiss()
+                                    let dataJSON5 : JSON = JSON(response.result.value!)
+                                    SVProgressHUD.showSuccess(withStatus: "Saved")
+                                    let vc = self.storyboard?.instantiateViewController(withIdentifier: "companydetails") as! CompnayDetailsViewController
+                                    vc.json = dataJSON5
+                                    self.present(vc, animated: true, completion: nil)
+                                  
+                                    
+                                }
+                            }
+                            
+                            
+                            
+                            
+                        }
+                        
+                    })
+                    let cancelAction = UIAlertAction(title: "Cancel", style: .default, handler: { (action : UIAlertAction!) -> Void in })
+                    
+                    
+                    alertController.addAction(saveAction)
+                    alertController.addAction(cancelAction)
+                    
+                    self.present(alertController, animated: true, completion: nil)
+                }
+            }
+            
+        }
+        
+        
+       
+    }
+        
+    
     
 }

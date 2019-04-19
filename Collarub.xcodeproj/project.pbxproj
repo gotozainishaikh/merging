@@ -77,6 +77,8 @@
 		045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BEAB22254C62400650E74 /* CampaignEditViewController.swift */; };
 		04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */; };
 		04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */; };
+		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
+		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
 		18112662226A247A00282136 /* AddressPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18112661226A247A00282136 /* AddressPopUp.swift */; };
 		186139EC2269D712004B799E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139EB2269D712004B799E /* NotificationService.swift */; };
@@ -85,7 +87,6 @@
 		18613A01226A1F97004B799E /* PushNotificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18613A00226A1F97004B799E /* PushNotificationPopUp.swift */; };
 		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
 		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
-		2AEEF26B23028F76331165ED /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */; };
 		3A01164A2209D74200F9AFCF /* StatusTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0116492209D74200F9AFCF /* StatusTableModel.swift */; };
 		3A02F1C22229608200C75A02 /* PartnerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */; };
 		3A045CD32215BCA30095626E /* Step1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A045CD22215BCA30095626E /* Step1ViewController.swift */; };
@@ -148,6 +149,7 @@
 		90BEAAE521979F2B5AFCF7C3 /* Pods_CollarubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44F24AFEFED2F875514C52A /* Pods_CollarubUITests.framework */; };
 		D3C4397B94E96E54168C1DB1 /* Pods_CollarubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001459DF7918B60F51D38258 /* Pods_CollarubTests.framework */; };
 		D93B35B453AA46BB1C433997 /* Pods_Collarub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2761B80AAD7D04A637D1E78 /* Pods_Collarub.framework */; };
+		F0AF300DECB2A20F210549DC /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -243,11 +245,12 @@
 		045BEAB22254C62400650E74 /* CampaignEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignEditViewController.swift; sourceTree = "<group>"; };
 		04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50CollaborupersViewController.swift; sourceTree = "<group>"; };
 		04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerReviewViewController.swift; sourceTree = "<group>"; };
+		04DD77452269CD130099DADC /* ReportViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewViewController.swift; sourceTree = "<group>"; };
+		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F33D592268940F00B42D68 /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
-		11336A51CEF18F9B9B447E3D /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		18112661226A247A00282136 /* AddressPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPopUp.swift; sourceTree = "<group>"; };
 		186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		186139EB2269D712004B799E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -258,6 +261,7 @@
 		18DD23312264970F00202A0B /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		18DD23342264991600202A0B /* AlamofireApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireApi.swift; sourceTree = "<group>"; };
 		1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collarub_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		3A0116492209D74200F9AFCF /* StatusTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableModel.swift; sourceTree = "<group>"; };
 		3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHomeViewController.swift; sourceTree = "<group>"; };
 		3A045CD22215BCA30095626E /* Step1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1ViewController.swift; sourceTree = "<group>"; };
@@ -325,7 +329,6 @@
 		3AF765AF22172715008C5A40 /* SSRadioButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSRadioButton.swift; sourceTree = "<group>"; };
 		3AF765B122172756008C5A40 /* SSRadioButtonsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSRadioButtonsController.swift; sourceTree = "<group>"; };
 		4962774724D895B5FB27892A /* Pods-CollarubUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubUITests/Pods-CollarubUITests.release.xcconfig"; sourceTree = "<group>"; };
-		55F7FA6D436C430EE9CD1241 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		6FEA9F122FBD605E7D8933C9 /* Pods-CollarubTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FD661336AC5F45DF6E79931 /* Pods-Collarub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.debug.xcconfig"; sourceTree = "<group>"; };
 		81B7DBF500C63F6A1D5A4446 /* Pods-CollarubUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubUITests/Pods-CollarubUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -346,6 +349,7 @@
 		89EE86A221E3932F003ADD8C /* LocalAnnouncementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalAnnouncementCollectionViewCell.swift; path = Collarub/Model/AnnoncementCell/LocalAnnouncementCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		89F5C1FC21FF3B2600FA96D7 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		89F5C20421FF3B9D00FA96D7 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
+		8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		C2761B80AAD7D04A637D1E78 /* Pods_Collarub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collarub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44F24AFEFED2F875514C52A /* Pods_CollarubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollarubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -355,7 +359,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AEEF26B23028F76331165ED /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */,
+				F0AF300DECB2A20F210549DC /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -775,6 +779,7 @@
 				3A18187E222ADD60004F798B /* PartnerContainerViewController.swift */,
 				04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */,
 				04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */,
+				04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */,
 			);
 			path = "Partner Profile controllers";
 			sourceTree = "<group>";
@@ -901,6 +906,7 @@
 				3ADE6EC12236AD5300C11E90 /* EndedCampaignViewController.swift */,
 				04385ED6225920D000753749 /* step5endedViewController.swift */,
 				0453E06D225F4FB1006DBD95 /* DetailsEndedViewController.swift */,
+				04DD77452269CD130099DADC /* ReportViewViewController.swift */,
 			);
 			path = Ended;
 			sourceTree = "<group>";
@@ -1126,8 +1132,8 @@
 				0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */,
 				81B7DBF500C63F6A1D5A4446 /* Pods-CollarubUITests.debug.xcconfig */,
 				4962774724D895B5FB27892A /* Pods-CollarubUITests.release.xcconfig */,
-				55F7FA6D436C430EE9CD1241 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */,
-				11336A51CEF18F9B9B447E3D /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */,
+				8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1150,7 +1156,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 186139F32269D712004B799E /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
 			buildPhases = (
-				E13E23E99F0EB15D77C54A5B /* [CP] Check Pods Manifest.lock */,
+				52425C84F2E102214EEF742D /* [CP] Check Pods Manifest.lock */,
 				186139E52269D712004B799E /* Sources */,
 				186139E62269D712004B799E /* Frameworks */,
 				186139E72269D712004B799E /* Resources */,
@@ -1382,6 +1388,7 @@
 				"${BUILT_PRODUCTS_DIR}/KDCalendar/KDCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupWindow/PopupWindow.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/RSSelectionMenu/RSSelectionMenu.framework",
 				"${BUILT_PRODUCTS_DIR}/RZTransitions/RZTransitions.framework",
 				"${BUILT_PRODUCTS_DIR}/RadioButton/RadioButton.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
@@ -1413,6 +1420,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KDCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupWindow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RSSelectionMenu.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RZTransitions.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RadioButton.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
@@ -1450,25 +1458,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BB044CD9899265131A27B9AC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CollarubTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E13E23E99F0EB15D77C54A5B /* [CP] Check Pods Manifest.lock */ = {
+		52425C84F2E102214EEF742D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1484,6 +1474,24 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-Collarub-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB044CD9899265131A27B9AC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CollarubTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1540,6 +1548,7 @@
 				0453E08F2260F77A006DBD95 /* ChoiceSelectionViewController.swift in Sources */,
 				0453E06A225E555A006DBD95 /* HistoryReviewPopUpViewController.swift in Sources */,
 				04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */,
+				04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */,
 				3AD0B9D522134B9700E2A72B /* StepViewController.swift in Sources */,
 				3AF65C6A21E104D5009C82C0 /* OnlineModel.swift in Sources */,
 				3A93B57D21FB4D2E007867C8 /* DataModel.xcdatamodeld in Sources */,
@@ -1548,6 +1557,7 @@
 				3A42D7BF2218307B00C9B00E /* Step5ViewController.swift in Sources */,
 				0453E0C62260FAF3006DBD95 /* UserSelectionViewController.swift in Sources */,
 				3ADEF1CE221328BE00ABCE71 /* PartnerManualRegisterViewController.swift in Sources */,
+				04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */,
 				0453E0B52260F8C0006DBD95 /* MainScreenViewController.swift in Sources */,
 				89EE6BD421DE28EA00EF6CCF /* AppDelegate.swift in Sources */,
 				0453E0C922610045006DBD95 /* AgendaModel.swift in Sources */,
@@ -1660,7 +1670,7 @@
 /* Begin XCBuildConfiguration section */
 		186139F12269D712004B799E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 55F7FA6D436C430EE9CD1241 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			baseConfigurationReference = 8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1681,7 +1691,7 @@
 		};
 		186139F22269D712004B799E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11336A51CEF18F9B9B447E3D /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */;
+			baseConfigurationReference = 219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;

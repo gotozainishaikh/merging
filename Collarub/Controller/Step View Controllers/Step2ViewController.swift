@@ -67,6 +67,8 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        budgetSlider.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
@@ -149,6 +151,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
                 self.optionCView.isHidden = false
                     self.accptBugt = checkbox.title!
                     self.dateTopConstrainst.constant = 80.0
+                    self.budgetSlider.isEnabled = true
                 }
             }else {
                 UIView.animate(withDuration: 0.2) {
@@ -161,6 +164,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
                     self.numPost = ""
                       self.accptBugt = ""
                     self.dateTopConstrainst.constant = 0.0
+                    self.budgetSlider.isEnabled = false
                     
                 }
             }
@@ -442,11 +446,15 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         print(discountNmbr)
         
     }
-    @IBAction func sliderValChange(_ sender: Any) {
+    let step: Float = 100
+    @IBAction func sliderValChange(_ sender: UISlider) {
         
-        currentValLabel.text = "\(Int(budgetSlider.value))"
+        let roundedValue = round(sender.value / step) * step
+        sender.value = roundedValue
         
-        maxBudgt = "\(Int(budgetSlider.value))"
+        currentValLabel.text = "\(Int(roundedValue))"
+        
+        maxBudgt = "\(Int(roundedValue))"
     }
     
     

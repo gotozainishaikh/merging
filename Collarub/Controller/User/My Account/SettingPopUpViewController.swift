@@ -45,6 +45,14 @@ class SettingPopUpViewController: UIViewController {
     }
 
     
+    @IBAction func payment_method_btn(_ sender: UIButton) {
+        
+        let vc = story.instantiateViewController(withIdentifier: "PayPal")
+        
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+    }
     @IBAction func push_not_btn(_ sender: Any) {
     
         let vc = story.instantiateViewController(withIdentifier: "PushNotificationPopUp")

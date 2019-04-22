@@ -33,6 +33,7 @@ pod 'TTGSnackbar'
 pod 'ImageSlideshow/Alamofire'
 pod 'PayPal-iOS-SDK'
 pod 'RSSelectionMenu'
+ pod 'OneSignal', '>= 2.6.2', '< 3.0'
 
 target 'CollarubTests' do
     inherit! :search_paths
@@ -44,4 +45,10 @@ target 'CollarubTests' do
     # Pods for testing
   end
 
+  target 'OneSignalNotificationServiceExtension' do
+    pod 'OneSignal', '>= 2.6.2', '< 3.0'
+  end
+  
 end
+
+

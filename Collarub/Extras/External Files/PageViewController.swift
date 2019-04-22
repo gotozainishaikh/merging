@@ -156,8 +156,8 @@ class PageViewController: UIPageViewController {
         step2Data.numStoris = step2.numStoris
         step2Data.numPost = step2.numPost
         step2Data.accptBugt = step2.accptBugt
-        step2Data.startDate = step2.startDate
-        step2Data.endDate = step2.endDate
+        step2Data.startDate1 = step2.startDate1
+        step2Data.endDate1 = step2.endDate1
         
         print("\(step2Data.exchag) :: \(step2Data.discont) :: \(step2Data.accptBugt) :: \(step2Data.discountNmbr) :: \(step2Data.maxBudgt) :: \(step2Data.usingProd) :: \(step2Data.locatin) :: \(step2Data.selfe) :: \(step2Data.shotTop) :: \(step2Data.numStoris) :: \(step2Data.numPost)")
         
@@ -403,7 +403,7 @@ class PageViewController: UIPageViewController {
 //
 //        }
         
-        data = [type_col,step1Data.category,step2Data.exchag,step2Data.discont,step2Data.discountNmbr,step2Data.maxBudgt,step2Data.usingProd,step2Data.locatin,step2Data.selfe,step2Data.shotTop, step2Data.numStoris,step2Data.numPost,step2Data.accptBugt,step2Data.startDate,step2Data.endDate,step3Data.engagementRt,step3Data.lCity,step3Data.lRegion,step3Data.reputationLvl,step3Data.exLevel,step3Data.gndr, step3Data.follwrLimt,step4Data.compyNam,step4Data.addrss,step4Data.descrptin,step4Data.whatoffring,step4Data.whatwillhv,step4Data.whatWont,step4Data.e_mail,step4Data.telNo, step4Data.websit,step5Data.inLocl,step5Data.inMcro,step5Data.inMac,step5Data.inMga,step5Data.inStr,step5Data.pay_method,step4Data.lat,step4Data.long,step5Data.limt,step5Data.autoaprv,step5Data.copon]
+        data = [type_col,step1Data.category,step2Data.exchag,step2Data.discont,step2Data.discountNmbr,step2Data.maxBudgt,step2Data.usingProd,step2Data.locatin,step2Data.selfe,step2Data.shotTop, step2Data.numStoris,step2Data.numPost,step2Data.accptBugt,step2Data.startDate1,step2Data.endDate1,step3Data.engagementRt,step3Data.lCity,step3Data.lRegion,step3Data.reputationLvl,step3Data.exLevel,step3Data.gndr, step3Data.follwrLimt,step4Data.compyNam,step4Data.addrss,step4Data.descrptin,step4Data.whatoffring,step4Data.whatwillhv,step4Data.whatWont,step4Data.e_mail,step4Data.telNo, step4Data.websit,step5Data.inLocl,step5Data.inMcro,step5Data.inMac,step5Data.inMga,step5Data.inStr,step5Data.pay_method,step4Data.lat,step4Data.long,step5Data.limt,step5Data.autoaprv,step5Data.copon]
         
         
         val = [step5Data.payloc,step5Data.payMicro,step5Data.payMacro,step5Data.payMega,step5Data.payStar,step5Data.pay1loc,step5Data.pay1Micro,step5Data.pay1Macro,step5Data.pay1Mega,step5Data.pay1Star]

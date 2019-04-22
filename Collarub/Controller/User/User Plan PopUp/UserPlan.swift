@@ -10,7 +10,14 @@ import UIKit
 
 class UserPlan: UIViewController {
 
-    var user_type:String = "3"
+    //Alamofire
+    let api = AlamofireApi()
+    
+    //Base URl
+    var base_url = FixVariable()
+    
+    
+    var user_type:String = "0"
     @IBOutlet weak var plan: UILabel!
     
     @IBOutlet weak var plan_type: UILabel!
@@ -18,9 +25,15 @@ class UserPlan: UIViewController {
     
     @IBOutlet weak var plan_view: UIView!
     
+    @IBOutlet weak var card: CardView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.plan_btn.isHidden = true
+        
+        self.plan_view.isHidden = true
+        
         showAnimate()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
@@ -29,38 +42,76 @@ class UserPlan: UIViewController {
         
         self.view.isUserInteractionEnabled = true
         
+        
+        check_user{
+            
+            //print
+            print("user-type=\( self.user_type)")
+            if(self.user_type=="1"){
+                self.plan.text = "Fremium"
+                self.plan_btn.setTitle("FREE", for: .normal)
+                self.plan_type.text = "2 Collaborations per month"
+            }
+            else if(self.user_type=="2"){
+                self.plan.text = "1 Month"
+                self.plan_btn.setTitle("GOLD", for: .normal)
+                self.plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
+                self.plan_type.text = "Unlimited Collaborations for 1 month"
+                self.plan_view.backgroundColor = UIColor.init(named: "dark-gold")
+                self.card.backgroundColor = UIColor.init(named: "dark-gold")
+                
+            }
+            else if(self.user_type=="3"){
+                self.plan.text = "6 Month"
+                self.plan_btn.setTitle("GOLD", for: .normal)
+                self.plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
+                self.plan_type.text = "Unlimited Collaborations for 6 month"
+                self.plan_view.backgroundColor = UIColor.init(named: "dark-gold")
+                self.card.backgroundColor = UIColor.init(named: "dark-gold")
+            }
+            else if(self.user_type=="4"){
+                self.plan.text = "1 Year"
+                self.plan_btn.setTitle("GOLD", for: .normal)
+                self.plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
+                self.plan_type.text = "Unlimited Collaborations for 1 Year"
+                self.plan_view.backgroundColor = UIColor.init(named: "dark-gold")
+                self.card.backgroundColor = UIColor.init(named: "dark-gold")
+            }
+            
+            self.plan_btn.isHidden = false
+            
+            self.plan_view.isHidden = false
+            
+        }
+        
       
-        if(user_type=="1"){
-            plan.text = "Fremium"
-            plan_btn.setTitle("FREE", for: .normal)
-            plan_type.text = "2 Collaborations per month"
-        }
-        else if(user_type=="2"){
-            plan.text = "1 Month"
-            plan_btn.setTitle("GOLD", for: .normal)
-            plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
-            plan_type.text = "Unlimited Collaborations for 1 month"
-            plan_view.backgroundColor = UIColor.init(named: "dark-gold")
-        }
-        else if(user_type=="3"){
-            plan.text = "6 Month"
-            plan_btn.setTitle("GOLD", for: .normal)
-            plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
-            plan_type.text = "Unlimited Collaborations for 6 month"
-            plan_view.backgroundColor = UIColor.init(named: "dark-gold")
-        }
-        else if(user_type=="4"){
-            plan.text = "1 Year"
-            plan_btn.setTitle("GOLD", for: .normal)
-            plan_btn.backgroundColor =  UIColor.init(named: "light-gold")
-            plan_type.text = "Unlimited Collaborations for 1 Year"
-            plan_view.backgroundColor = UIColor.init(named: "dark-gold")
-        }
+       
         // Do any additional setup after loading the view.
     }
     
     
     
+    func check_user(completion: @escaping () -> Void){
+        
+        let url = "\(base_url.weburl)/checkUser.php"
+        
+        api.alamofireApiWithParams(url: url, parameters: ["user_username":"talha1895"]){
+            
+            json in
+            
+            
+            print("check_id=\(json["userrType"])")
+            if(json["id"] != ""){
+                
+                self.user_type = json["userrType"].stringValue
+            }
+            
+            
+            completion()
+            
+        }
+        
+    }
     
     @IBOutlet weak var outside: UIView!
     

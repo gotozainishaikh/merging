@@ -10,6 +10,7 @@ import UIKit
 import Cosmos
 import CoreData
 import SDWebImage
+import SafariServices
 
 class MyProfileViewController: UIViewController {
 
@@ -88,7 +89,7 @@ class MyProfileViewController: UIViewController {
                 self.user_type_img.image = UIImage(named: "free")
             }
             else{
-                self.user_type_img.image = UIImage(named: "gold")
+                self.user_type_img.image = UIImage(named: "2")
             }
         }
         
@@ -126,6 +127,14 @@ class MyProfileViewController: UIViewController {
             activityVC.popoverPresentationController?.sourceView = sender
             self.present(activityVC, animated: true, completion: nil)
         }
+    }
+    
+    
+    @IBAction func improve_btn(_ sender: UIButton) {
+        
+//        guard let url = URL(string: "https://influencerskings.com") else { return }
+//        let svc = SFSafariViewController(url: url)
+//        present(svc, animated: true, completion: nil)
     }
     
     

@@ -1,0 +1,6 @@
+framework module Pods_Collarub_OneSignalNotificationServiceExtension {
+  umbrella header "Pods-Collarub-OneSignalNotificationServiceExtension-umbrella.h"
+
+  export *
+  module * { export * }
+}

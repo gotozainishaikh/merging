@@ -21,6 +21,7 @@ PODS:
   - IQKeyboardManager (6.2.0)
   - JKSteppedProgressBar (0.5.1)
   - KDCalendar (1.6.5)
+  - OneSignal (2.9.5)
   - PayPal-iOS-SDK (2.18.1):
     - PayPal-iOS-SDK/CardIO (= 2.18.1)
     - PayPal-iOS-SDK/Core (= 2.18.1)
@@ -60,6 +61,7 @@ DEPENDENCIES:
   - IQKeyboardManager
   - JKSteppedProgressBar
   - KDCalendar (~> 1.6.5)
+  - OneSignal (< 3.0, >= 2.6.2)
   - PayPal-iOS-SDK
   - PopupWindow (from `https://github.com/shin8484/PopupWindow.git`)
   - Presentr
@@ -91,6 +93,7 @@ SPEC REPOS:
     - IQKeyboardManager
     - JKSteppedProgressBar
     - KDCalendar
+    - OneSignal
     - PayPal-iOS-SDK
     - Presentr
     - RadioButton
@@ -130,6 +133,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 6194101620b73af5e67900b8f89707a99de0b804
   JKSteppedProgressBar: b55bcac777c5b256375d6ae75cca93b75c5d8672
   KDCalendar: 15e74f37bd3d206bf7549c594fd08e0347c276f4
+  OneSignal: ccdeb961882f8668305e5b694e2cb7cb325fc907
   PayPal-iOS-SDK: 10654cd111e911a9807bddb96fae81aacb8e9915
   PopupWindow: 399ebf82ef9ead240aa467c0b35c5adbe71b96ac
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
@@ -147,6 +151,6 @@ SPEC CHECKSUMS:
   TTGSnackbar: 2cf4e7b6ffbe5cddf248a73f3ee952b71bee8ea3
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: 2ed25779fef731c377a49d596ef20137588ba865
+PODFILE CHECKSUM: 061c9c5602bfc40206523e07690189f0aef20c35
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.6.0

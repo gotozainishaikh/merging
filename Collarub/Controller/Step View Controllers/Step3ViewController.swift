@@ -33,6 +33,8 @@ class Step3ViewController: UIViewController {
     @IBOutlet weak var minExperience: UITextField!
     @IBOutlet weak var genderDrop: DropDown!
     @IBOutlet weak var fllowersLimt: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -97,7 +99,7 @@ class Step3ViewController: UIViewController {
         self.borederTodrop(drop: regionDrop)
         self.borederTodrop(drop: citDrop)
         self.borederTodrop(drop: genderDrop)
-        
+        self.borederTodrop(drop: sector)
         self.borederTotext(textfield: ratingText)
         self.borederTotext(textfield: minExperience)
         self.borederTotext(textfield: fllowersLimt)

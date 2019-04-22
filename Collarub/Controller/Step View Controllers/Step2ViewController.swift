@@ -11,11 +11,14 @@ import CheckBox
 import KDCalendar
 import TTGSnackbar
 import SwiftyJSON
+import KDCalendar
 
 class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     
     var radioButtonController: SSRadioButtonsController?
 
+    @IBOutlet weak var calenderView: CalendarView!
+    
     @IBOutlet weak var dateTopConstrainst: NSLayoutConstraint!
     
     var exchag : String = ""
@@ -29,13 +32,14 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     var numStoris : String = ""
     var numPost : String = ""
     var accptBugt : String = ""
-    var startDate : String = ""
-    var endDate : String = ""
+    var startDate1 : String = ""
+    var endDate1 : String = ""
     var datePicker : UIDatePicker!
     let toolBar = UIToolbar()
     var currentYear : Int!
     var age : Int! = 0
     var dat : String!
+    var stat : String!
     
     @IBOutlet weak var shotForTopCheck: CheckBox!
     @IBOutlet weak var selfieCheck: CheckBox!
@@ -59,6 +63,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     @IBOutlet weak var srtDate: UITextField!
     @IBOutlet weak var EndDate: UITextField!
     
+    @IBOutlet weak var closeShowBtn: UIButton!
     
     
     @IBOutlet weak var optionCView: UIView!
@@ -67,14 +72,17 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setUpCalendar()
+        
+    closeShowBtn.isHidden = true
         
         budgetSlider.isEnabled = false
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
         
-        let tap = UITapGestureRecognizer(target: self, action: #selector(tapFunction))
+        let tap = UITapGestureRecognizer(target: self, action: #selector(selectDate))
         srtDate.isUserInteractionEnabled = true
         srtDate.addGestureRecognizer(tap)
-        let tap1 = UITapGestureRecognizer(target: self, action: #selector(tapFunction1))
+        let tap1 = UITapGestureRecognizer(target: self, action: #selector(endDateSelect))
         EndDate.isUserInteractionEnabled = true
         EndDate.addGestureRecognizer(tap1)
         
@@ -86,6 +94,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
         optionCView.isHidden = true
        // acceptView.isHidden = true
+         self.bottomConstraints.constant = 5.0
         
         numPost = "1"
         numStoris = "1"
@@ -142,12 +151,14 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             }
         }
         
+        self.acceptView.isHidden = true
+        
         check.onClick = { (checkbox) in
             if checkbox.isChecked {
                 UIView.animate(withDuration: 0.2) {
-                
-//                self.acceptView.isHidden = false
-//                self.bottomConstraints.constant = 70.0
+                    self.maxBudgt = "500"
+                self.acceptView.isHidden = false
+                self.bottomConstraints.constant = 70.0
                 self.optionCView.isHidden = false
                     self.accptBugt = checkbox.title!
                     self.dateTopConstrainst.constant = 80.0
@@ -156,10 +167,10 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             }else {
                 UIView.animate(withDuration: 0.2) {
                 
-//                self.acceptView.isHidden = true
+                self.acceptView.isHidden = true
                 self.optionCView.isHidden = true
-//                self.bottomConstraints.constant = 5.0
-                    //self.maxBudgt = ""
+                self.bottomConstraints.constant = 5.0
+                    self.maxBudgt = ""
                 self.numStoris = ""
                     self.numPost = ""
                       self.accptBugt = ""
@@ -172,10 +183,49 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
     }
     
+    func setUpCalendar() {
+        let today = Date()
+        //print("dateabc=\(today)")
+        self.calenderView.setDisplayDate(today)
+        
+        CalendarView.Style.cellShape                = .bevel(8)
+        CalendarView.Style.cellColorDefault         = UIColor.clear
+        CalendarView.Style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
+        CalendarView.Style.cellSelectedBorderColor  = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
+        CalendarView.Style.cellEventColor           = UIColor(red:1.00, green:0.63, blue:0.24, alpha:1.00)
+        CalendarView.Style.headerTextColor          = UIColor.white
+        CalendarView.Style.cellTextColorDefault     = UIColor.white
+        CalendarView.Style.cellTextColorToday       = UIColor(red:0.31, green:0.44, blue:0.47, alpha:1.00)
+        
+        
+        CalendarView.Style.firstWeekday             = .monday
+        
+        calenderView.dataSource = self
+        calenderView.delegate = self
+        
+        
+        calenderView.direction = .horizontal
+        // calendarView.multipleSelectionEnable = false
+        calenderView.marksWeekends = true
+        
+        calenderView.multipleSelectionEnable = false
+        calenderView.backgroundColor = UIColor.black
+        //        var date = parse("2019-04-10")
+        //        calendarView.selectDate(date)
+        
+        
+    }
     override func viewDidAppear(_ animated: Bool) {
         
+        calenderView.isHidden = true
         
         
+    }
+    
+    
+    @IBAction func cancelCalendar(_ sender: UIButton) {
+        calenderView.isHidden = true
+        sender.isHidden = true
     }
     
     @objc func rejectList(req_notification: NSNotification) {
@@ -260,68 +310,93 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             }
         }
     }
+    
     @objc func tapFunction(sender:UITapGestureRecognizer) {
         
         
-        doDatePicker(txtField: "start")
+       // doDatePicker(txtField: "start")
        
     }
     @objc func tapFunction1(sender:UITapGestureRecognizer) {
         
         
-        doDatePicker(txtField: "end")
+       // doDatePicker(txtField: "end")
         
         
     }
     
-    func doDatePicker(txtField : String){
-        // DatePicker
-        
-        //        let inputView = UIView(frame: CGRect(0, 0, self.view.frame.width, 240))
-        
-        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
-        self.datePicker?.backgroundColor = UIColor.white
-        self.datePicker?.datePickerMode = UIDatePicker.Mode.date
-        datePicker.center = view.center
-        view.addSubview(self.datePicker)
-        
-        // ToolBar
-        
-        toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor.red
-        toolBar.backgroundColor=UIColor.white
-        toolBar.sizeToFit()
-        
-        // Adding Button ToolBar
-        if txtField == "start" {
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick))
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
-            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-            toolBar.isUserInteractionEnabled = true
-        }else if txtField == "end" {
-            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick1))
-            let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
-            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-            toolBar.isUserInteractionEnabled = true
-        }
-        
-       
-        
-        //dob.inputAccessoryView=toolBar
-        
-        //        inputView.addSubview(doneButton)
-        
-        //        datePicker.addSubview(doneButton)
-        self.view.addSubview(toolBar)
-        
-        
-        self.toolBar.isHidden = false
-        
+    @objc func selectDate(){
+        calenderView.isHidden = false
+        let today = Date()
+        calenderView.setDisplayDate(today)
+        stat = "start"
+        closeShowBtn.isHidden = false
         
     }
+    
+    
+    @objc func endDateSelect(){
+        
+        if srtDate.text == "" {
+            let snackbar = TTGSnackbar(message: "Please select starting date first", duration: .middle)
+            snackbar.show()
+            
+        }else {
+            stat = "end"
+            calenderView.isHidden = false
+            closeShowBtn.isHidden = false
+        }
+        
+    }
+    
+//    func doDatePicker(txtField : String){
+//        // DatePicker
+//
+//        //        let inputView = UIView(frame: CGRect(0, 0, self.view.frame.width, 240))
+//
+//        self.datePicker = UIDatePicker(frame:CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 200))
+//        self.datePicker?.backgroundColor = UIColor.white
+//        self.datePicker?.datePickerMode = UIDatePicker.Mode.date
+//        datePicker.center = view.center
+//        view.addSubview(self.datePicker)
+//
+//        // ToolBar
+//
+//        toolBar.barStyle = .default
+//        toolBar.isTranslucent = true
+//        toolBar.tintColor = UIColor.red
+//        toolBar.backgroundColor=UIColor.white
+//        toolBar.sizeToFit()
+//
+//        // Adding Button ToolBar
+//        if txtField == "start" {
+//        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick))
+//        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
+//            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+//            toolBar.isUserInteractionEnabled = true
+//        }else if txtField == "end" {
+//            let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(doneClick1))
+//            let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+//            let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(cancelClick))
+//            toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+//            toolBar.isUserInteractionEnabled = true
+//        }
+//
+//
+//
+//        //dob.inputAccessoryView=toolBar
+//
+//        //        inputView.addSubview(doneButton)
+//
+//        //        datePicker.addSubview(doneButton)
+//        self.view.addSubview(toolBar)
+//
+//
+//        self.toolBar.isHidden = false
+//
+//
+//    }
     
     @objc func cancelClick() {
         datePicker.isHidden = true
@@ -345,7 +420,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             if self.datePicker.date > fordate! {
             let dat1 = dateFormatter.string(from: self.datePicker.date)
             EndDate.text = dat1
-                endDate = dat1
+                endDate1 = dat1
             }else {
                 let snackbar = TTGSnackbar(message: "Ending date must be greater then starting date", duration: .middle)
                 snackbar.show()
@@ -354,21 +429,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
             
         }
         
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.timeStyle = DateFormatter.Style.none
-//        dateFormatter.dateFormat = "YYYY-MM-dd"
-//
-//        dat = dateFormatter.string(from: self.datePicker.date)
-//        print("Did Select: \(dat) ")
-//
-//
-//        let calendar = Calendar.current
-//        print("datee ::: \(self.datePicker.date)")
-//
-//        let components = calendar.dateComponents([.day,.month,.year], from: self.datePicker.date)
-//
-//
-        
+
 
         
         datePicker.isHidden = true
@@ -395,7 +456,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
         
         srtDate.text = dat
-        startDate = dat
+        startDate1 = dat
         datePicker.isHidden = true
         self.toolBar.isHidden = true
         
@@ -497,5 +558,98 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
     
     
    
+    
+}
+
+extension Step2ViewController: CalendarViewDelegate, CalendarViewDataSource {
+    
+    
+    func calendar(_ calendar: CalendarView, didScrollToMonth date: Date) {
+        //  print("hello")
+    }
+    
+    func calendar(_ calendar: CalendarView, didSelectDate date: Date, withEvents events: [CalendarEvent]) {
+        
+        if stat == "start" {
+        print("selected date=\(date)")
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.dateFormat = "YYYY-MM-dd"
+        
+        
+        let fordate = dateFormatter.string(from: date)
+        srtDate.text = fordate
+            startDate1 = fordate
+        calenderView.isHidden = true
+            closeShowBtn.isHidden = true
+        
+    print(fordate)
+        }else if stat == "end" {
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.timeStyle = DateFormatter.Style.none
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            
+            
+            let fordate = dateFormatter.date(from: srtDate.text!)
+            if date > fordate! {
+                let dat1 = dateFormatter.string(from: date)
+                EndDate.text = dat1
+                endDate1 = dat1
+                calenderView.isHidden = true
+                closeShowBtn.isHidden = true
+            }else {
+                
+                let snackbar = TTGSnackbar(message: "Ending date must be greater then starting date", duration: .middle)
+                snackbar.show()
+                EndDate.text = ""
+                calenderView.isHidden = true
+            }
+            
+        }
+        //retriveData(date: date)
+       
+        //        for event in events {
+        //            print("\t\"\(event.title)\" - Starting at:\(event.startDate)")
+        //        }
+        
+    }
+    
+    func calendar(_ calendar: CalendarView, canSelectDate date: Date) -> Bool {
+        
+        return true
+    }
+    
+    func calendar(_ calendar: CalendarView, didDeselectDate date: Date) {
+        
+    }
+    
+    func calendar(_ calendar: CalendarView, didLongPressDate date: Date) {
+        
+        
+    }
+    
+    func startDate() -> Date {
+        var dateComponents = DateComponents()
+        dateComponents.month = -3
+        
+        let today = Date()
+        
+        let threeMonthsAgo = self.calenderView.calendar.date(byAdding: dateComponents, to: today)!
+        
+        return threeMonthsAgo
+    }
+    
+    func endDate() -> Date {
+        var dateComponents = DateComponents()
+        
+        dateComponents.year = 2;
+        let today = Date()
+        
+        let twoYearsFromNow = self.calenderView.calendar.date(byAdding: dateComponents, to: today)!
+        
+        return twoYearsFromNow
+    }
     
 }

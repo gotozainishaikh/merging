@@ -77,11 +77,20 @@
 		045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BEAB22254C62400650E74 /* CampaignEditViewController.swift */; };
 		04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */; };
 		04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */; };
+		04BAB171226DBCEC005D288B /* PartnerHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */; };
+		04BAB173226DCC10005D288B /* PartnerEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */; };
 		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
 		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
+		18112662226A247A00282136 /* AddressPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18112661226A247A00282136 /* AddressPopUp.swift */; };
+		186139EC2269D712004B799E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139EB2269D712004B799E /* NotificationService.swift */; };
+		186139F02269D712004B799E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		186139FE226A138B004B799E /* ImproveInsta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139FD226A138B004B799E /* ImproveInsta.swift */; };
+		18613A01226A1F97004B799E /* PushNotificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18613A00226A1F97004B799E /* PushNotificationPopUp.swift */; };
 		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
 		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
+		18F745B4226B332400CD643D /* PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F745B3226B332400CD643D /* PayPal.swift */; };
+		18F745B7226B7CAC00CD643D /* UpgradePopUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F745B6226B7CAC00CD643D /* UpgradePopUP.swift */; };
 		3A01164A2209D74200F9AFCF /* StatusTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0116492209D74200F9AFCF /* StatusTableModel.swift */; };
 		3A02F1C22229608200C75A02 /* PartnerHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */; };
 		3A045CD32215BCA30095626E /* Step1ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A045CD22215BCA30095626E /* Step1ViewController.swift */; };
@@ -144,9 +153,17 @@
 		90BEAAE521979F2B5AFCF7C3 /* Pods_CollarubUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F44F24AFEFED2F875514C52A /* Pods_CollarubUITests.framework */; };
 		D3C4397B94E96E54168C1DB1 /* Pods_CollarubTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 001459DF7918B60F51D38258 /* Pods_CollarubTests.framework */; };
 		D93B35B453AA46BB1C433997 /* Pods_Collarub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2761B80AAD7D04A637D1E78 /* Pods_Collarub.framework */; };
+		F0AF300DECB2A20F210549DC /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		186139EE2269D712004B799E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 89EE6BC821DE28E900EF6CCF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 186139E82269D712004B799E;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 		89EE6BE521DE28F200EF6CCF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 89EE6BC821DE28E900EF6CCF /* Project object */;
@@ -162,6 +179,20 @@
 			remoteInfo = Collarub;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		186139F42269D712004B799E /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				186139F02269D712004B799E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		001459DF7918B60F51D38258 /* Pods_CollarubTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollarubTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -218,14 +249,27 @@
 		045BEAB22254C62400650E74 /* CampaignEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignEditViewController.swift; sourceTree = "<group>"; };
 		04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50CollaborupersViewController.swift; sourceTree = "<group>"; };
 		04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerReviewViewController.swift; sourceTree = "<group>"; };
+		04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHelpViewController.swift; sourceTree = "<group>"; };
+		04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerEmailViewController.swift; sourceTree = "<group>"; };
 		04DD77452269CD130099DADC /* ReportViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewViewController.swift; sourceTree = "<group>"; };
 		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F33D592268940F00B42D68 /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
+		18112661226A247A00282136 /* AddressPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPopUp.swift; sourceTree = "<group>"; };
+		186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		186139EB2269D712004B799E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		186139ED2269D712004B799E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		186139F52269D88C004B799E /* Collarub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Collarub.entitlements; sourceTree = "<group>"; };
+		186139FD226A138B004B799E /* ImproveInsta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImproveInsta.swift; sourceTree = "<group>"; };
+		18613A00226A1F97004B799E /* PushNotificationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPopUp.swift; sourceTree = "<group>"; };
 		18DD23312264970F00202A0B /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		18DD23342264991600202A0B /* AlamofireApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireApi.swift; sourceTree = "<group>"; };
+		18F745B3226B332400CD643D /* PayPal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPal.swift; sourceTree = "<group>"; };
+		18F745B6226B7CAC00CD643D /* UpgradePopUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradePopUP.swift; sourceTree = "<group>"; };
+		1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collarub_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
 		3A0116492209D74200F9AFCF /* StatusTableModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusTableModel.swift; sourceTree = "<group>"; };
 		3A02F1C12229608200C75A02 /* PartnerHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHomeViewController.swift; sourceTree = "<group>"; };
 		3A045CD22215BCA30095626E /* Step1ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step1ViewController.swift; sourceTree = "<group>"; };
@@ -313,11 +357,20 @@
 		89EE86A221E3932F003ADD8C /* LocalAnnouncementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LocalAnnouncementCollectionViewCell.swift; path = Collarub/Model/AnnoncementCell/LocalAnnouncementCollectionViewCell.swift; sourceTree = SOURCE_ROOT; };
 		89F5C1FC21FF3B2600FA96D7 /* ReviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModel.swift; sourceTree = "<group>"; };
 		89F5C20421FF3B9D00FA96D7 /* CheckInternet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckInternet.swift; sourceTree = "<group>"; };
+		8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub-OneSignalNotificationServiceExtension/Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		C2761B80AAD7D04A637D1E78 /* Pods_Collarub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collarub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F44F24AFEFED2F875514C52A /* Pods_CollarubUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CollarubUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		186139E62269D712004B799E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0AF300DECB2A20F210549DC /* Pods_Collarub_OneSignalNotificationServiceExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		89EE6BCD21DE28EA00EF6CCF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -383,6 +436,11 @@
 		0453E0802260F744006DBD95 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				18F745B5226B7C9E00CD643D /* UpgradePopUP */,
+				18F745B2226B330900CD643D /* PayPal */,
+				18112660226A246C00282136 /* AddressPopUp */,
+				186139FF226A1F7F004B799E /* PushNotificationPopUp */,
+				186139F7226A1303004B799E /* Improve Insta */,
 				0453E0812260F751006DBD95 /* Home */,
 				0453E0882260F76C006DBD95 /* SideMenunavigation */,
 				0453E08B2260F77A006DBD95 /* LoginView */,
@@ -491,6 +549,7 @@
 		0453E0A72260F89E006DBD95 /* My Account */ = {
 			isa = PBXGroup;
 			children = (
+				186139FC226A133D004B799E /* New Group */,
 				0453E0A82260F89E006DBD95 /* SettingPopUpViewController.swift */,
 				0453E0A92260F89E006DBD95 /* MyProfileViewController.swift */,
 			);
@@ -599,11 +658,59 @@
 			path = "Pending cell view controller";
 			sourceTree = "<group>";
 		};
+		04BAB16F226DBCD6005D288B /* partner help */ = {
+			isa = PBXGroup;
+			children = (
+				04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */,
+			);
+			path = "partner help";
+			sourceTree = "<group>";
+		};
 		04F33D5B2268942600B42D68 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
 			);
 			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		18112660226A246C00282136 /* AddressPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				18112661226A247A00282136 /* AddressPopUp.swift */,
+			);
+			path = AddressPopUp;
+			sourceTree = "<group>";
+		};
+		186139EA2269D712004B799E /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				186139EB2269D712004B799E /* NotificationService.swift */,
+				186139ED2269D712004B799E /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
+		186139F7226A1303004B799E /* Improve Insta */ = {
+			isa = PBXGroup;
+			children = (
+				186139FD226A138B004B799E /* ImproveInsta.swift */,
+			);
+			path = "Improve Insta";
+			sourceTree = "<group>";
+		};
+		186139FC226A133D004B799E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		186139FF226A1F7F004B799E /* PushNotificationPopUp */ = {
+			isa = PBXGroup;
+			children = (
+				18613A00226A1F97004B799E /* PushNotificationPopUp.swift */,
+			);
+			path = PushNotificationPopUp;
 			sourceTree = "<group>";
 		};
 		18DD23302264970F00202A0B /* User Request Model */ = {
@@ -622,6 +729,22 @@
 			path = "Alamofire Api";
 			sourceTree = "<group>";
 		};
+		18F745B2226B330900CD643D /* PayPal */ = {
+			isa = PBXGroup;
+			children = (
+				18F745B3226B332400CD643D /* PayPal.swift */,
+			);
+			path = PayPal;
+			sourceTree = "<group>";
+		};
+		18F745B5226B7C9E00CD643D /* UpgradePopUP */ = {
+			isa = PBXGroup;
+			children = (
+				18F745B6226B7CAC00CD643D /* UpgradePopUP.swift */,
+			);
+			path = UpgradePopUP;
+			sourceTree = "<group>";
+		};
 		3A0116482209D72100F9AFCF /* status cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -633,6 +756,7 @@
 		3A02F1C02229605700C75A02 /* Partner Home screens */ = {
 			isa = PBXGroup;
 			children = (
+				04BAB16F226DBCD6005D288B /* partner help */,
 				3A65FE292236928E00CAABE3 /* campaign management */,
 				3A18187D222ADD1E004F798B /* Partner Profile controllers */,
 				3A181875222A95D8004F798B /* Collaboration Management */,
@@ -835,6 +959,7 @@
 			children = (
 				3ADEF1CA2213203800ABCE71 /* PartnerLoginButtonViewController.swift */,
 				3A6E57DC222EC47A00378539 /* PartnerLoginWithInstagramViewController.swift */,
+				04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */,
 			);
 			path = "Partner Login";
 			sourceTree = "<group>";
@@ -942,6 +1067,7 @@
 				89EE6BD221DE28EA00EF6CCF /* Collarub */,
 				89EE6BE721DE28F200EF6CCF /* CollarubTests */,
 				89EE6BF221DE28F200EF6CCF /* CollarubUITests */,
+				186139EA2269D712004B799E /* OneSignalNotificationServiceExtension */,
 				89EE6BD121DE28EA00EF6CCF /* Products */,
 				95A0069F130555F96CBF9602 /* Pods */,
 				DE8DC255AA106016B5199CCE /* Frameworks */,
@@ -954,6 +1080,7 @@
 				89EE6BD021DE28EA00EF6CCF /* Collarub.app */,
 				89EE6BE421DE28F200EF6CCF /* CollarubTests.xctest */,
 				89EE6BEF21DE28F200EF6CCF /* CollarubUITests.xctest */,
+				186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -961,6 +1088,7 @@
 		89EE6BD221DE28EA00EF6CCF /* Collarub */ = {
 			isa = PBXGroup;
 			children = (
+				186139F52269D88C004B799E /* Collarub.entitlements */,
 				04F33D5B2268942600B42D68 /* Supporting files */,
 				3AEB8121222D6E73006729EB /* Fonts */,
 				3A93B56721FB2941007867C8 /* Extras */,
@@ -1040,6 +1168,8 @@
 				0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */,
 				81B7DBF500C63F6A1D5A4446 /* Pods-CollarubUITests.debug.xcconfig */,
 				4962774724D895B5FB27892A /* Pods-CollarubUITests.release.xcconfig */,
+				8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */,
+				219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1050,6 +1180,7 @@
 				C2761B80AAD7D04A637D1E78 /* Pods_Collarub.framework */,
 				001459DF7918B60F51D38258 /* Pods_CollarubTests.framework */,
 				F44F24AFEFED2F875514C52A /* Pods_CollarubUITests.framework */,
+				1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1057,6 +1188,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		186139E82269D712004B799E /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 186139F32269D712004B799E /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				52425C84F2E102214EEF742D /* [CP] Check Pods Manifest.lock */,
+				186139E52269D712004B799E /* Sources */,
+				186139E62269D712004B799E /* Frameworks */,
+				186139E72269D712004B799E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		89EE6BCF21DE28EA00EF6CCF /* Collarub */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 89EE6BF821DE28F200EF6CCF /* Build configuration list for PBXNativeTarget "Collarub" */;
@@ -1066,10 +1215,12 @@
 				89EE6BCD21DE28EA00EF6CCF /* Frameworks */,
 				89EE6BCE21DE28EA00EF6CCF /* Resources */,
 				162BF46EAE4441A0789A10AE /* [CP] Embed Pods Frameworks */,
+				186139F42269D712004B799E /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				186139EF2269D712004B799E /* PBXTargetDependency */,
 			);
 			name = Collarub;
 			productName = Collarub;
@@ -1124,9 +1275,20 @@
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Mac 1";
 				TargetAttributes = {
+					186139E82269D712004B799E = {
+						CreatedOnToolsVersion = 10.1;
+					};
 					89EE6BCF21DE28EA00EF6CCF = {
 						CreatedOnToolsVersion = 10.1;
 						LastSwiftMigration = 1010;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					89EE6BE321DE28F200EF6CCF = {
 						CreatedOnToolsVersion = 10.1;
@@ -1154,11 +1316,19 @@
 				89EE6BCF21DE28EA00EF6CCF /* Collarub */,
 				89EE6BE321DE28F200EF6CCF /* CollarubTests */,
 				89EE6BEE21DE28F200EF6CCF /* CollarubUITests */,
+				186139E82269D712004B799E /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		186139E72269D712004B799E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		89EE6BCE21DE28EA00EF6CCF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1324,6 +1494,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		52425C84F2E102214EEF742D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Collarub-OneSignalNotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		BB044CD9899265131A27B9AC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1345,15 +1537,25 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		186139E52269D712004B799E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				186139EC2269D712004B799E /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		89EE6BCC21DE28EA00EF6CCF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BAB173226DCC10005D288B /* PartnerEmailViewController.swift in Sources */,
 				0453E073225FBD10006DBD95 /* FavCellTableViewCell.swift in Sources */,
 				89EE6BD621DE28EA00EF6CCF /* ViewController.swift in Sources */,
 				3AF65C6821E104BF009C82C0 /* LocalModel.swift in Sources */,
 				0453E08A2260F76D006DBD95 /* SideMenuTableViewController.swift in Sources */,
 				3A1757C922427515001DC5FF /* RequestCellModel.swift in Sources */,
+				18F745B7226B7CAC00CD643D /* UpgradePopUP.swift in Sources */,
 				3A181877222A9609004F798B /* CollaborationsManagementViewController.swift in Sources */,
 				0453E0E22261FBD0006DBD95 /* PendingPopUpViewController.swift in Sources */,
 				0453E0862260F751006DBD95 /* LocalAnnouncementViewController.swift in Sources */,
@@ -1367,6 +1569,7 @@
 				0453E0DE2261E018006DBD95 /* PendingListTableViewCell.swift in Sources */,
 				3AEED35F22298D2100B129EA /* TableViewCell.swift in Sources */,
 				04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */,
+				18F745B4226B332400CD643D /* PayPal.swift in Sources */,
 				041E1B8D225CEF3B0056B649 /* FindInfluencerViewController.swift in Sources */,
 				0453E0E722621F6C006DBD95 /* PendingUserListTableViewCell.swift in Sources */,
 				18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */,
@@ -1401,6 +1604,7 @@
 				3A18187F222ADD60004F798B /* PartnerContainerViewController.swift in Sources */,
 				3AEED35922297AA200B129EA /* CampaignListViewController.swift in Sources */,
 				3AEB8135222D9DEA006729EB /* CompletedHistoryViewController.swift in Sources */,
+				186139FE226A138B004B799E /* ImproveInsta.swift in Sources */,
 				0453E067225E233F006DBD95 /* FindInfluencerModel.swift in Sources */,
 				0453E0C42260F915006DBD95 /* Agenda.swift in Sources */,
 				3AD88CD721E22BFC003C7F80 /* CollectionViewCell.swift in Sources */,
@@ -1409,6 +1613,7 @@
 				0453E07D225FBD77006DBD95 /* customAnnoation.swift in Sources */,
 				3A42D7BD2217FE0A00C9B00E /* Step4ViewController.swift in Sources */,
 				18DD23352264991600202A0B /* AlamofireApi.swift in Sources */,
+				18613A01226A1F97004B799E /* PushNotificationPopUp.swift in Sources */,
 				04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */,
 				3AF765B222172756008C5A40 /* SSRadioButtonsController.swift in Sources */,
 				0453E0A62260F86D006DBD95 /* MyCollaborationViewController.swift in Sources */,
@@ -1447,7 +1652,9 @@
 				3ADE6EBA22369B7100C11E90 /* CurrentListViewController.swift in Sources */,
 				0453E0C12260F908006DBD95 /* FilterPopUp.swift in Sources */,
 				3A1D4E0021F71DE300DAE579 /* TestingCollectionViewCell.swift in Sources */,
+				04BAB171226DBCEC005D288B /* PartnerHelpViewController.swift in Sources */,
 				0453E077225FBD25006DBD95 /* ReviewTableViewCell.swift in Sources */,
+				18112662226A247A00282136 /* AddressPopUp.swift in Sources */,
 				0453E06C225F36A3006DBD95 /* HireUserViewController.swift in Sources */,
 				3ADEF1CB2213203800ABCE71 /* PartnerLoginButtonViewController.swift in Sources */,
 			);
@@ -1472,6 +1679,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		186139EF2269D712004B799E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 186139E82269D712004B799E /* OneSignalNotificationServiceExtension */;
+			targetProxy = 186139EE2269D712004B799E /* PBXContainerItemProxy */;
+		};
 		89EE6BE621DE28F200EF6CCF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 89EE6BCF21DE28EA00EF6CCF /* Collarub */;
@@ -1496,6 +1708,48 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		186139F12269D712004B799E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E81C094A4D6C4BA5F72CDD6 /* Pods-Collarub-OneSignalNotificationServiceExtension.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMZ3HWC8LP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MINDAQUA.Collaborupgypsy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		186139F22269D712004B799E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 219C2D6148ABDCC19466796B /* Pods-Collarub-OneSignalNotificationServiceExtension.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LMZ3HWC8LP;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = MINDAQUA.Collaborupgypsy.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		89EE6BF621DE28F200EF6CCF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1616,9 +1870,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7FD661336AC5F45DF6E79931 /* Pods-Collarub.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CODE_SIGN_ENTITLEMENTS = Collarub/Collarub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LMZ3HWC8LP;
@@ -1642,9 +1898,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = NO;
+				CODE_SIGN_ENTITLEMENTS = Collarub/Collarub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LMZ3HWC8LP;
@@ -1748,6 +2006,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		186139F32269D712004B799E /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				186139F12269D712004B799E /* Debug */,
+				186139F22269D712004B799E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		89EE6BCB21DE28E900EF6CCF /* Build configuration list for PBXProject "Collarub" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

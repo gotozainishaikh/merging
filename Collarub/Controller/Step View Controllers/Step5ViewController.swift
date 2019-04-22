@@ -38,6 +38,7 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
     var payMega : NSDecimalNumber = 0.0
     var payStar : NSDecimalNumber = 0.0
     
+    @IBOutlet weak var haveCouponField: UITextField!
     var pay1loc : NSDecimalNumber = 0.0
     var pay1Micro : NSDecimalNumber = 0.0
     var pay1Macro : NSDecimalNumber = 0.0
@@ -75,6 +76,8 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        haveCouponField.isHidden = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
 
         //MARK - radio button
@@ -105,8 +108,10 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
             if checked.isChecked {
                 print(self.coupon.title)
                 self.copon = "1"
+                self.haveCouponField.isHidden = false
             }else {
                 self.copon = "0"
+                self.haveCouponField.isHidden = true
             }
         }
         

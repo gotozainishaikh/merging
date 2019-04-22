@@ -122,114 +122,11 @@ class PartnerLoginWithInstagramViewController: UIViewController, UIWebViewDelega
                         
                         if (self.user_id == ""){
                             
-                            var textfield = UITextField()
-                            let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-                            
-                            let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-                            let alert = UIAlertController(title: "Enter Email", message: "Please type your email", preferredStyle: .alert)
-                            
-                            let action = UIAlertAction(title: "Save", style: .default) { (addaction) in
-                                
-                                if textfield.text?.isEmpty == true || emailTest.evaluate(with: textfield.text!) == false {
-                                    let empAlert = UIAlertController(title: "Warning", message: "Please Enter Correct Email", preferredStyle: .alert)
-                                    
-                                    let okay = UIAlertAction(title: "Cancel", style: .default, handler: { (action) in
-                                        empAlert.dismiss(animated: true, completion: nil)
-                                        self.present(alert, animated: true, completion: nil)
-                                    })
-                                    
-                                    print(emailTest.evaluate(with: textfield.text!))
-                                    empAlert.addAction(okay)
-                                    
-                                    self.present(empAlert, animated: true, completion: nil)
-                                }
-                                
-                                else {
-                                    
-                                    self.email = textfield.text!
-                                    
-                                    let param : [String:String] = [
-                                        "user_token": authToken,
-                                        "partner_username" : dataJSON["data"]["username"].stringValue,
-                                        "partner_name" : dataJSON["data"]["full_name"].stringValue,
-                                        "followers" : String(followers),
-                                        "partner_img" : dataJSON["data"]["profile_picture"].stringValue,
-                                        "followed_by" : dataJSON["data"]["counts"]["follows"].stringValue,
-                                        "partner_email" : self.email,
-                                        "media" : dataJSON["data"]["counts"]["media"].stringValue,
-                                        "player_id" : ""
-                                        
-                                    ]
-                                    Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/PartnerRegister.php", method: .get, parameters: param).responseJSON { response in
-                                        
-                                        print(self.email)
-                                        if response.result.isSuccess {
-                                            //  print("Response JSON: \(JSON(response.result.value!))")
-                                            
-                                            let flowerJSON : JSON = JSON(response.result.value!)
-                                            //                            let pageid = flowerJSON["member_id"].stringValue
-                                            
-                                            print("\(flowerJSON)")
-                                            self.user_id = flowerJSON["id"].stringValue
-                                            print(flowerJSON["id"].stringValue)
-                                            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                                            
-                                            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
-                                            
-                                            let newUser = NSEntityDescription.insertNewObject(forEntityName: "PartnerRegistration", into: context) as NSManagedObject
-                                            newUser.setValue(dataJSON["data"]["username"].stringValue, forKey: "userName")
-                                            newUser.setValue(dataJSON["data"]["full_name"].stringValue, forKey: "full_name")
-                                            newUser.setValue(dataJSON["data"]["profile_picture"].stringValue, forKey: "profile_picture")
-                                            newUser.setValue(Int64(followers), forKey: "followers")
-                                            newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
-                                            newUser.setValue(flowerJSON["id"].stringValue, forKey: "user_id")
-                                            newUser.setValue(self.email, forKey: "email")
-                                            do {
-                                                try context.save()
-                                            } catch {}
-                                            
-                                            print(newUser)
-                                            print("Object Saved.")
-                                            // print(flowerJSON["id"])
-                                            
-                                            Defaults.setPartnerLoginStatus(logInStatus: true)
-                                            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "stepController") as! StepViewController
-                                            
-//                                            mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-                                            self.present(mainTabController, animated: true, completion: nil)
-                                        }else {
-                                            print("Error in register server")
-                                        }
-                                    }
-                                    
-                                    
-                                    print("\(param)")
-                                    //                        let newItem = Category(context: self.context)
-                                    //                        newItem.name = textfield.text
-                                    //                        self.arrayItem.append(newItem)
-                                    //
-                                    //                        self.saveItem()
-                                    
-                                    
-                                }
-                            }
-                            
-                            let cancl = UIAlertAction(title: "Cancel", style: .default) { (addaction) in
-                                
-                                self.dismiss(animated: true, completion: nil)
-                            }
-                            
-                            alert.addTextField { (addText) in
-                                addText.placeholder = "Create new category"
-                                
-                                textfield = addText
-                            }
-                            
-                            
-                            alert.addAction(action)
-                            alert.addAction(cancl)
-                            
-                            self.present(alert, animated: true, completion: nil)
+                           let vc = self.storyboard?.instantiateViewController(withIdentifier: "emailControl") as! PartnerEmailViewController
+                            vc.dataJson = dataJSON
+                            vc.followers = followers
+                            vc.authToken = authToken
+                            self.present(vc, animated: true, completion: nil)
                             
                         }
                         else {

@@ -90,7 +90,7 @@ class CollaborationStatusViewController: UIViewController, CalendarViewDelegate,
         statusTable.separatorStyle = .none
         let button2 = UIBarButtonItem(image: UIImage(named: "bell-icon"), style: .plain, target: self, action: #selector(actionFavList))
         
-        self.navigationItem.rightBarButtonItem  = button2
+        //self.navigationItem.rightBarButtonItem  = button2
         setUpCalendar()
         //        var date = parse("2019-04-12")
         //        calendarView.addEvent("hello", date: date)

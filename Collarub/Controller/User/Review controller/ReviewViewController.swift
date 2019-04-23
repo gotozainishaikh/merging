@@ -37,7 +37,7 @@ class ReviewViewController: UIViewController {
         
         let button2 = UIBarButtonItem(image: UIImage(named: "bell-icon"), style: .plain, target: self, action: #selector(actionFavList))
         
-        self.navigationItem.rightBarButtonItem  = button2
+        //self.navigationItem.rightBarButtonItem  = button2
         
         
         

@@ -15,7 +15,7 @@ import SwiftyJSON
 
 class Step4ViewController: UIViewController, UITextViewDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    
+    var chckLocal : Bool!
     var compyNam : String = ""
     var addrss : String = ""
     var descrptin : String = ""
@@ -51,6 +51,8 @@ class Step4ViewController: UIViewController, UITextViewDelegate,  UIImagePickerC
     
     var picker = UIImagePickerController()
     
+    @IBOutlet weak var localImgView: UIView!
+    @IBOutlet weak var anyNo: UITextField!
     @IBOutlet weak var wontHaveTo: UITextView!
     @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var offeringToinfluencer: UITextView!
@@ -78,7 +80,7 @@ class Step4ViewController: UIViewController, UITextViewDelegate,  UIImagePickerC
         super.viewDidLoad()
 
           NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
-        
+        print("ey :: \(chckLocal)")
         buttonBorder(btn: image1)
         buttonBorder(btn: image2)
         buttonBorder(btn: image3)
@@ -92,6 +94,7 @@ class Step4ViewController: UIViewController, UITextViewDelegate,  UIImagePickerC
         textBorder(vie: emailText)
         textBorder(vie: telephone)
         textBorder(vie: websiteText)
+        textBorder(vie: anyNo)
         
         textAreaBorder(vie: wontHaveTo)
         textAreaBorder(vie: descriptionText)
@@ -796,7 +799,7 @@ extension Step4ViewController: GooglePlacesAutocompleteViewControllerDelegate {
         print("\(lat), \(long)")
         address.text = place.name
         addrss = place.name!
-        
+        print("stt :: \(place)")
         placesSearchController.isActive = false
     }
 }

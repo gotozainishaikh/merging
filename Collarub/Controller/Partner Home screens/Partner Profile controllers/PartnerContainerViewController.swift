@@ -263,41 +263,57 @@ class PartnerContainerViewController: UIViewController {
     
     @IBAction func deleteAccount(_ sender: UIButton) {
         
-        let parameters : [String:String] = [
-            
-            "userName": userName,
-            
-        ]
+        let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete your account ?", preferredStyle: .alert)
         
-        Alamofire.request("\(self.url.weburl)/partnerDelete.php", method: .get, parameters: parameters).responseJSON { (response) in
-            SVProgressHUD.show(withStatus: "Loading")
-            if response.result.isSuccess {
-                SVProgressHUD.dismiss()
-                let dataJSON1 : JSON = JSON(response.result.value!)
+        let yes = UIAlertAction(title: "Yes", style: .default) { (yes) in
+            
+            let parameters : [String:String] = [
                 
-                if dataJSON1["Status"] == "success" {
+                "userName": self.userName,
+                
+                ]
+            
+            Alamofire.request("\(self.url.weburl)/partnerDelete.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
                     
-                    
-                    SVProgressHUD.showSuccess(withStatus: "Done")
-                    if let cookies = HTTPCookieStorage.shared.cookies {
-                        for cookie in cookies {
-                            if cookie.domain.contains(".instagram.com") {
-                                HTTPCookieStorage.shared.deleteCookie(cookie)
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        if let cookies = HTTPCookieStorage.shared.cookies {
+                            for cookie in cookies {
+                                if cookie.domain.contains(".instagram.com") {
+                                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                                }
                             }
+                            
+                            Defaults.setPartnerLoginStatus(logInStatus: false)
+                            let story = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = story.instantiateViewController(withIdentifier: "mainScreen")
+                            self.present(vc, animated: true, completion: nil)
+                            
+                            self.deleteAllRecords()
+                            
                         }
-                        
-                        Defaults.setPartnerLoginStatus(logInStatus: false)
-                        let story = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = story.instantiateViewController(withIdentifier: "mainScreen")
-                        self.present(vc, animated: true, completion: nil)
-                        
-                        self.deleteAllRecords()
-                        
                     }
                 }
+                
             }
             
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in
+            alert.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        alert.addAction(yes)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
         
     }
     

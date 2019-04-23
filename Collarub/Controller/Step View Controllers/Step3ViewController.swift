@@ -10,6 +10,7 @@ import UIKit
 import iOSDropDown
 import Alamofire
 import SwiftyJSON
+import GooglePlacesSearchController
 
 
 class Step3ViewController: UIViewController {
@@ -23,12 +24,12 @@ class Step3ViewController: UIViewController {
     var follwrLimt : String = ""
     let url = FixVariable()
     
+    @IBOutlet weak var regionTxt: UITextField!
+    @IBOutlet weak var cityTxt: UITextField!
     @IBOutlet weak var sector: DropDown!
     var stat_id : String = ""
     var con_id = [Int]()
     @IBOutlet weak var engagementRateDrop: DropDown!
-    @IBOutlet weak var citDrop: DropDown!
-    @IBOutlet weak var regionDrop: DropDown!
     @IBOutlet weak var ratingText: UITextField!
     @IBOutlet weak var minExperience: UITextField!
     @IBOutlet weak var genderDrop: DropDown!
@@ -40,8 +41,7 @@ class Step3ViewController: UIViewController {
 
         
         engagementRateDrop.selectedRowColor = UIColor.lightGray
-        citDrop.selectedRowColor = UIColor.lightGray
-        regionDrop.selectedRowColor = UIColor.lightGray
+       
         genderDrop.selectedRowColor = UIColor.lightGray
         
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
@@ -68,16 +68,7 @@ class Step3ViewController: UIViewController {
            // self.selectedtex = selectedText
         }
         
-        regionDrop.arrowSize = 10
-        regionDrop.didSelect{(selectedText , index , id) in
-          //  print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
-            self.lRegion = selectedText
-         //   print(self.con_id[index-1])
-            
-            self.citiesName(nam: selectedText)
-            
-            // self.selectedtex = selectedText
-        }
+       
         
         genderDrop.arrowSize = 10
         genderDrop.didSelect{(selectedText , index , id) in
@@ -87,24 +78,17 @@ class Step3ViewController: UIViewController {
             // self.selectedtex = selectedText
         }
         
-        citDrop.arrowSize = 10
-        citDrop.didSelect{(selectedText , index , id) in
-          //  print("Selected String: \(selectedText) \n index: \(index) \n Id: \(id)")
-            self.lCity = selectedText
-            
-            // self.selectedtex = selectedText
-        }
+      
         
         self.borederTodrop(drop: engagementRateDrop)
-        self.borederTodrop(drop: regionDrop)
-        self.borederTodrop(drop: citDrop)
+        
         self.borederTodrop(drop: genderDrop)
         self.borederTodrop(drop: sector)
         self.borederTotext(textfield: ratingText)
         self.borederTotext(textfield: minExperience)
         self.borederTotext(textfield: fllowersLimt)
-        
-        
+        self.borederTotext(textfield: cityTxt)
+        self.borederTotext(textfield: regionTxt)
     }
     
     @objc func rejectList(req_notification: NSNotification) {
@@ -132,8 +116,8 @@ class Step3ViewController: UIViewController {
                     if rqCity != ""{
                         
                         self.lCity = rqCity
-                        citDrop.text = rqCity
-                        
+                       // citDrop.text = rqCity
+                        cityTxt.text = rqCity
                     }
                 }
                 
@@ -144,7 +128,7 @@ class Step3ViewController: UIViewController {
                     if rqRegion != ""{
                         
                         self.lRegion = rqRegion
-                        regionDrop.text = rqRegion
+                       // regionDrop.text = rqRegion
                         
                     }
                 }
@@ -204,52 +188,52 @@ class Step3ViewController: UIViewController {
     
     func citiesName (nam : String){
     
-        let parameters : [String:String] = [
-            "state_name": "\(nam)"
-        ]
-        
-        
-        Alamofire.request("\(self.url.weburl)/cities_name.php", method: .get, parameters: parameters).responseJSON { (response) in
-            
-            
-            if response.result.isSuccess {
-                let dataJSON : JSON = JSON(response.result.value!)
-                print(dataJSON)
-                
-                for item in 0..<dataJSON.count {
-                    
-                    print(dataJSON[item]["id"])
-                    
-                    self.regionDrop.optionArray.append(dataJSON[item]["name"].stringValue)
-                    self.citDrop.optionArray.append(dataJSON[item]["name"].stringValue)
-                    //self.con_id.append(dataJSON[item]["id"].intValue)
-                    
-                }
-            }
-            
-        }
+//        let parameters : [String:String] = [
+//            "state_name": "\(nam)"
+//        ]
+//        
+//        
+//        Alamofire.request("\(self.url.weburl)/cities_name.php", method: .get, parameters: parameters).responseJSON { (response) in
+//            
+//            
+//            if response.result.isSuccess {
+//                let dataJSON : JSON = JSON(response.result.value!)
+//                print(dataJSON)
+//                
+//                for item in 0..<dataJSON.count {
+//                    
+//                    print(dataJSON[item]["id"])
+//                    
+//                    self.regionDrop.optionArray.append(dataJSON[item]["name"].stringValue)
+//                    self.citDrop.optionArray.append(dataJSON[item]["name"].stringValue)
+//                    //self.con_id.append(dataJSON[item]["id"].intValue)
+//                    
+//                }
+//            }
+//            
+//        }
         
     }
     func stateRetrieve() {
         
-        Alamofire.request("\(self.url.weburl)/get_all_states.php", method: .get).responseJSON { (response) in
-            
-            
-            if response.result.isSuccess {
-                let dataJSON : JSON = JSON(response.result.value!)
-                print(dataJSON)
-                
-                for item in 0..<dataJSON.count {
-                    
-                    print(dataJSON[item]["id"])
-                    
-                    self.regionDrop.optionArray.append(dataJSON[item]["name"].stringValue)
-                   
-                    
-                }
-            }
-            
-        }
+//        Alamofire.request("\(self.url.weburl)/get_all_states.php", method: .get).responseJSON { (response) in
+//
+//
+//            if response.result.isSuccess {
+//                let dataJSON : JSON = JSON(response.result.value!)
+//                print(dataJSON)
+//
+//                for item in 0..<dataJSON.count {
+//
+//                    print(dataJSON[item]["id"])
+//
+//                    self.regionDrop.optionArray.append(dataJSON[item]["name"].stringValue)
+//
+//
+//                }
+//            }
+//
+//        }
         
     }
     
@@ -279,12 +263,71 @@ class Step3ViewController: UIViewController {
     }
     
     
+    @IBAction func cityOnClick(_ sender: UITextField) {
+       stat = true
+        present(placesSearchController, animated: true, completion: nil)
+    }
     
+    @IBAction func cityEndEditing(_ sender: UITextField) {
+        
+    }
+    
+    @IBAction func regionEditBegin(_ sender: UITextField) {
+        stat = false
+        present(placesSearchController1, animated: true, completion: nil)
+    }
+    
+    @IBAction func regionEndEdit(_ sender: UITextField) {
+    }
     
     @IBAction func dropList(_ sender: Any) {
         engagementRateDrop.touchAction()
     }
     
     @IBAction func asa(_ sender: UITextField) {
+    }
+    
+    let GoogleMapsAPIServerKey = "AIzaSyCp93QINHvSoa0pdd1jK-oOsCZsZjAeQVI"
+    
+    lazy var placesSearchController: GooglePlacesSearchController = {
+        let controller = GooglePlacesSearchController(delegate: self,
+                                                      apiKey: GoogleMapsAPIServerKey,
+                                                      placeType: .cities
+            
+        )
+        
+        return controller
+    }()
+    var stat : Bool!
+    lazy var placesSearchController1: GooglePlacesSearchController = {
+        let controller = GooglePlacesSearchController(delegate: self,
+                                                      apiKey: GoogleMapsAPIServerKey,
+                                                      placeType: .regions
+            
+        )
+        
+        return controller
+    }()
+    
+}
+
+
+extension Step3ViewController: GooglePlacesAutocompleteViewControllerDelegate {
+    func viewController(didAutocompleteWith place: PlaceDetails) {
+        
+        print(place.description)
+        if stat {
+            cityTxt.text = place.name!
+            lCity = place.name!
+            print("stt :: \(place.name)")
+            placesSearchController.isActive = false
+        }else if !stat {
+            regionTxt.text = place.name!
+            lRegion = place.name!
+            print("stt :: \(place.name)")
+            placesSearchController1.isActive = false
+        }
+      
+        
     }
 }

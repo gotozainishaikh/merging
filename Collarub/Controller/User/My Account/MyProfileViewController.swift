@@ -67,7 +67,7 @@ class MyProfileViewController: UIViewController {
 //        self.navigationItem.leftBarButtonItem  = button1
        
         
-       // self.navigationItem.rightBarButtonItem  = button2
+        self.navigationItem.rightBarButtonItem  = button2
         
         uiNavegationImage()
         

@@ -4046,6 +4046,26 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loginBg" translatesAutoresizingMaskIntoConstraints="NO" id="ATK-Sl-eU1">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lO-UY-SdF">
+                                <rect key="frame" x="10" y="30" width="95" height="35"/>
+                                <color key="backgroundColor" name="themeColor3"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="BWq-1B-wNf"/>
+                                    <constraint firstAttribute="width" constant="95" id="Bf7-BR-NF2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                <state key="normal" title="Back">
+                                    <color key="titleColor" name="themecolor4"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backBtn:" destination="gBM-eU-feG" eventType="touchUpInside" id="l9S-G9-0Kh"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo-new" translatesAutoresizingMaskIntoConstraints="NO" id="xbb-fq-Fvz">
                                 <rect key="frame" x="32" y="148" width="256" height="57"/>
                             </imageView>
@@ -4090,6 +4110,7 @@
                         <constraints>
                             <constraint firstItem="ATK-Sl-eU1" firstAttribute="trailing" secondItem="Qdi-z3-V2M" secondAttribute="trailing" id="30V-Ms-jxl"/>
                             <constraint firstItem="caM-pM-d7D" firstAttribute="width" secondItem="xbb-fq-Fvz" secondAttribute="width" id="58L-u8-oNJ"/>
+                            <constraint firstItem="0lO-UY-SdF" firstAttribute="top" secondItem="Qdi-z3-V2M" secondAttribute="top" constant="10" id="7aF-ie-Idk"/>
                             <constraint firstItem="caM-pM-d7D" firstAttribute="top" secondItem="xbb-fq-Fvz" secondAttribute="bottom" constant="84" id="Bje-HE-aSI"/>
                             <constraint firstItem="xbb-fq-Fvz" firstAttribute="width" secondItem="FRs-0u-8kU" secondAttribute="width" multiplier="0.8" id="FWR-7m-T1m"/>
                             <constraint firstItem="caM-pM-d7D" firstAttribute="height" secondItem="xbb-fq-Fvz" secondAttribute="height" multiplier="0.7" id="H76-PK-tMa"/>
@@ -4099,6 +4120,7 @@
                             <constraint firstItem="xbb-fq-Fvz" firstAttribute="centerY" secondItem="Qdi-z3-V2M" secondAttribute="centerY" multiplier="0.6" id="hto-TX-dh5"/>
                             <constraint firstItem="ATK-Sl-eU1" firstAttribute="leading" secondItem="Qdi-z3-V2M" secondAttribute="leading" id="jo1-qS-LqG"/>
                             <constraint firstItem="ATK-Sl-eU1" firstAttribute="top" secondItem="FRs-0u-8kU" secondAttribute="top" id="xLg-Ah-Z64"/>
+                            <constraint firstItem="0lO-UY-SdF" firstAttribute="leading" secondItem="Qdi-z3-V2M" secondAttribute="leading" constant="10" id="xfQ-CZ-ODA"/>
                             <constraint firstItem="xbb-fq-Fvz" firstAttribute="height" secondItem="FRs-0u-8kU" secondAttribute="height" multiplier="0.1" id="yBU-vI-fAl"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Qdi-z3-V2M"/>
@@ -4931,7 +4953,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vel-2W-HEU">
                                                 <rect key="frame" x="62" y="172" width="165" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
                                                         <rect key="frame" x="22.5" y="10" width="120" height="20"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">

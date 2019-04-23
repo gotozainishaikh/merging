@@ -7,9 +7,24 @@
 //
 
 import UIKit
+import TTGSnackbar
 
 class PayPal: UIViewController,PayPalPaymentDelegate {
 
+    
+    
+    //Variables
+    let user_id:String = UserCoreData.user_id
+    var user_type:String = ""
+    var extend_date:String = ""
+    
+    //AlamofireApi
+    var apiCall = AlamofireApi()
+    
+    //Base Url
+    var base_url = FixVariable()
+    
+    //Outlets
     @IBOutlet weak var plan: UILabel!
     @IBOutlet weak var tagline: UILabel!
     @IBOutlet weak var pay_btn: UIButton!
@@ -34,18 +49,24 @@ class PayPal: UIViewController,PayPalPaymentDelegate {
             plan.text = "1 Month"
             tagline.text = "Unlimited Collaborations for 1 Month"
             pay_btn.setTitle("Pay 4,99 €", for: .normal)
+            user_type = "2"
+            extend_date = "+1 months"
             
         }
         else if(plan_price==2245){
             plan.text = "6 Month"
             tagline.text = "Unlimited Collaborations for 6 Month"
-             pay_btn.setTitle("Pay 22,45 €", for: .normal)
+            pay_btn.setTitle("Pay 22,45 €", for: .normal)
+            user_type = "3"
+            extend_date = "+6 months"
             
         }
         else if(plan_price==3592){
             plan.text = "1 Year"
             tagline.text = "Unlimited Collaborations for 1 Year"
-             pay_btn.setTitle("Pay 35,92 €", for: .normal)
+            pay_btn.setTitle("Pay 35,92 €", for: .normal)
+            user_type = "4"
+            extend_date = "+12 months"
             
         }
         // Set up payPalConfig
@@ -154,6 +175,37 @@ class PayPal: UIViewController,PayPalPaymentDelegate {
         paymentViewController.dismiss(animated: true, completion: { () -> Void in
             // send completed confirmaion to your server
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
+            
+          
+          
+            print("paypal_user_id=\(self.user_id)")
+            print("paypal_user_type=\(self.user_type)")
+            
+            let params = [
+            
+                "user_id":self.user_id,
+                "amount": String(self.plan_price),
+                "payment_type":self.user_type,
+                "extend_date":self.extend_date
+                
+            
+                ]
+           
+            var url = "\(self.base_url.weburl)/buy_subscription.php"
+            
+            self.apiCall.alamofireApiWithParams(url: url, parameters: params ){
+
+                json in
+                
+               
+             
+                
+                let snackbar = TTGSnackbar(message: json["Status"].stringValue, duration: .short)
+                
+                snackbar.show()
+
+
+            }
             self.removeAnimate()
          
         })

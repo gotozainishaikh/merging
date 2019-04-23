@@ -12,6 +12,9 @@ import CoreData
 
 class UserSelectionViewController: UIViewController {
 
+    
+    //var uerCoreData = UserCoreData()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,11 +31,15 @@ class UserSelectionViewController: UIViewController {
             
             let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+            UserCoreData.fetchCoreData()
             self.present(mainTabController, animated: true, completion: nil)
+            
+            
             
         }else {
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
+            UserCoreData.fetchCoreData()
             present(vc, animated: true, completion: nil)
         }
         

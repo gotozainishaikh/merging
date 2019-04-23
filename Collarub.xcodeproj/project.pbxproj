@@ -77,10 +77,13 @@
 		045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045BEAB22254C62400650E74 /* CampaignEditViewController.swift */; };
 		04B2854C2266B24D00FDEF13 /* Top50CollaborupersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */; };
 		04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */; };
+		04BAB171226DBCEC005D288B /* PartnerHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */; };
+		04BAB173226DCC10005D288B /* PartnerEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */; };
 		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
 		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
 		18112662226A247A00282136 /* AddressPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18112661226A247A00282136 /* AddressPopUp.swift */; };
+		185D5C59226F31F80081D747 /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D5C58226F31F80081D747 /* UserCoreData.swift */; };
 		186139EC2269D712004B799E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139EB2269D712004B799E /* NotificationService.swift */; };
 		186139F02269D712004B799E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		186139FE226A138B004B799E /* ImproveInsta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139FD226A138B004B799E /* ImproveInsta.swift */; };
@@ -247,6 +250,8 @@
 		045BEAB22254C62400650E74 /* CampaignEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampaignEditViewController.swift; sourceTree = "<group>"; };
 		04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top50CollaborupersViewController.swift; sourceTree = "<group>"; };
 		04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerReviewViewController.swift; sourceTree = "<group>"; };
+		04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHelpViewController.swift; sourceTree = "<group>"; };
+		04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerEmailViewController.swift; sourceTree = "<group>"; };
 		04DD77452269CD130099DADC /* ReportViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewViewController.swift; sourceTree = "<group>"; };
 		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -254,6 +259,7 @@
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
 		18112661226A247A00282136 /* AddressPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPopUp.swift; sourceTree = "<group>"; };
+		185D5C58226F31F80081D747 /* UserCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		186139EB2269D712004B799E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		186139ED2269D712004B799E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -432,6 +438,7 @@
 		0453E0802260F744006DBD95 /* User */ = {
 			isa = PBXGroup;
 			children = (
+				185D5C57226F31CD0081D747 /* Fetch Core Data */,
 				18F745B5226B7C9E00CD643D /* UpgradePopUP */,
 				18F745B2226B330900CD643D /* PayPal */,
 				18112660226A246C00282136 /* AddressPopUp */,
@@ -654,6 +661,14 @@
 			path = "Pending cell view controller";
 			sourceTree = "<group>";
 		};
+		04BAB16F226DBCD6005D288B /* partner help */ = {
+			isa = PBXGroup;
+			children = (
+				04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */,
+			);
+			path = "partner help";
+			sourceTree = "<group>";
+		};
 		04F33D5B2268942600B42D68 /* Supporting files */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,6 +682,14 @@
 				18112661226A247A00282136 /* AddressPopUp.swift */,
 			);
 			path = AddressPopUp;
+			sourceTree = "<group>";
+		};
+		185D5C57226F31CD0081D747 /* Fetch Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				185D5C58226F31F80081D747 /* UserCoreData.swift */,
+			);
+			path = "Fetch Core Data";
 			sourceTree = "<group>";
 		};
 		186139EA2269D712004B799E /* OneSignalNotificationServiceExtension */ = {
@@ -744,6 +767,7 @@
 		3A02F1C02229605700C75A02 /* Partner Home screens */ = {
 			isa = PBXGroup;
 			children = (
+				04BAB16F226DBCD6005D288B /* partner help */,
 				3A65FE292236928E00CAABE3 /* campaign management */,
 				3A18187D222ADD1E004F798B /* Partner Profile controllers */,
 				3A181875222A95D8004F798B /* Collaboration Management */,
@@ -946,6 +970,7 @@
 			children = (
 				3ADEF1CA2213203800ABCE71 /* PartnerLoginButtonViewController.swift */,
 				3A6E57DC222EC47A00378539 /* PartnerLoginWithInstagramViewController.swift */,
+				04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */,
 			);
 			path = "Partner Login";
 			sourceTree = "<group>";
@@ -1535,6 +1560,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04BAB173226DCC10005D288B /* PartnerEmailViewController.swift in Sources */,
 				0453E073225FBD10006DBD95 /* FavCellTableViewCell.swift in Sources */,
 				89EE6BD621DE28EA00EF6CCF /* ViewController.swift in Sources */,
 				3AF65C6821E104BF009C82C0 /* LocalModel.swift in Sources */,
@@ -1625,6 +1651,7 @@
 				0453E0BB2260F8F7006DBD95 /* UserPlan.swift in Sources */,
 				3AB4FC2922396412002838B1 /* ShowErrorPopViewController.swift in Sources */,
 				3ADE6EC52236B29800C11E90 /* DraftListViewController.swift in Sources */,
+				185D5C59226F31F80081D747 /* UserCoreData.swift in Sources */,
 				3AEED35B22298BD200B129EA /* RequestListViewController.swift in Sources */,
 				3A045CD32215BCA30095626E /* Step1ViewController.swift in Sources */,
 				3ADE6EBD22369C1D00C11E90 /* CurrentListTableViewCell.swift in Sources */,
@@ -1637,6 +1664,7 @@
 				3ADE6EBA22369B7100C11E90 /* CurrentListViewController.swift in Sources */,
 				0453E0C12260F908006DBD95 /* FilterPopUp.swift in Sources */,
 				3A1D4E0021F71DE300DAE579 /* TestingCollectionViewCell.swift in Sources */,
+				04BAB171226DBCEC005D288B /* PartnerHelpViewController.swift in Sources */,
 				0453E077225FBD25006DBD95 /* ReviewTableViewCell.swift in Sources */,
 				18112662226A247A00282136 /* AddressPopUp.swift in Sources */,
 				0453E06C225F36A3006DBD95 /* HireUserViewController.swift in Sources */,

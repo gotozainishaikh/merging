@@ -22,5 +22,9 @@ class PartnerLoginButtonViewController: UIViewController {
        
     }
     
-
+    @IBAction func backBtn(_ sender: Any) {
+        let vc = storyboard?.instantiateViewController(withIdentifier: "mainScreen")
+        present(vc!, animated: true, completion: nil)
+    }
+    
 }

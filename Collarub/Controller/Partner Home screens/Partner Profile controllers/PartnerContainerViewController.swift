@@ -115,8 +115,8 @@ class PartnerContainerViewController: UIViewController {
     
     @IBAction func helpBtn(_ sender: Any) {
         
-        let story = UIStoryboard(name: "User", bundle: nil)
-        let vc = story.instantiateViewController(withIdentifier: "goto")
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "partnerHelp")
         present(vc, animated: true, completion: nil)
         
     }
@@ -154,7 +154,7 @@ class PartnerContainerViewController: UIViewController {
         
         if self.settingOptionView.isHidden {
             self.settingOptionView.isHidden = false
-            self.topConstraints.constant = 70.0
+            self.topConstraints.constant = 100.0
             uparrowimg.image = UIImage(named: "angle-arrow-down")
         }else {
             self.settingOptionView.isHidden = true

@@ -16,6 +16,11 @@ class UserLoginViewController: UIViewController {
         
     }
     
+    @IBAction func backBtn(_ sender: Any) {
+        let story = UIStoryboard(name: "Main", bundle: nil)
+        let vc = story.instantiateViewController(withIdentifier: "mainScreen")
+        present(vc, animated: true, completion: nil)
+    }
     @IBAction func logIn(_ sender: UIButton) {
         
        self.performSegue(withIdentifier: "instaView", sender: self)

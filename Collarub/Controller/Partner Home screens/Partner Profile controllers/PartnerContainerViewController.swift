@@ -17,6 +17,10 @@ import SafariServices
 
 class PartnerContainerViewController: UIViewController {
 
+    @IBOutlet weak var topHeight: NSLayoutConstraint!
+    @IBOutlet weak var buyCredit: UIView!
+    @IBOutlet weak var paymentBtn: UIButton!
+    @IBOutlet weak var heartView: UIView!
     @IBOutlet weak var switchNotification: UISwitch!
     @IBOutlet weak var topConstraints: NSLayoutConstraint!
     @IBOutlet weak var rateNum: UILabel!
@@ -28,6 +32,7 @@ class PartnerContainerViewController: UIViewController {
     @IBOutlet weak var ratingView: CosmosView!
     @IBOutlet weak var userImg: UIButton!
     @IBOutlet weak var uparrowimg: UIImageView!
+    @IBOutlet weak var heartConstrainst: NSLayoutConstraint!
     
     var p_id = ""
     var userName = ""
@@ -38,6 +43,7 @@ class PartnerContainerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        buyCredit.isHidden = true
         switchNotification.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
         settingOptionView.isHidden = true
 
@@ -60,8 +66,8 @@ class PartnerContainerViewController: UIViewController {
                 if dataJSON["Status"] != "failed" {
                     self.engagementRt.text = "\(dataJSON["engagement"].stringValue)%"
                     
-                    let para1 : [String:String] = ["id" : id]
-                    Alamofire.request("\(self.url.weburl)/find_partner_level.php", method: .get, parameters: para).responseJSON { (response) in
+                    let para1 : [String:String] = ["partner_id" : id]
+                    Alamofire.request("\(self.url.weburl)/find_partner_level.php", method: .get, parameters: para1).responseJSON { (response) in
                         
                         if response.result.isSuccess {
                             
@@ -70,6 +76,8 @@ class PartnerContainerViewController: UIViewController {
                             if dataJSON["Status"] == "success" {
                                 self.ratingView.rating = dataJSON["level"].doubleValue
                                 self.rateNum.text = "Ratting \(dataJSON["level"].intValue)/5"
+                                
+                                self.heartConstrainst.constant = 20.0 - CGFloat((dataJSON["level"].doubleValue * 20) / 5)
                             }
                         }
                     }
@@ -263,41 +271,57 @@ class PartnerContainerViewController: UIViewController {
     
     @IBAction func deleteAccount(_ sender: UIButton) {
         
-        let parameters : [String:String] = [
-            
-            "userName": userName,
-            
-        ]
+        let alert = UIAlertController(title: "Confirmation", message: "Are you sure you want to delete your account ?", preferredStyle: .alert)
         
-        Alamofire.request("\(self.url.weburl)/partnerDelete.php", method: .get, parameters: parameters).responseJSON { (response) in
-            SVProgressHUD.show(withStatus: "Loading")
-            if response.result.isSuccess {
-                SVProgressHUD.dismiss()
-                let dataJSON1 : JSON = JSON(response.result.value!)
+        let yes = UIAlertAction(title: "Yes", style: .default) { (yes) in
+            
+            let parameters : [String:String] = [
                 
-                if dataJSON1["Status"] == "success" {
+                "userName": self.userName,
+                
+                ]
+            
+            Alamofire.request("\(self.url.weburl)/partnerDelete.php", method: .get, parameters: parameters).responseJSON { (response) in
+                SVProgressHUD.show(withStatus: "Loading")
+                if response.result.isSuccess {
+                    SVProgressHUD.dismiss()
+                    let dataJSON1 : JSON = JSON(response.result.value!)
                     
-                    
-                    SVProgressHUD.showSuccess(withStatus: "Done")
-                    if let cookies = HTTPCookieStorage.shared.cookies {
-                        for cookie in cookies {
-                            if cookie.domain.contains(".instagram.com") {
-                                HTTPCookieStorage.shared.deleteCookie(cookie)
+                    if dataJSON1["Status"] == "success" {
+                        
+                        
+                        SVProgressHUD.showSuccess(withStatus: "Done")
+                        if let cookies = HTTPCookieStorage.shared.cookies {
+                            for cookie in cookies {
+                                if cookie.domain.contains(".instagram.com") {
+                                    HTTPCookieStorage.shared.deleteCookie(cookie)
+                                }
                             }
+                            
+                            Defaults.setPartnerLoginStatus(logInStatus: false)
+                            let story = UIStoryboard(name: "Main", bundle: nil)
+                            let vc = story.instantiateViewController(withIdentifier: "mainScreen")
+                            self.present(vc, animated: true, completion: nil)
+                            
+                            self.deleteAllRecords()
+                            
                         }
-                        
-                        Defaults.setPartnerLoginStatus(logInStatus: false)
-                        let story = UIStoryboard(name: "Main", bundle: nil)
-                        let vc = story.instantiateViewController(withIdentifier: "mainScreen")
-                        self.present(vc, animated: true, completion: nil)
-                        
-                        self.deleteAllRecords()
-                        
                     }
                 }
+                
             }
             
         }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in
+            alert.dismiss(animated: true, completion: nil)
+            
+        }
+        
+        alert.addAction(yes)
+        alert.addAction(cancel)
+        present(alert, animated: true, completion: nil)
+        
         
     }
     
@@ -462,5 +486,23 @@ class PartnerContainerViewController: UIViewController {
     }
         
     
+    @IBAction func payMentAction(_ sender: UIButton) {
+        
+        if buyCredit.isHidden {
+            topHeight.constant = 30.0
+            buyCredit.isHidden = false
+        }else {
+            topHeight.constant = 0
+            buyCredit.isHidden = true
+            
+        }
+    }
     
+    @IBAction func buyCradit(_ sender: UIButton) {
+        
+        let vc = storyboard?.instantiateViewController(withIdentifier: "paymentPopUp")
+        self.addChild(vc!)
+        self.view.addSubview(vc!.view)
+        vc!.didMove(toParent: self)
+    }
 }

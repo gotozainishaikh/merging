@@ -19,6 +19,7 @@ class PendingProductsViewController: UIViewController {
     @IBOutlet weak var calenderView: CalendarView!
     var model : [LocalModel] = [LocalModel]()
     @IBOutlet weak var tableView: UITableView!
+    var datarry : [String] = [String]()
     
      var imageView : UIImageView!
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -47,8 +48,10 @@ class PendingProductsViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        retriveData()
-        
+        retriveData() {
+            print("mss :: \(self.datarry)")
+            
+        }
         tableView.allowsSelection = false
         let date = NSDate()
         let dateFormatter = DateFormatter()
@@ -91,7 +94,6 @@ class PendingProductsViewController: UIViewController {
     
     
     func setUpCalendar() {
-        
         CalendarView.Style.cellShape                = .bevel(4)
         CalendarView.Style.cellColorDefault         = UIColor.clear
         CalendarView.Style.cellColorToday           = UIColor(red:1.00, green:0.84, blue:0.64, alpha:1.00)
@@ -100,27 +102,28 @@ class PendingProductsViewController: UIViewController {
         CalendarView.Style.headerTextColor          = UIColor.white
         CalendarView.Style.cellTextColorDefault     = UIColor.white
         CalendarView.Style.cellTextColorToday       = UIColor(red:0.31, green:0.44, blue:0.47, alpha:1.00)
-        
-        
+        //CalendarView.Style.cellEventColor           = UIColor.red
         CalendarView.Style.firstWeekday             = .monday
         
         calenderView.dataSource = self
         calenderView.delegate = self
         
+         CalendarView.Style.cellEventColor           = UIColor.red
         
         calenderView.direction = .horizontal
         // calendarView.multipleSelectionEnable = false
         calenderView.marksWeekends = true
         
-        calenderView.multipleSelectionEnable = false
+        calenderView.multipleSelectionEnable = true
         calenderView.backgroundColor = UIColor(red:0.31, green:0.44, blue:0.47, alpha:1.00)
         //        var date = parse("2019-04-10")
         //        calendarView.selectDate(date)
         
+        calenderView.loadEvents()
         
     }
     
-    func retriveData() {
+    func retriveData(completion: @escaping () -> Void) {
         if let viewWithTag = self.view.viewWithTag(100) {
             viewWithTag.removeFromSuperview()
         }
@@ -179,6 +182,7 @@ class PendingProductsViewController: UIViewController {
                                 
                                 let statusModel = LocalModel()
                                 
+                                
                                 statusModel.announcementImage = dataJSON1[0]["img_url"].stringValue
                                 statusModel.title = dataJSON[item]["collaboration_name"].stringValue
                                 statusModel.companyName = dataJSON[item]["company_name"].stringValue
@@ -196,9 +200,25 @@ class PendingProductsViewController: UIViewController {
                                 statusModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 statusModel.collaborationType = dataJSON[item]["collaborationType"].stringValue
+                                self.datarry.append(dataJSON[item]["date"].stringValue)
                                 self.model.append(statusModel)
                                 //   SVProgressHUD.dismiss()
                                 
+                                let dateFormatter = DateFormatter()
+                                dateFormatter.timeStyle = DateFormatter.Style.none
+                                dateFormatter.dateFormat = "YYYY-MM-dd"
+                                let tody = Date()
+                                var dat = dateFormatter.date(from: dataJSON[item]["date"].stringValue)
+                                print("date :: \(dat)")
+                                if dat! < tody {
+                                    
+                                   
+                                    self.calenderView.addEvent("hello", date: dat!)
+                                    print("less")
+                                }else if dat! > tody {
+                                    print("greater")
+                                }
+                              
                             }else {
                                 print("error not get in first")
                             }
@@ -207,10 +227,14 @@ class PendingProductsViewController: UIViewController {
                             // SVProgressHUD.dismiss()
                             self.tableView.reloadData()
                             self.tableView.allowsSelection = true
+                            
+                            
                         }
                         
                         
                     }
+                    
+                    
                     
                     //                if dataJSON["Status"] == "failed" {
                     //                    self.model.removeAll()
@@ -226,10 +250,13 @@ class PendingProductsViewController: UIViewController {
                 
             }else {
                 print("Error in fetching data")
-                self.retriveData()
+                self.retriveData() {
+                    
+                }
             }
             
         }
+        
     }
 
     // MARK - Retrive data by date
@@ -310,7 +337,9 @@ class PendingProductsViewController: UIViewController {
                                 statusModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 statusModel.collaborationType = dataJSON[item]["collaborationType"].stringValue
                                 self.model.append(statusModel)
+                                self.datarry.append(dataJSON[item]["date"].stringValue)
                                 //   SVProgressHUD.dismiss()
+                               // print("mss :: \(self.datarry)")
                                 
                             }else {
                                 print("error not get in first")
@@ -324,6 +353,7 @@ class PendingProductsViewController: UIViewController {
                         
                         
                     }
+                    
                     
                     //                if dataJSON["Status"] == "failed" {
                     //                    self.model.removeAll()
@@ -339,7 +369,9 @@ class PendingProductsViewController: UIViewController {
                 
             }else {
                 print("Error in fetching data")
-                self.retriveData()
+                self.retriveData() {
+                    
+                }
             }
             
         }

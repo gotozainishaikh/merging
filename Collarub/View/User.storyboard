@@ -5606,6 +5606,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sjT-5P-rny"/>
                     </view>
+                    <connections>
+                        <outlet property="pay_btn" destination="gpB-0T-Mqn" id="7Ht-lb-Tyy"/>
+                        <outlet property="plan" destination="9F6-bZ-3O8" id="y9X-Dg-VGO"/>
+                        <outlet property="tagline" destination="vyd-cf-i7p" id="ePZ-jg-Ph9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0iP-X5-C2Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

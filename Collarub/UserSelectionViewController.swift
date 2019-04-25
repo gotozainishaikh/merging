@@ -39,7 +39,7 @@ class UserSelectionViewController: UIViewController {
         }else {
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
-            UserCoreData.fetchCoreData()
+            //UserCoreData.fetchCoreData()
             present(vc, animated: true, completion: nil)
         }
         

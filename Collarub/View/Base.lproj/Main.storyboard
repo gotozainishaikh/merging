@@ -336,7 +336,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You only select two choices" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jmi-pV-vGc">
-                                        <rect key="frame" x="0.0" y="0.0" width="256" height="18.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="256" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themeColor3"/>
                                         <nil key="highlightedColor"/>
@@ -1397,13 +1397,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="600"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT METHOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ako-6i-u2v">
-                                                <rect key="frame" x="0.0" y="35" width="320" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="35" width="320" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2o2-ye-Ap2" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="72.5" width="224" height="31"/>
+                                                <rect key="frame" x="48" y="71.5" width="224" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="15"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per influencer">
@@ -1423,7 +1423,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vQy-Or-mQF" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="103.5" width="224" height="31"/>
+                                                <rect key="frame" x="48" y="101.5" width="224" height="30"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="15"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per campaign">
@@ -1443,14 +1443,14 @@
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iwg-gl-XSm">
-                                                <rect key="frame" x="16" y="149.5" width="288" height="73.5"/>
+                                                <rect key="frame" x="16" y="146.5" width="288" height="56"/>
                                                 <string key="text">We will keep the money until the collaboration iscompleted so you will be sure that the job is well done. If the influencer won't complete successfully the collaboraton then you will be refunded.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iql-Oa-uqN" userLabel="pay-per-influencer">
-                                                <rect key="frame" x="16" y="231" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="210.5" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PTZ-bx-T9x">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
@@ -1462,14 +1462,14 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rPW-lO-GZP">
-                                                        <rect key="frame" x="0.0" y="16" width="288" height="88"/>
+                                                        <rect key="frame" x="0.0" y="16" width="288" height="84"/>
                                                         <string key="text">Choose the influencer you want to collaborate with, your choice can be multiple. The price is per influencer and only for approved collaborations, you will be able to approve each influencer request or you can also choose to automatically approve all the request:  </string>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B1A-Iv-Um4" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="0.0" y="112" width="129.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="108" width="129.5" height="21"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Local (1k-15k) 1,99€"/>
@@ -1615,7 +1615,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Msy-hg-uox" userLabel="pay-per-campaign">
-                                                <rect key="frame" x="16" y="231.5" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="211" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vLq-Mg-6Cj">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
@@ -1783,7 +1783,7 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fUm-dx-CYc">
-                                                <rect key="frame" x="0.0" y="334.5" width="320" height="180"/>
+                                                <rect key="frame" x="0.0" y="314" width="320" height="180"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U5Z-Zm-MJQ" customClass="CheckBox" customModule="CheckBox">
                                                         <rect key="frame" x="20" y="20" width="212" height="19"/>
@@ -1876,7 +1876,7 @@
                                                 </constraints>
                                             </view>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="abc@mail.com" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Gl6-MY-xLs">
-                                                <rect key="frame" x="37" y="499" width="178" height="40"/>
+                                                <rect key="frame" x="37" y="478.5" width="178" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="2ht-GK-bnv"/>
                                                     <constraint firstAttribute="width" constant="178" id="Sei-h2-eop"/>
@@ -1980,25 +1980,25 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="740"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BUSINESS &amp; CAMPAIGN INFO" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qQ7-cE-p2b">
-                                                <rect key="frame" x="16" y="35" width="288" height="23.5"/>
+                                                <rect key="frame" x="16" y="35" width="288" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company name " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSz-Ue-Wyc">
-                                                <rect key="frame" x="23" y="92.5" width="98.5" height="14"/>
+                                                <rect key="frame" x="28" y="93.5" width="88.5" height="14"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Address" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W3O-cg-vN5">
-                                                <rect key="frame" x="27.5" y="142" width="49" height="15"/>
+                                                <rect key="frame" x="27.5" y="143" width="49" height="15"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DW0-LU-lOU">
-                                                <rect key="frame" x="27.5" y="192.5" width="69.5" height="15"/>
+                                                <rect key="frame" x="27.5" y="193.5" width="69.5" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="15O-29-ajW"/>
                                                 </constraints>
@@ -2007,7 +2007,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product images" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qgy-eU-GV3">
-                                                <rect key="frame" x="27.5" y="459.5" width="96" height="15"/>
+                                                <rect key="frame" x="27.5" y="460.5" width="96" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="15" id="eGg-62-he4"/>
                                                 </constraints>
@@ -2016,7 +2016,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdj-02-Pfp">
-                                                <rect key="frame" x="0.0" y="488.5" width="320" height="61"/>
+                                                <rect key="frame" x="0.0" y="489.5" width="320" height="61"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location Images" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVR-hg-ojM">
                                                         <rect key="frame" x="27.5" y="19" width="96" height="30"/>
@@ -2074,13 +2074,13 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEy-cg-lv4">
-                                                <rect key="frame" x="27.5" y="579.5" width="96" height="15"/>
+                                                <rect key="frame" x="27.5" y="580.5" width="96" height="14"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telephone no: " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kcr-3o-MTk">
-                                                <rect key="frame" x="27.5" y="614.5" width="96" height="15"/>
+                                                <rect key="frame" x="27.5" y="614.5" width="96" height="14"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
@@ -2098,7 +2098,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What are u offering to influencers ?" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LE7-Yy-Gry">
-                                                <rect key="frame" x="28.5" y="247.5" width="80" height="44.5"/>
+                                                <rect key="frame" x="28.5" y="248.5" width="80" height="44.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="80" id="wNz-Oa-iVX"/>
                                                 </constraints>
@@ -2107,19 +2107,19 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What they will have to do? " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-XT-4i5">
-                                                <rect key="frame" x="28.5" y="312" width="80" height="43.5"/>
+                                                <rect key="frame" x="28.5" y="313" width="80" height="43.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="What they will won't have to do? " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UNv-zW-F3p">
-                                                <rect key="frame" x="28.5" y="380.5" width="80" height="43.5"/>
+                                                <rect key="frame" x="28.5" y="381.5" width="80" height="43.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="Type your company name here" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Aq3-ox-YYL">
-                                                <rect key="frame" x="119" y="79.5" width="178" height="40"/>
+                                                <rect key="frame" x="119" y="80.5" width="178" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="F6N-D9-wQe"/>
                                                 </constraints>
@@ -2136,7 +2136,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="14th street, Near malu beach" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="San-8G-eMb">
-                                                <rect key="frame" x="119" y="129.5" width="178" height="40"/>
+                                                <rect key="frame" x="119" y="130.5" width="178" height="40"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -2204,7 +2204,7 @@
                                                 </connections>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6Le-NW-epG">
-                                                <rect key="frame" x="119" y="179.5" width="178" height="52"/>
+                                                <rect key="frame" x="119" y="180.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2213,7 +2213,7 @@
                                                 </connections>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="j28-En-HIz">
-                                                <rect key="frame" x="119" y="241.5" width="178" height="52"/>
+                                                <rect key="frame" x="119" y="242.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2222,7 +2222,7 @@
                                                 </connections>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="KMX-da-QoP">
-                                                <rect key="frame" x="119" y="303.5" width="178" height="52"/>
+                                                <rect key="frame" x="119" y="304.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2231,7 +2231,7 @@
                                                 </connections>
                                             </textView>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dUY-Ru-JOb">
-                                                <rect key="frame" x="119" y="365.5" width="178" height="52"/>
+                                                <rect key="frame" x="119" y="366.5" width="178" height="52"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -2240,7 +2240,7 @@
                                                 </connections>
                                             </textView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qUD-Zf-AcG">
-                                                <rect key="frame" x="130.5" y="427.5" width="51" height="51"/>
+                                                <rect key="frame" x="130.5" y="428.5" width="51" height="51"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="51" id="2BS-cc-npy"/>
                                                     <constraint firstAttribute="height" constant="51" id="Gtt-Xm-eNt"/>
@@ -2255,7 +2255,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cHN-hJ-Jyz">
-                                                <rect key="frame" x="186.5" y="427.5" width="51" height="51"/>
+                                                <rect key="frame" x="186.5" y="428.5" width="51" height="51"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -2265,7 +2265,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OrQ-q9-bYb">
-                                                <rect key="frame" x="242.5" y="427.5" width="51" height="51"/>
+                                                <rect key="frame" x="242.5" y="428.5" width="51" height="51"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                 <state key="normal" title="+">
                                                     <color key="titleColor" name="themeColor3"/>
@@ -2687,7 +2687,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer's Sector" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuW-oL-8lT">
-                                                <rect key="frame" x="12" y="536" width="108.5" height="15"/>
+                                                <rect key="frame" x="16" y="536.5" width="101" height="14"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
@@ -2836,7 +2836,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-pd-Ygq">
-                                                <rect key="frame" x="32" y="198" width="256" height="59"/>
+                                                <rect key="frame" x="32" y="198" width="256" height="42"/>
                                                 <string key="text">Accept to value request s from influencers asking for a budget to collaborate, you will able to accept, decline and negotiate the budget.  </string>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
@@ -2866,10 +2866,10 @@
                                                 </userDefinedRuntimeAttributes>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJD-ge-EQo">
-                                                <rect key="frame" x="32" y="260" width="256" height="70"/>
+                                                <rect key="frame" x="32" y="243" width="256" height="70"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MAX BUDGET PER INFLUENCER" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PcE-uQ-nxX">
-                                                        <rect key="frame" x="0.0" y="2" width="256" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="2.5" width="256" height="16.5"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="14"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
@@ -2923,17 +2923,17 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lDX-lK-BqU">
-                                                <rect key="frame" x="0.0" y="327" width="320" height="223"/>
+                                                <rect key="frame" x="0.0" y="310" width="320" height="240"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wbf-hz-sSv">
-                                                        <rect key="frame" x="32" y="30" width="256" height="73.5"/>
+                                                        <rect key="frame" x="32" y="30" width="256" height="56"/>
                                                         <string key="text">Give your product/serviceto influencer to a with a special % discount. You will be added just to set just a few requirements for the influencer to hire and ask for just one content.</string>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the type of post/stroy you want to be published byinfluencers ( can be multiple )" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="223-as-gK0">
-                                                        <rect key="frame" x="32" y="124.5" width="256" height="27"/>
+                                                        <rect key="frame" x="32" y="107" width="256" height="27"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="27" id="2Qh-Li-F2o"/>
                                                         </constraints>
@@ -2942,7 +2942,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="◘ Content Type" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfe-KX-yOa">
-                                                        <rect key="frame" x="8" y="103.5" width="304" height="21"/>
+                                                        <rect key="frame" x="8" y="86" width="304" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="21" id="GvZ-SW-fvm"/>
                                                         </constraints>
@@ -2986,7 +2986,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2p-sq-QZb" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="33" y="171.5" width="100" height="35"/>
+                                                        <rect key="frame" x="33" y="154" width="100" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="100" id="E7m-IQ-E3F"/>
@@ -3013,7 +3013,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzB-PN-M6F" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="213" y="171.5" width="50" height="35"/>
+                                                        <rect key="frame" x="213" y="154" width="50" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="MwX-rf-c2w"/>
@@ -3040,7 +3040,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fx-Lh-gkj" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="34" y="206.5" width="90" height="35"/>
+                                                        <rect key="frame" x="34" y="189" width="90" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="90" id="9zJ-f8-X4u"/>
@@ -3067,7 +3067,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayb-4S-Vcx" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="143" y="171.5" width="60" height="35"/>
+                                                        <rect key="frame" x="143" y="154" width="60" height="35"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="35" id="8dR-3I-weB"/>
@@ -3350,7 +3350,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRg-aI-2BP">
-                                                <rect key="frame" x="244" y="431" width="44" height="32"/>
+                                                <rect key="frame" x="247" y="431" width="41" height="31"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <state key="normal" title="Close">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -3700,19 +3700,19 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auto Approve" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="35G-Ry-rzt">
-                                <rect key="frame" x="197" y="104.5" width="54" height="10"/>
+                                <rect key="frame" x="199.5" y="104.5" width="49.5" height="9.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Block Request" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tIM-Om-xL8">
-                                <rect key="frame" x="195.5" y="129.5" width="57" height="10"/>
+                                <rect key="frame" x="198" y="129" width="52.5" height="9.5"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="8"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ZiI-z7-duL">
-                                <rect key="frame" x="259" y="94" width="51" height="31"/>
+                                <rect key="frame" x="257" y="93.5" width="51" height="31"/>
                                 <color key="onTintColor" name="ThemeColor1"/>
                                 <color key="thumbTintColor" name="themecolor4"/>
                                 <connections>
@@ -3720,7 +3720,7 @@
                                 </connections>
                             </switch>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ujD-5c-DgN">
-                                <rect key="frame" x="259" y="119" width="51" height="31"/>
+                                <rect key="frame" x="257" y="118" width="51" height="31"/>
                                 <color key="onTintColor" name="ThemeColor1"/>
                                 <color key="thumbTintColor" name="themecolor4"/>
                                 <connections>
@@ -4891,13 +4891,13 @@ INFLUENCER</string>
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="650"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PAYMENT METHOD" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bd4-PC-3n2">
-                                                <rect key="frame" x="0.0" y="35" width="320" height="23.5"/>
+                                                <rect key="frame" x="0.0" y="35" width="320" height="22.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="19"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cDO-1l-sEg" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="72.5" width="224" height="27"/>
+                                                <rect key="frame" x="48" y="71.5" width="224" height="26"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per influencer">
@@ -4917,7 +4917,7 @@ INFLUENCER</string>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Lm-01-pfT" customClass="SSRadioButton" customModule="Collarub" customModuleProvider="target">
-                                                <rect key="frame" x="48" y="99.5" width="224" height="27"/>
+                                                <rect key="frame" x="48" y="97.5" width="224" height="26"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="tintColor" name="themeColor2"/>
                                                 <state key="normal" title="Pay per campaign">
@@ -4937,14 +4937,14 @@ INFLUENCER</string>
                                                 </userDefinedRuntimeAttributes>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qey-f6-AvZ">
-                                                <rect key="frame" x="16" y="141.5" width="288" height="73.5"/>
+                                                <rect key="frame" x="16" y="138.5" width="288" height="56"/>
                                                 <string key="text">We will keep the money until the collaboration iscompleted so you will be sure that the job is well done. If the influencer won't complete successfully the collaboraton then you will be refunded.</string>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                 <color key="textColor" name="themeColor3"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CY2-NI-fVw" userLabel="pay-per-influencer">
-                                                <rect key="frame" x="16" y="223" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="202.5" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="00I-ch-ged">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
@@ -4953,14 +4953,14 @@ INFLUENCER</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zCM-nE-yp4">
-                                                        <rect key="frame" x="0.0" y="16" width="288" height="88"/>
+                                                        <rect key="frame" x="0.0" y="16" width="288" height="84"/>
                                                         <string key="text">Choose the influencer you want to collaborate with, your choice can be multiple. The price is per influencer and only for approved collaborations, you will be able to approve each influencer request or you can also choose to automatically approve all the request:  </string>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="12"/>
                                                         <color key="textColor" name="themeColor3"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTI-s3-h0N" customClass="CheckBox" customModule="CheckBox">
-                                                        <rect key="frame" x="0.0" y="112" width="129.5" height="17"/>
+                                                        <rect key="frame" x="0.0" y="108" width="129.5" height="21"/>
                                                         <color key="tintColor" white="1" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="title" value="Local (1k-15k) 1,99€"/>
@@ -5106,7 +5106,7 @@ INFLUENCER</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0a-pG-8C0" userLabel="pay-per-campaign">
-                                                <rect key="frame" x="16" y="223.5" width="288" height="203"/>
+                                                <rect key="frame" x="16" y="203" width="288" height="203"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Influencer Reach" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VCd-wr-MmZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="16"/>
@@ -5274,7 +5274,7 @@ INFLUENCER</string>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qaW-RG-ImE">
-                                                <rect key="frame" x="0.0" y="226.5" width="320" height="173.5"/>
+                                                <rect key="frame" x="0.0" y="206" width="320" height="173.5"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hmY-ML-AfZ" customClass="CheckBox" customModule="CheckBox">
                                                         <rect key="frame" x="20" y="20" width="212" height="19"/>
@@ -5536,7 +5536,7 @@ INFLUENCER</string>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMq-WC-GXx">
-                                                        <rect key="frame" x="36" y="33.5" width="155" height="12.5"/>
+                                                        <rect key="frame" x="36" y="33.5" width="155" height="12"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -5566,7 +5566,7 @@ INFLUENCER</string>
                                                         </constraints>
                                                     </view>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="expiry date" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vUu-Q6-2ZV">
-                                                        <rect key="frame" x="36" y="47.5" width="155" height="12.5"/>
+                                                        <rect key="frame" x="36" y="47.5" width="155" height="12"/>
                                                         <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -6287,7 +6287,7 @@ INFLUENCER</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="d4F-uE-ogb">
-                                <rect key="frame" x="0.0" y="70" width="320" height="260"/>
+                                <rect key="frame" x="0.0" y="69" width="320" height="260"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="260" id="DT0-i8-j2K"/>
@@ -6308,25 +6308,25 @@ INFLUENCER</string>
                                 </connections>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="USER REVIEW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AY5-4u-CRq">
-                                <rect key="frame" x="99" y="41" width="122" height="21"/>
+                                <rect key="frame" x="103.5" y="41" width="113" height="20"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                 <color key="textColor" name="ThemeColor1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review By Influencer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCk-aW-kfV">
-                                <rect key="frame" x="10" y="350" width="124.5" height="15"/>
+                                <rect key="frame" x="10" y="349" width="112.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="ThemeColor1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating By Influencer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Ub-aO-Xvj">
-                                <rect key="frame" x="11.5" y="429" width="122" height="15"/>
+                                <rect key="frame" x="12" y="427" width="108.5" height="14"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                 <color key="textColor" name="ThemeColor1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EKp-1V-OjP">
-                                <rect key="frame" x="140" y="345" width="172" height="71"/>
+                                <rect key="frame" x="128" y="344" width="184" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="71" id="aOH-Ml-cM5"/>
@@ -6336,14 +6336,14 @@ INFLUENCER</string>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1zA-oV-v6n" customClass="CosmosView" customModule="Cosmos">
-                                <rect key="frame" x="143" y="426.5" width="120" height="20"/>
+                                <rect key="frame" x="130" y="424" width="120" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="S4N-TD-VQi"/>
                                     <constraint firstAttribute="height" constant="20" id="UqV-Wp-r5S"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9i1-bQ-dkX">
-                                <rect key="frame" x="63.5" y="478" width="193" height="38"/>
+                                <rect key="frame" x="63.5" y="475.5" width="193" height="38"/>
                                 <color key="backgroundColor" name="ThemeColor1"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="193" id="Fhx-YH-muY"/>
@@ -6365,7 +6365,7 @@ INFLUENCER</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y5S-gM-xbZ">
-                                <rect key="frame" x="63.5" y="519" width="193" height="38"/>
+                                <rect key="frame" x="63.5" y="516.5" width="193" height="38"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="dyV-dJ-ARo"/>
                                 </constraints>
@@ -6428,7 +6428,7 @@ INFLUENCER</string>
                                         <rect key="frame" x="32" y="109.5" width="256" height="329"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVIEW" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-zd-z4C">
-                                                <rect key="frame" x="93" y="8" width="70" height="21"/>
+                                                <rect key="frame" x="96.5" y="8" width="63" height="20"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="17"/>
                                                 <color key="textColor" name="ThemeColor1"/>
                                                 <nil key="highlightedColor"/>
@@ -6441,14 +6441,14 @@ INFLUENCER</string>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j98-9i-1Mp" customClass="CosmosView" customModule="Cosmos">
-                                        <rect key="frame" x="100" y="291" width="120" height="20"/>
+                                        <rect key="frame" x="100" y="289" width="120" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="otZ-oW-NnV"/>
                                             <constraint firstAttribute="width" constant="120" id="vIn-RP-kzE"/>
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RATING" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0uY-Zc-0cw">
-                                        <rect key="frame" x="137" y="269" width="46.5" height="15"/>
+                                        <rect key="frame" x="138.5" y="268" width="43" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
@@ -6488,7 +6488,7 @@ INFLUENCER</string>
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Type your review" translatesAutoresizingMaskIntoConstraints="NO" id="191-mn-YLx">
-                                        <rect key="frame" x="32" y="148" width="256" height="112"/>
+                                        <rect key="frame" x="32" y="147" width="256" height="112"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="112" id="usy-8k-Ub4"/>
@@ -6991,7 +6991,7 @@ INFLUENCER</string>
                                 <rect key="frame" x="32" y="70" width="256" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Num Of Request" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PP9-NZ-ahW">
-                                        <rect key="frame" x="53" y="20" width="150" height="15"/>
+                                        <rect key="frame" x="53" y="20" width="150" height="14"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="150" id="16b-bp-ef0"/>
                                         </constraints>
@@ -7000,55 +7000,55 @@ INFLUENCER</string>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Num Of Influencer Hired" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dD6-2u-Jmk">
-                                        <rect key="frame" x="39" y="75" width="178.5" height="15"/>
+                                        <rect key="frame" x="49" y="74" width="158.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Kn-nU-MlH">
-                                        <rect key="frame" x="53" y="55" width="150" height="0.0"/>
+                                        <rect key="frame" x="53" y="54" width="150" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QuN-nA-QWz">
-                                        <rect key="frame" x="53" y="110" width="150" height="0.0"/>
+                                        <rect key="frame" x="53" y="108" width="150" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Znt-9d-V7P">
-                                        <rect key="frame" x="53" y="165" width="150" height="0.0"/>
+                                        <rect key="frame" x="53" y="162" width="150" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYV-SC-O0U">
-                                        <rect key="frame" x="53" y="220" width="150" height="0.0"/>
+                                        <rect key="frame" x="53" y="216" width="150" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MC8-bh-94I">
-                                        <rect key="frame" x="53" y="275" width="150" height="0.0"/>
+                                        <rect key="frame" x="53" y="270" width="150" height="0.0"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total favourites" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fpR-If-uVG">
-                                        <rect key="frame" x="83.5" y="130" width="89.5" height="15"/>
+                                        <rect key="frame" x="87.5" y="128" width="81.5" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Reviews" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTq-qf-H5o">
-                                        <rect key="frame" x="88" y="185" width="80" height="15"/>
+                                        <rect key="frame" x="91" y="182" width="74" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MEI-Qj-CeF">
-                                        <rect key="frame" x="89.5" y="240" width="77" height="15"/>
+                                        <rect key="frame" x="94" y="236" width="68" height="14"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="12"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
@@ -7152,85 +7152,85 @@ INFLUENCER</string>
                                 <rect key="frame" x="32" y="70" width="256" height="400"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmy-0R-nIN">
-                                        <rect key="frame" x="67" y="20" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="20" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Company Address" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoy-ar-i5x">
-                                        <rect key="frame" x="60" y="77" width="136" height="18.5"/>
+                                        <rect key="frame" x="66" y="75" width="124.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PhS-Kt-6bf">
-                                        <rect key="frame" x="67" y="48.5" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="47.5" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sjQ-Tj-juB">
-                                        <rect key="frame" x="67" y="105.5" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="102.5" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMg-5z-wF1">
-                                        <rect key="frame" x="67" y="162.5" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="157.5" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Biy-S7-PDz">
-                                        <rect key="frame" x="67" y="219.5" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="212.5" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gnB-7f-wb0">
-                                        <rect key="frame" x="67" y="276.5" width="122.5" height="18.5"/>
+                                        <rect key="frame" x="73.5" y="267.5" width="109" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSv-4a-l8I">
-                                        <rect key="frame" x="114" y="134" width="28.5" height="18.5"/>
+                                        <rect key="frame" x="115" y="130" width="26.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zip Code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WOx-sW-rRH">
-                                        <rect key="frame" x="95" y="191" width="66.5" height="18.5"/>
+                                        <rect key="frame" x="97" y="185" width="62" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NQl-5q-R8v">
-                                        <rect key="frame" x="98" y="248" width="60" height="18.5"/>
+                                        <rect key="frame" x="101.5" y="240" width="53.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vat Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vU2-g5-wyN">
-                                        <rect key="frame" x="82.5" y="305" width="91.5" height="18.5"/>
+                                        <rect key="frame" x="88.5" y="295" width="79.5" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xqi-m9-r3e">
-                                        <rect key="frame" x="80" y="333.5" width="96" height="18.5"/>
+                                        <rect key="frame" x="85.5" y="322.5" width="85" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invoice Number" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yc6-3K-yML">
-                                        <rect key="frame" x="68.5" y="362" width="119.5" height="18.5"/>
+                                        <rect key="frame" x="75" y="350" width="106" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="themecolor4"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jo6-Ax-YTa">
-                                        <rect key="frame" x="80" y="390.5" width="96" height="18.5"/>
+                                        <rect key="frame" x="85.5" y="377.5" width="85" height="17.5"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="15"/>
                                         <color key="textColor" name="ThemeColor1"/>
                                         <nil key="highlightedColor"/>
@@ -7722,13 +7722,13 @@ INFLUENCER</string>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've noticed that you haven't provided all required data. Please Enter your email so we will able to notify you about updates." textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9r-F3-mkw">
-                                <rect key="frame" x="32" y="159.5" width="256" height="73.5"/>
+                                <rect key="frame" x="32" y="159.5" width="256" height="70"/>
                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="15"/>
                                 <color key="textColor" name="ThemeColor1"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="abc@gmail.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X7Z-WM-vRp">
-                                <rect key="frame" x="32" y="256" width="256" height="30"/>
+                                <rect key="frame" x="32" y="252.5" width="256" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="256" id="Fmy-Zb-DAg"/>
                                     <constraint firstAttribute="height" constant="30" id="aWR-Qw-qgi"/>
@@ -7738,7 +7738,7 @@ INFLUENCER</string>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="04F-a5-ST2">
-                                <rect key="frame" x="118" y="306" width="84" height="21"/>
+                                <rect key="frame" x="118" y="302.5" width="84" height="21"/>
                                 <color key="backgroundColor" name="themeColor2"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="O6E-Ob-Wy0"/>
@@ -7793,13 +7793,13 @@ INFLUENCER</string>
                                         <rect key="frame" x="48" y="192" width="224" height="164"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Any Option" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="neK-fg-bak">
-                                                <rect key="frame" x="0.0" y="4" width="224" height="17.5"/>
+                                                <rect key="frame" x="0.0" y="4" width="224" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="€" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pk9-x0-M1y">
-                                                <rect key="frame" x="166" y="50" width="15" height="22"/>
+                                                <rect key="frame" x="166" y="49.5" width="10.5" height="21"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-ExtraLight" family="Montserrat" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -7818,7 +7818,7 @@ INFLUENCER</string>
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mqa-Z6-4Th">
-                                        <rect key="frame" x="110" y="320" width="100" height="32"/>
+                                        <rect key="frame" x="110" y="319" width="100" height="32"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Light" family="Montserrat" pointSize="14"/>
                                         <state key="normal" title="Cancel">
                                             <color key="titleColor" name="themecolor4"/>
@@ -7828,7 +7828,7 @@ INFLUENCER</string>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Au-gN-61Z">
-                                        <rect key="frame" x="110" y="282" width="100" height="32"/>
+                                        <rect key="frame" x="110" y="281" width="100" height="32"/>
                                         <color key="backgroundColor" name="ThemeColor1"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="KbO-ld-Q1B"/>
@@ -7850,7 +7850,7 @@ INFLUENCER</string>
                                         </connections>
                                     </button>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="X3K-jy-kk7" customClass="DropDown" customModule="iOSDropDown">
-                                        <rect key="frame" x="110" y="238" width="100" height="30"/>
+                                        <rect key="frame" x="110" y="237" width="100" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="PiJ-GG-L7J"/>
                                             <constraint firstAttribute="height" constant="30" id="dVw-uE-8lb"/>

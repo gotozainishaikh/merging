@@ -94,8 +94,9 @@ class UserPlan: UIViewController {
     func check_user(completion: @escaping () -> Void){
         
         let url = "\(base_url.weburl)/checkUser.php"
-        
-        api.alamofireApiWithParams(url: url, parameters: ["user_username":"talha1895"]){
+        let uName = UserCoreData.username
+        print("uName=\(uName)")
+        api.alamofireApiWithParams(url: url, parameters: ["user_username":uName]){
             
             json in
             

@@ -86,7 +86,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         EndDate.isUserInteractionEnabled = true
         EndDate.addGestureRecognizer(tap1)
         
-        maxBudgt = "500"
+        maxBudgt = "free"
         
         
         discountField.isHidden = true
@@ -170,7 +170,7 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
                 self.acceptView.isHidden = true
                 self.optionCView.isHidden = true
                 self.bottomConstraints.constant = 5.0
-                    self.maxBudgt = ""
+                    self.maxBudgt = "free"
                 self.numStoris = ""
                     self.numPost = ""
                       self.accptBugt = ""

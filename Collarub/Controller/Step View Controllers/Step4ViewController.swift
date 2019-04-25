@@ -70,15 +70,65 @@ class Step4ViewController: UIViewController, UITextViewDelegate,  UIImagePickerC
     @IBOutlet weak var telephone: UITextField!
     @IBOutlet weak var websiteText: UITextField!
    
+    var colType : String!
+    var exchng : String!
     
     enum ImageSource {
         case photoLibrary
         case camera
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+         print("comm :: \(colType)")
+        
+        if colType! == "Local"{
+            address.layer.borderColor = UIColor.white.cgColor
+            address.isEnabled = true
+            
+            locationImage1.isEnabled = true
+            locationImage1.layer.borderColor = UIColor.white.cgColor
+            locationImage1.setTitleColor(UIColor.white, for: .normal)
+            locationImage2.isEnabled = true
+            
+            locationImage2.layer.borderColor = UIColor.white.cgColor
+            locationImage2.setTitleColor(UIColor.white, for: .normal)
+            
+            locationImage3.isEnabled = true
+            locationImage3.layer.borderColor = UIColor.white.cgColor
+            locationImage3.setTitleColor(UIColor.white, for: .normal)
+            
+            
+            
+        }else {
+            address.layer.borderColor = UIColor.lightGray.cgColor
+            address.isEnabled = false
+            locationImage1.isEnabled = false
+            locationImage1.layer.borderColor = UIColor.lightGray.cgColor
+            locationImage1.setTitleColor(UIColor.lightGray, for: .normal)
+            
+            locationImage2.isEnabled = false
+            locationImage2.layer.borderColor = UIColor.lightGray.cgColor
+            locationImage2.setTitleColor(UIColor.lightGray, for: .normal)
+            
+            locationImage3.isEnabled = false
+            locationImage3.layer.borderColor = UIColor.lightGray.cgColor
+            locationImage3.setTitleColor(UIColor.lightGray, for: .normal)
+        }
+        
+        if exchng! == "Exchange"{
+            
+            offeringToinfluencer.isEditable = true
+            offeringToinfluencer.layer.borderColor = UIColor.white.cgColor
+            
+        }else {
+            offeringToinfluencer.isEditable = false
+            offeringToinfluencer.layer.borderColor = UIColor.lightGray.cgColor
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
           NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
         print("ey :: \(chckLocal)")
         buttonBorder(btn: image1)

@@ -173,6 +173,7 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                             
                             print(newUser)
                             print("Object Saved.")
+                            UserCoreData.fetchCoreData()
                            // print(flowerJSON["id"])
                             
                             

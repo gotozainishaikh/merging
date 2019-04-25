@@ -26,9 +26,11 @@ class UserSelectionViewController: UIViewController {
 
     @IBAction func userClick(_ sender: UIButton) {
         let storyBoard = UIStoryboard(name: "User", bundle: nil)
+        print("userabc")
         if Defaults.isLogedIn {
             
-            
+            print("else")
+
             let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
             UserCoreData.fetchCoreData()
@@ -37,9 +39,9 @@ class UserSelectionViewController: UIViewController {
             
             
         }else {
-            
+            print("else")
             let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
-            UserCoreData.fetchCoreData()
+            //UserCoreData.fetchCoreData()
             present(vc, animated: true, completion: nil)
         }
         

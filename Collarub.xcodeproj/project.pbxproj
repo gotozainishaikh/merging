@@ -79,11 +79,11 @@
 		04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */; };
 		04BAB171226DBCEC005D288B /* PartnerHelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */; };
 		04BAB173226DCC10005D288B /* PartnerEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */; };
-		04C8AB462270962F008F562A /* PaymentDropDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C8AB452270962F008F562A /* PaymentDropDownViewController.swift */; };
 		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
 		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
 		18112662226A247A00282136 /* AddressPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18112661226A247A00282136 /* AddressPopUp.swift */; };
+		184F42012270DB5300BDEBA0 /* PaymentDropDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F42002270DB5300BDEBA0 /* PaymentDropDownViewController.swift */; };
 		185D5C59226F31F80081D747 /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D5C58226F31F80081D747 /* UserCoreData.swift */; };
 		186139EC2269D712004B799E /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139EB2269D712004B799E /* NotificationService.swift */; };
 		186139F02269D712004B799E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -253,7 +253,6 @@
 		04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerReviewViewController.swift; sourceTree = "<group>"; };
 		04BAB170226DBCEC005D288B /* PartnerHelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerHelpViewController.swift; sourceTree = "<group>"; };
 		04BAB172226DCC10005D288B /* PartnerEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerEmailViewController.swift; sourceTree = "<group>"; };
-		04C8AB452270962F008F562A /* PaymentDropDownViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDropDownViewController.swift; sourceTree = "<group>"; };
 		04DD77452269CD130099DADC /* ReportViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportViewViewController.swift; sourceTree = "<group>"; };
 		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -261,6 +260,7 @@
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
 		18112661226A247A00282136 /* AddressPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPopUp.swift; sourceTree = "<group>"; };
+		184F42002270DB5300BDEBA0 /* PaymentDropDownViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentDropDownViewController.swift; sourceTree = "<group>"; };
 		185D5C58226F31F80081D747 /* UserCoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoreData.swift; sourceTree = "<group>"; };
 		186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		186139EB2269D712004B799E /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -824,11 +824,11 @@
 		3A18187D222ADD1E004F798B /* Partner Profile controllers */ = {
 			isa = PBXGroup;
 			children = (
+				184F42002270DB5300BDEBA0 /* PaymentDropDownViewController.swift */,
 				3A18187E222ADD60004F798B /* PartnerContainerViewController.swift */,
 				04B2854B2266B24D00FDEF13 /* Top50CollaborupersViewController.swift */,
 				04B2854D2266BB5F00FDEF13 /* PartnerReviewViewController.swift */,
 				04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */,
-				04C8AB452270962F008F562A /* PaymentDropDownViewController.swift */,
 			);
 			path = "Partner Profile controllers";
 			sourceTree = "<group>";
@@ -1661,7 +1661,7 @@
 				89F5C1FD21FF3B2600FA96D7 /* ReviewModel.swift in Sources */,
 				3A1810AF22464CFE003B68EF /* Current_list_model.swift in Sources */,
 				0453E0AA2260F89E006DBD95 /* SettingPopUpViewController.swift in Sources */,
-				04C8AB462270962F008F562A /* PaymentDropDownViewController.swift in Sources */,
+				184F42012270DB5300BDEBA0 /* PaymentDropDownViewController.swift in Sources */,
 				0453E0872260F751006DBD95 /* OnlineAnnouncementViewController.swift in Sources */,
 				0453E0A52260F86D006DBD95 /* CollaborationStatusViewController.swift in Sources */,
 				0453E0922260F78F006DBD95 /* mainTabController.swift in Sources */,

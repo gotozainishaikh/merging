@@ -35,8 +35,6 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-<<<<<<< HEAD
-=======
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
@@ -44,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Controller/User/UpgradePopUP/UpgradePopUP.swift"
-            timestampString = "577725210.346575"
+            timestampString = "577814075.474707"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "186"
@@ -53,6 +51,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
->>>>>>> 9104a448533bd9268c16e6e2741be84d6e13e466
    </Breakpoints>
 </Bucket>

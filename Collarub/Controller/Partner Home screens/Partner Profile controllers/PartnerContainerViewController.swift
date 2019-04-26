@@ -17,6 +17,8 @@ import SafariServices
 
 class PartnerContainerViewController: UIViewController {
 
+    
+    
     @IBOutlet weak var topHeight: NSLayoutConstraint!
     @IBOutlet weak var buyCredit: UIView!
     @IBOutlet weak var paymentBtn: UIButton!
@@ -39,9 +41,12 @@ class PartnerContainerViewController: UIViewController {
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
     var url = FixVariable()
+    var api = AlamofireApi()
+    var referCode : String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         buyCredit.isHidden = true
         switchNotification.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
@@ -111,6 +116,11 @@ class PartnerContainerViewController: UIViewController {
             if let id : String = res.value(forKey: "user_id") as! String {
                 retriveData(id: id)
                 p_id = id
+                api.alamofireApiWithParams(url: "\(url.weburl)/find_partner_invitation_value.php", parameters: ["partner_id":p_id]) { (json) in
+                    if json["Status"] == "success" {
+                        self.referCode = json["refer_code"].stringValue
+                    }
+                }
             }
         }
         
@@ -336,7 +346,7 @@ class PartnerContainerViewController: UIViewController {
    
     
     @IBAction func shareBtn(_ sender: UIButton) {
-        let textToShare = "Swift is awesome!  Check out this website about it!"
+        let textToShare = "Hello this is invitation code \(referCode) and get amazing discount"
         
         if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
             let objectsToShare = [textToShare, myWebsite] as [Any]

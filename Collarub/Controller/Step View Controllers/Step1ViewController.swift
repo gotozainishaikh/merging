@@ -12,10 +12,12 @@ import iOSDropDown
 class Step1ViewController: UIViewController, SSRadioButtonControllerDelegate {
 
     var radioButtonController: SSRadioButtonsController?
-    
+    var api = AlamofireApi()
     var local : String = ""
     var online : String = ""
     var category : String = ""
+    var getCategory : [String] = [String]()
+    var url = FixVariable()
     
     @IBOutlet weak var localBtn: UIButton!
     @IBOutlet weak var freeBtn: UIButton!
@@ -32,6 +34,22 @@ class Step1ViewController: UIViewController, SSRadioButtonControllerDelegate {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "list"), object: nil, userInfo: reqDataDict1)
         
     }
+    
+    func allCategory(){
+    
+        api.alamofireApi(url: "\(self.url.weburl)/get_collab_categories.php") { (json) in
+            
+            
+            for item in 0..<json.count {
+                
+                print("yes :: \(json[item]["category_name"].stringValue)")
+                
+                self.categoryDropDown.optionArray.append(json[item]["category_name"].stringValue)
+                
+            }
+        }
+    }
+    
     @objc func rejectList(req_notification: NSNotification) {
         
         var req_id : String = ""
@@ -79,9 +97,11 @@ class Step1ViewController: UIViewController, SSRadioButtonControllerDelegate {
         
         categoryDropDown.selectedRowColor = UIColor.lightGray
         
-        categoryDropDown.optionArray = ["Food", "Sport", "Fashion","Beauty & Healtcare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
-        
-       // print("valllll :: "+category)
+//        categoryDropDown.optionArray = ["Food", "Sport", "Fashion","Beauty & Healtcare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
+//
+
+        allCategory()
+        // print("valllll :: "+category)
         //Sub Category subCategoryDropDown
        
         

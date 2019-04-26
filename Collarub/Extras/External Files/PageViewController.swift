@@ -89,6 +89,7 @@ class PageViewController: UIPageViewController {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "setcalandar"), object: nil, userInfo: nil)
     }
     var arr = [String]()
+    var arr1 = [String]()
     var data = [String]()
     var imageData : [Data] = [Data]()
     var editId : String = ""
@@ -115,9 +116,11 @@ class PageViewController: UIPageViewController {
         let reqDataDict = ["cat_name": "ass","type":"saa"]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reqreject"), object: nil, userInfo: reqDataDict)
     }
+    var type_col : String = ""
     func done() {
         
         arr = []
+        arr1 = []
         print("this is :: \(arr)")
         var step1Data = Step1ViewController()
         var step2Data = Step2ViewController()
@@ -131,7 +134,7 @@ class PageViewController: UIPageViewController {
         var step4 = self._viewControllers[3] as! Step4ViewController
         var step5 = self._viewControllers[4] as! Step5ViewController
         
-        var type_col : String = ""
+        
         // MARK  - Step1 Data
         if step1.local != "" {
             type_col = step1.local
@@ -234,15 +237,18 @@ class PageViewController: UIPageViewController {
         
         if(type_col == ""){
             arr.append("Select Campaign Type")
+            arr1.append("Select Campaign Type")
            // print("\(arr)")
         }
         if (step1Data.category == "") {
             arr.append("Select Category")
+            arr1.append("Select Category")
           //  print("\(arr)")
         }
         
         if (step2Data.exchag == "" && step2Data.discont == "") {
            arr.append("Select Collaboration type")
+            arr1.append("Select Collaboration type")
          //   print("\(arr)")
         }
         
@@ -250,17 +256,20 @@ class PageViewController: UIPageViewController {
         if (step2Data.discont != "") {
             if (step2Data.discountNmbr == nil) {
                 arr.append("Enter discount percentage")
+                arr1.append("Enter discount percentage")
             }
         }
         
         if (step2Data.usingProd == "" && step2Data.locatin == "" && step2Data.selfe == "" && step2Data.shotTop == "") {
             arr.append("Select at least 1 content type")
+            arr1.append("Select at least 1 content type")
            // print("\(arr)")
         }
         
         if (step3Data.engagementRt == "") {
 
             arr.append("Select Engagement Rate")
+            arr1.append("Select Engagement Rate")
             //print("\(arr)")
         }
         
@@ -268,6 +277,7 @@ class PageViewController: UIPageViewController {
         if (step3Data.follwrLimt == "") {
             
             arr.append("Enter followers limit")
+            arr1.append("Enter followers limit")
             //print("\(arr)")
         }
         
@@ -277,6 +287,7 @@ class PageViewController: UIPageViewController {
             
             if vl < 1000 {
             arr.append("Set minimum followers 1000")
+                arr1.append("Set minimum followers 1000")
             //print("\(arr)")
             }
         }
@@ -284,17 +295,19 @@ class PageViewController: UIPageViewController {
         
         if (step3Data.lCity == "" ) {
             arr.append("Select city")
-            
+            arr1.append("Select city")
            // print("\(arr)")
         }
         
         if (step3Data.lRegion == "") {
             arr.append("Select Region")
+            arr1.append("Select Region")
          //   print("\(arr)")
         }
         
         if (step3Data.reputationLvl == "") {
             arr.append("Enter Reputaion rating")
+            arr1.append("Enter Reputaion rating")
           //  print("\(arr)")
         }
         
@@ -304,6 +317,7 @@ class PageViewController: UIPageViewController {
             
             if vl > 5 {
                 arr.append("Min Reputation rating is invalid")
+                arr1.append("Min Reputation rating is invalid")
                 //print("\(arr)")
             }
         }
@@ -311,6 +325,7 @@ class PageViewController: UIPageViewController {
         
         if (step3Data.exLevel == "") {
             arr.append("Enter experience level")
+            arr1.append("Enter experience level")
           //  print("\(arr)")
         }
         
@@ -320,57 +335,72 @@ class PageViewController: UIPageViewController {
             
             if vl > 10 {
                 arr.append("Min Experience level is invalid")
+                 arr1.append("Min Experience level is invalid")
                 //print("\(arr)")
             }
         }
         
         if (step3Data.gndr == "") {
             arr.append("Select gender")
+            arr1.append("Select gender")
           //  print("\(arr)")
         }
       
         if (step4Data.compyNam == "") {
             arr.append("Enter Compant Name")
+            arr1.append("Enter Compant Name")
            // print("\(arr)")
         }
         
-        if (step4Data.addrss == "") {
-            arr.append("Enter Address")
-        }
+//        if (step4Data.addrss == "") {
+//            arr.append("Enter Address")
+//        }
         
         if (step4Data.descrptin == "") {
             arr.append("Enter Description")
+            arr1.append("Enter Description")
         }
         
-        if (step4Data.whatoffring == "") {
-            arr.append("Enter What you offer")
-        }
+        
         
         if (step4Data.whatwillhv == "") {
             arr.append("Enter what they will have to do")
+            arr1.append("Enter what they will have to do")
         }
         
         if (step4Data.whatWont == "") {
             arr.append("Enter what they will won't have to do")
+            arr1.append("Enter what they will won't have to do")
         }
         
-        if (step4Data.Primg1 == nil || step4Data.Primg2 == nil || step4Data.Primg3 == nil ) {
-            arr.append("Select all 3 product images")
-        }else if(step4Data.Primg1 != nil && step4Data.Primg2 != nil && step4Data.Primg3 != nil){
+        if (step4Data.Primg1 == nil || step4Data.Primg2 == nil) {
+            arr.append("Select 2 product images")
+            arr1.append("Select 2 product images")
+        }else if(step4Data.Primg1 != nil && step4Data.Primg2 != nil){
             
-            imageData = [step4Data.Primg1!,step4Data.Primg2!,step4Data.Primg3!]
+            imageData = [step4Data.Primg1!,step4Data.Primg2!]
+        }
+       
+        
+        if (step4Data.Primg3 != nil) {
+            imageData.append(step4Data.Primg3!)
         }
         
-        if (step4Data.Loimg1 == nil || step4Data.Loimg2 == nil || step4Data.Loimg3 == nil) {
-            arr.append("Select all 3 location images")
-        }else if(step4Data.Loimg1 != nil && step4Data.Loimg2 != nil && step4Data.Loimg3 != nil){
-            imageData.append(step4Data.Loimg1!)
+       
+        
+        if (step4Data.Loimg1 != nil) {
+             imageData.append(step4Data.Loimg1!)
+        }
+        if (step4Data.Loimg2 != nil) {
             imageData.append(step4Data.Loimg2!)
+        }
+        if (step4Data.Loimg3 != nil) {
             imageData.append(step4Data.Loimg3!)
         }
         
         if (step4Data.e_mail == "") {
             arr.append("Enter email address")
+            arr1.append("Enter email address")
         }
         
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -378,10 +408,12 @@ class PageViewController: UIPageViewController {
         let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
         if emailTest.evaluate(with: step4Data.e_mail) == false {
             arr.append("Invlid Email Address")
+            arr1.append("Invlid Email Address")
         }
         
         if (step4Data.telNo == "") {
             arr.append("Enter telephone no")
+            arr1.append("Enter telephone no")
         }
         
         if (step5Data.pay_method == "") {

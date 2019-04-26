@@ -45,11 +45,42 @@ class AlamofireApi{
                         json = try JSON(data: response.data!)
                         completion(json!)
                     }catch{
+                        
                         print("error in server")
                     }
                     
                     
-                   
+                }
+                else{
+                    error = ["errorelse" : "server down"]
+                    completion(error)
+                    
+                }
+                
+        }
+        
+        
+    }
+    
+    func getAlamofireApiWithParams(url:String,parameters: [String : String],completion: @escaping (JSON) -> Void){
+        
+        var json:JSON!
+        var error:JSON = ["error" : "server down"]
+        
+        Alamofire.request(url, method: .get, parameters: parameters, encoding: URLEncoding(destination: .queryString))
+            .responseJSON { response in
+                
+                if response.data != nil {
+                    
+                    do{
+                        json = try JSON(data: response.data!)
+                        completion(json!)
+                    }catch{
+                        print("error in server")
+                    }
+                    
+                    
+                    
                     
                 }
                 else{

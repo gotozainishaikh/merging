@@ -21,7 +21,7 @@ final class UserCoreData{
     static var full_name : String = ""
     static var followers : String = ""
     static var follows : String = ""
-    
+    static var userTokenNo : String = ""
     
     static func fetchCoreData(){
         
@@ -38,6 +38,7 @@ final class UserCoreData{
         //self.email = res.value(forKey: "email") as! String
         self.profile_picture = res.value(forKey: "profile_picture") as! String
         self.full_name = res.value(forKey: "full_name") as! String
+         self.userTokenNo = res.value(forKey: "userTokenNo") as! String
        // self.followers = res.value(forKey: "followers") as! String
        
         

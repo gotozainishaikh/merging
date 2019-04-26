@@ -102,109 +102,122 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
             "access_token": authToken
             
         ]
-        
-        Alamofire.request("https://api.instagram.com/v1/users/self/?", method: .get, parameters: parameters).responseJSON { (response) in
+        self.api.alamofireApi(url: "\(base_url.weburl)/get_min_followers_value.php"){
             
-            if response.result.isSuccess {
+            json in
+            
+            let min_followers:Int = json[0]["min_followers"].intValue
+            
+            Alamofire.request("https://api.instagram.com/v1/users/self/?", method: .get, parameters: parameters).responseJSON { (response) in
                 
-                let dataJSON : JSON = JSON(response.result.value!)
-                let followers = dataJSON["data"]["counts"]["followed_by"].intValue
-                
-                //  let alert = UIAlertController(title: "Full Name", message: "\(desp)", preferredStyle: .alert)
-                if followers > -1 {
-//                    ChoiceSelectionViewController
+                if response.result.isSuccess {
+                    
+                    let dataJSON : JSON = JSON(response.result.value!)
+                    let followers = dataJSON["data"]["counts"]["followed_by"].intValue
+                    
+                    //  let alert = UIAlertController(title: "Full Name", message: "\(desp)", preferredStyle: .alert)
                     
                     
-                    print("firstTime=\(self.first_time)")
                     
-                    if(self.first_time=="1"){
-                        let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
-                        print ("heheheh")
-                     
-                        self.present(choiceSelectionViewController, animated: true, completion: nil)
-                    }
-                    else{
-                        let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
-                        print ("heheheh")
-                        mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-                        self.present(mainTabController, animated: true, completion: nil)
-                    }
-                    Defaults.setLoginStatus(logInStatus: true)
-                    // data model
-                    
-                    let param : [String:String] = [
-                        "userTokenNo": authToken,
-                        "userName" : dataJSON["data"]["username"].stringValue,
-                        "full_name" : dataJSON["data"]["full_name"].stringValue,
-                        "followers" : String(followers),
-                        "image_url" : dataJSON["data"]["profile_picture"].stringValue,
-                        "media" : dataJSON["data"]["counts"]["media"].stringValue,
-                        "followedBy" : dataJSON["data"]["counts"]["follows"].stringValue
+                    print("abcfollowers = \(followers)")
+                    print("min followers = \(min_followers)")
+                    if followers >= min_followers {
+                        //                    ChoiceSelectionViewController
                         
-                    ]
-                    
-                   //print("media=\(authToken)")
-                    
-                    Alamofire.request("https://purpledimes.com/OrderA07Collabrub/WebServices/User_Registration.php", method: .get, parameters: param).responseJSON { response in
                         
-                        if response.result.isSuccess {
-                          //  print("Response JSON: \(JSON(response.result.value!))")
+                        print("firstTime=\(self.first_time)")
+                        
+                        if(self.first_time=="1"){
+                            let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
+                            print ("heheheh")
                             
-                            let flowerJSON : JSON = JSON(response.result.value!)
-                            //                            let pageid = flowerJSON["member_id"].stringValue
-                            
-                            self.user_id = flowerJSON["id"].stringValue
-                            
-                            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-                            
-                            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
-                            
-                            let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserInformation", into: context) as NSManagedObject
-                            newUser.setValue(dataJSON["data"]["username"].stringValue, forKey: "username")
-                            newUser.setValue(dataJSON["data"]["full_name"].stringValue, forKey: "full_name")
-                            newUser.setValue(dataJSON["data"]["profile_picture"].stringValue, forKey: "profile_picture")
-                            newUser.setValue(Int64(followers), forKey: "followers")
-                            newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
-                            newUser.setValue(flowerJSON["id"].stringValue, forKey: "user_id")
-                            
-                            do {
-                                try context.save()
-                            } catch {}
-                            
-                            print(newUser)
-                            print("Object Saved.")
-                            UserCoreData.fetchCoreData()
-                           // print(flowerJSON["id"])
-                            
-                            
+                            self.present(choiceSelectionViewController, animated: true, completion: nil)
                         }
+                        else{
+                            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+                            print ("heheheh")
+                            mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+                            self.present(mainTabController, animated: true, completion: nil)
+                        }
+                        Defaults.setLoginStatus(logInStatus: true)
+                        // data model
+                        
+                        let param : [String:String] = [
+                            "userTokenNo": authToken,
+                            "userName" : dataJSON["data"]["username"].stringValue,
+                            "full_name" : dataJSON["data"]["full_name"].stringValue,
+                            "followers" : String(followers),
+                            "image_url" : dataJSON["data"]["profile_picture"].stringValue,
+                            "media" : dataJSON["data"]["counts"]["media"].stringValue,
+                            "followedBy" : dataJSON["data"]["counts"]["follows"].stringValue
+                            
+                        ]
+                        
+                        //print("media=\(authToken)")
+                        
+                        Alamofire.request("\(self.base_url.weburl)/User_Registration.php", method: .get, parameters: param).responseJSON { response in
+                            
+                            if response.result.isSuccess {
+                                //  print("Response JSON: \(JSON(response.result.value!))")
+                                
+                                let flowerJSON : JSON = JSON(response.result.value!)
+                                //                            let pageid = flowerJSON["member_id"].stringValue
+                                
+                                self.user_id = flowerJSON["id"].stringValue
+                                
+                                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                                
+                                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+                                
+                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserInformation", into: context) as NSManagedObject
+                                newUser.setValue(dataJSON["data"]["username"].stringValue, forKey: "username")
+                                newUser.setValue(dataJSON["data"]["full_name"].stringValue, forKey: "full_name")
+                                newUser.setValue(dataJSON["data"]["profile_picture"].stringValue, forKey: "profile_picture")
+                                newUser.setValue(Int64(followers), forKey: "followers")
+                                newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
+                                newUser.setValue(flowerJSON["id"].stringValue, forKey: "user_id")
+                                newUser.setValue(authToken, forKey: "userTokenNo")
+                                do {
+                                    try context.save()
+                                } catch {}
+                                
+                                print(newUser)
+                                print("Object Saved.")
+                                UserCoreData.fetchCoreData()
+                                // print(flowerJSON["id"])
+                                
+                                
+                            }
+                        }
+                        
+                        
+                        
+                        //  print("\(flowerJSON["id"])")
+                        
+                        
+                    }else {
+                        let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 500", preferredStyle: .alert)
+                        
+                        let reStart = UIAlertAction(title: "OK", style: .default, handler:
+                        { (UIAlertAction) in
+                            
+                            self.dismiss(animated: true, completion: nil)
+                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! UserSelectionViewController
+                            self.present(vc, animated: true, completion: nil)
+                            
+                        })
+                        
+                        alert.addAction(reStart)
+                        
+                        self.present(alert, animated: true, completion: nil)
                     }
-                    
-                    
-                    
-                  //  print("\(flowerJSON["id"])")
-
-                    
                 }else {
-                    let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 500", preferredStyle: .alert)
-                    
-                    let reStart = UIAlertAction(title: "OK", style: .default, handler:
-                    { (UIAlertAction) in
-                        
-                        self.dismiss(animated: true, completion: nil)
-                        let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! UserSelectionViewController
-                        self.present(vc, animated: true, completion: nil)
-                        
-                    })
-                    
-                    alert.addAction(reStart)
-                    
-                    self.present(alert, animated: true, completion: nil)
+                    print("error not get")
                 }
-            }else {
-                print("error not get")
-            }
-            }.resume()
+                }.resume()
+            
+        }
+       
         
         
     }

@@ -931,6 +931,9 @@
                                         <state key="normal" title="Update Stats">
                                             <color key="titleColor" name="themeColor2"/>
                                         </state>
+                                        <connections>
+                                            <action selector="update_stats:" destination="6w9-Rn-nOI" eventType="touchUpInside" id="eYn-PI-egY"/>
+                                        </connections>
                                     </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="update stats" translatesAutoresizingMaskIntoConstraints="NO" id="VoZ-eE-0MQ">
                                         <rect key="frame" x="246.5" y="5" width="24" height="24"/>

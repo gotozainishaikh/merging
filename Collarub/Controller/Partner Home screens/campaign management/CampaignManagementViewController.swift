@@ -130,9 +130,9 @@ class CampaignManagementViewController: UIViewController, PageViewControllerDele
     
     @IBAction func addCampaign(_ sender: UIBarButtonItem) {
     
-        let vc = storyboard?.instantiateViewController(withIdentifier: "stepController")
-        
-        present(vc!, animated: true, completion: nil)
+        let vc = storyboard?.instantiateViewController(withIdentifier: "stepController") as! StepViewController
+        vc.backCheck = true
+        present(vc, animated: true, completion: nil)
         
     }
     

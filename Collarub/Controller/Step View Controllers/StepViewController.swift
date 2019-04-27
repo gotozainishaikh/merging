@@ -24,10 +24,12 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
         }
     }
     
+    
     var resultText = "" // empty
     var payPalConfig = PayPalConfiguration() // default
     
     var wallet : Double!
+    var backCheck : Bool = false
     
     let story = UIStoryboard(name: "Main", bundle: nil)
     var dict : JSON!
@@ -321,9 +323,12 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                     //let test = self(rawValue: self.RawValue(val[0]))+val[1]+val[2]
                     print(test)
                     
+                    var tax : Double = test * 0.05
+                    
+                    test = test + tax
                     if (wallet > test ) {
                        var amont = wallet - test
-                        api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php?partner_id=63&amount=15000", parameters: ["partner_id":id,"amount":"\(amont)"]) { (json) in
+                        api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php", parameters: ["partner_id":id,"amount":"\(amont)"]) { (json) in
                             
                             if (json["Status"] == "success") {
                                 
@@ -361,9 +366,9 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                                     "lat" : (self.pageViewController?.data[37])!,
                                     "longg" : (self.pageViewController?.data[38])!
                                 ]
-                                let url = "\(self.url.weburl)/draft_images.php"
+                                let url = "\(self.url.weburl)/imageUpload.php"
                                 print("Parameters :: \(parameters)")
-                                Alamofire.request("\(self.url.weburl)/draft_data_insert.php", method: .get, parameters: parameters).responseJSON { (response) in
+                                Alamofire.request("\(self.url.weburl)/insert_campaign_data.php", method: .get, parameters: parameters).responseJSON { (response) in
                                     
                                     let dataJSON : JSON = JSON(response.result.value!)
                                     if response.result.isSuccess {
@@ -377,7 +382,7 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                         }
                     }else if (wallet < test) {
                         
-                        var amnt = test - wallet
+                        var amnt = ((test - wallet)*100).rounded()/100
                         
                         
                         var textField = UITextField()
@@ -391,6 +396,19 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                         let proceed = UIAlertAction(title: "Proceed", style: .default) { (proceed) in
                             
                             var str : String = textField.text!
+                            
+                            if (str.isEmpty) {
+                             
+                                let emptyAlert = UIAlertController(title: "Error", message: "Please Enter amount", preferredStyle: .alert)
+                                
+                                let ook = UIAlertAction(title: "Ok", style: .default, handler: { (ook) in
+                                    emptyAlert.dismiss(animated: true, completion: nil)
+                                    self.present(showAlert, animated: true, completion: nil)
+                                })
+                                
+                                emptyAlert.addAction(ook)
+                                self.present(emptyAlert, animated: true, completion: nil)
+                            }else {
                             var du : Double = Double(str)!
                             
                             if du < amnt {
@@ -399,8 +417,11 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                                 
                                 let ok = UIAlertAction(title: "Ok", style: .default, handler: { (ok) in
                                     errorAlert.dismiss(animated: true, completion: nil)
-                                    
+                                    self.present(showAlert, animated: true, completion: nil)
                                 })
+                                
+                                errorAlert.addAction(ok)
+                                self.present(errorAlert, animated: true, completion: nil)
                             }else {
                                 self.updateWalet = du - amnt
                                 let item1 = PayPalItem(name: "Paying for collaborup", withQuantity: 1, withPrice:NSDecimalNumber(decimal: Decimal(du)), withCurrency: "EUR", withSku: "Hip-0037")
@@ -427,7 +448,7 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                                 }
                             }
                             
-                            
+                            }
                             
                             
                         }
@@ -436,7 +457,7 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                             textField = alertTextField
                             alertTextField.placeholder = "Enter amount"
                         }
-                        
+                        showAlert.addAction(proceed)
                         present(showAlert, animated: true, completion: nil)
                         
                         
@@ -444,13 +465,17 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                     }
                     
                 }else if !pageViewController!.isCheck {
-                    var test : Double = Double(pageViewController!.val[0]) + Double(pageViewController!.val[1]) + Double(pageViewController!.val[2]) + Double(pageViewController!.val[3]) + Double(pageViewController!.val[4])
+                    var test : Double = Double(pageViewController!.val[5]) + Double(pageViewController!.val[6]) + Double(pageViewController!.val[7]) + Double(pageViewController!.val[8]) + Double(pageViewController!.val[9])
                     //let test = self(rawValue: self.RawValue(val[0]))+val[1]+val[2]
-                    print(test)
+                    var tax : Double = test * 0.05
+                    
+                    test = test + tax
+                    
+                    print("testy :: \(test)")
                     
                     if (wallet > test ) {
                         var amont = wallet - test
-                        api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php?partner_id=63&amount=15000", parameters: ["partner_id":id,"amount":"\(amont)"]) { (json) in
+                        api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php", parameters: ["partner_id":id,"amount":"\(amont)"]) { (json) in
                             
                             if (json["Status"] == "success") {
                                 
@@ -503,8 +528,8 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                             }
                         }
                     }else if (wallet < test) {
-                        
-                        var amnt = test - wallet
+                        print("dss :: \(test - wallet)")
+                        var amnt = ((test - wallet)*100).rounded()/100
                         
                         
                         var textField = UITextField()
@@ -518,6 +543,19 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                         let proceed = UIAlertAction(title: "Proceed", style: .default) { (proceed) in
                             
                             var str : String = textField.text!
+                            
+                            if (str.isEmpty) {
+                                
+                                let emptyAlert = UIAlertController(title: "Error", message: "Please Enter amount", preferredStyle: .alert)
+                                
+                                let ook = UIAlertAction(title: "Ok", style: .default, handler: { (ook) in
+                                    emptyAlert.dismiss(animated: true, completion: nil)
+                                    self.present(showAlert, animated: true, completion: nil)
+                                })
+                                
+                                emptyAlert.addAction(ook)
+                                self.present(emptyAlert, animated: true, completion: nil)
+                            }else {
                             var du : Double = Double(str)!
                             
                             if du < amnt {
@@ -526,8 +564,14 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                                 
                                 let ok = UIAlertAction(title: "Ok", style: .default, handler: { (ok) in
                                     errorAlert.dismiss(animated: true, completion: nil)
+                                    self.present(showAlert, animated: true, completion: nil)
                                     
                                 })
+                                
+                                errorAlert.addAction(ok)
+                                self.present(errorAlert, animated: true, completion: nil)
+                                
+                                
                             }else {
                                 self.updateWalet = du - amnt
                                 let item1 = PayPalItem(name: "Paying for collaborup", withQuantity: 1, withPrice:NSDecimalNumber(decimal: Decimal(du)), withCurrency: "EUR", withSku: "Hip-0037")
@@ -554,21 +598,22 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
                                 }
                             }
                             
-                            
+                            }
                             
                             
                         }
+                        
+                       
                         
                         showAlert.addTextField { (alertTextField) in
                             textField = alertTextField
                             alertTextField.placeholder = "Enter amount"
                         }
-                        
+                        showAlert.addAction(proceed)
                         present(showAlert, animated: true, completion: nil)
                         
-                        
-                        
                     }
+                    
                 }
               
                 
@@ -679,9 +724,15 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
             
             stepBar.currentTab = currentStep-1
         }else {
-            print("exceed")
+            print("exceed s")
         }
         }else {
+            if backCheck {
+                let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "partnerTab") as! PartnerTabBarController
+                
+                mainTabController.selectedViewController = mainTabController.viewControllers?[1]
+                self.present(mainTabController, animated: true, completion: nil)
+            }
             print("eceeed")
         }
         
@@ -782,8 +833,9 @@ class StepViewController: UIViewController, PageViewControllerDelegate,PayPalPay
             let res = results[0] as! NSManagedObject
             
             var id : String = res.value(forKey: "user_id") as! String
-            
-            self.api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php?partner_id=63&amount=15000", parameters: ["partner_id":id,"amount":"\(self.updateWalet)"]) { (json) in
+            print("ssss :: \(self.updateWalet!)")
+            var rou = (self.updateWalet!*100).rounded()/100
+            self.api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php", parameters: ["partner_id":id,"amount":"\(rou)"]) { (json) in
                 
                 if (json["Status"] == "success") {
                     print("Done")

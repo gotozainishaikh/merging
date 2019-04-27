@@ -62,6 +62,7 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
         if requestURLString.hasPrefix(INSTAGRAM_IDS.INSTAGRAM_REDIRECT_URI) {
             let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
             check_user {
+                print("check_user")
                 self.handleAuth(authToken: requestURLString.substring(from: range.upperBound))
             }
             
@@ -125,20 +126,9 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                         //                    ChoiceSelectionViewController
                         
                         
-                        print("firstTime=\(self.first_time)")
                         
-                        if(self.first_time=="1"){
-                            let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
-                            print ("heheheh")
-                            
-                            self.present(choiceSelectionViewController, animated: true, completion: nil)
-                        }
-                        else{
-                            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
-                            print ("heheheh")
-                            mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-                            self.present(mainTabController, animated: true, completion: nil)
-                        }
+                        
+                        
                         Defaults.setLoginStatus(logInStatus: true)
                         // data model
                         
@@ -184,6 +174,24 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                                 print(newUser)
                                 print("Object Saved.")
                                 UserCoreData.fetchCoreData()
+                                
+                                //have toremove
+                                //self.first_time="1"
+                                
+                                print("firstTime=\(self.first_time)")
+                                
+                                if(self.first_time=="1"){
+                                    let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
+                                    print ("heheheh")
+                                    
+                                    self.present(choiceSelectionViewController, animated: true, completion: nil)
+                                }
+                                else{
+                                    let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+                                    print ("heheheh")
+                                    mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+                                    self.present(mainTabController, animated: true, completion: nil)
+                                }
                                 // print(flowerJSON["id"])
                                 
                                 
@@ -235,9 +243,11 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
             if(json["id"] == ""){
                 
                 self.first_time = "1"
+                print("ifii")
             }
             else{
                 self.first_time = "0"
+                print("elsii")
             }
             
             completion()

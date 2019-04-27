@@ -11,6 +11,7 @@ import CheckBox
 import iOSDropDown
 import GooglePlacesSearchController
 import CoreData
+import KWVerificationCodeView
 
 class ChoiceSelectionViewController: UIViewController {
 
@@ -28,6 +29,7 @@ class ChoiceSelectionViewController: UIViewController {
     @IBOutlet weak var categoryDrop: DropDown!
     @IBOutlet weak var locationText: UITextField!
     @IBOutlet weak var mailText: UITextField!
+    @IBOutlet weak var verificationCode: KWVerificationCodeView!
     
     var country:String = ""
     var city:String = ""
@@ -458,6 +460,13 @@ class ChoiceSelectionViewController: UIViewController {
         
         var url = "\(base_url.weburl)/user_prefrence_insert.php"
        
+        print("verificationCode :: \(verificationCode.getVerificationCode())")
+        
+        var code : String = ""
+        if verificationCode.hasValidCode() {
+            code = verificationCode.getVerificationCode()
+        }
+        print("codee :: \(code)")
         let parameters : [String:String] = [
             
             "sector1": choice1,
@@ -478,7 +487,43 @@ class ChoiceSelectionViewController: UIViewController {
             let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             // self.present(choiceSelectionViewController, animated: true, completion: nil)
         }
+
+        let url2 = "\(base_url.weburl)/insert_user_invitation_code.php"
         
+        let params2 : [String:String] = [
+            
+           
+            "id": user_id,
+            "refer_code": code
+            
+            ]
+        api.alamofireApiWithParams(url: url2, parameters:params2 ){
+             json in
+            
+            print("status=\(json["Status"])")
+            
+            
+        }
+        
+        
+        
+        
+        let url3 = "\(base_url.weburl)/insert_user_refrence_code.php"
+        
+        let params3 : [String:String] = [
+            
+            
+            "user_id": user_id
+            
+            
+        ]
+        api.alamofireApiWithParams(url: url3, parameters:params3){
+            json in
+            
+            print("status=\(json["Status"])")
+            
+            
+        }
         
         
        

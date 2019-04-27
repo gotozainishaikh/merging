@@ -9,10 +9,20 @@
 import UIKit
 import iOSDropDown
 import CoreData
+import SVProgressHUD
+
 class PaymentDropDownViewController: UIViewController,PayPalPaymentDelegate, FlipsideViewControllerDelegate {
 
+    var walletValue : Double!
+    var api = AlamofireApi()
+    var url = FixVariable()
+    var partner_id : String!
+    
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     let request = NSFetchRequest<NSFetchRequestResult>(entityName: "PartnerRegistration")
+    
+    
+    
      var resultText = "" // empty
     var payPalConfig = PayPalConfiguration() // default
     var environment:String = PayPalEnvironmentNoNetwork {
@@ -22,6 +32,7 @@ class PaymentDropDownViewController: UIViewController,PayPalPaymentDelegate, Fli
             }
         }
     }
+    @IBOutlet weak var currentBalance: UILabel!
     
     @IBOutlet weak var selectCoins: DropDown!
     @IBOutlet weak var tapView: UIView!
@@ -31,6 +42,10 @@ class PaymentDropDownViewController: UIViewController,PayPalPaymentDelegate, Fli
     override func viewDidLoad() {
         super.viewDidLoad()
 
+       
+        
+        getWallet()
+        
         
         // Set up payPalConfig
         payPalConfig.acceptCreditCards = false
@@ -73,6 +88,25 @@ class PaymentDropDownViewController: UIViewController,PayPalPaymentDelegate, Fli
 //        removeAnimate()
 //    }
 //
+    
+    func getWallet(){
+        
+        let results : NSArray = try! context.fetch(self.request) as NSArray
+        
+        let res = results[0] as! NSManagedObject
+        
+        partner_id = res.value(forKey: "user_id") as! String
+        
+            api.alamofireApiWithParams(url: "\(url.weburl)/partner_collab_wallet_info.php", parameters: ["partner_id":partner_id]) { (json) in
+                
+                self.walletValue = json["wallet"].doubleValue
+                
+                print("valll :: \(self.walletValue)")
+            
+                self.currentBalance.text = "Your current balance is \(self.walletValue!)"
+        }
+        
+    }
     
     func showAnimate()
     {
@@ -174,13 +208,17 @@ class PaymentDropDownViewController: UIViewController,PayPalPaymentDelegate, Fli
             print("Here is your proof of payment:\n\n\(completedPayment.confirmation)\n\nSend this to your server for confirmation and fulfillment.")
             
             self.resultText = completedPayment.description
-            let results : NSArray = try! self.self.context.fetch(self.request) as NSArray
+            var pruchaseCoins : Double = Double(self.numCoins)!
+            var totalCoins = pruchaseCoins + self.walletValue
             
-            let res = results[0] as! NSManagedObject
-            
-            var id : String = res.value(forKey: "user_id") as! String
-            
-            print("iddddd :: \(id)")
+            self.api.alamofireApiWithParams(url: "\(self.url.weburl)/update_partner_wallet.php", parameters: ["partner_id":self.partner_id,"amount":"\(totalCoins)"], completion: { (json) in
+                
+                if json["Status"] == "success"{
+                    SVProgressHUD.showSuccess(withStatus: "Wallet Updated")
+                    
+                }
+                
+            })
             self.removeAnimate()
             // self.showSuccess()
         })

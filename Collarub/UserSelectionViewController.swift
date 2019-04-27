@@ -33,7 +33,7 @@ class UserSelectionViewController: UIViewController {
 
             let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-            UserCoreData.fetchCoreData()
+            //UserCoreData.fetchCoreData()
             self.present(mainTabController, animated: true, completion: nil)
             
             

@@ -88,6 +88,11 @@
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
+		<key>KWVerificationCodeView.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>37</integer>
+		</dict>
 		<key>OneSignal.xcscheme</key>
 		<dict>
 			<key>isShown</key>

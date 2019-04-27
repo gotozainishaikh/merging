@@ -187,6 +187,7 @@ class Step5ViewController: UIViewController,SSRadioButtonControllerDelegate {
                 print(self.caMicro.title)
                 self.inMcro = self.caMicro.title!
                 self.pay1Micro = 39.0
+                print(self.pay1Micro)
             }else {
                 self.inMcro = ""
                 self.pay1Micro = 0.0

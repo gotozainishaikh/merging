@@ -31,7 +31,7 @@ class MyProfileViewController: UIViewController {
     //User Type
     var user_type : String!
     
-    
+    var referCode : String = ""
     
     //Outlets
     @IBOutlet weak var usrName: UILabel!
@@ -58,6 +58,7 @@ class MyProfileViewController: UIViewController {
         
         user_id = res.value(forKey: "user_id") as! String
 
+        print("adas=\(user_id)")
         //Image Round
         userImg.layer.cornerRadius = userImg.frame.size.width/2
         userImg.clipsToBounds = true
@@ -112,6 +113,15 @@ class MyProfileViewController: UIViewController {
             SVProgressHUD.dismiss()
         }
         
+        
+        
+        api.alamofireApiWithParams(url: "\(base_url.weburl)/find_user_invitation_code.php", parameters: ["user_id":user_id]) {
+            json in
+            if json["Status"] == "success" {
+                self.referCode = json["refer_code"].stringValue
+            }
+        }
+        
     }
     
     @IBAction func plan_btn(_ sender: UIButton) {
@@ -137,15 +147,27 @@ class MyProfileViewController: UIViewController {
     @IBAction func share_btn(_ sender: UIButton) {
         
         
-        let textToShare = "Swift is awesome!  Check out this website about it!"
+//        let textToShare = "Swift is awesome!  Check out this website about it!"
+//
+//        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+//            let objectsToShare = [textToShare, myWebsite] as [Any]
+//            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//
+//            activityVC.popoverPresentationController?.sourceView = sender
+//            self.present(activityVC, animated: true, completion: nil)
+//        }
         
-        if let myWebsite = NSURL(string: "http://www.codingexplorer.com/") {
+        
+        let textToShare = "Hello this is invitation code: \(referCode) and get amazing discount"
+
+        if let myWebsite = NSURL(string: "http://www.collabrup.com/") {
             let objectsToShare = [textToShare, myWebsite] as [Any]
             let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
-            
+
             activityVC.popoverPresentationController?.sourceView = sender
             self.present(activityVC, animated: true, completion: nil)
         }
+        
     }
     
     
@@ -296,7 +318,7 @@ class MyProfileViewController: UIViewController {
     }
     @IBAction func logOut(_ sender: UIButton) {
         
-let storyMain = UIStoryboard(name: "Main", bundle: nil)
+        let storyMain = UIStoryboard(name: "Main", bundle: nil)
         
         if let cookies = HTTPCookieStorage.shared.cookies {
             for cookie in cookies {

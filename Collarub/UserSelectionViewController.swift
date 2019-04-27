@@ -31,14 +31,14 @@ class UserSelectionViewController: UIViewController {
             
             print("else")
 
-            let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            print ("heheheh")
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-            //UserCoreData.fetchCoreData()
             self.present(mainTabController, animated: true, completion: nil)
             
             
-            
         }else {
+            
             print("else")
             let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
             //UserCoreData.fetchCoreData()

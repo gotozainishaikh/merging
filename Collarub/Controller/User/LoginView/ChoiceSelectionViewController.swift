@@ -12,6 +12,9 @@ import iOSDropDown
 import GooglePlacesSearchController
 import CoreData
 import KWVerificationCodeView
+import SwiftyJSON
+import Alamofire
+import SVProgressHUD
 
 class ChoiceSelectionViewController: UIViewController {
 
@@ -38,6 +41,12 @@ class ChoiceSelectionViewController: UIViewController {
     var count = 1
     var choice1:String = ""
     var choice2:String = ""
+    
+    var dataJson : JSON!
+    var followers : Int!
+    var authToken : String!
+    var user_id : String!
+    
     
     var api = AlamofireApi()
     var base_url = FixVariable()
@@ -440,14 +449,15 @@ class ChoiceSelectionViewController: UIViewController {
     
     @IBAction func cont_btn(_ sender: UIButton) {
         
-        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
-        
-        let results : NSArray = try! context.fetch(request) as NSArray
-        
-        let res = results[0] as! NSManagedObject
-        
-        var user_id : String = res.value(forKey: "user_id") as! String
+//        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+//
+//        let results : NSArray = try! context.fetch(request) as NSArray
+//
+//        let res = results[0] as! NSManagedObject
+//
+//        var user_id : String = res.value(forKey: "user_id") as! String
+//
         
         print("choice1=\(choice1)")
         print("choice2=\(choice2)")
@@ -458,7 +468,8 @@ class ChoiceSelectionViewController: UIViewController {
         print("city=\(city)")
         print("country=\(country)")
         
-        var url = "\(base_url.weburl)/user_prefrence_insert.php"
+        
+        var url = "\(base_url.weburl)/zain_user_registeration.php"
        
         print("verificationCode :: \(verificationCode.getVerificationCode())")
         
@@ -469,14 +480,24 @@ class ChoiceSelectionViewController: UIViewController {
         print("codee :: \(code)")
         let parameters : [String:String] = [
             
+            "userTokenNo": authToken,
+            "userName": dataJson["data"]["username"].stringValue,
+            "full_name": dataJson["data"]["full_name"].stringValue,
+            "followers": String(followers),
+            "image_url": dataJson["data"]["profile_picture"].stringValue,
+            "followedBy": dataJson["data"]["counts"]["follows"].stringValue,
+            "media": dataJson["data"]["counts"]["media"].stringValue,
+            "player_id": "",
+            "user_category_type": "mini",
+            "refer_code": code,
+            
             "sector1": choice1,
             "sector2": choice2,
             "category": category,
             "city": city,
             "country": country,
             "address": address,
-            "email": mailText.text!,
-            "user_id": user_id,
+            "email": mailText.text!
             
         ]
         print("uRL=\(url)")
@@ -484,46 +505,102 @@ class ChoiceSelectionViewController: UIViewController {
             json in
             
             print("Statusagt=\(json["Status"])")
-            let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            
+            //                            let pageid = flowerJSON["member_id"].stringValue
+            
+            
+            //purpledimes.com/OrderA07Collabrub/WebServices/insert_partner_refrence_code.php?partner_id=63
+            
+            print("\(json)")
+            
+            self.user_id = json["id"].stringValue
+            
+            let url3 = "\(self.base_url.weburl)/insert_user_refrence_code.php"
+            
+                    let params3 : [String:String] = [
+            
+            
+                        "user_id": self.user_id
+            
+            
+                    ]
+            self.api.alamofireApiWithParams(url: url3, parameters:params3){
+                        json in
+            
+                        print("status=\(json["Status"])")
+                SVProgressHUD.show(withStatus: "Loading")
+                if json["Status"] == "success" {
+                    SVProgressHUD.dismiss()
+                            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+                            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+                     let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserInformation", into: context) as NSManagedObject
+                    
+                    newUser.setValue(self.dataJson["data"]["username"].stringValue, forKey: "username")
+                    newUser.setValue(self.dataJson["data"]["full_name"].stringValue, forKey: "full_name")
+                    newUser.setValue(self.dataJson["data"]["profile_picture"].stringValue, forKey: "profile_picture")
+                    newUser.setValue(Int64(self.followers), forKey: "followers")
+                    newUser.setValue(Int64(self.dataJson["data"]["counts"]["follows"].intValue), forKey: "follows")
+                    newUser.setValue(self.user_id, forKey: "user_id")
+                    newUser.setValue(self.authToken, forKey: "userTokenNo")
+                    do {
+                        try context.save()
+                    } catch {}
+                    
+                    print(newUser)
+                    print("Object Saved.")
+                    
+                    Defaults.setLoginStatus(logInStatus: true)
+                    let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+                    print ("heheheh")
+                    mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+                    self.present(mainTabController, animated: true, completion: nil)
+                    
+                    
+                    
+                }
+            
+                    }
+            
+           
             // self.present(choiceSelectionViewController, animated: true, completion: nil)
         }
 
-        let url2 = "\(base_url.weburl)/insert_user_invitation_code.php"
-        
-        let params2 : [String:String] = [
-            
-           
-            "id": user_id,
-            "refer_code": code
-            
-            ]
-        api.alamofireApiWithParams(url: url2, parameters:params2 ){
-             json in
-            
-            print("status=\(json["Status"])")
-            
-            
-        }
-        
-        
-        
-        
-        let url3 = "\(base_url.weburl)/insert_user_refrence_code.php"
-        
-        let params3 : [String:String] = [
-            
-            
-            "user_id": user_id
-            
-            
-        ]
-        api.alamofireApiWithParams(url: url3, parameters:params3){
-            json in
-            
-            print("status=\(json["Status"])")
-            
-            
-        }
+//        let url2 = "\(base_url.weburl)/insert_user_invitation_code.php"
+//
+//        let params2 : [String:String] = [
+//
+//
+//            "id": user_id,
+//            "refer_code": code
+//
+//            ]
+//        api.alamofireApiWithParams(url: url2, parameters:params2 ){
+//             json in
+//
+//            print("status=\(json["Status"])")
+//
+//
+//        }
+//
+//
+//
+//
+//        let url3 = "\(base_url.weburl)/insert_user_refrence_code.php"
+//
+//        let params3 : [String:String] = [
+//
+//
+//            "user_id": user_id
+//
+//
+//        ]
+//        api.alamofireApiWithParams(url: url3, parameters:params3){
+//            json in
+//
+//            print("status=\(json["Status"])")
+//
+//
+//        }
         
         
        
@@ -534,7 +611,7 @@ class ChoiceSelectionViewController: UIViewController {
     lazy var placesSearchController: GooglePlacesSearchController = {
         let controller = GooglePlacesSearchController(delegate: self,
                                                       apiKey: GoogleMapsAPIServerKey,
-                                                      placeType: .address
+                                                      placeType: .all
             
         )
         
@@ -548,13 +625,19 @@ extension ChoiceSelectionViewController: GooglePlacesAutocompleteViewControllerD
         print("place.description=\(place.description)")
         var lat:String = "\((place.coordinate?.latitude)!)"
         var long:String = "\((place.coordinate?.longitude)!)"
-        print("lat=\(lat), long=\(long)")
+        print("lat=\(lat), long=\(long) sub :: \(place)")
+        
         locationText.text = place.name
         self.country = place.country!
-        self.city = place.locality!
+        if place.subLocality != nil {
+            self.city = place.subLocality!
+        }
+        
         self.address = place.name!
 //        print("country=\(place.country)")
 //        print("city=\(place.locality)")
         placesSearchController.isActive = false
     }
+    
+    
 }

@@ -106,6 +106,8 @@ class PartnerLoginWithInstagramViewController: UIViewController, UIWebViewDelega
                 //
                 
                 // data model
+                
+                
                 let para : [String:String] = [
                     "partner_username" : dataJSON["data"]["username"].stringValue
                 ]

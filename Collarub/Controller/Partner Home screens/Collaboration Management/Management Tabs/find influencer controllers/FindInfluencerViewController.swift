@@ -15,6 +15,7 @@ class FindInfluencerViewController: UIViewController {
 
     var model : [FindInfluencerModel] = [FindInfluencerModel]()
     let url = FixVariable()
+    var api = AlamofireApi()
     
     @IBOutlet weak var findInfluencerTable: UITableView!
     override func viewDidLoad() {
@@ -169,8 +170,18 @@ class FindInfluencerViewController: UIViewController {
                     statusModel.totalFollowers = dataJSON[item]["followers"].stringValue
                     statusModel.user_id = dataJSON[item]["user_id"].stringValue
                     
-                     self.model.append(statusModel)
-                    self.findInfluencerTable.reloadData()
+                    self.api.alamofireApiWithParams(url: "\(self.url.weburl)/total_projects.php", parameters: ["user_id" : dataJSON[item]["user_id"].stringValue], completion: { (json) in
+                        if json["status"] == "success" {
+                            print("helooo")
+                            statusModel.totalProjects = json["totla_projects"].stringValue
+                            statusModel.usrSector = "\(json["sector1"].stringValue), \(json["sector2"].stringValue)"
+                            
+                            self.model.append(statusModel)
+                            self.findInfluencerTable.reloadData()
+                            
+                            
+                        }
+                    })
                 }
             }
         }
@@ -198,6 +209,8 @@ extension FindInfluencerViewController : UITableViewDelegate, UITableViewDataSou
         cell.totalFollowers.text = model[indexPath.row].totalFollowers
         cell.influencerEngRate.text = model[indexPath.row].engRate
         cell.req_id = model[indexPath.row].user_id
+        cell.totalProjects.text = model[indexPath.row].totalProjects
+        cell.influencerSectors.text = model[indexPath.row].usrSector
         //Image Round
         cell.usrImg.layer.cornerRadius = cell.usrImg.frame.size.width/2
         cell.usrImg.clipsToBounds = true

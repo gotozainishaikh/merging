@@ -61,10 +61,9 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
         
         if requestURLString.hasPrefix(INSTAGRAM_IDS.INSTAGRAM_REDIRECT_URI) {
             let range: Range<String.Index> = requestURLString.range(of: "#access_token=")!
-            check_user {
-                print("check_user")
+            
                 self.handleAuth(authToken: requestURLString.substring(from: range.upperBound))
-            }
+            
             
             
             //            let story = UIStoryboard(name: "Main", bundle: nil)
@@ -129,7 +128,6 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                         
                         
                         
-                        Defaults.setLoginStatus(logInStatus: true)
                         // data model
                         
                         let param : [String:String] = [
@@ -143,17 +141,29 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                             
                         ]
                         
-                        //print("media=\(authToken)")
+                        let url = "\(self.base_url.weburl)/checkUser.php"
                         
-                        Alamofire.request("\(self.base_url.weburl)/User_Registration.php", method: .get, parameters: param).responseJSON { response in
+                        self.api.alamofireApiWithParams(url: url, parameters: ["user_username":dataJSON["data"]["username"].stringValue]){
                             
-                            if response.result.isSuccess {
-                                //  print("Response JSON: \(JSON(response.result.value!))")
+                            json in
+                            
+                            self.user_id = json["id"].stringValue
+                            
+                            print("check_id=\(json["id"])")
+                            if(self.user_id == ""){
                                 
-                                let flowerJSON : JSON = JSON(response.result.value!)
-                                //                            let pageid = flowerJSON["member_id"].stringValue
+                                print("first time")
+                                let vc = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
+                                vc.dataJson = dataJSON
+                                vc.followers = followers
+                                vc.authToken = authToken
+                                self.present(vc, animated: true, completion: nil)
                                 
-                                self.user_id = flowerJSON["id"].stringValue
+                            }
+                            else{
+                                
+                                print("exist user-id :: \(self.user_id)")
+                                
                                 
                                 let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
                                 
@@ -165,7 +175,7 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                                 newUser.setValue(dataJSON["data"]["profile_picture"].stringValue, forKey: "profile_picture")
                                 newUser.setValue(Int64(followers), forKey: "followers")
                                 newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
-                                newUser.setValue(flowerJSON["id"].stringValue, forKey: "user_id")
+                                newUser.setValue(self.user_id, forKey: "user_id")
                                 newUser.setValue(authToken, forKey: "userTokenNo")
                                 do {
                                     try context.save()
@@ -173,30 +183,71 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                                 
                                 print(newUser)
                                 print("Object Saved.")
-                                UserCoreData.fetchCoreData()
                                 
-                                //have toremove
-                                //self.first_time="1"
-                                
-                                print("firstTime=\(self.first_time)")
-                                
-                                if(self.first_time=="1"){
-                                    let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
-                                    print ("heheheh")
-                                    
-                                    self.present(choiceSelectionViewController, animated: true, completion: nil)
-                                }
-                                else{
-                                    let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
-                                    print ("heheheh")
-                                    mainTabController.selectedViewController = mainTabController.viewControllers?[0]
-                                    self.present(mainTabController, animated: true, completion: nil)
-                                }
-                                // print(flowerJSON["id"])
-                                
+                                Defaults.setLoginStatus(logInStatus: true)
+                                let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+                                print ("heheheh")
+                                mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+                                self.present(mainTabController, animated: true, completion: nil)
                                 
                             }
+                            
+                            
                         }
+                        //print("media=\(authToken)")
+                        
+//                        Alamofire.request("\(self.base_url.weburl)/User_Registration.php", method: .get, parameters: param).responseJSON { response in
+//                            
+//                            if response.result.isSuccess {
+//                                //  print("Response JSON: \(JSON(response.result.value!))")
+//                                
+//                                let flowerJSON : JSON = JSON(response.result.value!)
+//                                //                            let pageid = flowerJSON["member_id"].stringValue
+//                                
+//                                self.user_id = flowerJSON["id"].stringValue
+//                                
+//                                let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+//                                
+//                                let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+//                                
+//                                let newUser = NSEntityDescription.insertNewObject(forEntityName: "UserInformation", into: context) as NSManagedObject
+//                                newUser.setValue(dataJSON["data"]["username"].stringValue, forKey: "username")
+//                                newUser.setValue(dataJSON["data"]["full_name"].stringValue, forKey: "full_name")
+//                                newUser.setValue(dataJSON["data"]["profile_picture"].stringValue, forKey: "profile_picture")
+//                                newUser.setValue(Int64(followers), forKey: "followers")
+//                                newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
+//                                newUser.setValue(flowerJSON["id"].stringValue, forKey: "user_id")
+//                                newUser.setValue(authToken, forKey: "userTokenNo")
+//                                do {
+//                                    try context.save()
+//                                } catch {}
+//                                
+//                                print(newUser)
+//                                print("Object Saved.")
+//                                UserCoreData.fetchCoreData()
+//                                
+//                                //have toremove
+//                                //self.first_time="1"
+//                                
+//                                print("firstTime=\(self.first_time)")
+//                                
+//                                if(self.first_time=="1"){
+//                                    let choiceSelectionViewController = self.storyboard?.instantiateViewController(withIdentifier: "ChoiceSelectionViewController") as! ChoiceSelectionViewController
+//                                    print ("heheheh")
+//                                    
+//                                    self.present(choiceSelectionViewController, animated: true, completion: nil)
+//                                }
+//                                else{
+//                                    let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+//                                    print ("heheheh")
+//                                    mainTabController.selectedViewController = mainTabController.viewControllers?[0]
+//                                    self.present(mainTabController, animated: true, completion: nil)
+//                                }
+//                                // print(flowerJSON["id"])
+//                                
+//                                
+//                            }
+//                        }
                         
                         
                         
@@ -250,7 +301,6 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                 print("elsii")
             }
             
-            completion()
             
         }
         

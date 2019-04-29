@@ -842,7 +842,11 @@
                                 <rect key="frame" x="48" y="277" width="224" height="34"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="instgrm" translatesAutoresizingMaskIntoConstraints="NO" id="xMw-YF-hof">
-                                        <rect key="frame" x="29" y="7" width="20.5" height="20"/>
+                                        <rect key="frame" x="27" y="5" width="24" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="24" id="8UN-to-pp6"/>
+                                            <constraint firstAttribute="height" constant="24" id="Jqv-ci-EaQ"/>
+                                        </constraints>
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fRh-Fm-gWs">
                                         <rect key="frame" x="56" y="0.0" width="157" height="34"/>
@@ -858,8 +862,6 @@
                                 <constraints>
                                     <constraint firstItem="xMw-YF-hof" firstAttribute="centerX" secondItem="BAL-Cc-JM7" secondAttribute="centerX" multiplier="0.35" id="4q8-Ys-Au1"/>
                                     <constraint firstItem="fRh-Fm-gWs" firstAttribute="centerY" secondItem="BAL-Cc-JM7" secondAttribute="centerY" id="HgT-ot-3DV"/>
-                                    <constraint firstItem="xMw-YF-hof" firstAttribute="height" secondItem="BAL-Cc-JM7" secondAttribute="height" multiplier="0.6" id="Rcp-BS-AeR"/>
-                                    <constraint firstItem="xMw-YF-hof" firstAttribute="width" secondItem="BAL-Cc-JM7" secondAttribute="width" multiplier="0.09" id="UWO-rW-UPa"/>
                                     <constraint firstItem="fRh-Fm-gWs" firstAttribute="width" secondItem="BAL-Cc-JM7" secondAttribute="width" multiplier="0.7" id="YEz-8f-Ojk"/>
                                     <constraint firstItem="fRh-Fm-gWs" firstAttribute="centerX" secondItem="BAL-Cc-JM7" secondAttribute="centerX" multiplier="1.2" id="dlF-hX-J2C"/>
                                     <constraint firstItem="fRh-Fm-gWs" firstAttribute="height" secondItem="BAL-Cc-JM7" secondAttribute="height" id="kUJ-D3-7af"/>

@@ -257,7 +257,7 @@ class OnlineAnnouncementViewController: UIViewController{
                             onlineModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                             
                             onlineModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                            onlineModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                            onlineModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                             onlineModel.budget_value = dataJSON[item]["budget_value"].stringValue
                             onlineModel.type = dataJSON[item]["type"].stringValue
                             onlineModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -359,7 +359,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 onlineModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                onlineModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                onlineModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 onlineModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 onlineModel.type = dataJSON[item]["type"].stringValue
                                 onlineModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -536,7 +536,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 onlineModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                onlineModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                onlineModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 onlineModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 onlineModel.type = dataJSON[item]["type"].stringValue
                                 onlineModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -658,7 +658,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 onlineModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                onlineModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                onlineModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 onlineModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 onlineModel.type = dataJSON[item]["type"].stringValue
                                 onlineModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -814,7 +814,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 onlineModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                onlineModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                onlineModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 onlineModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 onlineModel.type = dataJSON[item]["type"].stringValue
                                 onlineModel.discount_field = dataJSON[item]["discount_field"].stringValue

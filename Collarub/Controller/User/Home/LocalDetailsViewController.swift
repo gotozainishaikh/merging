@@ -148,6 +148,7 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        ACCPTBUGT.isHidden = true
         fetch_coreData()
         localDetails()
 
@@ -166,13 +167,17 @@ class LocalDetailsViewController: UIViewController {
         
         
         imgSlider.setImageInputs(images)
-        
+        print("detailsArray?.collaboration_id\((detailsArray?.collaboration_id))!")
+        print("Accep_budget_check=\((detailsArray?.Accep_budget_check)!)")
        
-     
+        if((detailsArray?.Accep_budget_check)! == "Accept Budget"){
+            
+            ACCPTBUGT.isHidden = false
+            
+            ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+            ACCPTBUGT.layer.borderWidth = 0.5
+        }
         
-        
-        ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
-        ACCPTBUGT.layer.borderWidth = 0.5
         uiNavegationImage()
         //print("description=\((detailsArray?.description)!)")
    //     UINavigationBar.appearance().tintColor = .white
@@ -181,6 +186,10 @@ class LocalDetailsViewController: UIViewController {
     }
     
     
+    @IBAction func acp_btn(_ sender: UIButton) {
+        
+        print("acpt_btn")
+    }
     
     
     func uiNavegationImage(){

@@ -254,7 +254,7 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                             
                             localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                            localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                            localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                             localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                             localModel.type = dataJSON[item]["type"].stringValue
                             localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -267,6 +267,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                             localModel.category_name = dataJSON[item]["category_name"].stringValue
                             localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                            localModel.lat = dataJSON[item]["lat"].doubleValue
+                            localModel.long = dataJSON[item]["longg"].doubleValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -356,7 +358,7 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                             
                             localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                            localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                            localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                             localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                             localModel.type = dataJSON[item]["type"].stringValue
                             localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -369,6 +371,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                             localModel.category_name = dataJSON[item]["category_name"].stringValue
                             localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                            localModel.lat = dataJSON[item]["lat"].doubleValue
+                            localModel.long = dataJSON[item]["longg"].doubleValue
 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                             self.model.append(localModel)
                             
@@ -533,7 +537,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 localModel.type = dataJSON[item]["type"].stringValue
                                 localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -546,6 +550,8 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 localModel.category_name = dataJSON[item]["category_name"].stringValue
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                localModel.lat = dataJSON[item]["lat"].doubleValue
+                                localModel.long = dataJSON[item]["longg"].doubleValue
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 
@@ -655,7 +661,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 localModel.type = dataJSON[item]["type"].stringValue
                                 localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -668,6 +674,8 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 localModel.category_name = dataJSON[item]["category_name"].stringValue
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                localModel.lat = dataJSON[item]["lat"].doubleValue
+                                localModel.long = dataJSON[item]["longg"].doubleValue
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 
@@ -814,7 +822,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collaboration_id = dataJSON[item]["collaboration_id"].stringValue
                                 
                                 localModel.expiry_date = dataJSON[item]["expiry_date"].stringValue
-                                localModel.Accep_budget_check = dataJSON[item]["Accep_budget_check"].stringValue
+                                localModel.Accep_budget_check = dataJSON[item]["accep_budget_check"].stringValue
                                 localModel.budget_value = dataJSON[item]["budget_value"].stringValue
                                 localModel.type = dataJSON[item]["type"].stringValue
                                 localModel.discount_field = dataJSON[item]["discount_field"].stringValue
@@ -827,6 +835,8 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 localModel.category_name = dataJSON[item]["category_name"].stringValue
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                localModel.lat = dataJSON[item]["lat"].doubleValue
+                                localModel.long = dataJSON[item]["longg"].doubleValue
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 
@@ -906,13 +916,43 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         cell.followersRequired.text = model[indexPath.row].selectedNumOfFollowers
         cell.col_id = model[indexPath.row].collaboration_id
         cell.setLikeMe(isFav: favList2)
-       
+        
+        
+       UserCoreData.fetchCoreData()
+        
+        var distance  = self.distance(lat1: Double(UserCoreData.user_lat)!, lon1: Double(UserCoreData.user_long)!, lat2: model[indexPath.row].lat, lon2:  model[indexPath.row].long, unit: "K")
+        print("lat=\(model[indexPath.row].lat)-long=\(model[indexPath.row].long)-\(distance)) distance")
+        cell.distance.text = String(distance)
         cell.imgLocal.layer.cornerRadius = 6
         cell.imgLocal.clipsToBounds = true
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
        // cell.likeMe.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapfav(_:))))
         return cell
+    }
+    
+    func deg2rad(deg:Double) -> Double {
+        return deg * M_PI / 180
+    }
+    
+    func rad2deg(rad:Double) -> Double {
+        return rad * 180.0 / M_PI
+    }
+    func distance(lat1:Double, lon1:Double, lat2:Double, lon2:Double, unit:String) -> Double {
+        let theta = lon1 - lon2
+        var dist = sin(deg2rad(deg: lat1)) *  sin(deg2rad(deg: lat2)) + cos(deg2rad(deg: lat1)) * cos(deg2rad(deg: lat2)) * cos(deg2rad(deg: theta))
+        dist = acos(dist)
+        dist = rad2deg(rad: dist)
+        dist = dist * 60  * 1.1515
+        if (unit == "K") {
+            dist = dist * 1.609344
+        }
+        else if (unit == "N") {
+            dist = dist * 0.8684
+        }
+        
+        dist = round(1000*dist)/1000
+        return dist
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -932,6 +972,8 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         
         if let index = indexPath {
             
+            print("Tapcollaboration_id=\(self.model[index.item].collaboration_id)")
+            print("TapAccep_budget_check=\(self.model[index.item].Accep_budget_check)")
             
             self.performSegue(withIdentifier: "gotoDetailPage", sender: model[(indexPath?.row)!])
             

@@ -31,7 +31,7 @@ class UserSelectionViewController: UIViewController {
             
             print("else")
 
-            let mainTabController = self.storyboard?.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+            let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             print ("heheheh")
             mainTabController.selectedViewController = mainTabController.viewControllers?[0]
             self.present(mainTabController, animated: true, completion: nil)

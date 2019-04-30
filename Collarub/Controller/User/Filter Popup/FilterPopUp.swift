@@ -28,6 +28,8 @@ class FilterPopUp: UIViewController {
     @IBOutlet weak var switch3: UISwitch!
     @IBOutlet weak var switch4: UISwitch!
     
+    @IBOutlet weak var apply_btn: UIButton!
+    
     var cat_select:String = ""
     var end_soon: String = "0"
     var new: String = "0"
@@ -106,14 +108,26 @@ class FilterPopUp: UIViewController {
         
     }
     
+    
+    @IBAction func cancel_btn(_ sender: UIButton) {
+        
+        removeAnimate()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        self.apply_btn.isEnabled = false
+        //self.apply_btn.isHighlighted = false
         
         cat_drop.optionArray = ["Food","Sport","Fashion","Beauty & HelthCare","Events","Travel","Digital & Devices","Parenting","Home & Decors","Automotive","Pets"]
         cat_drop.selectedRowColor = #colorLiteral(red: 0.2156862745, green: 0.6784313725, blue: 0.5882352941, alpha: 1)
         
         cat_drop.didSelect{(selectedText , index ,id) in
             self.cat_select = "\(selectedText)"
+            self.apply_btn.isEnabled = true
+            //self.apply_btn.isHighlighted = true
         }
         showAnimate()
         
@@ -127,6 +141,19 @@ class FilterPopUp: UIViewController {
         UIView.animate(withDuration: 0.25, animations: {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+        });
+    }
+    
+    func removeAnimate()
+    {
+        UIView.animate(withDuration: 0.25, animations: {
+            self.view.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            self.view.alpha = 0.0;
+        }, completion:{(finished : Bool)  in
+            if (finished)
+            {
+                self.view.removeFromSuperview()
+            }
         });
     }
 }

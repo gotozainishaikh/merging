@@ -255,14 +255,27 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                         
                         
                     }else {
-                        let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 500", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 1000", preferredStyle: .alert)
                         
                         let reStart = UIAlertAction(title: "OK", style: .default, handler:
                         { (UIAlertAction) in
                             
-                            self.dismiss(animated: true, completion: nil)
-                            let vc = self.storyboard?.instantiateViewController(withIdentifier: "mainScreen") as! UserSelectionViewController
-                            self.present(vc, animated: true, completion: nil)
+                            //self.dismiss(animated: true, completion: nil)
+                            if let cookies = HTTPCookieStorage.shared.cookies {
+                                for cookie in cookies {
+                                    if cookie.domain.contains(".instagram.com") {
+                                        HTTPCookieStorage.shared.deleteCookie(cookie)
+                                    }
+                                }
+                                
+                                Defaults.setLoginStatus(logInStatus: false)
+                                
+                                let storyMain = UIStoryboard(name: "Main", bundle: nil)
+                                let vc = storyMain.instantiateViewController(withIdentifier: "mainScreen") as! UserSelectionViewController
+                                self.present(vc, animated: true, completion: nil)
+                                
+                            }
+                           
                             
                         })
                         

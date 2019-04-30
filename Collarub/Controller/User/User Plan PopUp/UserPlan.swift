@@ -93,18 +93,19 @@ class UserPlan: UIViewController {
     
     func check_user(completion: @escaping () -> Void){
         
-        let url = "\(base_url.weburl)/checkUser.php"
-        let uName = UserCoreData.username
-        print("uName=\(uName)")
-        api.alamofireApiWithParams(url: url, parameters: ["user_username":uName]){
+        UserCoreData.fetchCoreData()
+        let url = "\(base_url.weburl)/check_user_type.php"
+        let u_id = UserCoreData.user_id
+        print("uName=\(u_id)")
+        api.alamofireApiWithParams(url: url, parameters: ["user_id":u_id]){
             
             json in
             
             
-            print("check_id=\(json["userrType"])")
-            if(json["id"] != ""){
+            print("check_id=\(json["payment_type"])")
+            if(json["Status"] != "failed"){
                 
-                self.user_type = json["userrType"].stringValue
+                self.user_type = json["payment_type"].stringValue
             }
             
             

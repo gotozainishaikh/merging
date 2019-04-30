@@ -737,14 +737,17 @@ class LocalAnnouncementViewController: UIViewController {
                     
                     print("favlistabc=\(item)")
                 }
+                print("abcCount=\(self.model.count)")
                 for item in self.model{
                     
-                    print("modelabc=\(item)")
+                    print("item.collaboration_id=\(item.collaboration_id)")
                 }
                 print("relaod 1")
                 self.collectionView.reloadData()
                 
             }
+            
+            self.collectionView.reloadData()
             
         }
         

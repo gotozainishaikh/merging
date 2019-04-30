@@ -71,7 +71,13 @@ class ContactUsViewController: UIViewController {
                         
                         
                         SVProgressHUD.showSuccess(withStatus: "Done")
-                        self.dismiss(animated: true, completion: nil)
+//                        self.dismiss(animated: true, completion: nil)
+                        
+                        let storyBoard = UIStoryboard(name: "User", bundle: nil)
+                        let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
+                        
+                        mainTabController.selectedViewController = mainTabController.viewControllers?[3]
+                        self.present(mainTabController, animated: true, completion: nil)
                         
                     }
                 }

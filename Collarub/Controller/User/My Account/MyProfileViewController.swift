@@ -195,7 +195,7 @@ class MyProfileViewController: UIViewController {
                 "userName" : json["data"]["username"].stringValue,
                 "full_name" : json["data"]["full_name"].stringValue,
 //                "followers" : json["data"]["counts"]["followed_by"].stringValue,
-                 "followers" : "88",
+                 "followers" : json["data"]["counts"]["followed_by"].stringValue,
                 "image_url" : json["data"]["profile_picture"].stringValue,
                 "followedBy" : json["data"]["counts"]["follows"].stringValue,
                 "media" : json["data"]["counts"]["media"].stringValue
@@ -357,12 +357,12 @@ class MyProfileViewController: UIViewController {
     
     func get_user_type(completion: @escaping () -> Void){
         
-        let url = "\(base_url.weburl)/get_user_type.php"
+        let url = "\(base_url.weburl)/check_user_type.php?"
         api.alamofireApiWithParams(url: url
         , parameters: ["user_id":user_id]){
             json in
             
-            self.user_type = json[0]["user_type"].stringValue
+            self.user_type = json["payment_type"].stringValue
             
             completion()
         }

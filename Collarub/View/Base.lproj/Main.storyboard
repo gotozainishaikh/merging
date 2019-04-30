@@ -3363,7 +3363,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mRg-aI-2BP">
-                                                <rect key="frame" x="243" y="431" width="45" height="32"/>
+                                                <rect key="frame" x="244" y="431" width="44" height="32"/>
                                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                                 <state key="normal" title="Close">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -4272,6 +4272,7 @@ INFLUENCER</string>
                                                             <constraint firstAttribute="width" constant="100" id="AYY-cw-nNq"/>
                                                             <constraint firstAttribute="height" constant="95" id="mbb-G4-Pdx"/>
                                                         </constraints>
+                                                        <color key="tintColor" name="themeColor3"/>
                                                         <state key="normal" image="usr_profile"/>
                                                     </button>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHm-vp-MKv">
@@ -4359,6 +4360,7 @@ INFLUENCER</string>
                                                         <subviews>
                                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-empty" translatesAutoresizingMaskIntoConstraints="NO" id="pN0-Df-R9g">
                                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
+                                                                <color key="tintColor" name="themeColor3"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="20" id="7jw-ev-jJw"/>
                                                                 </constraints>

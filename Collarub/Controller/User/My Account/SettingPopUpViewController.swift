@@ -82,47 +82,77 @@ class SettingPopUpViewController: UIViewController {
     
     @IBAction func delete_account(_ sender: UIButton) {
         
-        let url = "\(base_url.weburl)/delete_account.php"
         
-        UserCoreData.fetchCoreData()
-        print("UserCoreData.username=\(UserCoreData.username)")
-        let params = [
         
-            "userName" : UserCoreData.username
-        ]
+        // create the alert
+        let alert = UIAlertController(title: "Delete Account", message: "Are You Sure?", preferredStyle: UIAlertController.Style.alert)
         
-        api.alamofireApiWithParams(url: url, parameters: params){
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { action in
             
-            json in
+            // do something like...
+            alert.dismiss(animated: true, completion: nil)
             
-            print("Status=\(json["Status"])")
+        }))
+        
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Delete", style: UIAlertAction.Style.destructive, handler: { action in
             
+            // do something like...
             
-          
+            let url = "\(self.base_url.weburl)/delete_account.php"
             
-            if let cookies = HTTPCookieStorage.shared.cookies {
-                for cookie in cookies {
-                    if cookie.domain.contains(".instagram.com") {
-                        HTTPCookieStorage.shared.deleteCookie(cookie)
+            UserCoreData.fetchCoreData()
+            print("UserCoreData.username=\(UserCoreData.username)")
+            let params = [
+                
+                "userName" : UserCoreData.username
+            ]
+            
+            self.api.alamofireApiWithParams(url: url, parameters: params){
+                
+                json in
+                
+                print("Status=\(json["Status"])")
+                
+                
+                
+                
+                if let cookies = HTTPCookieStorage.shared.cookies {
+                    for cookie in cookies {
+                        if cookie.domain.contains(".instagram.com") {
+                            HTTPCookieStorage.shared.deleteCookie(cookie)
+                        }
                     }
-                }
-                
-                Defaults.setLoginStatus(logInStatus: false)
-                
-                let storyMain = UIStoryboard(name: "Main", bundle: nil)
-                
-                let vc = storyMain.instantiateViewController(withIdentifier: "mainScreen")
-                self.present(vc, animated: true){
                     
-                    let snackbar = TTGSnackbar(message: json["Status"].stringValue, duration: .short)
-                    snackbar.show()
+                    Defaults.setLoginStatus(logInStatus: false)
+                    
+                    let storyMain = UIStoryboard(name: "Main", bundle: nil)
+                    
+                    let vc = storyMain.instantiateViewController(withIdentifier: "mainScreen")
+                    self.present(vc, animated: true){
+                        
+                        let snackbar = TTGSnackbar(message: json["Status"].stringValue, duration: .short)
+                        snackbar.show()
+                    }
+                    
+                    self.deleteAllRecords()
+                    
                 }
-                
-                self.deleteAllRecords()
                 
             }
+                
             
-        }
+            
+            
+        }))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+        
+       
     }
     
     func deleteAllRecords() {

@@ -170,6 +170,12 @@ class MyProfileViewController: UIViewController {
         
     }
     
+    @IBAction func help_btn(_ sender: UIButton) {
+        
+        guard let url = URL(string: "https://collaborup.com/faq/") else { return }
+        let svc = SFSafariViewController(url: url)
+        present(svc, animated: true, completion: nil)
+    }
     
     @IBAction func update_stats(_ sender: UIButton) {
         
@@ -318,24 +324,50 @@ class MyProfileViewController: UIViewController {
     }
     @IBAction func logOut(_ sender: UIButton) {
         
-        let storyMain = UIStoryboard(name: "Main", bundle: nil)
         
-        if let cookies = HTTPCookieStorage.shared.cookies {
-            for cookie in cookies {
-                if cookie.domain.contains(".instagram.com") {
-                    HTTPCookieStorage.shared.deleteCookie(cookie)
-                }
-            }
-            
-                    Defaults.setLoginStatus(logInStatus: false)
-            
-                    let vc = storyMain.instantiateViewController(withIdentifier: "mainScreen")
-                    present(vc, animated: true, completion: nil)
-            
-            deleteAllRecords()
-            
-        }
+        // create the alert
+        let alert = UIAlertController(title: "Logout", message: "Are You Sure?", preferredStyle: UIAlertController.Style.alert)
         
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { action in
+            
+            // do something like...
+            alert.dismiss(animated: true, completion: nil)
+            
+        }))
+        
+        
+        // add an action (button)
+        alert.addAction(UIAlertAction(title: "Logout", style: UIAlertAction.Style.destructive, handler: { action in
+            
+            // do something like...
+            
+                    let storyMain = UIStoryboard(name: "Main", bundle: nil)
+            
+                    if let cookies = HTTPCookieStorage.shared.cookies {
+                        for cookie in cookies {
+                            if cookie.domain.contains(".instagram.com") {
+                                HTTPCookieStorage.shared.deleteCookie(cookie)
+                            }
+                        }
+            
+                                Defaults.setLoginStatus(logInStatus: false)
+            
+                                let vc = storyMain.instantiateViewController(withIdentifier: "mainScreen")
+                                self.present(vc, animated: true, completion: nil)
+            
+                        self.deleteAllRecords()
+            
+                    }
+            
+            
+        }))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+        
+
         
         
     }

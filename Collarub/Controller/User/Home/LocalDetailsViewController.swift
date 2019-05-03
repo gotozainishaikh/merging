@@ -148,6 +148,12 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        let dont_do = (detailsArray?.wht_wont_hav_to)!
+        
+        let dont_do_list = dont_do.split(separator: "\n")
+        print("dont_do_list=\(dont_do_list)")
+        
         ACCPTBUGT.isHidden = true
         fetch_coreData()
         localDetails()

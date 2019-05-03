@@ -269,6 +269,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                             localModel.lat = dataJSON[item]["lat"].doubleValue
                             localModel.long = dataJSON[item]["longg"].doubleValue
+                            localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                            localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -373,6 +375,8 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                             localModel.lat = dataJSON[item]["lat"].doubleValue
                             localModel.long = dataJSON[item]["longg"].doubleValue
+                            localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                            localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                             self.model.append(localModel)
                             
@@ -552,6 +556,9 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                                 localModel.lat = dataJSON[item]["lat"].doubleValue
                                 localModel.long = dataJSON[item]["longg"].doubleValue
+                                localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 
@@ -676,6 +683,9 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                                 localModel.lat = dataJSON[item]["lat"].doubleValue
                                 localModel.long = dataJSON[item]["longg"].doubleValue
+                                localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 
@@ -837,6 +847,10 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
                                 localModel.lat = dataJSON[item]["lat"].doubleValue
                                 localModel.long = dataJSON[item]["longg"].doubleValue
+                                localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                
+                                
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
                                 

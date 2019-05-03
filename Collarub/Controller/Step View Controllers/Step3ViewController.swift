@@ -11,7 +11,7 @@ import iOSDropDown
 import Alamofire
 import SwiftyJSON
 import GooglePlacesSearchController
-
+import TTGSnackbar
 
 class Step3ViewController: UIViewController {
 
@@ -23,6 +23,7 @@ class Step3ViewController: UIViewController {
     var gndr : String = ""
     var follwrLimt : String = ""
     let url = FixVariable()
+    var Age1 : String!
     
     @IBOutlet weak var regionTxt: UITextField!
     @IBOutlet weak var cityTxt: UITextField!
@@ -35,6 +36,8 @@ class Step3ViewController: UIViewController {
     @IBOutlet weak var genderDrop: DropDown!
     @IBOutlet weak var fllowersLimt: UITextField!
     
+    @IBOutlet weak var age1: DropDown!
+    @IBOutlet weak var age2: DropDown!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,6 +55,8 @@ class Step3ViewController: UIViewController {
         
         sector.optionArray = ["Sports", "Foods", "Fashion","Beauty & Health","Events","Travel","Digital & Devices","Perenting","Home & Decor","Automotive","Pets"]
         
+         age2.optionArray = ["5 years", "10 years", "15 years", "20 years", "30 years", "40 years", "50 years", "60 years", "70 years"]
+         age1.optionArray = ["5 years", "10 years", "15 years", "20 years", "30 years", "40 years", "50 years", "60 years", "70 years"]
         
 //        citDrop.optionArray = ["London", "Canada", "Sydney"]
 //        citDrop.optionIds = [1,4,3]
@@ -67,6 +72,24 @@ class Step3ViewController: UIViewController {
             self.engagementRt = selectedText
            // self.selectedtex = selectedText
         }
+        
+        age2.didSelect{(selectedText , index , id) in
+            
+            if self.Age1 == nil {
+                let snackbar = TTGSnackbar(message: "Please select starting age", duration: .short)
+                snackbar.show()
+            }
+           
+            
+        }
+        
+        age1.didSelect{(selectedText , index , id) in
+            
+            self.Age1 = selectedText
+            
+        }
+        
+        
         
        
         
@@ -85,6 +108,8 @@ class Step3ViewController: UIViewController {
         self.borederTodrop(drop: genderDrop)
         self.borederTodrop(drop: sector)
         self.borederTotext(textfield: ratingText)
+        self.borederTotext(textfield: age1)
+        self.borederTotext(textfield: age2)
         self.borederTotext(textfield: minExperience)
         self.borederTotext(textfield: fllowersLimt)
         self.borederTotext(textfield: cityTxt)

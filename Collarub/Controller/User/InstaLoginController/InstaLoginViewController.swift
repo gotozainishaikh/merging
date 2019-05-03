@@ -263,7 +263,7 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                         
                         
                     }else {
-                        let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 500", preferredStyle: .alert)
+                        let alert = UIAlertController(title: "You have insufficient Users", message: "The minimum amount of users should be 1000", preferredStyle: .alert)
                         
                         let reStart = UIAlertAction(title: "OK", style: .default, handler:
                         { (UIAlertAction) in

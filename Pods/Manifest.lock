@@ -46,6 +46,7 @@ PODS:
   - SwipeCellKit (2.5.1)
   - TextFieldEffects (1.5.1)
   - TTGSnackbar (1.7.5)
+  - "UITextView+Placeholder (1.2.1)"
   - XLPagerTabStrip (8.1.1)
 
 DEPENDENCIES:
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - SwipeCellKit
   - TextFieldEffects
   - TTGSnackbar
+  - "UITextView+Placeholder"
   - XLPagerTabStrip (~> 8.1)
 
 SPEC REPOS:
@@ -111,6 +113,7 @@ SPEC REPOS:
     - SwipeCellKit
     - TextFieldEffects
     - TTGSnackbar
+    - "UITextView+Placeholder"
     - XLPagerTabStrip
 
 EXTERNAL SOURCES:
@@ -153,8 +156,9 @@ SPEC CHECKSUMS:
   SwipeCellKit: 30fd6a4f8a8b8ac864ea389c8b4c8bac5ba5471a
   TextFieldEffects: 7d372f58aeaf9acd9626bbf962680aef926b085d
   TTGSnackbar: 2cf4e7b6ffbe5cddf248a73f3ee952b71bee8ea3
+  "UITextView+Placeholder": 0c3efd97f37ea64bde7f34cc6e90fe02e87b3909
   XLPagerTabStrip: 63166e21c9844fa30f2d95d30f335e73be5caf22
 
-PODFILE CHECKSUM: a09a8cfcce97ea4a327c80d16e2805dc1e69ae7c
+PODFILE CHECKSUM: b9aafbdda05ca3a2d7d5e0e9f65666b0c09193c6
 
 COCOAPODS: 1.6.1

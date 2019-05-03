@@ -35,6 +35,7 @@ pod 'PayPal-iOS-SDK'
 pod 'RSSelectionMenu'
  pod 'OneSignal', '>= 2.6.2', '< 3.0'
   pod 'KWVerificationCodeView'
+  pod 'UITextView+Placeholder'
 
 target 'CollarubTests' do
     inherit! :search_paths

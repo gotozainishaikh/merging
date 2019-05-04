@@ -35,6 +35,12 @@ class LocalDetailsViewController: UIViewController {
     var images = [InputSource]()
     
     
+    //to_do
+    var to_do_array:[String] = []
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
     @IBOutlet weak var imgSlider: ImageSlideshow!
     
     @IBOutlet weak var image1: UIImageView!
@@ -148,6 +154,7 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        to_do_array = ["a","b","c"]
         
         let dont_do = (detailsArray?.wht_wont_hav_to)!
         
@@ -388,3 +395,20 @@ class LocalDetailsViewController: UIViewController {
     }
 }
 
+
+extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
+        let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+        
+        cell.to_do_labele.text = to_do_array[indexPath.row]
+        
+        return cell
+    }
+}

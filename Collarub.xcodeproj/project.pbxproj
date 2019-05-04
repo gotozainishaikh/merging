@@ -89,6 +89,7 @@
 		186139F02269D712004B799E /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 186139E92269D712004B799E /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		186139FE226A138B004B799E /* ImproveInsta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 186139FD226A138B004B799E /* ImproveInsta.swift */; };
 		18613A01226A1F97004B799E /* PushNotificationPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18613A00226A1F97004B799E /* PushNotificationPopUp.swift */; };
+		18A14CA4227DB0180065F047 /* To_do_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A14CA3227DB0180065F047 /* To_do_cell.swift */; };
 		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
 		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
 		18F745B4226B332400CD643D /* PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F745B3226B332400CD643D /* PayPal.swift */; };
@@ -268,6 +269,7 @@
 		186139F52269D88C004B799E /* Collarub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Collarub.entitlements; sourceTree = "<group>"; };
 		186139FD226A138B004B799E /* ImproveInsta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImproveInsta.swift; sourceTree = "<group>"; };
 		18613A00226A1F97004B799E /* PushNotificationPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PushNotificationPopUp.swift; sourceTree = "<group>"; };
+		18A14CA3227DB0180065F047 /* To_do_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = To_do_cell.swift; sourceTree = "<group>"; };
 		18DD23312264970F00202A0B /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		18DD23342264991600202A0B /* AlamofireApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireApi.swift; sourceTree = "<group>"; };
 		18F745B3226B332400CD643D /* PayPal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPal.swift; sourceTree = "<group>"; };
@@ -726,6 +728,22 @@
 			path = PushNotificationPopUp;
 			sourceTree = "<group>";
 		};
+		18A14CA1227DAFE10065F047 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				18A14CA2227DAFED0065F047 /* User */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		18A14CA2227DAFED0065F047 /* User */ = {
+			isa = PBXGroup;
+			children = (
+				18A14CA3227DB0180065F047 /* To_do_cell.swift */,
+			);
+			path = User;
+			sourceTree = "<group>";
+		};
 		18DD23302264970F00202A0B /* User Request Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1102,6 +1120,7 @@
 		89EE6BD221DE28EA00EF6CCF /* Collarub */ = {
 			isa = PBXGroup;
 			children = (
+				18A14CA1227DAFE10065F047 /* Cell */,
 				186139F52269D88C004B799E /* Collarub.entitlements */,
 				04F33D5B2268942600B42D68 /* Supporting files */,
 				3AEB8121222D6E73006729EB /* Fonts */,
@@ -1609,6 +1628,7 @@
 				3AD0B9D522134B9700E2A72B /* StepViewController.swift in Sources */,
 				3AF65C6A21E104D5009C82C0 /* OnlineModel.swift in Sources */,
 				3A93B57D21FB4D2E007867C8 /* DataModel.xcdatamodeld in Sources */,
+				18A14CA4227DB0180065F047 /* To_do_cell.swift in Sources */,
 				0453E0952260F7A5006DBD95 /* InstaLoginViewController.swift in Sources */,
 				3A6E57DD222EC47A00378539 /* PartnerLoginWithInstagramViewController.swift in Sources */,
 				3A42D7BF2218307B00C9B00E /* Step5ViewController.swift in Sources */,

@@ -14,6 +14,7 @@ class CollectionViewCell: UICollectionViewCell {
     @IBAction func tabBtnOnclick(_ sender: UIButton) {
         
         print("tabBtn.currentTitle\(tabBtn.currentTitle!)")
+        tabBtn.tintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil, userInfo:["tab_btn_text":tabBtn.currentTitle!,"type":"local"])
     }
     

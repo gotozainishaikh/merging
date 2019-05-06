@@ -92,6 +92,7 @@
 		18A14CA4227DB0180065F047 /* To_do_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A14CA3227DB0180065F047 /* To_do_cell.swift */; };
 		18DD23322264970F00202A0B /* UserRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23312264970F00202A0B /* UserRequestModel.swift */; };
 		18DD23352264991600202A0B /* AlamofireApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18DD23342264991600202A0B /* AlamofireApi.swift */; };
+		18E7FE2C228087210056D675 /* dont_do_cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E7FE2B228087210056D675 /* dont_do_cell.swift */; };
 		18F745B4226B332400CD643D /* PayPal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F745B3226B332400CD643D /* PayPal.swift */; };
 		18F745B7226B7CAC00CD643D /* UpgradePopUP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F745B6226B7CAC00CD643D /* UpgradePopUP.swift */; };
 		3A01164A2209D74200F9AFCF /* StatusTableModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0116492209D74200F9AFCF /* StatusTableModel.swift */; };
@@ -272,6 +273,7 @@
 		18A14CA3227DB0180065F047 /* To_do_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = To_do_cell.swift; sourceTree = "<group>"; };
 		18DD23312264970F00202A0B /* UserRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserRequestModel.swift; sourceTree = "<group>"; };
 		18DD23342264991600202A0B /* AlamofireApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireApi.swift; sourceTree = "<group>"; };
+		18E7FE2B228087210056D675 /* dont_do_cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dont_do_cell.swift; sourceTree = "<group>"; };
 		18F745B3226B332400CD643D /* PayPal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayPal.swift; sourceTree = "<group>"; };
 		18F745B6226B7CAC00CD643D /* UpgradePopUP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpgradePopUP.swift; sourceTree = "<group>"; };
 		1D31AA89C98191A0C1DDE0E3 /* Pods_Collarub_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Collarub_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -740,6 +742,7 @@
 			isa = PBXGroup;
 			children = (
 				18A14CA3227DB0180065F047 /* To_do_cell.swift */,
+				18E7FE2B228087210056D675 /* dont_do_cell.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1605,6 +1608,7 @@
 				0453E0D622610249006DBD95 /* MapViewController.swift in Sources */,
 				0453E0DE2261E018006DBD95 /* PendingListTableViewCell.swift in Sources */,
 				3AEED35F22298D2100B129EA /* TableViewCell.swift in Sources */,
+				18E7FE2C228087210056D675 /* dont_do_cell.swift in Sources */,
 				04B2854E2266BB5F00FDEF13 /* PartnerReviewViewController.swift in Sources */,
 				18F745B4226B332400CD643D /* PayPal.swift in Sources */,
 				041E1B8D225CEF3B0056B649 /* FindInfluencerViewController.swift in Sources */,

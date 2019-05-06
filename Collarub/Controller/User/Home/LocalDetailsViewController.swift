@@ -36,10 +36,13 @@ class LocalDetailsViewController: UIViewController {
     
     
     //to_do
-    var to_do_array:[String] = []
+    var to_do_array:[Substring] = []
+    var dont_do_array:[Substring] = []
     
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableView2: UITableView!
     
     @IBOutlet weak var imgSlider: ImageSlideshow!
     
@@ -154,12 +157,25 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        to_do_array = ["a","b","c"]
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+       
+        
+        tableView2.dataSource = self
+        tableView2.delegate = self
+      
+        //to_do_array = ["a","b","c"]
+        
+        
+        let to_do = (detailsArray?.wht_thy_hav_to_do)!
+        to_do_array = to_do.split(separator: "\n")
+        print("to_do_list=\(to_do_array)")
+        //tableView.reloadData()
         
         let dont_do = (detailsArray?.wht_wont_hav_to)!
-        
-        let dont_do_list = dont_do.split(separator: "\n")
-        print("dont_do_list=\(dont_do_list)")
+        dont_do_array = dont_do.split(separator: "\n")
+        print("dont_do_list=\(dont_do_array)")
         
         ACCPTBUGT.isHidden = true
         fetch_coreData()
@@ -399,16 +415,63 @@ class LocalDetailsViewController: UIViewController {
 extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+//        print("to_do_array.count=\(to_do_array.count)")
+//        return to_do_array.count
+        
+        
+        var count:Int?
+        
+        if tableView == self.tableView {
+            count = to_do_array.count
+        }
+        
+        if tableView == self.tableView2 {
+            count =  dont_do_array.count
+        }
+        
+        return count!
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+//
+//        cell.to_do_labele.text = String(to_do_array[indexPath.row])
+//
+//        return cell
         
-        cell.to_do_labele.text = to_do_array[indexPath.row]
+        var nul_cell:UITableViewCell?
         
-        return cell
+        if tableView == self.tableView {
+           
+            let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+        
+            cell.to_do_labele.text = String(to_do_array[indexPath.row])
+    
+            return cell
+        
+        }
+        
+        if tableView == self.tableView2 {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "dont_do_cell") as! dont_do_cell
+
+            cell.label.text = String(dont_do_array[indexPath.row])
+
+            return cell
+
+        }
+        
+//        if tableView == self.tableView2 {
+//            cell = tableView.dequeueReusableCellWithIdentifier("dont_do_cell", forIndexPath: indexPath)
+//            let previewDetail = sampleData1[indexPath.row]
+//            cell!.textLabel!.text = previewDetail.title
+//
+//        }
+        
+        
+        return nul_cell!
+        //return cell!
     }
 }

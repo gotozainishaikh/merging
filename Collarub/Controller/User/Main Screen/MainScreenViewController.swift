@@ -133,9 +133,10 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     @IBAction func local(_ sender: UIButton) {
         
-        
+        self.localAnnouncement.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.onlineAnnouncement.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       //  sender.isHighlighted = true
-        sender.backgroundColor = UIColor(named: "themeColor3")
+        //sender.backgroundColor = UIColor(named: "themeColor3")
         sender.setTitleColor(UIColor(named: "themecolor4"), for: .normal)
         sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         onlineAnnouncement.setTitleColor(UIColor(named: "ThemeColor1"), for: .normal)
@@ -146,6 +147,10 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     
     @IBAction func online(_ sender: UIButton) {
+        
+        self.localAnnouncement.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.onlineAnnouncement.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
         pageViewController?.moveToPage(index: 1)
         sender.setTitleColor(UIColor(named: "themecolor4"), for: .normal)
         sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -204,6 +209,8 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         return cell
         
     }
+    
+   
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.calculateWidth()

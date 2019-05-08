@@ -13,8 +13,8 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tabBtn: UIButton!
     @IBAction func tabBtnOnclick(_ sender: UIButton) {
         
-       isSelected = true
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil, userInfo:["tab_btn_text":tabBtn.currentTitle!,"type":"local"])
+       //isSelected = true
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil, userInfo:["tab_btn_text":tabBtn.currentTitle!,"type":"local"])
     }
     
 
@@ -22,6 +22,7 @@ class CollectionViewCell: UICollectionViewCell {
         
         print("image_item=\(image_item)")
         tabBtn.setImage(UIImage(named: image_item), for: .normal)
+        tabBtn.setImage(UIImage(named: "food"), for: .selected)
         
         tabBtn.setTitle(title_item, for: .normal)
         

@@ -206,10 +206,68 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         
 //        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
         cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
+        
+         //cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
         return cell
         
     }
     
+    @objc func checkMarkButtonClicked ( sender: UIButton) {
+        print("button presed=\((sender.currentTitle)!)")
+//
+//        switch sender.currentTitle! {
+//
+//            case "Food":
+//                sender.setImage(UIImage(named: "food-1"), for: .normal)
+//
+//            case "Sport":
+//                sender.setImage(UIImage(named: "sports-1"), for: .normal)
+//
+//            case "Fashion":
+//                sender.setImage(UIImage(named: "fashion-1"), for: .normal)
+//
+//            case "Beauty":
+//                sender.setImage(UIImage(named: "beauty-1"), for: .normal)
+//
+//            case "Events":
+//                 sender.setImage(UIImage(named: "events-1"), for: .normal)
+//
+//            case "Travel":
+//                 sender.setImage(UIImage(named: "travel-1"), for: .normal)
+//
+//            case "Digital":
+//                 sender.setImage(UIImage(named: "digital-1"), for: .normal)
+//
+//            case "Parenting":
+//                 sender.setImage(UIImage(named: "parenting-1"), for: .normal)
+//
+//            case "Home":
+//                 sender.setImage(UIImage(named: "home-1"), for: .normal)
+//
+//            case "Automotive":
+//                 sender.setImage(UIImage(named: "driving-1"), for: .normal)
+//
+//            case "Pets":
+//                 sender.setImage(UIImage(named: "pets-1"), for: .normal)
+//
+//
+//            default:
+//                print("default")
+//            }
+
+        if sender.isSelected {
+            //uncheck the butoon
+            sender.isSelected = false
+            
+        } else {
+            // checkmark it
+            sender.isSelected = true
+            
+        }
+        
+        //self.searchBtnCollectionView.reloadData()
+        
+    }
    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

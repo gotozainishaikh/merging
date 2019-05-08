@@ -91,21 +91,21 @@ class LocalDetailsViewController: UIViewController {
             
             if(self.user_type == "1"){
                 
-                let vc = self.story.instantiateViewController(withIdentifier: "pakage") as! PakagePopUPViewController
-                vc.user_id = id
-                
-                print("detailsArray?.collaboration_idabc=\(self.detailsArray?.collaboration_id)")
-                
-                if((self.detailsArray?.collaboration_id) != nil){
-                    print("detailsArray=\((self.detailsArray?.collaboration_id)!)")
-                    vc.campaign_id = String((self.detailsArray?.collaboration_id)!)
-                    
-                }
-                else if((self.modelCustom?.collaboration_id) != nil){
-                    print("modelCustom=\((self.modelCustom?.collaboration_id)!)")
-                    vc.campaign_id = String((self.modelCustom?.collaboration_id)!)
-                    
-                }
+                let vc = self.story.instantiateViewController(withIdentifier: "UpgradePopUP") as! UpgradePopUP
+//                vc.user_id = id
+//                
+//                print("detailsArray?.collaboration_idabc=\(self.detailsArray?.collaboration_id)")
+//                
+//                if((self.detailsArray?.collaboration_id) != nil){
+//                    print("detailsArray=\((self.detailsArray?.collaboration_id)!)")
+//                    vc.campaign_id = String((self.detailsArray?.collaboration_id)!)
+//                    
+//                }
+//                else if((self.modelCustom?.collaboration_id) != nil){
+//                    print("modelCustom=\((self.modelCustom?.collaboration_id)!)")
+//                    vc.campaign_id = String((self.modelCustom?.collaboration_id)!)
+//                    
+//                }
                 
                 
                 self.addChild(vc)

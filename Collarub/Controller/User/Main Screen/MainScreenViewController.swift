@@ -207,13 +207,18 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
 //        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
         cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
         
-         //cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+        cell.tabBtn.tag = indexPath.row
+         cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+        
+        
         return cell
         
     }
     
+    
+    
     @objc func checkMarkButtonClicked ( sender: UIButton) {
-        print("button presed=\((sender.currentTitle)!)")
+        print("button presed=\((sender.tag))")
 //
 //        switch sender.currentTitle! {
 //

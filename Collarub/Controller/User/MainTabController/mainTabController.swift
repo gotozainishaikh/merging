@@ -13,8 +13,7 @@ class mainTabController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //UserCoreData.fetchCoreData()
-
+        
         // Do any additional setup after loading the view.
     }
     

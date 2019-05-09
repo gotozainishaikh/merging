@@ -934,7 +934,7 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         
        UserCoreData.fetchCoreData()
         
-        var distance  = self.distance(lat1: Double(UserCoreData.user_lat)!, lon1: Double(UserCoreData.user_long)!, lat2: model[indexPath.row].lat, lon2:  model[indexPath.row].long, unit: "K")
+        let distance  = self.distance(lat1: Double(UserCoreData.user_lat)!, lon1: Double(UserCoreData.user_long)!, lat2: model[indexPath.row].lat, lon2:  model[indexPath.row].long, unit: "K")
         print("lat=\(model[indexPath.row].lat)-long=\(model[indexPath.row].long)-\(distance)) distance")
         cell.distance.text = String(distance)
         cell.imgLocal.layer.cornerRadius = 6

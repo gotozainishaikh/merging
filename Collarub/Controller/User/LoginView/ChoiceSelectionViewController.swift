@@ -37,6 +37,8 @@ class ChoiceSelectionViewController: UIViewController {
     var country:String = ""
     var city:String = ""
     var address:String = ""
+    var lat:String = ""
+    var long:String = ""
     var category:String = ""
     var count = 1
     var choice1:String = ""
@@ -467,7 +469,8 @@ class ChoiceSelectionViewController: UIViewController {
         print("address=\(address)")
         print("city=\(city)")
         print("country=\(country)")
-        
+        print("lat=\(lat)")
+        print("long=\(long)")
         
         var url = "\(base_url.weburl)/zain_user_registeration.php"
        
@@ -478,6 +481,37 @@ class ChoiceSelectionViewController: UIViewController {
             code = verificationCode.getVerificationCode()
         }
         print("codee :: \(code)")
+        
+        var user_category_type = ""
+        
+        if(followers >= 1000)&&(followers < 15000){
+            
+            user_category_type = "local"
+        }
+        else if(followers >= 15000)&&(followers < 100000){
+            
+            user_category_type = "micro"
+        }
+        else if(followers >= 100000)&&(followers < 500000){
+            
+            user_category_type = "macro"
+        }
+        else if(followers >= 500000)&&(followers < 1000000){
+            
+            user_category_type = "mega"
+        }
+        else if(followers >= 1000000){
+            
+            user_category_type = "star"
+        }
+        else{
+            
+            user_category_type = "testing"
+            
+        }
+        
+        
+        print("user_category_type=\(user_category_type)")
         let parameters : [String:String] = [
             
             "userTokenNo": authToken,
@@ -488,9 +522,11 @@ class ChoiceSelectionViewController: UIViewController {
             "followedBy": dataJson["data"]["counts"]["follows"].stringValue,
             "media": dataJson["data"]["counts"]["media"].stringValue,
             "player_id": "",
-            "user_category_type": "mini",
+            "user_category_type": user_category_type,
             "refer_code": code,
-            
+            "lat": lat,
+            "longg": long,
+           
             "sector1": choice1,
             "sector2": choice2,
             "category": category,
@@ -542,6 +578,8 @@ class ChoiceSelectionViewController: UIViewController {
                     newUser.setValue(Int64(self.dataJson["data"]["counts"]["follows"].intValue), forKey: "follows")
                     newUser.setValue(self.user_id, forKey: "user_id")
                     newUser.setValue(self.authToken, forKey: "userTokenNo")
+                    newUser.setValue(self.lat, forKey: "user_lat")
+                    newUser.setValue(self.long, forKey: "user_long")
                     do {
                         try context.save()
                     } catch {}
@@ -623,8 +661,8 @@ class ChoiceSelectionViewController: UIViewController {
 extension ChoiceSelectionViewController: GooglePlacesAutocompleteViewControllerDelegate {
     func viewController(didAutocompleteWith place: PlaceDetails) {
         print("place.description=\(place.description)")
-        var lat:String = "\((place.coordinate?.latitude)!)"
-        var long:String = "\((place.coordinate?.longitude)!)"
+        self.lat = "\((place.coordinate?.latitude)!)"
+        self.long = "\((place.coordinate?.longitude)!)"
         print("lat=\(lat), long=\(long) sub :: \(place)")
         
         locationText.text = place.name

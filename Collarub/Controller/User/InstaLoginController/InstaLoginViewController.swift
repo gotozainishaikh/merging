@@ -25,6 +25,10 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
     //User First Login
     var first_time:String = "0"
     
+    
+    var lat:String = ""
+    var long:String = ""
+    
    // var instaData : [InstagramUserData] = [InstagramUserData]()
     static let model : InstagramUserData = InstagramUserData()
     var user_id : String = ""
@@ -148,6 +152,8 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                             json in
                             
                             self.user_id = json["id"].stringValue
+                            self.lat =  json["lat"].stringValue
+                            self.long =  json["longg"].stringValue
                             
                             print("check_id=\(json["id"])")
                             if(self.user_id == ""){
@@ -177,6 +183,8 @@ class InstaLoginViewController: UIViewController, UIWebViewDelegate {
                                 newUser.setValue(Int64(dataJSON["data"]["counts"]["follows"].intValue), forKey: "follows")
                                 newUser.setValue(self.user_id, forKey: "user_id")
                                 newUser.setValue(authToken, forKey: "userTokenNo")
+                                newUser.setValue(self.lat, forKey: "user_lat")
+                                newUser.setValue(self.long, forKey: "user_long")
                                 do {
                                     try context.save()
                                 } catch {}

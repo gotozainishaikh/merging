@@ -70,6 +70,8 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     var searchBtnImgArray = ["food.png","sports.png","fashion.png","beauty.png","events.png","travel.png","digital.png","parenting.png","home1.png","driving.png","pets.png"]
     
+    var searchBtnImgArray2 = ["food-1.png","sports-1.png","fashion-1.png","beauty-1.png","events-1.png","travel-1.png","digital-1.png","parenting-1.png","home-1.png","driving-1.png","pets-1.png"]
+    
     
     var pageViewController:PageViewController?
 
@@ -133,9 +135,10 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     @IBAction func local(_ sender: UIButton) {
         
-        
+        self.localAnnouncement.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        self.onlineAnnouncement.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
       //  sender.isHighlighted = true
-        sender.backgroundColor = UIColor(named: "themeColor3")
+        //sender.backgroundColor = UIColor(named: "themeColor3")
         sender.setTitleColor(UIColor(named: "themecolor4"), for: .normal)
         sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
         onlineAnnouncement.setTitleColor(UIColor(named: "ThemeColor1"), for: .normal)
@@ -146,6 +149,10 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     
     @IBAction func online(_ sender: UIButton) {
+        
+        self.localAnnouncement.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        self.onlineAnnouncement.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        
         pageViewController?.moveToPage(index: 1)
         sender.setTitleColor(UIColor(named: "themecolor4"), for: .normal)
         sender.titleLabel?.font = UIFont.boldSystemFont(ofSize: 16)
@@ -197,13 +204,58 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        print("button presed r")
         let cell = searchBtnCollectionView.dequeueReusableCell(withReuseIdentifier: "searchBtn", for: indexPath) as! CollectionViewCell
         
 //        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
-        cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
+        cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row],image_item2: searchBtnImgArray2[indexPath.row])
+        
+        cell.tabBtn.tag = indexPath.row
+         cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+        
+        
+        
         return cell
         
     }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+       
+        print("button presed deselect\( searchBtnCollectionView.cellForItem(at: indexPath))")
+    }
+    
+    
+    @objc func checkMarkButtonClicked ( sender: UIButton) {
+        //print("button presed=\((searchBtnImgArray[sender.tag]))")
+
+       print("button presed reload")
+        DispatchQueue.main.sync {
+            
+            self.searchBtnCollectionView.reloadData()
+        }
+       
+        if sender.isSelected {
+            //uncheck the butoon
+            print("button presed if")
+            sender.isSelected = false
+            
+        } else {
+            // checkmark it
+            print("button presed else")
+            sender.isSelected = true
+            
+        }
+        
+        
+        
+//        self.searchBtnCollectionView.reloadData()
+        
+    }
+   
+ 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.calculateWidth()

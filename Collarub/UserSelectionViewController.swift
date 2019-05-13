@@ -29,7 +29,9 @@ class UserSelectionViewController: UIViewController {
         print("userabc")
         if Defaults.isLogedIn {
             
-            print("else")
+           
+            
+            print("isLogedIn")
 
             let mainTabController = storyBoard.instantiateViewController(withIdentifier: "mainTabController") as! mainTabController
             print ("heheheh")
@@ -39,7 +41,9 @@ class UserSelectionViewController: UIViewController {
             
         }else {
             
-            print("else")
+            print("else-isLogedIn")
+            
+            
             let vc = storyBoard.instantiateViewController(withIdentifier: "loginWithInsta") as! UserLoginViewController
             //UserCoreData.fetchCoreData()
             present(vc, animated: true, completion: nil)

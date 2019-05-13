@@ -35,6 +35,15 @@ class LocalDetailsViewController: UIViewController {
     var images = [InputSource]()
     
     
+    //to_do
+    var to_do_array:[Substring] = []
+    var dont_do_array:[Substring] = []
+    
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableView2: UITableView!
+    
     @IBOutlet weak var imgSlider: ImageSlideshow!
     
     @IBOutlet weak var image1: UIImageView!
@@ -82,21 +91,21 @@ class LocalDetailsViewController: UIViewController {
             
             if(self.user_type == "1"){
                 
-                let vc = self.story.instantiateViewController(withIdentifier: "pakage") as! PakagePopUPViewController
-                vc.user_id = id
-                
-                print("detailsArray?.collaboration_idabc=\(self.detailsArray?.collaboration_id)")
-                
-                if((self.detailsArray?.collaboration_id) != nil){
-                    print("detailsArray=\((self.detailsArray?.collaboration_id)!)")
-                    vc.campaign_id = String((self.detailsArray?.collaboration_id)!)
-                    
-                }
-                else if((self.modelCustom?.collaboration_id) != nil){
-                    print("modelCustom=\((self.modelCustom?.collaboration_id)!)")
-                    vc.campaign_id = String((self.modelCustom?.collaboration_id)!)
-                    
-                }
+                let vc = self.story.instantiateViewController(withIdentifier: "UpgradePopUP") as! UpgradePopUP
+//                vc.user_id = id
+//                
+//                print("detailsArray?.collaboration_idabc=\(self.detailsArray?.collaboration_id)")
+//                
+//                if((self.detailsArray?.collaboration_id) != nil){
+//                    print("detailsArray=\((self.detailsArray?.collaboration_id)!)")
+//                    vc.campaign_id = String((self.detailsArray?.collaboration_id)!)
+//                    
+//                }
+//                else if((self.modelCustom?.collaboration_id) != nil){
+//                    print("modelCustom=\((self.modelCustom?.collaboration_id)!)")
+//                    vc.campaign_id = String((self.modelCustom?.collaboration_id)!)
+//                    
+//                }
                 
                 
                 self.addChild(vc)
@@ -148,6 +157,27 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        tableView.dataSource = self
+        tableView.delegate = self
+       
+        
+        tableView2.dataSource = self
+        tableView2.delegate = self
+      
+        //to_do_array = ["a","b","c"]
+        
+        
+        let to_do = (detailsArray?.wht_thy_hav_to_do)!
+        to_do_array = to_do.split(separator: "\n")
+        print("to_do_list=\(to_do_array)")
+        //tableView.reloadData()
+        
+        let dont_do = (detailsArray?.wht_wont_hav_to)!
+        dont_do_array = dont_do.split(separator: "\n")
+        print("dont_do_list=\(dont_do_array)")
+        
+        ACCPTBUGT.isHidden = true
         fetch_coreData()
         localDetails()
 
@@ -166,13 +196,17 @@ class LocalDetailsViewController: UIViewController {
         
         
         imgSlider.setImageInputs(images)
-        
+        print("detailsArray?.collaboration_id\((detailsArray?.collaboration_id))!")
+        print("Accep_budget_check=\((detailsArray?.Accep_budget_check)!)")
        
-     
+        if((detailsArray?.Accep_budget_check)! == "Accept Budget"){
+            
+            ACCPTBUGT.isHidden = false
+            
+            ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+            ACCPTBUGT.layer.borderWidth = 0.5
+        }
         
-        
-        ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
-        ACCPTBUGT.layer.borderWidth = 0.5
         uiNavegationImage()
         //print("description=\((detailsArray?.description)!)")
    //     UINavigationBar.appearance().tintColor = .white
@@ -181,6 +215,10 @@ class LocalDetailsViewController: UIViewController {
     }
     
     
+    @IBAction func acp_btn(_ sender: UIButton) {
+        
+        print("acpt_btn")
+    }
     
     
     func uiNavegationImage(){
@@ -373,3 +411,67 @@ class LocalDetailsViewController: UIViewController {
     }
 }
 
+
+extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        print("to_do_array.count=\(to_do_array.count)")
+//        return to_do_array.count
+        
+        
+        var count:Int?
+        
+        if tableView == self.tableView {
+            count = to_do_array.count
+        }
+        
+        if tableView == self.tableView2 {
+            count =  dont_do_array.count
+        }
+        
+        return count!
+    }
+    
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+//
+//        cell.to_do_labele.text = String(to_do_array[indexPath.row])
+//
+//        return cell
+        
+        var nul_cell:UITableViewCell?
+        
+        if tableView == self.tableView {
+           
+            let cell = tableView.dequeueReusableCell(withIdentifier: "To_do_cell") as! To_do_cell
+        
+            cell.to_do_labele.text = String(to_do_array[indexPath.row])
+    
+            return cell
+        
+        }
+        
+        if tableView == self.tableView2 {
+
+            let cell = tableView.dequeueReusableCell(withIdentifier: "dont_do_cell") as! dont_do_cell
+
+            cell.label.text = String(dont_do_array[indexPath.row])
+
+            return cell
+
+        }
+        
+//        if tableView == self.tableView2 {
+//            cell = tableView.dequeueReusableCellWithIdentifier("dont_do_cell", forIndexPath: indexPath)
+//            let previewDetail = sampleData1[indexPath.row]
+//            cell!.textLabel!.text = previewDetail.title
+//
+//        }
+        
+        
+        return nul_cell!
+        //return cell!
+    }
+}

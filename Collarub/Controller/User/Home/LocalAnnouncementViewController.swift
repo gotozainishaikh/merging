@@ -271,6 +271,7 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.long = dataJSON[item]["longg"].doubleValue
                             localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
                             localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                            localModel.partner_id = dataJSON[item]["partner_id"].stringValue
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -377,6 +378,7 @@ class LocalAnnouncementViewController: UIViewController {
                             localModel.long = dataJSON[item]["longg"].doubleValue
                             localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
                             localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                            localModel.partner_id = dataJSON[item]["partner_id"].stringValue
 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                             self.model.append(localModel)
                             
@@ -558,6 +560,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.long = dataJSON[item]["longg"].doubleValue
                                 localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
                                 localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                localModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
@@ -685,6 +688,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.long = dataJSON[item]["longg"].doubleValue
                                 localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
                                 localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                localModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(localModel)
@@ -849,6 +853,7 @@ class LocalAnnouncementViewController: UIViewController {
                                 localModel.long = dataJSON[item]["longg"].doubleValue
                                 localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
                                 localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                localModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 
                                 
                                 //                            localModel.isFav = dataJSON2[item]["isFav"].stringValue
@@ -931,6 +936,7 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         cell.col_id = model[indexPath.row].collaboration_id
         cell.setLikeMe(isFav: favList2)
         
+        model[indexPath.row].isFav = cell.stat
         
        UserCoreData.fetchCoreData()
         
@@ -939,6 +945,7 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
         cell.distance.text = String(distance)
         cell.imgLocal.layer.cornerRadius = 6
         cell.imgLocal.clipsToBounds = true
+        
         cell.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tap(_:))))
         
        // cell.likeMe.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(tapfav(_:))))
@@ -1017,6 +1024,7 @@ extension LocalAnnouncementViewController: UICollectionViewDelegate, UICollectio
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoDetailPage" {
             let destinationVC = segue.destination as! LocalDetailsViewController
+            
             destinationVC.detailsArray = (sender as? LocalModel!)
         }
     }

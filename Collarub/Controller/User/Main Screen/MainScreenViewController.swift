@@ -212,7 +212,7 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row],image_item2: searchBtnImgArray2[indexPath.row])
         
         cell.tabBtn.tag = indexPath.row
-         cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+         //cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
         
         
         

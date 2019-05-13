@@ -25,6 +25,7 @@ class customAnnoation: MKPointAnnotation {
     var selectedNumOfFollowers : String = ""
     var lat : Double = 0.0
     var long : Double = 0.0
+    var partner_id : String = ""
     
     var collaboration_id :  String = ""
     var expiry_date : String = ""

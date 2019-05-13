@@ -11,6 +11,7 @@
 		041E1B91225CEFAD0056B649 /* FindInfluencerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E1B8F225CEFAD0056B649 /* FindInfluencerTableViewCell.swift */; };
 		041E1B92225CEFAD0056B649 /* FindInfluencerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 041E1B90225CEFAD0056B649 /* FindInfluencerTableViewCell.xib */; };
 		041E1B94225D0E570056B649 /* FilterPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E1B93225D0E570056B649 /* FilterPopUpViewController.swift */; };
+		04239FD122897740007D4B5F /* DetailReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04239FD022897740007D4B5F /* DetailReviewViewController.swift */; };
 		04385ED42258FF8D00753749 /* endedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04385ED22258FF8D00753749 /* endedTableViewCell.swift */; };
 		04385ED52258FF8D00753749 /* endedTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 04385ED32258FF8D00753749 /* endedTableViewCell.xib */; };
 		04385ED7225920D000753749 /* step5endedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04385ED6225920D000753749 /* step5endedViewController.swift */; };
@@ -204,6 +205,7 @@
 		041E1B8F225CEFAD0056B649 /* FindInfluencerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindInfluencerTableViewCell.swift; sourceTree = "<group>"; };
 		041E1B90225CEFAD0056B649 /* FindInfluencerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindInfluencerTableViewCell.xib; sourceTree = "<group>"; };
 		041E1B93225D0E570056B649 /* FilterPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPopUpViewController.swift; sourceTree = "<group>"; };
+		04239FD022897740007D4B5F /* DetailReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailReviewViewController.swift; sourceTree = "<group>"; };
 		04385ED22258FF8D00753749 /* endedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = endedTableViewCell.swift; sourceTree = "<group>"; };
 		04385ED32258FF8D00753749 /* endedTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = endedTableViewCell.xib; sourceTree = "<group>"; };
 		04385ED6225920D000753749 /* step5endedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = step5endedViewController.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				0453E09A2260F81A006DBD95 /* ReviewViewController.swift */,
+				04239FD022897740007D4B5F /* DetailReviewViewController.swift */,
 			);
 			path = "Review controller";
 			sourceTree = "<group>";
@@ -1653,6 +1656,7 @@
 				045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */,
 				0453E06E225F4FB1006DBD95 /* DetailsEndedViewController.swift in Sources */,
 				0453E07D225FBD77006DBD95 /* customAnnoation.swift in Sources */,
+				04239FD122897740007D4B5F /* DetailReviewViewController.swift in Sources */,
 				3A42D7BD2217FE0A00C9B00E /* Step4ViewController.swift in Sources */,
 				18DD23352264991600202A0B /* AlamofireApi.swift in Sources */,
 				18613A01226A1F97004B799E /* PushNotificationPopUp.swift in Sources */,

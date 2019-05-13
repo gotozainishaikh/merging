@@ -14,6 +14,7 @@ import CoreData
 class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
     
     var isFav : String!
+    var stat : String = ""
     @IBOutlet weak var imgLocal: UIImageView!
     @IBOutlet weak var announcementTitle: UILabel!
     @IBOutlet weak var distance: UILabel!
@@ -39,10 +40,13 @@ class LocalAnnouncementCollectionViewCell: UICollectionViewCell {
         if(hasFav==true){
             likeMe.setImage(UIImage(named: "hearts"), for: .normal)
             self.isLike = true
+            stat = "1"
+            
         }
         else if(hasFav==false){
             likeMe.setImage(UIImage(named: "like"), for: .normal)
             self.isLike = false
+            stat = "0"
         }
         //        for item in isFav {
         //            if(item==col_id){

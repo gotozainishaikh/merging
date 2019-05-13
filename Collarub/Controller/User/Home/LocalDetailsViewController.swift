@@ -11,6 +11,9 @@ import SDWebImage
 import ImageSlideshow
 import CoreData
 import TTGSnackbar
+import Alamofire
+import SwiftyJSON
+import Cosmos
 
 class LocalDetailsViewController: UIViewController {
 
@@ -30,6 +33,10 @@ class LocalDetailsViewController: UIViewController {
     //Collaboration Id
     var col_id = ""
     
+    var isfav : String = ""
+    
+    var model : [ReviewModel] = [ReviewModel]()
+    
     let story = UIStoryboard(name: "User", bundle: nil)
     
     var images = [InputSource]()
@@ -40,12 +47,18 @@ class LocalDetailsViewController: UIViewController {
     var dont_do_array:[Substring] = []
     
     
+    @IBOutlet weak var isFavr: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var tableView2: UITableView!
     
     @IBOutlet weak var imgSlider: ImageSlideshow!
     
+    @IBOutlet weak var reviewNmbr: UILabel!
+    @IBOutlet weak var reviewRate: CosmosView!
+    @IBOutlet weak var reviewDes: UILabel!
+    @IBOutlet weak var reviewName: UILabel!
+    @IBOutlet weak var reviewImg: UIImageView!
     @IBOutlet weak var image1: UIImageView!
     @IBOutlet weak var image2: UIImageView!
     @IBOutlet weak var image3: UIImageView!
@@ -62,6 +75,7 @@ class LocalDetailsViewController: UIViewController {
     
     @IBOutlet weak var content_type: UILabel!
     
+    @IBOutlet weak var viewMORE: UIButton!
     @IBOutlet weak var rating: UILabel!
     
     @IBOutlet weak var gender: UILabel!
@@ -157,7 +171,13 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("idd :: \(detailsArray?.isFav)")
+        if (detailsArray?.isFav)! == "1" {
+            isFavr.setImage(UIImage(named: "hearts"), for: .normal)
+        }
         
+        
+        retriveData()
         tableView.dataSource = self
         tableView.delegate = self
        
@@ -225,6 +245,68 @@ class LocalDetailsViewController: UIViewController {
         let logoImage:UIImage = UIImage(named: "logo_img")!
         self.navigationItem.titleView = UIImageView(image: logoImage)
     }
+    var isLike = false
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    let request = NSFetchRequest<NSFetchRequestResult>(entityName: "UserInformation")
+    let url = FixVariable()
+    
+    @IBAction func favBtn(_ sender: UIButton) {
+        
+        
+        sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
+        
+        UIView.animate(withDuration: 2.0,
+                       delay: 0,
+                       usingSpringWithDamping: CGFloat(0.20),
+                       initialSpringVelocity: CGFloat(6.0),
+                       options: .allowUserInteraction,
+                       animations: {
+                        sender.transform = .identity
+                        if self.isLike {
+                            sender.setImage(UIImage(named: "like"), for: .normal)
+                            self.isLike = false
+                        }else {
+                            sender.setImage(UIImage(named: "hearts"), for: .normal)
+                            self.isLike = true
+                        }
+        },
+                       completion: { finished in
+                        // self.animateButton()
+                        let results : NSArray = try! self.context.fetch(self.request) as NSArray
+                        
+                        let res = results[0] as! NSManagedObject
+                        
+                        var id : String = res.value(forKey: "user_id") as! String
+                        
+                        
+                        print(self.detailsArray?.collaboration_id)
+                        
+                        
+                        let parameters : [String:String] = [
+                            "user_id": id,
+                            "collaboration_id": (self.detailsArray?.collaboration_id)!
+                            
+                        ]
+                        
+                        
+                        Alamofire.request("\(self.url.weburl)/favourite_list_of_user.php", method: .get, parameters: parameters).responseJSON { (response) in
+                            
+                            if response.result.isSuccess {
+                                
+                                let dataJSON : JSON = JSON(response.result.value!)
+                                
+                                print(dataJSON)
+                            }
+                        }
+                        //    myfunc()
+                        
+                        
+        }
+        )
+        
+        
+    }
+    
     
 
     func detail(array:[AnyClass]){
@@ -409,6 +491,16 @@ class LocalDetailsViewController: UIViewController {
         }
         
     }
+    @IBAction func viewMore(_ sender: Any) {
+        let vc = story.instantiateViewController(withIdentifier: "detailReview") as! DetailReviewViewController
+        
+        
+        vc.model = model
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
+    
 }
 
 
@@ -474,4 +566,77 @@ extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate
         return nul_cell!
         //return cell!
     }
+    
+    
+    func retriveData(){
+        
+      
+        var p_id = ""
+        if detailsArray != nil {
+            p_id = (detailsArray?.partner_id)!
+        }else if modelCustom != nil {
+        }
+       
+        let parameters : [String:String] = [
+            "partner_id": p_id
+            
+        ]
+        
+        Alamofire.request("\(self.base_url.weburl)/user_reviews_by_partner.php", method: .get, parameters: parameters).responseJSON { (response) in
+            
+            if response.result.isSuccess {
+                
+                let dataJSON : JSON = JSON(response.result.value!)
+                
+                if dataJSON["Status"] == "failed" {
+                    print("NO Data")
+                }else {
+                //   print(dataJSON)
+                self.model.removeAll()
+                
+                for item in 0..<dataJSON.count {
+                    
+                    let reviewModel = ReviewModel()
+                    
+                    reviewModel.reviewerImg = dataJSON[item]["partner_img"].stringValue
+                    reviewModel.reviewerName = dataJSON[item]["partner_name"].stringValue
+                    reviewModel.reviewRate = dataJSON[item]["ratings"].doubleValue
+                    reviewModel.review = dataJSON[item]["review_description"].stringValue
+                    
+                    
+                    self.model.append(reviewModel)
+                    print("\(reviewModel.reviewerName)")
+                   // self.tableView.reloadData()
+                }
+                    
+                    self.reviewName.text = self.model[0].reviewerName
+                    self.reviewDes.text = self.model[0].review
+                    self.reviewRate.rating = self.model[0].reviewRate
+                    self.reviewNmbr.text = "\(Int(self.model[0].reviewRate)) / 5"
+                    self.reviewImg.sd_setImage(with: URL(string: self.model[0].reviewerImg))
+                    print("totl :: \(self.model.count)")
+                    if self.model.count < 0 {
+                        self.viewMORE.isHidden = true
+                    }else {
+                        self.viewMORE.isHidden = false
+                    }
+                
+                    //Image Round
+                    self.reviewImg.layer.cornerRadius = self.reviewImg.frame.size.width/2
+                    self.reviewImg.clipsToBounds = true
+                
+            }
+            }else {
+                print("Error in fetching data")
+            }
+            
+            
+        }
+        
+        
+    }
+    
+    
+    
+    
 }

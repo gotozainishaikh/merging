@@ -70,6 +70,8 @@ class MainScreenViewController: UIViewController,UICollectionViewDelegateFlowLay
     
     var searchBtnImgArray = ["food.png","sports.png","fashion.png","beauty.png","events.png","travel.png","digital.png","parenting.png","home1.png","driving.png","pets.png"]
     
+    var searchBtnImgArray2 = ["food-1.png","sports-1.png","fashion-1.png","beauty-1.png","events-1.png","travel-1.png","digital-1.png","parenting-1.png","home-1.png","driving-1.png","pets-1.png"]
+    
     
     var pageViewController:PageViewController?
 
@@ -202,13 +204,16 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        print("button presed r")
         let cell = searchBtnCollectionView.dequeueReusableCell(withReuseIdentifier: "searchBtn", for: indexPath) as! CollectionViewCell
         
 //        cell.setFilterTabBtn(item: searchBtnArray[indexPath.row])
-        cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row])
+        cell.setFilterTabBtn(image_item: searchBtnImgArray[indexPath.row],title_item: searchBtnArray[indexPath.row],image_item2: searchBtnImgArray2[indexPath.row])
         
         cell.tabBtn.tag = indexPath.row
          cell.tabBtn.addTarget(self, action: #selector(checkMarkButtonClicked(sender:)), for: .touchUpInside)
+        
         
         
         return cell
@@ -216,64 +221,41 @@ extension MainScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+       
+        print("button presed deselect\( searchBtnCollectionView.cellForItem(at: indexPath))")
+    }
+    
     
     @objc func checkMarkButtonClicked ( sender: UIButton) {
-        print("button presed=\((sender.tag))")
-//
-//        switch sender.currentTitle! {
-//
-//            case "Food":
-//                sender.setImage(UIImage(named: "food-1"), for: .normal)
-//
-//            case "Sport":
-//                sender.setImage(UIImage(named: "sports-1"), for: .normal)
-//
-//            case "Fashion":
-//                sender.setImage(UIImage(named: "fashion-1"), for: .normal)
-//
-//            case "Beauty":
-//                sender.setImage(UIImage(named: "beauty-1"), for: .normal)
-//
-//            case "Events":
-//                 sender.setImage(UIImage(named: "events-1"), for: .normal)
-//
-//            case "Travel":
-//                 sender.setImage(UIImage(named: "travel-1"), for: .normal)
-//
-//            case "Digital":
-//                 sender.setImage(UIImage(named: "digital-1"), for: .normal)
-//
-//            case "Parenting":
-//                 sender.setImage(UIImage(named: "parenting-1"), for: .normal)
-//
-//            case "Home":
-//                 sender.setImage(UIImage(named: "home-1"), for: .normal)
-//
-//            case "Automotive":
-//                 sender.setImage(UIImage(named: "driving-1"), for: .normal)
-//
-//            case "Pets":
-//                 sender.setImage(UIImage(named: "pets-1"), for: .normal)
-//
-//
-//            default:
-//                print("default")
-//            }
+        //print("button presed=\((searchBtnImgArray[sender.tag]))")
 
+       print("button presed reload")
+        DispatchQueue.main.sync {
+            
+            self.searchBtnCollectionView.reloadData()
+        }
+       
         if sender.isSelected {
             //uncheck the butoon
+            print("button presed if")
             sender.isSelected = false
             
         } else {
             // checkmark it
+            print("button presed else")
             sender.isSelected = true
             
         }
         
-        //self.searchBtnCollectionView.reloadData()
+        
+        
+//        self.searchBtnCollectionView.reloadData()
         
     }
    
+ 
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = self.calculateWidth()

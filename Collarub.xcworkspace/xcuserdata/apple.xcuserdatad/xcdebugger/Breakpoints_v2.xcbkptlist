@@ -184,12 +184,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Model/Home button search cell/CollectionViewCell.swift"
-            timestampString = "579097340.469438"
+            timestampString = "579173974.754176"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
             endingLineNumber = "26"
-            landmarkName = "setFilterTabBtn(image_item:title_item:)"
+            landmarkName = "setFilterTabBtn(image_item:title_item:image_item2:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

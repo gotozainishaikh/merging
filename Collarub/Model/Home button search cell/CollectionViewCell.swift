@@ -13,16 +13,16 @@ class CollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var tabBtn: UIButton!
     @IBAction func tabBtnOnclick(_ sender: UIButton) {
         
-       isSelected = true
+      // isSelected = true
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reload_by_tabBtn"), object: nil, userInfo:["tab_btn_text":tabBtn.currentTitle!,"type":"local"])
     }
     
 
-    func setFilterTabBtn(image_item:String, title_item:String){
+    func setFilterTabBtn(image_item:String, title_item:String,image_item2:String){
         
         print("image_item=\(image_item)")
         tabBtn.setImage(UIImage(named: image_item), for: .normal)
-        tabBtn.setImage(UIImage(named: "food"), for: .selected)
+        tabBtn.setImage(UIImage(named: image_item2), for: .selected)
         
         tabBtn.setTitle(title_item, for: .normal)
         

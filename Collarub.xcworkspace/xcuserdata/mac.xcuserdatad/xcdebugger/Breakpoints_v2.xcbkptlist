@@ -327,11 +327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Controller/User/Home/LocalDetailsViewController.swift"
-            timestampString = "579441650.917086"
+            timestampString = "579528885.535151"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "611"
-            endingLineNumber = "611"
+            startingLineNumber = "709"
+            endingLineNumber = "709"
             landmarkName = "retriveData()"
             landmarkType = "7">
          </BreakpointContent>

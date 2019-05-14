@@ -76,5 +76,60 @@ class AddressPopUp: UIViewController {
         removeAnimate()
     }
     
+    @IBAction func editAdd(_ sender: Any) {
+        
+        var textField = UITextField()
 
+        
+        let alert = UIAlertController(title: "Change Address", message: "Enter your new address", preferredStyle: .alert)
+        
+        let save = UIAlertAction(title: "Upadate", style: .default) { (update) in
+            
+            var txt = textField.text!
+            if txt == "" {
+                let alert1 = UIAlertController(title: "Error", message: "Please Enter Address", preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .default, handler: { (ok) in
+                    
+                    alert1.dismiss(animated: true, completion: nil)
+                    self.present(alert, animated: true, completion: nil)
+                })
+            alert1.addAction(ok)
+                
+                self.present(alert1, animated: true, completion: nil)
+            }
+            else {
+                let url = "\(self.base_url.weburl)/updateAddress.php"
+                
+                UserCoreData.fetchCoreData()
+                let user_id = UserCoreData.user_id
+                
+                self.api.alamofireApiWithParams(url: url, parameters: ["user_id":user_id,"address":txt]){
+                    
+                    json in
+                    
+                    if json["Status"] == "success" {
+                        print("Done")
+                    }
+                    
+                }
+                print("Address")
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .default) { (cancel) in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        
+        alert.addAction(save)
+        alert.addAction(cancel)
+        
+        alert.addTextField { (alertTextField) in
+            alertTextField.placeholder = "Enter Address"
+            textField = alertTextField
+            
+        }
+        present(alert, animated: true, completion: nil)
+        
+    }
+    
 }

@@ -26,6 +26,9 @@ class customAnnoation: MKPointAnnotation {
     var lat : Double = 0.0
     var long : Double = 0.0
     var partner_id : String = ""
+    var what_u_offer : String = ""
+    var wht_thy_hav_to_do : String = ""
+    var wht_wont_hav_to : String = ""
     
     var collaboration_id :  String = ""
     var expiry_date : String = ""

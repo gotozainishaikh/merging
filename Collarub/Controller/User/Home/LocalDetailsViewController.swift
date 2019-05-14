@@ -171,9 +171,17 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        print("idd :: \(detailsArray?.isFav)")
-        if (detailsArray?.isFav)! == "1" {
+     //   print("idd :: \(detailsArray?.isFav)")
+        if detailsArray?.isFav != nil {
+            if (detailsArray?.isFav)! == "1" {
             isFavr.setImage(UIImage(named: "hearts"), for: .normal)
+            }
+        }
+        else if onlineArray?.isFav != nil {
+            if (onlineArray?.isFav)! == "1" {
+            isFavr.setImage(UIImage(named: "hearts"), for: .normal)
+                
+            }
         }
         
         
@@ -187,15 +195,27 @@ class LocalDetailsViewController: UIViewController {
       
         //to_do_array = ["a","b","c"]
         
+//        if detailsArray?.wht_thy_hav_to_do != nil {
+//
+//        let to_do = (detailsArray?.wht_thy_hav_to_do)!
+//        to_do_array = to_do.split(separator: "\n")
+//        print("to_do_list=\(to_do_array)")
+//        //tableView.reloadData()
+//        }else if onlineArray?.wht_thy_hav_to_do != nil {
+//            let to_do = (onlineArray?.wht_thy_hav_to_do)!
+//            to_do_array = to_do.split(separator: "\n")
+//            print("to_do_list=\(to_do_array)")
+//        }
         
-        let to_do = (detailsArray?.wht_thy_hav_to_do)!
-        to_do_array = to_do.split(separator: "\n")
-        print("to_do_list=\(to_do_array)")
-        //tableView.reloadData()
-        
-        let dont_do = (detailsArray?.wht_wont_hav_to)!
-        dont_do_array = dont_do.split(separator: "\n")
-        print("dont_do_list=\(dont_do_array)")
+//         if detailsArray?.wht_wont_hav_to != nil {
+//        let dont_do = (detailsArray?.wht_wont_hav_to)!
+//        dont_do_array = dont_do.split(separator: "\n")
+//        print("dont_do_list=\(dont_do_array)")
+//         }else if onlineArray?.wht_wont_hav_to != nil {
+//            let dont_do = (onlineArray?.wht_wont_hav_to)!
+//            dont_do_array = dont_do.split(separator: "\n")
+//            print("dont_do_list=\(dont_do_array)")
+//        }
         
         ACCPTBUGT.isHidden = true
         fetch_coreData()
@@ -216,16 +236,10 @@ class LocalDetailsViewController: UIViewController {
         
         
         imgSlider.setImageInputs(images)
-        print("detailsArray?.collaboration_id\((detailsArray?.collaboration_id))!")
-        print("Accep_budget_check=\((detailsArray?.Accep_budget_check)!)")
+       // print("detailsArray?.collaboration_id\((detailsArray?.collaboration_id))!")
+      //  print("Accep_budget_check=\((detailsArray?.Accep_budget_check)!)")
        
-        if((detailsArray?.Accep_budget_check)! == "Accept Budget"){
-            
-            ACCPTBUGT.isHidden = false
-            
-            ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
-            ACCPTBUGT.layer.borderWidth = 0.5
-        }
+       
         
         uiNavegationImage()
         //print("description=\((detailsArray?.description)!)")
@@ -281,10 +295,22 @@ class LocalDetailsViewController: UIViewController {
                         
                         print(self.detailsArray?.collaboration_id)
                         
+                        var c_id = ""
+                        if self.detailsArray != nil {
+                            c_id = (self.detailsArray?.collaboration_id)!
+                        }
+                        
+                       else if self.onlineArray != nil {
+                            c_id = (self.onlineArray?.collaboration_id)!
+                        }
+                        
+                        else if self.modelCustom != nil {
+                            c_id = (self.modelCustom?.collaboration_id)!
+                        }
                         
                         let parameters : [String:String] = [
                             "user_id": id,
-                            "collaboration_id": (self.detailsArray?.collaboration_id)!
+                            "collaboration_id": c_id
                             
                         ]
                         
@@ -331,11 +357,28 @@ class LocalDetailsViewController: UIViewController {
                 }
             }
             
+            if((detailsArray?.Accep_budget_check)! == "Accept Budget"){
+                
+                ACCPTBUGT.isHidden = false
+                
+                ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+                ACCPTBUGT.layer.borderWidth = 0.5
+            }
+            
+            let to_do = (detailsArray?.wht_thy_hav_to_do)!
+            to_do_array = to_do.split(separator: "\n")
+            print("to_do_list=\(to_do_array)")
+            
+            let dont_do = (detailsArray?.wht_wont_hav_to)!
+            dont_do_array = dont_do.split(separator: "\n")
+            print("dont_do_list=\(dont_do_array)")
+            
             companyName.text = detailsArray?.companyName
             location.text = "\((detailsArray?.required_city)!),\((detailsArray?.required_region)!)"
             date.text = "Date:\((detailsArray?.date)!) "
             expiry_date.text = "Expiry:\((detailsArray?.expiry_date)!)"
             advertisementDescription.text = detailsArray?.description
+            
             
             if((detailsArray?.type)! == "exchange") || ((detailsArray?.type)! == "Exchange"){
                 
@@ -360,18 +403,58 @@ class LocalDetailsViewController: UIViewController {
             //collaborationTerm.text = detailsArray?.collaborattionTerms
             //numOfFollowers.text = detailsArray?.selectedNumOfFollowers
         }
-//        else if (onlineArray != nil){
-//            image1.sd_setImage(with: URL(string: (onlineArray?.productImage[0])!))
-//            image2.sd_setImage(with: URL(string: (onlineArray?.productImage[1])!))
-//            image3.sd_setImage(with: URL(string: (onlineArray?.productImage[2])!))
-//            advertisementTitle.text = onlineArray?.title
-//            companyName.text = onlineArray?.companyName
-//            location.text = onlineArray?.location
-//            date.text = onlineArray?.date
-//            advertisementDescription.text = onlineArray?.description
-//            collaborationTerm.text = onlineArray?.collaborattionTerms
-//            numOfFollowers.text = onlineArray?.selectedNumOfFollowers
-//        }
+        else if (onlineArray != nil){
+            print("detailsArray?.productImage=\(onlineArray?.productImage.count)")
+            for item in (onlineArray?.productImage)! as [String]{
+                if(item != ""){
+                    
+                    images.append(AlamofireSource(urlString:item)!)
+                    
+                }
+            }
+            
+            if((onlineArray?.Accep_budget_check)! == "Accept Budget"){
+                
+                ACCPTBUGT.isHidden = false
+                
+                ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+                ACCPTBUGT.layer.borderWidth = 0.5
+            }
+            
+            let to_do = (onlineArray?.wht_thy_hav_to_do)!
+            to_do_array = to_do.split(separator: "\n")
+            print("to_do_list=\(to_do_array)")
+            
+            let dont_do = (onlineArray?.wht_wont_hav_to)!
+            dont_do_array = dont_do.split(separator: "\n")
+            print("dont_do_list=\(dont_do_array)")
+            
+            companyName.text = onlineArray?.companyName
+            location.text = "\((onlineArray?.required_city)!),\((onlineArray?.required_region)!)"
+            date.text = "Date:\((onlineArray?.date)!) "
+            expiry_date.text = "Expiry:\((onlineArray?.expiry_date)!)"
+            advertisementDescription.text = onlineArray?.description
+            
+            if((onlineArray?.type)! == "exchange") || ((onlineArray?.type)! == "Exchange"){
+                
+                type.text = "EXCHANGE:"
+                type_value.text = (onlineArray?.budget_value)!
+                
+            }
+            else if((onlineArray?.type)! == "discount"){
+                
+                type.text = "DISCOUNT:"
+                type_value.text = "\((onlineArray?.budget_value)!) | \((onlineArray?.discount_field)!)"
+                
+            }
+            
+            content_type.text = (onlineArray?.content_type)!
+            engagement_rate.text = onlineArray?.engagement_rate
+            rating.text = (onlineArray?.rating)!
+            gender.text = (onlineArray?.user_gender)!
+            exp_level.text = "\((onlineArray?.min_user_exp_level)!)/10"
+            
+        }
         else if (modelCustom != nil){
             
             for item in (modelCustom?.productImage)! as [String]{
@@ -381,6 +464,15 @@ class LocalDetailsViewController: UIViewController {
                     
                 }
             }
+            
+            let to_do = (modelCustom?.wht_thy_hav_to_do)!
+            to_do_array = to_do.split(separator: "\n")
+            print("to_do_list=\(to_do_array)")
+            
+            let dont_do = (modelCustom?.wht_wont_hav_to)!
+            dont_do_array = dont_do.split(separator: "\n")
+            print("dont_do_list=\(dont_do_array)")
+            
             
             companyName.text = modelCustom?.companyName
             location.text = "\((modelCustom?.required_city)!),\((modelCustom?.required_region)!)"
@@ -575,6 +667,11 @@ extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate
         if detailsArray != nil {
             p_id = (detailsArray?.partner_id)!
         }else if modelCustom != nil {
+        }else if onlineArray != nil {
+             p_id = (onlineArray?.partner_id)!
+        }
+        else if modelCustom != nil {
+            p_id = (modelCustom?.partner_id)!
         }
        
         let parameters : [String:String] = [
@@ -582,6 +679,7 @@ extension LocalDetailsViewController: UITableViewDataSource, UITableViewDelegate
             
         ]
         
+        print("p_id :: \(p_id)")
         Alamofire.request("\(self.base_url.weburl)/user_reviews_by_partner.php", method: .get, parameters: parameters).responseJSON { (response) in
             
             if response.result.isSuccess {

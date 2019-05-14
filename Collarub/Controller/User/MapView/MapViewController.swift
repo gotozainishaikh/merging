@@ -166,7 +166,9 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
             annotations.rating  = mymodel[i].rating
             annotations.user_gender  = mymodel[i].user_gender
             annotations.min_user_exp_level  = mymodel[i].min_user_exp_level
-            
+            annotations.partner_id = mymodel[i].partner_id
+            annotations.wht_wont_hav_to = mymodel[i].wht_wont_hav_to
+            annotations.wht_thy_hav_to_do = mymodel[i].wht_thy_hav_to_do
             
             mapView.addAnnotation(annotations)
             
@@ -272,6 +274,11 @@ class MapViewController: UIViewController, CLLocationManagerDelegate, UISearchBa
                             localModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                             localModel.lat = dataJSON[item]["lat"].doubleValue
                             localModel.long = dataJSON[item]["longg"].doubleValue
+                            
+                            localModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                            localModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                            localModel.partner_id = dataJSON[item]["partner_id"].stringValue
+                            
                             self.model.append(localModel)
                             
                             //   SVProgressHUD.dismiss()

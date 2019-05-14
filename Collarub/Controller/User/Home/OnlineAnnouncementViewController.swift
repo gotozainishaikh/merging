@@ -240,7 +240,7 @@ class OnlineAnnouncementViewController: UIViewController{
                             
                             let onlineModel = OnlineModel()
                             
-                            
+                          
                             onlineModel.announcementImage = dataJSON1[0]["img_url"].stringValue
                             onlineModel.title = dataJSON[item]["collaboration_name"].stringValue
                             onlineModel.companyName = dataJSON[item]["company_name"].stringValue
@@ -270,6 +270,11 @@ class OnlineAnnouncementViewController: UIViewController{
                             onlineModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                             onlineModel.category_name = dataJSON[item]["category_name"].stringValue
                             onlineModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                            onlineModel.lat = dataJSON[item]["lat"].doubleValue
+                            onlineModel.long = dataJSON[item]["longg"].doubleValue
+                            onlineModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                            onlineModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                            onlineModel.partner_id = dataJSON[item]["partner_id"].stringValue
                             self.model.append(onlineModel)
                             
                             //   SVProgressHUD.dismiss()
@@ -342,7 +347,6 @@ class OnlineAnnouncementViewController: UIViewController{
                                 
                                 let onlineModel = OnlineModel()
                                 
-                                
                                 onlineModel.announcementImage = dataJSON1[0]["img_url"].stringValue
                                 onlineModel.title = dataJSON[item]["collaboration_name"].stringValue
                                 onlineModel.companyName = dataJSON[item]["company_name"].stringValue
@@ -372,6 +376,11 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 onlineModel.category_name = dataJSON[item]["category_name"].stringValue
                                 onlineModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                onlineModel.lat = dataJSON[item]["lat"].doubleValue
+                                onlineModel.long = dataJSON[item]["longg"].doubleValue
+                                onlineModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                onlineModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                onlineModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 //                            onlineModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(onlineModel)
                                 
@@ -520,6 +529,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 let onlineModel = OnlineModel()
                                 
                                 
+                                
                                 onlineModel.announcementImage = dataJSON1[0]["img_url"].stringValue
                                 onlineModel.title = dataJSON[item]["collaboration_name"].stringValue
                                 onlineModel.companyName = dataJSON[item]["company_name"].stringValue
@@ -549,6 +559,11 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 onlineModel.category_name = dataJSON[item]["category_name"].stringValue
                                 onlineModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                onlineModel.lat = dataJSON[item]["lat"].doubleValue
+                                onlineModel.long = dataJSON[item]["longg"].doubleValue
+                                onlineModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                onlineModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                onlineModel.partner_id = dataJSON[item]["partner_id"].stringValue
                                 //                            onlineModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(onlineModel)
                                 
@@ -642,6 +657,7 @@ class OnlineAnnouncementViewController: UIViewController{
                                 let onlineModel = OnlineModel()
                                 
                                 
+                                
                                 onlineModel.announcementImage = dataJSON1[0]["img_url"].stringValue
                                 onlineModel.title = dataJSON[item]["collaboration_name"].stringValue
                                 onlineModel.companyName = dataJSON[item]["company_name"].stringValue
@@ -671,6 +687,12 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 onlineModel.category_name = dataJSON[item]["category_name"].stringValue
                                 onlineModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                onlineModel.lat = dataJSON[item]["lat"].doubleValue
+                                onlineModel.long = dataJSON[item]["longg"].doubleValue
+                                onlineModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                onlineModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                onlineModel.partner_id = dataJSON[item]["partner_id"].stringValue
+                                
                                 //                            onlineModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(onlineModel)
                                 
@@ -827,6 +849,12 @@ class OnlineAnnouncementViewController: UIViewController{
                                 onlineModel.min_user_exp_level = dataJSON[item]["min_user_exp_level"].stringValue
                                 onlineModel.category_name = dataJSON[item]["category_name"].stringValue
                                 onlineModel.collab_limit = dataJSON[item]["collab_limit"].stringValue
+                                onlineModel.lat = dataJSON[item]["lat"].doubleValue
+                                onlineModel.long = dataJSON[item]["longg"].doubleValue
+                                onlineModel.wht_wont_hav_to = dataJSON[item]["wht_wont_hav_to"].stringValue
+                                onlineModel.wht_thy_hav_to_do = dataJSON[item]["wht_thy_hav_to_do"].stringValue
+                                onlineModel.partner_id = dataJSON[item]["partner_id"].stringValue
+                                
                                 //                            onlineModel.isFav = dataJSON2[item]["isFav"].stringValue
                                 self.model.append(onlineModel)
                                 
@@ -905,6 +933,7 @@ extension OnlineAnnouncementViewController: UICollectionViewDelegate, UICollecti
         cell.followersRequired.text = model[indexPath.row].selectedNumOfFollowers
         cell.col_id = model[indexPath.row].collaboration_id
         cell.setLikeMe(isFav: favList2)
+        model[indexPath.row].isFav = cell.stat
         
         cell.imgOnline.layer.cornerRadius = 6
         cell.imgOnline.clipsToBounds = true

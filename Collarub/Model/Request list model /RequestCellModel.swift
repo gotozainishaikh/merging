@@ -17,4 +17,6 @@ class RequestCellModel {
     var locaName : String = ""
     var autoapprv : String = ""
     var block : String = ""
+    var user_id : String = ""
+    
 }

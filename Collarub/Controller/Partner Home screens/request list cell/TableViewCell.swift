@@ -12,12 +12,16 @@ class TableViewCell: UITableViewCell {
 
     var req_id : String!
     var reqDataDict :[String:String]!
+    var user_id : String!
     @IBOutlet weak var usrImg: UIImageView!
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var usrName: UILabel!
     @IBOutlet weak var followrs: UILabel!
     @IBOutlet weak var locName: UILabel!
     @IBOutlet weak var noFound: UILabel!
+    
+    @IBOutlet weak var seeBudget: UIButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         mainView.layer.borderWidth = 0.7
@@ -31,17 +35,24 @@ class TableViewCell: UITableViewCell {
 
     }
     @IBAction func rejectBtn(_ sender: UIButton) {
-        reqDataDict = ["req_id": req_id]
+        reqDataDict = ["req_id": req_id,"usr_id":user_id]
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reqreject"), object: nil, userInfo: reqDataDict)
     }
     
     @IBAction func accpt(_ sender: UIButton) {
         
-        reqDataDict = ["req_id": req_id]
+        reqDataDict = ["req_id": req_id,"usr_id":user_id]
           NotificationCenter.default.post(name: NSNotification.Name(rawValue: "reqAcp"), object: nil, userInfo: reqDataDict)
         
     }
     
+    @IBAction func seeBugt(_ sender: UIButton) {
+        
+        reqDataDict = ["usr_id": user_id]
+         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "seeBugdt"), object: nil, userInfo: reqDataDict)
+        
+        
+    }
     
     
 }

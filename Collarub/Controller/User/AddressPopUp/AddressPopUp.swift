@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddressPopUp: UIViewController {
 
@@ -106,9 +107,24 @@ class AddressPopUp: UIViewController {
                 self.api.alamofireApiWithParams(url: url, parameters: ["user_id":user_id,"address":txt]){
                     
                     json in
-                    
+                    SVProgressHUD.show()
                     if json["Status"] == "success" {
                         print("Done")
+                        let url = "\(self.base_url.weburl)/get_user_address.php"
+                        
+                        UserCoreData.fetchCoreData()
+                        let user_id = UserCoreData.user_id
+                        
+                        self.api.alamofireApiWithParams(url: url, parameters: ["user_id":user_id]){
+                            
+                            json in
+                            
+                            print("address=\(json["address"].stringValue)")
+                            
+                            self.address.text = json["address"].stringValue
+                            SVProgressHUD.dismiss()
+                        }
+                        
                     }
                     
                 }

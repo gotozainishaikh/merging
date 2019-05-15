@@ -83,6 +83,7 @@
 		04DD77462269CD130099DADC /* ReportViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD77452269CD130099DADC /* ReportViewViewController.swift */; };
 		04DD7748226A0BBC0099DADC /* CompnayDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */; };
 		04F33D5A2268940F00B42D68 /* FlipsideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F33D592268940F00B42D68 /* FlipsideViewController.swift */; };
+		04FB2FF6228C108F00E84CA1 /* AcceptBudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FB2FF5228C108F00E84CA1 /* AcceptBudgetViewController.swift */; };
 		18112662226A247A00282136 /* AddressPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18112661226A247A00282136 /* AddressPopUp.swift */; };
 		184F42012270DB5300BDEBA0 /* PaymentDropDownViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 184F42002270DB5300BDEBA0 /* PaymentDropDownViewController.swift */; };
 		185D5C59226F31F80081D747 /* UserCoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 185D5C58226F31F80081D747 /* UserCoreData.swift */; };
@@ -261,6 +262,7 @@
 		04DD7747226A0BBC0099DADC /* CompnayDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompnayDetailsViewController.swift; sourceTree = "<group>"; };
 		04F33D562268929D00B42D68 /* Collarub-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Collarub-Bridging-Header.h"; sourceTree = "<group>"; };
 		04F33D592268940F00B42D68 /* FlipsideViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlipsideViewController.swift; sourceTree = "<group>"; };
+		04FB2FF5228C108F00E84CA1 /* AcceptBudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptBudgetViewController.swift; sourceTree = "<group>"; };
 		09A780C81BD1C29E694D15E5 /* Pods-Collarub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Collarub.release.xcconfig"; path = "Pods/Target Support Files/Pods-Collarub/Pods-Collarub.release.xcconfig"; sourceTree = "<group>"; };
 		0E0C1B6BEAB520C8C7CCC02F /* Pods-CollarubTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CollarubTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-CollarubTests/Pods-CollarubTests.release.xcconfig"; sourceTree = "<group>"; };
 		18112661226A247A00282136 /* AddressPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddressPopUp.swift; sourceTree = "<group>"; };
@@ -478,6 +480,7 @@
 				0453E0822260F751006DBD95 /* LocalDetailsViewController.swift */,
 				0453E0832260F751006DBD95 /* LocalAnnouncementViewController.swift */,
 				0453E0842260F751006DBD95 /* OnlineAnnouncementViewController.swift */,
+				04FB2FF5228C108F00E84CA1 /* AcceptBudgetViewController.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1654,6 +1657,7 @@
 				0453E0C42260F915006DBD95 /* Agenda.swift in Sources */,
 				3AD88CD721E22BFC003C7F80 /* CollectionViewCell.swift in Sources */,
 				045BEAB32254C62400650E74 /* CampaignEditViewController.swift in Sources */,
+				04FB2FF6228C108F00E84CA1 /* AcceptBudgetViewController.swift in Sources */,
 				0453E06E225F4FB1006DBD95 /* DetailsEndedViewController.swift in Sources */,
 				0453E07D225FBD77006DBD95 /* customAnnoation.swift in Sources */,
 				04239FD122897740007D4B5F /* DetailReviewViewController.swift in Sources */,

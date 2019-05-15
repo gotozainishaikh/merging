@@ -198,6 +198,7 @@ class MyProfileViewController: UIViewController {
             
             let param : [String:String] = [
                 
+                
                 "userName" : json["data"]["username"].stringValue,
                 "full_name" : json["data"]["full_name"].stringValue,
 //                "followers" : json["data"]["counts"]["followed_by"].stringValue,

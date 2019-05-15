@@ -17,6 +17,7 @@ import SDWebImage
 class RequestListViewController: UIViewController {
 
     var favArray : FavListModel!
+    var api = AlamofireApi()
    // var list_id : String!
     
     @IBOutlet weak var blockRequestSwitch: UISwitch!
@@ -51,6 +52,9 @@ class RequestListViewController: UIViewController {
         blockRequestSwitch.transform = CGAffineTransform(scaleX: 0.75, y: 0.75)
        NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "reqAcp"), object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(seeBugdt(req_notification:)), name: NSNotification.Name(rawValue: "seeBugdt"), object: nil)
+        
+        
         NotificationCenter.default.addObserver(self, selector: #selector(rejectList(req_notification:)), name: NSNotification.Name(rawValue: "reqreject"), object: nil)
         
        // list_id = favArray.collaboration_id
@@ -66,9 +70,44 @@ class RequestListViewController: UIViewController {
     
     // MARK - Observer accept Method
     
+    @objc func seeBugdt(req_notification: NSNotification) {
+        
+        print("Hello")
+        var u_id : String = ""
+        
+        if let dict = req_notification.userInfo as NSDictionary? {
+            if let id = dict["usr_id"] as? String{
+                print("id="+id)
+                // print("hosp_id="+hosp_id!)
+                u_id = id
+            }
+        
+            api.alamofireApiWithParams(url: "\(self.url.weburl)/showBudget.php", parameters: ["col_id":favArray.collaboration_id,"user_id":u_id]) { (json) in
+                
+                if json["Status"] != "failed" {
+                    
+                    print(json)
+                    
+                    let alert = UIAlertController(title: "Budget Request", message: "Requested Budget is \(json[0]["bugt_value"].stringValue) ", preferredStyle: .alert)
+                    
+                    let cancel = UIAlertAction(title: "Close", style: .default) { (can) in
+                        alert.dismiss(animated: true, completion: nil)
+                        
+                    }
+                    
+                    alert.addAction(cancel)
+                    self.present(alert, animated: true, completion: nil)
+                }
+            }
+         
+        }
+    }
+    
+    
     @objc func loadList(req_notification: NSNotification) {
         
         var req_id : String = ""
+        var u_id : String = ""
         
         if let dict = req_notification.userInfo as NSDictionary? {
             if let id = dict["req_id"] as? String{
@@ -76,12 +115,19 @@ class RequestListViewController: UIViewController {
                 // print("hosp_id="+hosp_id!)
                 req_id = id
             }
+            if let id1 = dict["usr_id"] as? String{
+                print("id="+id1)
+                // print("hosp_id="+hosp_id!)
+                u_id = id1
+            }
+            
             
             let parameters : [String:String] = [
                 
                 "req_id": req_id,
                 "req_condition" : "accept",
-                "col_id" : favArray.collaboration_id
+                "col_id" : favArray.collaboration_id,
+                "user_id" : u_id
             ]
             
             Alamofire.request("\(self.url.weburl)/request_accept_and_reject.php", method: .get, parameters: parameters).responseJSON { (response) in
@@ -101,18 +147,26 @@ class RequestListViewController: UIViewController {
     @objc func rejectList(req_notification: NSNotification) {
         
         var req_id : String = ""
-        
+        var u_id : String = ""
         if let dict = req_notification.userInfo as NSDictionary? {
             if let id = dict["req_id"] as? String{
                 print("id="+id)
                 // print("hosp_id="+hosp_id!)
                 req_id = id
             }
+            if let id1 = dict["usr_id"] as? String{
+                print("id="+id1)
+                // print("hosp_id="+hosp_id!)
+                u_id = id1
+            }
+            
             
             let parameters : [String:String] = [
                 
                 "req_id": req_id,
-                "req_condition" : "reject"
+                "req_condition" : "reject",
+                "col_id" : favArray.collaboration_id,
+                "user_id" : u_id
                 
             ]
             
@@ -183,12 +237,13 @@ class RequestListViewController: UIViewController {
                     
                     let statusModel = RequestCellModel()
                     
+                    
                     statusModel.usrImg = dataJSON[item]["image_url"].stringValue
                     statusModel.usrName = dataJSON[item]["full_name"].stringValue
                     statusModel.locaName = countryName
                     statusModel.followrs = dataJSON[item]["followers"].stringValue
                     statusModel.req_id = dataJSON[item]["request_id"].stringValue
-                    
+                    statusModel.user_id = dataJSON[item]["id"].stringValue
                     print("\(statusModel)")
                     self.model.append(statusModel)
                     
@@ -336,8 +391,15 @@ extension RequestListViewController : UITableViewDelegate, UITableViewDataSource
         //Image Round
         cell.usrImg.layer.cornerRadius = cell.usrImg.frame.size.width/2
         cell.usrImg.clipsToBounds = true
+        cell.user_id = model[indexPath.row].user_id
         
-        
+        api.alamofireApiWithParams(url: "\(self.url.weburl)/showBudget.php", parameters: ["col_id":favArray.collaboration_id,"user_id":model[indexPath.row].user_id]) { (json) in
+            
+            if json["Status"] == "failed" {
+                
+                cell.seeBudget.isHidden = true
+            }
+        }
         return cell
         
     }
@@ -350,5 +412,8 @@ extension RequestListViewController : UITableViewDelegate, UITableViewDataSource
     }
     
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 94.0
+    }
     
 }

@@ -5237,7 +5237,7 @@
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vel-2W-HEU">
                                                 <rect key="frame" x="62" y="172" width="165" height="40"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ydP-Fh-Vlc" customClass="CosmosView" customModule="Cosmos">
                                                         <rect key="frame" x="22.5" y="10" width="120" height="20"/>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="rating">
@@ -6242,10 +6242,10 @@
             </objects>
             <point key="canvasLocation" x="6849.375" y="2757.0422535211269"/>
         </scene>
-        <!--View Controller-->
+        <!--Accept Budget View Controller-->
         <scene sceneID="U85-0x-z89">
             <objects>
-                <viewController id="9BV-wg-hft" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="budget_pop" id="9BV-wg-hft" customClass="AcceptBudgetViewController" customModule="Collarub" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="QZw-SV-tUA">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -6254,10 +6254,10 @@
                                 <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgX-jo-MLW" customClass="CardView" customModule="Collarub" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="82" width="288" height="384"/>
+                                        <rect key="frame" x="16" y="137" width="288" height="274"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="si1-cp-c3R">
-                                                <rect key="frame" x="32" y="300" width="225" height="34"/>
+                                                <rect key="frame" x="32" y="190" width="225" height="34"/>
                                                 <color key="backgroundColor" name="ThemeColor1"/>
                                                 <state key="normal" title="Accept">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6267,6 +6267,9 @@
                                                         <integer key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="accpt_btn:" destination="9BV-wg-hft" eventType="touchUpInside" id="Uj2-gw-AcL"/>
+                                                </connections>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Budget" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uOh-ZY-eoM">
                                                 <rect key="frame" x="32" y="57" width="225" height="30"/>
@@ -6275,7 +6278,7 @@
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VWY-6P-DtL">
-                                                <rect key="frame" x="32" y="342" width="225" height="34"/>
+                                                <rect key="frame" x="32" y="232" width="225" height="34"/>
                                                 <color key="backgroundColor" name="ThemeColor1"/>
                                                 <state key="normal" title="Cancel">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6285,6 +6288,10 @@
                                                         <integer key="value" value="8"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="cancel:" destination="Kjn-XW-9Hb" eventType="touchUpInside" id="4nF-ak-eh9"/>
+                                                    <action selector="cancel:" destination="9BV-wg-hft" eventType="touchUpInside" id="qrg-BI-vRG"/>
+                                                </connections>
                                             </button>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accept Budget" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aky-7b-RrQ">
                                                 <rect key="frame" x="69" y="8" width="150" height="24"/>
@@ -6324,16 +6331,16 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.32000000000000001" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.12" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="bgX-jo-MLW" firstAttribute="centerX" secondItem="Y1T-VS-uQt" secondAttribute="centerX" id="2jw-xJ-2C4"/>
-                                    <constraint firstItem="bgX-jo-MLW" firstAttribute="height" secondItem="Y1T-VS-uQt" secondAttribute="height" multiplier="0.7" id="A0m-NI-Cnr"/>
+                                    <constraint firstItem="bgX-jo-MLW" firstAttribute="height" secondItem="Y1T-VS-uQt" secondAttribute="height" multiplier="0.5" id="A0m-NI-Cnr"/>
                                     <constraint firstItem="bgX-jo-MLW" firstAttribute="centerY" secondItem="Y1T-VS-uQt" secondAttribute="centerY" id="RkM-dv-X4L"/>
                                     <constraint firstItem="bgX-jo-MLW" firstAttribute="width" secondItem="Y1T-VS-uQt" secondAttribute="width" multiplier="0.9" id="pDT-89-ZBk"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" white="1" alpha="0.12" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Y1T-VS-uQt" firstAttribute="trailing" secondItem="abH-Tc-jrz" secondAttribute="trailing" id="Jey-6o-7pj"/>
                             <constraint firstItem="Y1T-VS-uQt" firstAttribute="top" secondItem="abH-Tc-jrz" secondAttribute="top" id="NlA-dx-YxP"/>
@@ -6342,8 +6349,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="abH-Tc-jrz"/>
                     </view>
+                    <connections>
+                        <outlet property="budget_field" destination="uOh-ZY-eoM" id="Mdt-ho-9xz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ab7-jw-UZJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Kjn-XW-9Hb" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-407" y="-2515"/>
         </scene>

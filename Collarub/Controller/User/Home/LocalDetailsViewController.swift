@@ -252,6 +252,34 @@ class LocalDetailsViewController: UIViewController {
     @IBAction func acp_btn(_ sender: UIButton) {
         
         print("acpt_btn")
+        var val = ""
+        var coll_id = ""
+        
+        if (detailsArray != nil) {
+            val = (detailsArray?.budget_value)!
+            coll_id = (detailsArray?.collaboration_id)!
+        }else if (onlineArray != nil){
+            val = (onlineArray?.budget_value)!
+            coll_id = (onlineArray?.collaboration_id)!
+        }else if (statArray != nil){
+            val = (statArray?.budget_value)!
+            coll_id = (statArray?.collaboration_id)!
+        }else if (modelCustom != nil ){
+            val = (modelCustom?.budget_value)!
+            coll_id = (modelCustom?.collaboration_id)!
+        }
+        
+        let vc = story.instantiateViewController(withIdentifier: "budget_pop") as! AcceptBudgetViewController
+        
+        vc.val = val
+        vc.user_id = user_id
+        vc.col_id = coll_id
+        
+        self.addChild(vc)
+        self.view.addSubview(vc.view)
+        vc.didMove(toParent: self)
+        
+        
     }
     
     

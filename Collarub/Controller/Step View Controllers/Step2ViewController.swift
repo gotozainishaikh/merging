@@ -228,6 +228,8 @@ class Step2ViewController: UIViewController, SSRadioButtonControllerDelegate {
         sender.isHidden = true
     }
     
+    
+    
     @objc func rejectList(req_notification: NSNotification) {
         var req_id : String = ""
         

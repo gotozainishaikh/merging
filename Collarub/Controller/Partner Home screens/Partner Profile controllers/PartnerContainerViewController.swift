@@ -71,23 +71,27 @@ class PartnerContainerViewController: UIViewController {
                 if dataJSON["Status"] != "failed" {
                     self.engagementRt.text = "\(dataJSON["engagement"].stringValue)%"
                     
-                    let para1 : [String:String] = ["partner_id" : id]
-                    Alamofire.request("\(self.url.weburl)/find_partner_level.php", method: .get, parameters: para1).responseJSON { (response) in
-                        
-                        if response.result.isSuccess {
-                            
-                            let dataJSON : JSON = JSON(response.result.value!)
-                            
-                            if dataJSON["Status"] == "success" {
-                                self.ratingView.rating = dataJSON["level"].doubleValue
-                                self.rateNum.text = "Ratting \(dataJSON["level"].intValue)/5"
-                                
-                                self.heartConstrainst.constant = 20.0 - CGFloat((dataJSON["level"].doubleValue * 20) / 5)
-                            }
-                        }
-                    }
-                }else {
+                   
+                }
+                
+                else {
                     self.retriveData(id: id)
+                }
+            }
+        }
+        
+        let para1 : [String:String] = ["partner_id" : id]
+        Alamofire.request("\(self.url.weburl)/find_partner_level.php", method: .get, parameters: para1).responseJSON { (response) in
+            
+            if response.result.isSuccess {
+                
+                let dataJSON : JSON = JSON(response.result.value!)
+                
+                if dataJSON["Status"] == "success" {
+                    self.ratingView.rating = dataJSON["level"].doubleValue
+                    self.rateNum.text = "Ratting \(dataJSON["level"].intValue)/5"
+                    
+                    self.heartConstrainst.constant = 20.0 - CGFloat((dataJSON["level"].doubleValue * 20) / 5)
                 }
             }
         }
@@ -116,6 +120,7 @@ class PartnerContainerViewController: UIViewController {
             if let id : String = res.value(forKey: "user_id") as! String {
                 retriveData(id: id)
                 p_id = id
+                print("myidd :: \(id)")
                 api.alamofireApiWithParams(url: "\(url.weburl)/find_partner_invitation_value.php", parameters: ["partner_id":p_id]) { (json) in
                     if json["Status"] == "success" {
                         self.referCode = json["refer_code"].stringValue

@@ -34,11 +34,14 @@ class MyProfileViewController: UIViewController {
     var referCode : String = ""
     
     //Outlets
+    @IBOutlet weak var heightConstrainsts: NSLayoutConstraint!
     @IBOutlet weak var usrName: UILabel!
     @IBOutlet weak var userImg: UIButton!
     @IBOutlet weak var followers: UILabel!
     @IBOutlet weak var eng_rate: UILabel!
+    @IBOutlet weak var rateNum: UILabel!
     
+    @IBOutlet weak var heartView: UIView!
     @IBOutlet weak var user_type_img: UIImageView!
     @IBOutlet weak var ratingView: CosmosView!
     
@@ -73,7 +76,8 @@ class MyProfileViewController: UIViewController {
              json in
             
             self.ratings(ratingValue: json["level"].doubleValue)
-            
+            self.rateNum.text = "Ratting \(json["level"].intValue)/5"
+            self.heightConstrainsts.constant = 20.0 - CGFloat((json["level"].doubleValue * 20) / 5)
         }
         
         
@@ -104,7 +108,7 @@ class MyProfileViewController: UIViewController {
             
             print("userType=\(self.user_type)")
             if(self.user_type == "1"){
-                self.user_type_img.image = UIImage(named: "free")
+                self.user_type_img.image = UIImage(named: "Free-icon")
             }
             else{
                 self.user_type_img.image = UIImage(named: "2")

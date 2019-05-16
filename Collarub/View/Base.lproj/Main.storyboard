@@ -4413,7 +4413,7 @@ INFLUENCER</string>
                                                             <constraint firstAttribute="width" constant="40" id="OXZ-qr-JuA"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-full" translatesAutoresizingMaskIntoConstraints="NO" id="DXp-lv-mfn">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-3" translatesAutoresizingMaskIntoConstraints="NO" id="DXp-lv-mfn">
                                                         <rect key="frame" x="56.5" y="26" width="25" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="25" id="BlR-GD-S9t"/>
@@ -4423,7 +4423,7 @@ INFLUENCER</string>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NkU-5p-5hy">
                                                         <rect key="frame" x="56.5" y="26" width="25" height="20"/>
                                                         <subviews>
-                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-empty" translatesAutoresizingMaskIntoConstraints="NO" id="pN0-Df-R9g">
+                                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="heart-2" translatesAutoresizingMaskIntoConstraints="NO" id="pN0-Df-R9g">
                                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="20"/>
                                                                 <color key="tintColor" name="themeColor3"/>
                                                                 <constraints>
@@ -4431,7 +4431,7 @@ INFLUENCER</string>
                                                                 </constraints>
                                                             </imageView>
                                                         </subviews>
-                                                        <color key="backgroundColor" name="themeColor2"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="20" id="4KJ-4Q-rkL"/>
                                                             <constraint firstItem="pN0-Df-R9g" firstAttribute="leading" secondItem="NkU-5p-5hy" secondAttribute="leading" id="CeG-a6-qG2"/>
@@ -8040,8 +8040,8 @@ INFLUENCER</string>
         <image name="employees" width="50" height="44"/>
         <image name="employees-2" width="50" height="44"/>
         <image name="filter-icon" width="55" height="50"/>
-        <image name="heart-empty" width="40" height="40"/>
-        <image name="heart-full" width="40" height="40"/>
+        <image name="heart-2" width="160" height="150"/>
+        <image name="heart-3" width="160" height="150"/>
         <image name="help-1" width="384" height="384"/>
         <image name="improve your instagram" width="384" height="384"/>
         <image name="instgrm" width="58" height="58"/>

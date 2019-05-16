@@ -170,6 +170,10 @@ class LocalDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let logoutBarButtonItem = UIBarButtonItem(image:UIImage(named: "share"), style: .done, target: self, action: #selector(sharing))
+        self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
+        
 
      //   print("idd :: \(detailsArray?.isFav)")
         if detailsArray?.isFav != nil {
@@ -247,6 +251,19 @@ class LocalDetailsViewController: UIViewController {
         self.navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
         // Do any additional setup after loading the view.
     }
+    
+    @objc func sharing(){
+        print("clicked")
+        let textToShare = "Check out this Campaign 'Web link' or download the App from 'Website link'"
+        
+        if let myWebsite = NSURL(string: "http://www.collaborup.com/") {
+            let objectsToShare = [textToShare, myWebsite] as [Any]
+            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+            
+            self.present(activityVC, animated: true, completion: nil)
+        }
+    }
+    
     
     
     @IBAction func acp_btn(_ sender: UIButton) {

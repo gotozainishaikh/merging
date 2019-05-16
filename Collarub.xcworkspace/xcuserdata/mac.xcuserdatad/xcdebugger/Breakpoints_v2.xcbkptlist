@@ -311,11 +311,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Controller/Partner Home screens/Partner Profile controllers/PartnerContainerViewController.swift"
-            timestampString = "578066270.895955"
+            timestampString = "579700364.267228"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "396"
-            endingLineNumber = "396"
+            startingLineNumber = "401"
+            endingLineNumber = "401"
             landmarkName = "company_details(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -327,11 +327,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Controller/User/Home/LocalDetailsViewController.swift"
-            timestampString = "579614841.925537"
+            timestampString = "579700364.267398"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "737"
-            endingLineNumber = "737"
+            startingLineNumber = "754"
+            endingLineNumber = "754"
             landmarkName = "retriveData()"
             landmarkType = "7">
          </BreakpointContent>
@@ -343,7 +343,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Collarub/Controller/User/Home/LocalDetailsViewController.swift"
-            timestampString = "579614841.92562"
+            timestampString = "579700364.268155"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"

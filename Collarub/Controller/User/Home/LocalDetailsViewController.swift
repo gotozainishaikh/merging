@@ -45,7 +45,7 @@ class LocalDetailsViewController: UIViewController {
     //to_do
     var to_do_array:[Substring] = []
     var dont_do_array:[Substring] = []
-    
+    var bgt_value : String = ""
     
     @IBOutlet weak var isFavr: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -171,6 +171,9 @@ class LocalDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NotificationCenter.default.addObserver(self, selector: #selector(loadList(req_notification:)), name: NSNotification.Name(rawValue: "bgt_val"), object: nil)
+        
+        
         let logoutBarButtonItem = UIBarButtonItem(image:UIImage(named: "share"), style: .done, target: self, action: #selector(sharing))
         self.navigationItem.rightBarButtonItem  = logoutBarButtonItem
         
@@ -187,6 +190,8 @@ class LocalDetailsViewController: UIViewController {
                 
             }
         }
+        
+        
         
         
         retriveData()
@@ -264,7 +269,19 @@ class LocalDetailsViewController: UIViewController {
         }
     }
     
-    
+    @objc func loadList(req_notification: NSNotification) {
+        
+      
+        if let dict = req_notification.userInfo as NSDictionary? {
+            if let id = dict["value"] as? String{
+                print("id="+id)
+                // print("hosp_id="+hosp_id!)
+                bgt_value = id
+            }
+            
+            print("bgt_val :: \(bgt_value)")
+        }
+    }
     
     @IBAction func acp_btn(_ sender: UIButton) {
         
@@ -404,10 +421,15 @@ class LocalDetailsViewController: UIViewController {
             
             if((detailsArray?.Accep_budget_check)! == "Accept Budget"){
                 
-                ACCPTBUGT.isHidden = false
+                get_user_type {
+                    if self.user_type == "2" {
+                        self.ACCPTBUGT.isHidden = false
+                        
+                        self.ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+                        self.ACCPTBUGT.layer.borderWidth = 0.5
+                    }
+                }
                 
-                ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
-                ACCPTBUGT.layer.borderWidth = 0.5
             }
             
             let to_do = (detailsArray?.wht_thy_hav_to_do)!
@@ -459,11 +481,14 @@ class LocalDetailsViewController: UIViewController {
             }
             
             if((onlineArray?.Accep_budget_check)! == "Accept Budget"){
-                
-                ACCPTBUGT.isHidden = false
-                
-                ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
-                ACCPTBUGT.layer.borderWidth = 0.5
+                get_user_type {
+                    if self.user_type == "2" {
+                        self.ACCPTBUGT.isHidden = false
+                        
+                        self.ACCPTBUGT.layer.borderColor = UIColor(named: "themecolor4")?.cgColor
+                        self.ACCPTBUGT.layer.borderWidth = 0.5
+                    }
+                }
             }
             
             let to_do = (onlineArray?.wht_thy_hav_to_do)!

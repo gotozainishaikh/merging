@@ -87,16 +87,20 @@ class AcceptBudgetViewController: UIViewController {
             
         }
         else {
-            print("budget val :: \(budget_field.text!)")
-                api.alamofireApiWithParams(url: "\(self.base_url.weburl)/insert_negotiation.php", parameters: ["user_id":user_id,"col_id":col_id,"budget_val":budget_field.text!]) { (json) in
-                    SVProgressHUD.show()
-                    if json["Status"] == "success" {
-                        print("success")
-                        SVProgressHUD.showSuccess(withStatus: "Budget Sent")
+                
+                var reqDataDict = ["value":budget_field.text!]
+                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "bgt_val"), object: nil, userInfo: reqDataDict)
+                
+//            print("budget val :: \(budget_field.text!)")
+//                api.alamofireApiWithParams(url: "\(self.base_url.weburl)/insert_negotiation.php", parameters: ["user_id":user_id,"col_id":col_id,"budget_val":budget_field.text!]) { (json) in
+//                    SVProgressHUD.show()
+//                    if json["Status"] == "success" {
+//                        print("success")
+//                        SVProgressHUD.showSuccess(withStatus: "Budget Sent")
                         self.removeAnimate()
-                    }
-                    
-                }
+//                    }
+//
+//                }
                 
         }
         
